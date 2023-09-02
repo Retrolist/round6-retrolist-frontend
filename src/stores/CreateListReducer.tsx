@@ -1,4 +1,4 @@
-import React, { ReactNode, useReducer } from "react";
+import React, { ReactNode, useContext, useReducer } from "react";
 import {
   ListContent,
   ListContentView,
@@ -9,6 +9,7 @@ import {
   ListRubric,
 } from "../types/List";
 import { cloneDeep, omit } from "lodash";
+import { Outlet } from "react-router-dom";
 
 type ListReducerAction =
   | { type: "new"; impactEvaluationType: ListImpactEvaluationType }
@@ -211,18 +212,26 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
   }
 };
 
+export const CreateListReducerContext = React.createContext<[ListData, React.Dispatch<ListReducerAction>]>([] as any);
+
 export function useCreateListReducer() {
-  return useReducer(reducer, initialList);
+  return useContext(CreateListReducerContext);
 }
 
-export const CreateListReducerContext = React.createContext<null | [ListData, React.Dispatch<ListReducerAction>]>(null);
-
 export function CreateListReducerProvider({ children }: { children: ReactNode }) {
-  const reducer = useCreateListReducer()
+  const hook = useReducer(reducer, initialList)
 
   return (
-    <CreateListReducerContext.Provider value={reducer}>
+    <CreateListReducerContext.Provider value={hook}>
       {children}
     </CreateListReducerContext.Provider>
+  )
+}
+
+export function CreateListReducerRouteWrapper() {
+  return (
+    <CreateListReducerProvider>
+      <Outlet />
+    </CreateListReducerProvider>
   )
 }
