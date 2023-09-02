@@ -41,10 +41,20 @@ export interface ListData extends ListAttestation {
   impactEvaluationType: ListImpactEvaluationType
   listContent: ListContentWithRubrics[]
   walletAddress: string
+  isBadgeholder: boolean
   attestationUid: string
   forkedFrom: string
   rubrics: ListRubric[]
   histories: ListData[]
   createdAt: Date
   updatedAt: Date
+}
+
+export interface ListContentView extends ListContentWithRubrics {
+  score: number
+}
+
+export interface ListView extends ListData {
+  listContent: ListContentView[]
+  creatorDomainName: string
 }
