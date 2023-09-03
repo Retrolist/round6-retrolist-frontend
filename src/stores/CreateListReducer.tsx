@@ -86,6 +86,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           ...state,
           listName: action.metadata.listName,
           listDescription: action.metadata.listDescription,
+          impactEvaluationInput: action.metadata.impactEvaluationInput,
         }
       }
     }

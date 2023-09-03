@@ -12,6 +12,7 @@ import { CreateListReducerRouteWrapper } from "./stores/CreateListReducer";
 import { RainbowKitConfigProvider } from "./providers/RainbowKitConfigProvider";
 import { AntdAlertProvider } from "./providers/AntdAlertProvider";
 import { CreateListInfoPageRoute } from "./pages/lists/create/CreateListInfoPage";
+import { CreateListChooseProjectsPageRoute } from "./pages/lists/create/CreateListChooseProjectsPage";
 
 const router = createBrowserRouter([
   ListsPageRoute,
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
     children: [
       CreateListTypePageRoute,
       CreateListInfoPageRoute,
+      CreateListChooseProjectsPageRoute,
     ],
   }
 ]);

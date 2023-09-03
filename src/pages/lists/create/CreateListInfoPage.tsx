@@ -6,9 +6,10 @@ import TextArea from "antd/es/input/TextArea";
 import { ListImpactEvaluationType } from "../../../types/List";
 import PrimaryButton from "../../../components/buttons/PrimaryButton";
 import SecondaryButton from "../../../components/buttons/SecondaryButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function CreateListInfoPage() {
+  const navigate = useNavigate();
   const [form] = Form.useForm();
   const [state, dispatch] = useCreateListReducer();
 
@@ -32,6 +33,8 @@ export default function CreateListInfoPage() {
                 type: "updateMetadata",
                 metadata: data,
               })
+
+              navigate('/lists/create/choose-projects')
             }}
           >
             <Form.Item label="List name" name="listName" required={true}>
