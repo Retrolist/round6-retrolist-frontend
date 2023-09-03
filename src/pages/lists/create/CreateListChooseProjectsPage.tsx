@@ -56,7 +56,7 @@ export default function CreateListChooseProjectsPage() {
               // })
 
               if (state.impactEvaluationType == ListImpactEvaluationType.RUBRIC) {
-                navigate("/lists/create/rubrics")
+                navigate("/lists/create/rubric")
               } else {
                 navigate("/lists/create/classic-scoring")
               }

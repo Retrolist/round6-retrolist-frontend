@@ -13,7 +13,8 @@ import { RainbowKitConfigProvider } from "./providers/RainbowKitConfigProvider";
 import { AntdAlertProvider } from "./providers/AntdAlertProvider";
 import { CreateListInfoPageRoute } from "./pages/lists/create/CreateListInfoPage";
 import { CreateListChooseProjectsPageRoute } from "./pages/lists/create/CreateListChooseProjectsPage";
-import { CreateListRubricsPageRoute } from "./pages/lists/create/CreateListRubricsPage";
+import { CreateListRubricPageRoute } from "./pages/lists/create/CreateListRubricPage";
+import { CreateListRubricScoringPageRoute } from "./pages/lists/create/CreateListRubricScoringPage";
 
 const router = createBrowserRouter([
   ListsPageRoute,
@@ -30,7 +31,8 @@ const router = createBrowserRouter([
       CreateListTypePageRoute,
       CreateListInfoPageRoute,
       CreateListChooseProjectsPageRoute,
-      CreateListRubricsPageRoute,
+      CreateListRubricPageRoute,
+      CreateListRubricScoringPageRoute,
     ],
   }
 ]);

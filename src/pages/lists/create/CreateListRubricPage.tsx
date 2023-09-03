@@ -8,7 +8,7 @@ import SecondaryButton from "../../../components/buttons/SecondaryButton";
 import { v4 as uuid } from 'uuid';
 import Layout from "../../../components/Layout";
 
-export default function CreateListRubricsPage() {
+export default function CreateListRubricPage() {
   const navigate = useNavigate();
   const [form] = useForm()
   const [state, dispatch] = useCreateListReducer();
@@ -27,6 +27,16 @@ export default function CreateListRubricsPage() {
           <Form
             form={form}
             initialValues={state}
+            onFinish={(data) => {
+              console.log(data);
+
+              dispatch({
+                type: "updateRubrics",
+                rubrics: data.rubrics,
+              })
+
+              navigate("/lists/create/rubric-scoring")
+            }}
           >
             <Form.List name="rubrics">
               {(fields, { add, remove }) => (
@@ -90,9 +100,10 @@ export default function CreateListRubricsPage() {
                   </div>
 
                   <div className="flex justify-between">
-                    <Link to="/lists/create/info">
+                    <Link to="/lists/create/choose-projects">
                       <SecondaryButton type="button">Back</SecondaryButton>
                     </Link>
+
                     <PrimaryButton type="button" onClick={() => add({
                       id: uuid(),
                       title: "",
@@ -110,6 +121,8 @@ export default function CreateListRubricsPage() {
                         "5": "",
                       }
                     })}>+ Add</PrimaryButton>
+
+                    <PrimaryButton>Next</PrimaryButton>
                   </div>
                 </div>
               )}
@@ -121,7 +134,7 @@ export default function CreateListRubricsPage() {
   )
 }
 
-export const CreateListRubricsPageRoute = {
-  path: "/lists/create/rubrics",
-  element: <CreateListRubricsPage />,
+export const CreateListRubricPageRoute = {
+  path: "/lists/create/rubric",
+  element: <CreateListRubricPage />,
 };
