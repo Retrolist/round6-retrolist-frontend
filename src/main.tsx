@@ -15,6 +15,7 @@ import { CreateListInfoPageRoute } from "./pages/lists/create/CreateListInfoPage
 import { CreateListChooseProjectsPageRoute } from "./pages/lists/create/CreateListChooseProjectsPage";
 import { CreateListRubricPageRoute } from "./pages/lists/create/CreateListRubricPage";
 import { CreateListRubricScoringPageRoute } from "./pages/lists/create/CreateListRubricScoringPage";
+import { CreateListFinalizePageRoute } from "./pages/lists/create/CreateListFinalizePage";
 
 const router = createBrowserRouter([
   ListsPageRoute,
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       CreateListChooseProjectsPageRoute,
       CreateListRubricPageRoute,
       CreateListRubricScoringPageRoute,
+      CreateListFinalizePageRoute,
     ],
   }
 ]);

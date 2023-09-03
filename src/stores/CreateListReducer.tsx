@@ -139,6 +139,12 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
         if (project && item.evaluation) {
           project.comment = item.comment || ""
           project.evaluation = item.evaluation;
+
+          for (const rubricId in project.evaluation) {
+            // Fix data type passed from ant design form
+            // @ts-ignore
+            project.evaluation[rubricId] = parseInt(project.evaluation[rubricId])
+          }
         }
       }
 

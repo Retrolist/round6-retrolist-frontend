@@ -34,6 +34,8 @@ export default function CreateListRubricScoringPage() {
                 type: "updateRubricEvaluation",
                 listContent: data.listContent,
               });
+
+              navigate("/lists/create/finalize")
             }}
           >
             <Form.List name="listContent">
@@ -87,6 +89,14 @@ export default function CreateListRubricScoringPage() {
                             ></Select>
                           </Form.Item>
                         ))}
+
+                        <Form.Item
+                          className="mb-2"
+                          label={"Comment"}
+                          name={[field.name, "comment"]}
+                        >
+                          <Input />
+                        </Form.Item>
                       </div>
                     ))}
                   </div>
