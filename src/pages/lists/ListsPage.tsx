@@ -14,7 +14,7 @@ export default function ListsPage() {
 
           <div className="grid grid-cols-3 gap-3">
             {[1, 2, 3, 4, 5].map(i => (
-              <div className="rounded-2xl border border-gray-300 p-4 w-full transition hover:cursor-pointer hover:border-gray-400">
+              <div className="rounded-2xl bg-white border border-gray-300 p-4 w-full transition hover:cursor-pointer hover:border-gray-400">
                 <div className="text-lg mb-1 font-bold">List {i}</div>
 
                 <div className="flex mb-3">
