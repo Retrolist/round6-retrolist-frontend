@@ -94,7 +94,7 @@ export default function CreateListFinalizePage() {
           ))}
 
           <div className="flex justify-between">
-            <Link to={state.impactEvaluationType == ListImpactEvaluationType.RUBRIC ? "/lists/create/rubric-scoring" : "/lists/create/choose-projects"}>
+            <Link to={state.impactEvaluationType == ListImpactEvaluationType.RUBRIC ? "/lists/create/rubric-scoring" : "/lists/create/classic-scoring"}>
               <SecondaryButton type="button">Back</SecondaryButton>
             </Link>
 
