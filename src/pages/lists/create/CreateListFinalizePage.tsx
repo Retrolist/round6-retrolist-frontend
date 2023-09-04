@@ -56,6 +56,10 @@ export default function CreateListFinalizePage() {
 
           <div className="text-xl font-bold mb-4">Projects</div>
 
+          {state.impactEvaluationType == ListImpactEvaluationType.RUBRIC && (
+            <div className="text-xl text-red-700 mb-4">(Specify total OP here for rubric based list creation)</div>
+          )}
+
           {state.listContent.map(project => (
             <div className={state.impactEvaluationType == ListImpactEvaluationType.RUBRIC ? "mb-5" : ""}>
               <div className="flex justify-between mb-3">
