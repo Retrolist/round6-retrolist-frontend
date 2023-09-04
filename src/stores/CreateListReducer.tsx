@@ -197,7 +197,9 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           for (const rubric of newState.rubrics) {
             description += `${rubric.title}\n`
             for (const score in rubric.scores) {
-              description += `* ${score} - ${rubric.scores[score]}\n`
+              if (rubric.scores[score]) {
+                description += `* ${score} - ${rubric.scores[score]}\n`
+              }
             }
             description += '\n'
           }
