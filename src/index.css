@@ -3,5 +3,8 @@
 @tailwind utilities;
 
 html, body {
-  background-color: #F3F4F6;
+  background-color: #FAFAFA;
+}
+.hero-section-gradient-bg{
+  background: linear-gradient(117deg, rgba(252, 146, 91, 0.80) 0%, rgba(224, 213, 250, 0.80) 22.26%, rgba(68, 185, 237, 0.80) 45.98%, rgba(144, 177, 169, 0.80) 70.18%, rgba(247, 148, 158, 0.80) 92.93%);
 }
