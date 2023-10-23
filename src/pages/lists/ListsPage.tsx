@@ -1,8 +1,27 @@
+import { useState } from "react";
 import Layout from "../../components/Layout";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
 import { ProjectCard } from "../../components/Project/Card";
+import { useProjects } from "../../hooks/useProjects";
 
 export default function ListsPage() {
+  const [ search, setSearch ] = useState('')
+  const [ categories, setCategories ] = useState([])
+
+  const {
+    projects,
+    loading,
+    isError,
+    hasNext,
+    refreshProjects,
+    paginate,
+  } = useProjects({
+    search,
+    categories,
+  })
+
+  console.log(projects)
+
   return (
     <Layout>
       <LayoutSideInfo>
