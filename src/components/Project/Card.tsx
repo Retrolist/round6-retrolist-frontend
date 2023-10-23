@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { UserImageAddress } from "../common/UserImageAddress";
 
 export const ProjectCard = () => {
   return (
@@ -21,9 +22,8 @@ export const ProjectCard = () => {
         1W3 is a linktree alternative for the decentralized web. Your personal,
         censorship-resistant hub to showcase
       </div>
-      <div className="my-3 flex gap-1 items-center">
-        <img className="rounded-full w-4 h-4" src="/img/test-avatar.png" />
-        <div className="text-[10px] text-[#4C4E64AD]">0x2FAe...e474 </div>
+      <div className="my-3">
+        <UserImageAddress img="/img/test-avatar.png" address=" 0x2FAe...e474" />
       </div>
       <div className="flex flex-wrap">
         <div className="rounded bg-gray-200 text-gray-600 px-2 py-1 text-xs mr-2 mb-2">
