@@ -7,7 +7,7 @@ import { useProjects } from "../../hooks/useProjects";
 export default function ListsPage() {
   const [ search, setSearch ] = useState('')
   const [ categories, setCategories ] = useState([])
-  const [ seed, setSeed ] = useState(Date.now().toString())
+  const [ seed, setSeed ] = useState(Math.floor(Math.random() * 1000000000).toString())
 
   const {
     projects,
