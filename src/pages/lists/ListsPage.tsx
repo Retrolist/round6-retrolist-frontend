@@ -7,6 +7,7 @@ import { useProjects } from "../../hooks/useProjects";
 export default function ListsPage() {
   const [ search, setSearch ] = useState('')
   const [ categories, setCategories ] = useState([])
+  const [ seed, setSeed ] = useState(Date.now().toString())
 
   const {
     projects,
@@ -18,6 +19,8 @@ export default function ListsPage() {
   } = useProjects({
     search,
     categories,
+    seed,
+    orderBy: search ? 'alphabeticalAZ' : 'shuffle',
   })
 
   console.log(projects)
@@ -57,7 +60,7 @@ export default function ListsPage() {
           </div>
 
           <div className="grid grid-cols-3 gap-3">
-            {[1, 2, 3, 4, 5].map((i) => (
+            {projects.map((project) => (
               <ProjectCard />
             ))}
           </div>

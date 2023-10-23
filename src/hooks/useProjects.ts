@@ -6,6 +6,7 @@ import { useDebounce } from "usehooks-ts";
 export interface ProjectQueryOptions {
   search: string
   categories: string[]
+  orderBy?: string
   seed?: string
   limit?: number
 }
@@ -29,6 +30,7 @@ export function useProjects(options: ProjectQueryOptions) {
           categories: options.categories.join(','),
           limit: options.limit || 30,
           seed: options.seed,
+          orderBy: options.orderBy,
           cursor,
         }
       });
