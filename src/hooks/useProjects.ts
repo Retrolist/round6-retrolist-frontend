@@ -11,8 +11,19 @@ export interface ProjectQueryOptions {
   limit?: number
 }
 
+export interface ProjectMetadata {
+  id: string
+  displayName: string
+  impactCategory: string[]
+  bio: string
+  address: string
+  profileImageUrl: string
+  bannerImageUrl: string
+}
+
+
 export function useProjects(options: ProjectQueryOptions) {
-  const [ projects, setProjects ] = useState([])
+  const [ projects, setProjects ] = useState<ProjectMetadata[]>([])
   const [ loading, setLoading ] = useState(true)
   const [ isError, setIsError ] = useState(false)
   const [ hasNext, setHasNext ] = useState(false)

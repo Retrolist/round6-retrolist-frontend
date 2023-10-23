@@ -23,7 +23,7 @@ export default function ListsPage() {
     orderBy: search ? 'alphabeticalAZ' : 'shuffle',
   })
 
-  console.log(projects)
+  // console.log(projects)
 
   return (
     <Layout>
@@ -61,7 +61,7 @@ export default function ListsPage() {
 
           <div className="grid grid-cols-3 gap-3">
             {projects.map((project) => (
-              <ProjectCard />
+              <ProjectCard project={project} />
             ))}
           </div>
         </div>
