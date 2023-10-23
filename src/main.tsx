@@ -47,11 +47,9 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <RainbowKitConfigProvider>
-      <AntdAlertProvider>
-        <RouterProvider router={router} />
-      </AntdAlertProvider>
-    </RainbowKitConfigProvider>
-  </React.StrictMode>
+  <RainbowKitConfigProvider>
+    <AntdAlertProvider>
+      <RouterProvider router={router} />
+    </AntdAlertProvider>
+  </RainbowKitConfigProvider>
 );

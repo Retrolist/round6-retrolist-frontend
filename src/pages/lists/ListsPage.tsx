@@ -1,8 +1,30 @@
+import { useState } from "react";
 import Layout from "../../components/Layout";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
 import { ProjectCard } from "../../components/Project/Card";
+import { useProjects } from "../../hooks/useProjects";
 
 export default function ListsPage() {
+  const [ search, setSearch ] = useState('')
+  const [ categories, setCategories ] = useState([])
+  const [ seed, setSeed ] = useState(Math.floor(Math.random() * 1000000000).toString())
+
+  const {
+    projects,
+    loading,
+    isError,
+    hasNext,
+    refreshProjects,
+    paginate,
+  } = useProjects({
+    search,
+    categories,
+    seed,
+    orderBy: search ? 'alphabeticalAZ' : 'shuffle',
+  })
+
+  // console.log(projects)
+
   return (
     <Layout>
       <LayoutSideInfo>
@@ -38,8 +60,8 @@ export default function ListsPage() {
           </div>
 
           <div className="grid grid-cols-3 gap-3">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <ProjectCard />
+            {projects.map((project) => (
+              <ProjectCard project={project} />
             ))}
           </div>
         </div>
