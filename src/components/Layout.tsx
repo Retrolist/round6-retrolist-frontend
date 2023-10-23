@@ -5,30 +5,32 @@ import OptimismLogo from "./OptimismLogo";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="container 2xl:max-w-[1440px] mx-auto">
+    <div className="">
       {/* Navbar */}
-      <div className="flex justify-between items-center p-4">
-        <div className="flex">
-          <Link to="/">
-            <div className="text-xl">
-              <OptimismLogo />
+      <div className="border-b border-[#EAECF0]">
+        <div className="flex justify-between items-center p-4 container 2xl:max-w-[1440px] mx-auto">
+          <div className="flex">
+            <Link to="/">
+              <div className="text-xl">
+                <OptimismLogo />
+              </div>
+            </Link>
+            <div className="ml-11 flex gap-5 text-base font-semibold">
+              <Link to="/" className="py-2 px-3">
+                <div>Lists</div>
+              </Link>
+              <Link to="/project/retrolist" className="py-2 px-3">
+                <div>Projects</div>
+              </Link>
+              <Link to="/" className="py-2 px-3">
+                <div>My Lists</div>
+              </Link>
             </div>
-          </Link>
-          <div className="ml-11 flex gap-5 text-base font-semibold">
-            <Link to="/" className="py-2 px-3">
-              <div>Lists</div>
-            </Link>
-            <Link to="/" className="py-2 px-3">
-              <div>Projects</div>
-            </Link>
-            <Link to="/" className="py-2 px-3">
-              <div>My Lists</div>
-            </Link>
           </div>
-        </div>
 
-        <div className="flex">
-          <ConnectButton />
+          <div className="flex">
+            <ConnectButton />
+          </div>
         </div>
       </div>
 

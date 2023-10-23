@@ -6,7 +6,7 @@ export default function LayoutSideInfo({
   children: React.ReactNode;
 }) {
   return (
-    <div className="container 2xl:max-w-[1440px]">
+    <div className="container 2xl:max-w-[1440px] mt-11">
       <div className="relative hero-section-gradient-bg rounded-2xl flex items-center px-20 h-60">
         <div>
           <div className="text-4xl font-bold">
