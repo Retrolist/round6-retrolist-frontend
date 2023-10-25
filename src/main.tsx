@@ -41,7 +41,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/project/retrolist",
+    path: "/project/:projectId",
     element: <ProjectPage />,
   },
 ]);

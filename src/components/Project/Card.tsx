@@ -1,13 +1,28 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link } from "react-router-dom";
 import { UserImageAddress } from "../common/UserImageAddress";
-import { ProjectMetadata } from "../../hooks/useProjects";
-import { categoryLabel } from "../../utils/category";
+import { categoryLabel } from "../../utils/project";
+import { ProjectMetadata } from "../../types/Project";
 
 export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
   return (
-    <Link to="/project/retrolist">
-      <div className="relative rounded-2xl bg-white border border-[#EAECF0] p-4 w-full transition hover:cursor-pointer hover:border-gray-400">
+    <Link to={"/project/" + project.id}>
+      <div className="relative rounded-2xl bg-white border border-[#EAECF0] p-4 w-full transition hover:cursor-pointer hover:border-gray-400 h-full">
+        <div
+          style={{
+            marginTop: -16,
+            marginLeft: -16,
+            marginRight: -16,
+            marginBottom: 16,
+            backgroundColor: "rgb(220, 220, 220)",
+            backgroundSize: "cover",
+            backgroundImage: `url(${project.bannerImageUrl})`,
+            paddingTop: "37.5%"
+          }}
+          className="rounded-t-2xl"
+        >
+        </div>
+        
         <div className="flex items-center justify-between">
           <div className="flex gap-2 items-center mb-2">
             <img
