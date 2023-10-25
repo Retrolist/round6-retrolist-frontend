@@ -59,7 +59,7 @@ export default function ListsPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-3 gap-4">
             {projects.map((project) => (
               <ProjectCard project={project} />
             ))}

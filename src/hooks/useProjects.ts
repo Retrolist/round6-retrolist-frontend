@@ -2,25 +2,7 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { api } from "../utils/api";
 import { useDebounce } from "usehooks-ts";
-
-export interface ProjectQueryOptions {
-  search: string
-  categories: string[]
-  orderBy?: string
-  seed?: string
-  limit?: number
-}
-
-export interface ProjectMetadata {
-  id: string
-  displayName: string
-  impactCategory: string[]
-  bio: string
-  address: string
-  profileImageUrl: string
-  bannerImageUrl: string
-}
-
+import { ProjectQueryOptions, ProjectMetadata } from "../types/Project";
 
 export function useProjects(options: ProjectQueryOptions) {
   const [ projects, setProjects ] = useState<ProjectMetadata[]>([])
