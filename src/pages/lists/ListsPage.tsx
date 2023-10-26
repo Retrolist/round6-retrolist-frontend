@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Layout from "../../components/Layout";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
 import { ProjectCard } from "../../components/Project/Card";
 import { useProjects } from "../../hooks/useProjects";
+import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryButton";
+import InfiniteScroll from "react-infinite-scroller";
+import { Input } from 'antd';
+import {
+  SearchOutlined,
+} from '@ant-design/icons';
+
+const { Search } = Input;
 
 export default function ListsPage() {
   const [ search, setSearch ] = useState('')
-  const [ categories, setCategories ] = useState([])
+  const [ categories, setCategories ] = useState<string[]>([])
   const [ seed, setSeed ] = useState(Math.floor(Math.random() * 1000000000).toString())
+
+  const setCategory = useCallback((category?: string) => {
+    if (category) {
+      setCategories([category])
+    } else {
+      setCategories([])
+    }
+  }, [setCategories])
 
   const {
     projects,
@@ -25,6 +41,8 @@ export default function ListsPage() {
 
   // console.log(projects)
 
+  // console.log(search)
+
   return (
     <Layout>
       <LayoutSideInfo>
@@ -37,33 +55,70 @@ export default function ListsPage() {
             </div>
           </div>
           <div className="flex gap-2 items-center mb-8">
-            <button className="p-2 px-4 rounded-xl bg-[#323A43] text-white">
-              All Project
-            </button>
+            <ProjectCategoryButton
+              text="All Projects"
+              categories={categories}
+              category=""
+              setCategory={setCategory}
+            />
+            
             <div className="border-l-[1px] border border-[#CBD5E0] h-4"></div>
-            <button className="p-2 flex gap-1 px-4 rounded-xl bg-[#F5F5F5] text-[#202327]">
-              <div>OP Stack</div>
-              <div className="bg-white rounded-xl px-2 py-1 text-xs">168</div>
-            </button>
-            <button className="p-2 flex gap-1 px-4 rounded-xl bg-[#F5F5F5] text-[#202327]">
-              <div>Collective Governance</div>
-              <div className="bg-white rounded-xl px-2 py-1 text-xs">168</div>
-            </button>
-            <button className="p-2 flex gap-1 px-4 rounded-xl bg-[#F5F5F5] text-[#202327]">
-              <div>Developer Ecosystem</div>
-              <div className="bg-white rounded-xl px-2 py-1 text-xs">12</div>
-            </button>
-            <button className="p-2 flex gap-1 px-4 rounded-xl bg-[#F5F5F5] text-[#202327]">
-              <div>End user UX</div>
-              <div className="bg-white rounded-xl px-2 py-1 text-xs">12</div>
-            </button>
+
+            <ProjectCategoryButton
+              text="Collective Governance"
+              amount={609}
+              categories={categories}
+              category="COLLECTIVE_GOVERNANCE"
+              setCategory={setCategory}
+            />
+
+            <ProjectCategoryButton
+              text="OP Stack"
+              amount={603}
+              categories={categories}
+              category="OP_STACK"
+              setCategory={setCategory}
+            />
+
+            <ProjectCategoryButton
+              text="Developer Ecosystem"
+              amount={665}
+              categories={categories}
+              category="DEVELOPER_ECOSYSTEM"
+              setCategory={setCategory}
+            />
+
+            <ProjectCategoryButton
+              text="End user UX"
+              amount={1240}
+              categories={categories}
+              category="END_USER_EXPERIENCE_AND_ADOPTION"
+              setCategory={setCategory}
+            />
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
-            {projects.map((project) => (
-              <ProjectCard project={project} />
-            ))}
+          <div className="mb-8">
+            <Input
+              addonBefore={<SearchOutlined />}
+              placeholder="Search projects"
+              size="large"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+            />
           </div>
+
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={paginate}
+            hasMore={hasNext}
+            loader={<div>Loading...</div>}
+          >
+            <div className="grid grid-cols-3 gap-4">
+              {projects.map((project) => (
+                <ProjectCard project={project} />
+              ))}
+            </div>
+          </InfiniteScroll>
         </div>
       </LayoutSideInfo>
     </Layout>
