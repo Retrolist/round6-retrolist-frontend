@@ -4,6 +4,7 @@ import LayoutSideInfo from "../../components/LayoutSideInfo";
 import { ProjectCard } from "../../components/Project/Card";
 import { useProjects } from "../../hooks/useProjects";
 import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryButton";
+import InfiniteScroll from "react-infinite-scroller";
 
 export default function ListsPage() {
   const [ search, setSearch ] = useState('')
@@ -88,11 +89,18 @@ export default function ListsPage() {
             />
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
-            {projects.map((project) => (
-              <ProjectCard project={project} />
-            ))}
-          </div>
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={paginate}
+            hasMore={hasNext}
+            loader={<div>Loading...</div>}
+          >
+            <div className="grid grid-cols-3 gap-4">
+              {projects.map((project) => (
+                <ProjectCard project={project} />
+              ))}
+            </div>
+          </InfiniteScroll>
         </div>
       </LayoutSideInfo>
     </Layout>

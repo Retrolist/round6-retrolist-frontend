@@ -28,7 +28,7 @@ export function useProjects(options: ProjectQueryOptions) {
         }
       });
 
-      setProjects(response.data.projects)
+      setProjects([...projects, ...response.data.projects])
       setCursor(response.data.pageInfo.endCursor)
       setHasNext(response.data.pageInfo.hasNextPage)
     } catch (err) {
@@ -41,6 +41,7 @@ export function useProjects(options: ProjectQueryOptions) {
 
   const refreshProjects = useCallback(async () => {
     setCursor(null)
+    setProjects([])
     refreshProjectsInternal()
   }, [refreshProjectsInternal, setCursor])
 
