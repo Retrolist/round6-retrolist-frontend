@@ -5,6 +5,12 @@ import { ProjectCard } from "../../components/Project/Card";
 import { useProjects } from "../../hooks/useProjects";
 import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryButton";
 import InfiniteScroll from "react-infinite-scroller";
+import { Input } from 'antd';
+import {
+  SearchOutlined,
+} from '@ant-design/icons';
+
+const { Search } = Input;
 
 export default function ListsPage() {
   const [ search, setSearch ] = useState('')
@@ -34,6 +40,8 @@ export default function ListsPage() {
   })
 
   // console.log(projects)
+
+  // console.log(search)
 
   return (
     <Layout>
@@ -86,6 +94,16 @@ export default function ListsPage() {
               categories={categories}
               category="END_USER_EXPERIENCE_AND_ADOPTION"
               setCategory={setCategory}
+            />
+          </div>
+
+          <div className="mb-8">
+            <Input
+              addonBefore={<SearchOutlined />}
+              placeholder="Search projects"
+              size="large"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
             />
           </div>
 
