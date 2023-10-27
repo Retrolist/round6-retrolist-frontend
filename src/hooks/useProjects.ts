@@ -50,7 +50,7 @@ export function useProjects(options: ProjectQueryOptions) {
   }, [refreshProjectsInternal])
 
   useEffect(() => {
-    refreshProjectsInternal()
+    refreshProjects()
   }, [debouncedSearch, options.categories, options.seed])
 
   return {
