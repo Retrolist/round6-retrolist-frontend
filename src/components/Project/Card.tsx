@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { UserImageAddress } from "../common/UserImageAddress";
 import { categoryLabel } from "../../utils/project";
 import { ProjectMetadata } from "../../types/Project";
+import { addrParse } from "../../utils/common";
 
 export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
   return (
@@ -43,7 +44,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
         <div className="my-3">
           <UserImageAddress
             img="/img/test-avatar.png"
-            address={project.address}
+            address={addrParse(project.address)}
           />
         </div>
         <div className="flex flex-wrap">

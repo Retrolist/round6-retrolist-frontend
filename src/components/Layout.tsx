@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <OptimismLogo />
               </div>
             </Link>
-            <div className="ml-11 flex gap-5 text-base font-semibold">
+            <div className="ml-11 hidden flex gap-5 text-base font-semibold">
               <Link to="/" className="py-2 px-3">
                 <div>Lists</div>
               </Link>
@@ -34,7 +34,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </div>
 
-      <div className="container mx-auto">{children}</div>
+      <div className="container mx-auto p-3">{children}</div>
     </div>
   );
 }

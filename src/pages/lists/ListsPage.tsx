@@ -54,7 +54,7 @@ export default function ListsPage() {
               the builder.
             </div>
           </div>
-          <div className="flex gap-2 items-center mb-8">
+          <div className="flex flex-col md:flex-row gap-2 items-center mb-8">
             <ProjectCategoryButton
               text="All Projects"
               categories={categories}
@@ -113,7 +113,7 @@ export default function ListsPage() {
             hasMore={hasNext}
             loader={<div>Loading...</div>}
           >
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {projects.map((project) => (
                 <ProjectCard project={project} />
               ))}
