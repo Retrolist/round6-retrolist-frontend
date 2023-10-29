@@ -14,6 +14,7 @@ export interface ProjectMetadata {
   address: string
   profileImageUrl: string
   bannerImageUrl: string
+  prelimResult: string
 }
 
 export interface Project {
@@ -31,6 +32,7 @@ export interface Project {
   fundingSources: ProjectFundingSource[]
   lists: any[]
   id: string
+  prelimResult: string
 }
 
 export interface ProjectApplicant {

@@ -1,6 +1,8 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { UserImageAddress } from "../common/UserImageAddress";
 import { Project } from "../../types/Project";
+import { addrParse } from "../../utils/common";
+import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
 
 export const ProjectHeroSection = ({ project }: { project: Project }) => {
   return (
@@ -16,8 +18,11 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
           backgroundImage: `url(${project?.profile.bannerImageUrl})`,
           paddingTop: "37.5%"
         }}
-        className="rounded-2xl"
+        className="rounded-2xl relative"
       >
+        <div className="absolute top-3 left-3">
+          <ProjectEligibilityBadge status={project.prelimResult} size={'sm'} />
+        </div>
       </div>
 
       <div className="flex px-8 relative -top-12">
@@ -55,7 +60,7 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
               <div className="border-l-[0.5px] border border-[#CBD5E0] h-6" />
               <UserImageAddress
                 img="/img/test-avatar.png"
-                address={project?.applicant.address.resolvedName?.name || project?.applicant.address.address}
+                address={project?.applicant.address.resolvedName?.name || addrParse(project?.applicant.address.address)}
               />
             </div>
             {project?.websiteUrl && (

@@ -4,6 +4,7 @@ import { UserImageAddress } from "../common/UserImageAddress";
 import { categoryLabel } from "../../utils/project";
 import { ProjectMetadata } from "../../types/Project";
 import { addrParse } from "../../utils/common";
+import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
 
 export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
   return (
@@ -20,8 +21,11 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
             backgroundImage: `url(${project.bannerImageUrl})`,
             paddingTop: "37.5%"
           }}
-          className="rounded-t-2xl"
+          className="rounded-t-2xl relative"
         >
+          <div className="absolute top-2 left-2">
+            <ProjectEligibilityBadge status={project.prelimResult} />
+          </div>
         </div>
         
         <div className="flex items-center justify-between">
