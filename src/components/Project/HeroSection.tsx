@@ -40,7 +40,7 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
                   <Icon icon="mdi:heart" width={24} height={24} color="red" />
                 </div> */}
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 hidden md:block">
                 <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5">
                   <Icon icon="mdi:dots-horizontal" />
                 </button>

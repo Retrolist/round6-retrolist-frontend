@@ -39,8 +39,8 @@ export default function ProjectPage() {
             <div>Go back</div>
           </Link>
           <ProjectHeroSection project={project} />
-          <div className="mt-6 flex gap-6">
-            <div className="w-3/4 mb-6">
+          <div className="mt-6 flex flex-col md:flex-row gap-6">
+            <div className="w-full md:w-3/4 mb-6">
               <div className="text-[#272930DE] text-2xl">About</div>
               <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5 border-b border-[#EAECF0]">
                 {project.bio}
@@ -133,7 +133,7 @@ export default function ProjectPage() {
                 )}
               </div>
             </div>
-            <div className="w-1/4">
+            <div className="w-full md:w-1/4">
               <div className="text-base text-[#858796]">
                 Included in lists (40)
               </div>

@@ -7,12 +7,12 @@ export default function LayoutSideInfo({
 }) {
   return (
     <div className="container 2xl:max-w-[1440px] mt-11">
-      <div className="relative hero-section-gradient-bg rounded-2xl flex items-center px-20 h-60">
-        <div>
-          <div className="text-4xl font-bold">
+      <div className="relative hero-section-gradient-bg rounded-2xl flex items-center px-20 h-60 pb-8">
+        <div className="hidden sm:block" style={{ maxWidth: 'calc(100% - 260px)' }}>
+          <div className="text-3xl lg:text-4xl font-bold">
             Voting for RetroPGF 3 is <span className="text-red-600">Live!</span>
           </div>
-          <p className="pt-3 w-11/12">
+          <p className="pt-3 w-11/12 hidden md:block">
             RetroPGF voting is live! View nominated projects that are eligible
             to receive retroactive public goods funding.
           </p>
