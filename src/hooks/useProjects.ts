@@ -21,7 +21,7 @@ export function useProjects(options: ProjectQueryOptions) {
         params: {
           search: options.search,
           categories: options.categories.join(','),
-          limit: options.limit || 30,
+          limit: options.limit || 20,
           seed: options.seed,
           orderBy: options.orderBy,
           cursor,
