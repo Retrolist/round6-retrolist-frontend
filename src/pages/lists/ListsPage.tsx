@@ -113,7 +113,7 @@ export default function ListsPage() {
             hasMore={hasNext}
             loader={<div>Loading...</div>}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style={{ minHeight: '100vh' }}>
               {projects.map((project) => (
                 <ProjectCard project={project} />
               ))}
