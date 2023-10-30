@@ -37,7 +37,7 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
           <div className="flex w-10/12 flex-col gap-2">
             <div className="flex justify-between">
               <div className="flex gap-5">
-                <div className="text-[28px]">
+                <div className="text-[28px] flex items-end">
                   {project?.displayName}
                 </div>
                 {/* <div className="flex gap-2 items-center">

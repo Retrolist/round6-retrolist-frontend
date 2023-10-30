@@ -21,7 +21,7 @@ export function useProjects(options: ProjectQueryOptions) {
         params: {
           search: options.search,
           categories: options.categories.join(','),
-          limit: options.limit || 20,
+          limit: options.limit || 30,
           seed: options.seed,
           orderBy: options.orderBy,
           cursor,
@@ -51,8 +51,10 @@ export function useProjects(options: ProjectQueryOptions) {
   }, [refreshProjectsInternal, cursor])
 
   const paginate = useCallback(async () => {
-    refreshProjectsInternal()
-  }, [refreshProjectsInternal])
+    if (cursor.current && hasNext) {
+      refreshProjectsInternal()
+    }
+  }, [refreshProjectsInternal, cursor.current, hasNext])
 
   useEffect(() => {
     refreshProjects()
