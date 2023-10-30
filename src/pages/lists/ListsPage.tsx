@@ -5,7 +5,7 @@ import { ProjectCard } from "../../components/Project/Card";
 import { useProjects } from "../../hooks/useProjects";
 import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryButton";
 import InfiniteScroll from "react-infinite-scroller";
-import { Input } from 'antd';
+import { Alert, Input } from 'antd';
 import {
   SearchOutlined,
 } from '@ant-design/icons';
@@ -48,7 +48,20 @@ export default function ListsPage() {
       <LayoutSideInfo>
         <div>
           <div className="mb-5">
-            <div className="text-2xl font-bold">All Projects</div>
+            <Alert
+              message="My project is Removed! What to do?"
+              description={
+                <div>
+                  <div className="mb-1">You can submit an appeal on Nov, 2-3 via <a href="https://app.deform.cc/form/78499a28-ecff-4928-a814-cd3364741051/" target="_blank" className="underline">this form</a></div>
+                  <div><a href="https://plaid-cement-e44.notion.site/RetroPGF-3-Application-Review-Process-5209e6791cce4c6f97296536c81d7f96" target="_blank" className="underline">Read more about RetroPGF 3 Review Process</a></div>
+                </div>
+              }
+              type="error"
+            />
+          </div>
+
+          <div className="mb-5">
+            <div className="text-2xl font-bold mb-1">All Projects</div>
             <div className="text-sm text-[#4C4E64AD] border-b border-[#4C4E641F] pb-3">
               Positive impact to the community should be rewarded with profit to
               the builder.
