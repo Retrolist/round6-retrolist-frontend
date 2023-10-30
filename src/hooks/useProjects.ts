@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { api } from "../utils/api";
 import { useDebounce } from "usehooks-ts";
 import { ProjectQueryOptions, ProjectMetadata } from "../types/Project";
@@ -9,7 +9,7 @@ export function useProjects(options: ProjectQueryOptions) {
   const [ loading, setLoading ] = useState(true)
   const [ isError, setIsError ] = useState(false)
   const [ hasNext, setHasNext ] = useState(false)
-  const [ cursor, setCursor ] = useState<string | null>(null)
+  const cursor = useRef<string | null>(null)
   const debouncedSearch = useDebounce<string>(options.search, 500)
 
   const refreshProjectsInternal = useCallback(async () => {
@@ -28,8 +28,13 @@ export function useProjects(options: ProjectQueryOptions) {
         }
       });
 
-      setProjects([...projects, ...response.data.projects])
-      setCursor(response.data.pageInfo.endCursor)
+      if (!cursor.current) {
+        setProjects(response.data.projects)
+      } else {
+        setProjects([...projects, ...response.data.projects])
+      }
+      
+      cursor.current = response.data.pageInfo.endCursor
       setHasNext(response.data.pageInfo.hasNextPage)
     } catch (err) {
       console.error(err)
@@ -40,10 +45,10 @@ export function useProjects(options: ProjectQueryOptions) {
   }, [options.search, options.categories, options.seed, cursor, setProjects, setLoading])
 
   const refreshProjects = useCallback(async () => {
-    setCursor(null)
+    cursor.current = null
     setProjects([])
     refreshProjectsInternal()
-  }, [refreshProjectsInternal, setCursor])
+  }, [refreshProjectsInternal, cursor])
 
   const paginate = useCallback(async () => {
     refreshProjectsInternal()

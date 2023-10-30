@@ -4,7 +4,7 @@ import CloseCircleOutlined from "@ant-design/icons/CloseCircleOutlined"
 import CheckCircleOutlined from "@ant-design/icons/CheckCircleOutlined"
 
 export default function ProjectEligibilityBadge({ status, size = 'xs' }: { status: string, size?: string }) {
-  console.log(status)
+  // console.log(status)
 
   if (status.toLowerCase() == 'keep') {
     return (
