@@ -24,7 +24,7 @@ export function useProjects(options: ProjectQueryOptions) {
           limit: options.limit || 30,
           seed: options.seed,
           orderBy: options.orderBy,
-          cursor,
+          cursor: cursor.current,
         }
       });
 
