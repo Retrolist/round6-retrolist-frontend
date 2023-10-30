@@ -46,9 +46,9 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
                 </div> */}
               </div>
               <div className="flex gap-3 hidden md:block">
-                <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5">
+                {/* <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5">
                   <Icon icon="mdi:dots-horizontal" />
-                </button>
+                </button> */}
                 <button className="flex gap-1 h-10 items-center  border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]">
                   <Icon icon="lucide:plus" color="white" />
                   <div className="text-white">Add to List</div>

@@ -42,7 +42,7 @@ export function useProjects(options: ProjectQueryOptions) {
     } finally {
       setLoading(false)
     }
-  }, [options.search, options.categories, options.seed, cursor, setProjects, setLoading])
+  }, [options.search, options.categories, options.seed, cursor, projects, setProjects, setLoading])
 
   const refreshProjects = useCallback(async () => {
     cursor.current = null
