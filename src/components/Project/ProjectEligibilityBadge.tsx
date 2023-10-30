@@ -22,6 +22,14 @@ export default function ProjectEligibilityBadge({ status, size = 'xs' }: { statu
     )
   }
 
+  if (status.toLowerCase() == '#n/a') {
+    return (
+      <div className="rounded-2xl px-3 py-1 border-2 border-cyan-600 text-cyan-800 bg-cyan-100 text-xs">
+        <ClockCircleOutlined /> Pending Approval
+      </div>
+    )
+  }
+
   return (
     <div className="rounded-2xl px-3 py-1 border-2 border-cyan-600 text-cyan-800 bg-cyan-100 text-xs">
       <ClockCircleOutlined /> Reviewing
