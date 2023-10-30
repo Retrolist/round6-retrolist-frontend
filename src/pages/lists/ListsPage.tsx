@@ -15,6 +15,7 @@ const { Search } = Input;
 export default function ListsPage() {
   const [ search, setSearch ] = useState('')
   const [ categories, setCategories ] = useState<string[]>([])
+  const [ eligibleFilter, setEligibleFilter ] = useState('')
   const [ seed, setSeed ] = useState(Math.floor(Math.random() * 1000000000).toString())
 
   const setCategory = useCallback((category?: string) => {
@@ -110,6 +111,45 @@ export default function ListsPage() {
             />
           </div>
 
+          <div className="flex flex-col md:flex-row gap-2 items-center mb-8">
+            <ProjectCategoryButton
+              text="All Status"
+              categories={eligibleFilter ? [eligibleFilter] : []}
+              category=""
+              setCategory={setEligibleFilter}
+            />
+            
+            <div className="border-l-[1px] border border-[#CBD5E0] h-4"></div>
+
+            <ProjectCategoryButton
+              text="Reviewing"
+              categories={[eligibleFilter]}
+              category="review"
+              setCategory={setEligibleFilter}
+            />
+
+            <ProjectCategoryButton
+              text="Pending Approval"
+              categories={[eligibleFilter]}
+              category="#n/a"
+              setCategory={setEligibleFilter}
+            />
+
+            <ProjectCategoryButton
+              text="Removed"
+              categories={[eligibleFilter]}
+              category="remove"
+              setCategory={setEligibleFilter}
+            />
+
+            <ProjectCategoryButton
+              text="Eligible"
+              categories={[eligibleFilter]}
+              category="keep"
+              setCategory={setEligibleFilter}
+            />
+          </div>
+
           <div className="mb-8">
             <Input
               addonBefore={<SearchOutlined />}
@@ -126,8 +166,8 @@ export default function ListsPage() {
             hasMore={hasNext}
             loader={<div>Loading...</div>}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" style={{ minHeight: '100vh' }}>
-              {projects.map((project) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {projects.filter(project => project.prelimResult.toLowerCase().indexOf(eligibleFilter) != -1).map((project) => (
                 <ProjectCard project={project} />
               ))}
             </div>
