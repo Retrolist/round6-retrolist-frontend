@@ -33,8 +33,7 @@ export const ProjectListCard = () => {
         <div className="text-base font-medium">10,000 OP</div>
       </div>
       <p className="text-[10px] text-[#4C4E64AD]">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Rubric-based list creation system will be live on Nov, 6th
       </p>
     </div>
   );
