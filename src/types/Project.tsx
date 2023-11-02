@@ -15,6 +15,7 @@ export interface ProjectMetadata {
   profileImageUrl: string
   bannerImageUrl: string
   prelimResult: string
+  reportReason: string
 }
 
 export interface Project {
@@ -33,6 +34,7 @@ export interface Project {
   lists: any[]
   id: string
   prelimResult: string
+  reportReason: string
 }
 
 export interface ProjectApplicant {

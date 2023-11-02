@@ -43,7 +43,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
         </div>
 
         <div className="text-[#4C4E64AD] line-clamp-2 text-sm mb-3">
-          {project.bio}
+          {project.prelimResult.toLowerCase() == 'keep' ? project.bio : <span className="text-red-600">{project.reportReason}</span>}
         </div>
         <div className="my-3">
           <UserImageAddress
