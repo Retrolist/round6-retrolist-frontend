@@ -49,9 +49,20 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
                 {/* <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5">
                   <Icon icon="mdi:dots-horizontal" />
                 </button> */}
-                <button className="flex gap-1 h-10 items-center  border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]" onClick={() => alert('Rubric-based list creation system will be live on Nov, 6th')}>
-                  <Icon icon="lucide:plus" color="white" />
-                  <div className="text-white">Add to List</div>
+                <button
+                  className="flex gap-1 h-10 items-center  border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
+                  onClick={() => {
+                    if (project.prelimResult.toLowerCase() == 'keep') {
+                      alert('Rubric-based list creation system will be live on Nov, 6th')
+                    } else {
+                      window.open('https://app.deform.cc/form/78499a28-ecff-4928-a814-cd3364741051')
+                    }
+                  }}
+                >
+                  {project.prelimResult.toLowerCase() == 'keep' && <Icon icon="lucide:plus" color="white" />}
+                  <div className="text-white">
+                    {project.prelimResult.toLowerCase() == 'keep' ? 'Add to List' : 'Appeal'}
+                  </div>
                 </button>
               </div>
             </div>

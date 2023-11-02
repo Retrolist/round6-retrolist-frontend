@@ -41,6 +41,15 @@ export default function ProjectPage() {
           <ProjectHeroSection project={project} />
           <div className="mt-6 flex flex-col md:flex-row gap-6">
             <div className="w-full md:w-3/4 mb-6">
+              {project.prelimResult.toLowerCase() != 'keep' && (
+                <>
+                  <div className="text-[#272930DE] text-2xl text-red-600">Reject Reason</div>
+                  <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5 border-b border-[#EAECF0] text-red-600">
+                    {project.reportReason}
+                  </div>
+                </>
+              )}
+
               <div className="text-[#272930DE] text-2xl">About</div>
               <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5 border-b border-[#EAECF0]">
                 {project.bio}

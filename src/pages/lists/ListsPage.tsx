@@ -121,7 +121,7 @@ export default function ListsPage() {
             
             <div className="border-l-[1px] border border-[#CBD5E0] h-4"></div>
 
-            <ProjectCategoryButton
+            {/* <ProjectCategoryButton
               text="Reviewing"
               categories={[eligibleFilter]}
               category="review"
@@ -133,19 +133,19 @@ export default function ListsPage() {
               categories={[eligibleFilter]}
               category="#n/a"
               setCategory={setEligibleFilter}
+            /> */}
+
+            <ProjectCategoryButton
+              text="Eligible"
+              categories={[eligibleFilter]}
+              category="keep"
+              setCategory={setEligibleFilter}
             />
 
             <ProjectCategoryButton
               text="Removed"
               categories={[eligibleFilter]}
               category="remove"
-              setCategory={setEligibleFilter}
-            />
-
-            <ProjectCategoryButton
-              text="Eligible"
-              categories={[eligibleFilter]}
-              category="keep"
               setCategory={setEligibleFilter}
             />
           </div>
