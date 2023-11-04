@@ -18,6 +18,7 @@ import ProjectPage from "./pages/lists/project";
 import { AntdAlertProvider } from "./providers/AntdAlertProvider";
 import { RainbowKitConfigProvider } from "./providers/RainbowKitConfigProvider";
 import { CreateListReducerRouteWrapper } from "./stores/CreateListReducer";
+import SocialOracleCallback from "./pages/optidomains/SocialOracleCallback";
 
 const router = createBrowserRouter([
   ListsPageRoute,
@@ -40,9 +41,17 @@ const router = createBrowserRouter([
       CreateListFinalizePageRoute,
     ],
   },
+
+  // Project
   {
     path: "/project/:projectId",
     element: <ProjectPage />,
+  },
+
+  // Opti.domains
+  {
+    path: "/social-oracle-callback",
+    element: <SocialOracleCallback />,
   },
 ]);
 
