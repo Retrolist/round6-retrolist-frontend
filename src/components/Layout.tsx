@@ -1,3 +1,4 @@
+import { Icon } from "@iconify/react/dist/iconify.js";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import * as React from "react";
 import { Link } from "react-router-dom";
@@ -27,9 +28,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </Link>
             </div>
           </div>
-
-          <div className="flex">
-            <ConnectButton />
+          <div className="flex gap-4">
+            <div>
+              <Link
+                to="/lists/create"
+                className="flex items-center gap-2 bg-red-600 rounded-lg py-2.5 px-4 text-white"
+              >
+                <Icon icon="lucide:plus" color="white" />
+                Create List
+              </Link>
+            </div>
+            <div className="flex">
+              <ConnectButton />
+            </div>
           </div>
         </div>
       </div>
