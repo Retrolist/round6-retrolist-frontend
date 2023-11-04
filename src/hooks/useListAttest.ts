@@ -23,6 +23,8 @@ export function useListAttest() {
   const listAttest = useCallback(async (list: ListSubmitDto) => {
     if (domainName && twitter && discord) {
       const id = await listSubmit(list)
+      const link = `https://retropgf3-listdata.retrolist.app/lists/${id}`
+      
     } else {
       throw new Error("Missing domain")
     }
