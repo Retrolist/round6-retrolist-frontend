@@ -5,7 +5,7 @@ export function uselistSubmit(domainName: string) {
   const [ listId, setlistId ] = useState('')
 
   const listSubmit = useCallback(async (list: ListSubmitDto) => {
-
+    return "SomeID"
   }, [])
 
   return {
