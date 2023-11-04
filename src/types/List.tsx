@@ -58,3 +58,59 @@ export interface ListView extends ListData {
   listContent: ListContentView[]
   creatorDomainName: string
 }
+
+export interface ICriteria extends Document {
+  id: string;
+  title: string;
+  isNegative: boolean;
+  scores: { [score: string]: string };
+}
+
+export interface IRubric extends Document {
+  name: string;
+  createdBy: string;
+  isActive: boolean;
+  criteria: ICriteria[];
+}
+
+export interface ListDto {
+  listName: string;
+  listDescription: string;
+  impactEvaluationInput: string;
+  impactEvaluationDescription: string;
+  impactEvaluationLink: string;
+  impactEvaluationType: string;
+  listContent: ListContentWithRubrics[];
+
+  status: string;
+
+  walletAddress: string;
+  domainName: string;
+  isBadgeholder: boolean;
+  attestationUid: string;
+  approvalAttestationUid: string;
+  forkedFrom: string;
+
+  rubric: IRubric;
+  rubricId: string;
+  categories: string[];
+
+  createdAt: Date;
+  updatedAt: Date;
+  revokedAt?: Date;
+}
+
+export interface ListSubmitDto {
+  listName: string;
+  listDescription: string;
+  impactEvaluationInput: string;
+  impactEvaluationDescription: string;
+  impactEvaluationLink: string;
+  impactEvaluationType: string;
+  listContent: ListContentWithRubrics[];
+
+  categories: string[];
+
+  domainName: string;
+  rubricId: string;
+}
