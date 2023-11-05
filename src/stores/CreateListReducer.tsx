@@ -1,4 +1,7 @@
+import { cloneDeep, omit } from "lodash";
 import React, { ReactNode, useContext, useReducer } from "react";
+import { Outlet } from "react-router-dom";
+import CreateListInfoPageLayout from "../pages/lists/create/Form/CreateListLayout";
 import {
   ListContent,
   ListContentView,
@@ -8,8 +11,6 @@ import {
   ListMetadata,
   ListRubric,
 } from "../types/List";
-import { cloneDeep, omit } from "lodash";
-import { Outlet } from "react-router-dom";
 
 type ListReducerAction =
   | { type: "new"; impactEvaluationType: ListImpactEvaluationType }
@@ -19,8 +20,11 @@ type ListReducerAction =
   | { type: "updateProjects"; projectUids: string[] }
   | { type: "updateOPAmount"; listContent: ListContent[] }
   | { type: "updateRubrics"; rubrics: ListRubric[] }
-  | { type: "updateRubricEvaluation"; listContent: Partial<ListContentWithRubrics>[] }
-  | { type: "finalize"; totalOP: number }
+  | {
+      type: "updateRubricEvaluation";
+      listContent: Partial<ListContentWithRubrics>[];
+    }
+  | { type: "finalize"; totalOP: number };
 
 const initialList: ListData = {
   id: "",
@@ -60,7 +64,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
       return {
         ...cloneDeep(initialList),
         ...cloneDeep(action.list),
-      }
+      };
     }
 
     case "fork": {
@@ -78,72 +82,78 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           ...state,
           listName: action.metadata.listName,
           listDescription: action.metadata.listDescription,
-          impactEvaluationInput: action.metadata.impactEvaluationInput,
-          impactEvaluationLink: action.metadata.impactEvaluationLink,
-        }
+          impactEvaluationInput: action.metadata.relevantResourceInput,
+          impactEvaluationLink: action.metadata.rubricInput,
+        };
       } else {
         return {
           ...state,
           listName: action.metadata.listName,
           listDescription: action.metadata.listDescription,
-          impactEvaluationInput: action.metadata.impactEvaluationInput,
-        }
+          impactEvaluationInput: action.metadata.relevantResourceInput,
+        };
       }
     }
 
     case "updateProjects": {
-      const projects = cloneDeep(state.listContent)
+      const projects = cloneDeep(state.listContent);
       for (const uid of action.projectUids) {
-        if (!projects.find(x => x.RPGF3_Application_UID == uid)) {
+        if (!projects.find((x) => x.RPGF3_Application_UID == uid)) {
           projects.push({
             RPGF3_Application_UID: uid,
             OPAmount: 0,
             comment: "",
             evaluation: {},
-          })
+          });
         }
       }
 
       return {
         ...state,
         listContent: projects,
-      }
+      };
     }
 
     case "updateOPAmount": {
-      const projects = cloneDeep(state.listContent)
+      const projects = cloneDeep(state.listContent);
       for (const item of action.listContent) {
-        const project = projects.find(x => x.RPGF3_Application_UID == item.RPGF3_Application_UID);
+        const project = projects.find(
+          (x) => x.RPGF3_Application_UID == item.RPGF3_Application_UID
+        );
         if (project) {
-          project.OPAmount = item.OPAmount
+          project.OPAmount = item.OPAmount;
         }
       }
 
       return {
         ...state,
         listContent: projects,
-      }
+      };
     }
 
     case "updateRubrics": {
       return {
         ...state,
         rubrics: cloneDeep(action.rubrics),
-      }
+      };
     }
 
     case "updateRubricEvaluation": {
-      const projects = cloneDeep(state.listContent)
+      const projects = cloneDeep(state.listContent);
       for (const item of action.listContent) {
-        const project = projects.find(x => x.RPGF3_Application_UID == item.RPGF3_Application_UID);
+        const project = projects.find(
+          (x) => x.RPGF3_Application_UID == item.RPGF3_Application_UID
+        );
         if (project && item.evaluation) {
-          project.comment = item.comment || ""
+          project.comment = item.comment || "";
           project.evaluation = item.evaluation;
 
           for (const rubricId in project.evaluation) {
             // Fix data type passed from ant design form
             // @ts-ignore
-            project.evaluation[rubricId] = parseInt(project.evaluation[rubricId])
+            project.evaluation[rubricId] = parseInt(
+              project.evaluation[rubricId]
+            );
           }
         }
       }
@@ -151,11 +161,11 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
       return {
         ...state,
         listContent: projects,
-      }
+      };
     }
 
     case "finalize": {
-      const newState = cloneDeep(state)
+      const newState = cloneDeep(state);
 
       switch (newState.impactEvaluationType) {
         case ListImpactEvaluationType.CLASSIC: {
@@ -164,14 +174,14 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
         }
 
         case ListImpactEvaluationType.RUBRIC: {
-          const projects: ListContentView[] = []
+          const projects: ListContentView[] = [];
 
           let totalScore = 0;
 
           for (const project of newState.listContent) {
             let score = 0;
             for (const rubricId in project.evaluation) {
-              score += project.evaluation[rubricId]
+              score += project.evaluation[rubricId];
             }
 
             totalScore += score;
@@ -179,41 +189,43 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
             projects.push({
               ...project,
               score,
-            })
+            });
           }
 
           if (totalScore > 0) {
             for (const project of projects) {
-              project.OPAmount = project.score / totalScore * action.totalOP
+              project.OPAmount = (project.score / totalScore) * action.totalOP;
             }
           }
 
           // Remove score from projects to reduce redundancy
-          newState.listContent = projects.map(project => omit(project, ['score']))
+          newState.listContent = projects.map((project) =>
+            omit(project, ["score"])
+          );
 
           // Generate impact description
-          let description = "Impact evaluation rubrics:\n\n"
+          let description = "Impact evaluation rubrics:\n\n";
 
           for (const rubric of newState.rubrics) {
-            description += `${rubric.title}\n`
+            description += `${rubric.title}\n`;
             for (const score in rubric.scores) {
               if (rubric.scores[score]) {
-                description += `* ${score} - ${rubric.scores[score]}\n`
+                description += `* ${score} - ${rubric.scores[score]}\n`;
               }
             }
-            description += '\n'
+            description += "\n";
           }
 
-          newState.impactEvaluationDescription = (`${newState.impactEvaluationInput}\n\n${description}`).trim()
-          newState.impactEvaluationLink = "https://retrolist.opti.domains/lists/..."
+          newState.impactEvaluationDescription =
+            `${newState.impactEvaluationInput}\n\n${description}`.trim();
+          newState.impactEvaluationLink =
+            "https://retrolist.opti.domains/lists/...";
 
           break;
         }
       }
 
-      
-
-      return newState
+      return newState;
     }
 
     default:
@@ -221,26 +233,34 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
   }
 };
 
-export const CreateListReducerContext = React.createContext<[ListData, React.Dispatch<ListReducerAction>]>([] as any);
+export const CreateListReducerContext = React.createContext<
+  [ListData, React.Dispatch<ListReducerAction>]
+>([] as any);
 
 export function useCreateListReducer() {
   return useContext(CreateListReducerContext);
 }
 
-export function CreateListReducerProvider({ children }: { children: ReactNode }) {
-  const hook = useReducer(reducer, initialList)
+export function CreateListReducerProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const hook = useReducer(reducer, initialList);
 
   return (
     <CreateListReducerContext.Provider value={hook}>
       {children}
     </CreateListReducerContext.Provider>
-  )
+  );
 }
 
 export function CreateListReducerRouteWrapper() {
   return (
     <CreateListReducerProvider>
-      <Outlet />
+      <CreateListInfoPageLayout>
+        <Outlet />
+      </CreateListInfoPageLayout>
     </CreateListReducerProvider>
-  )
+  );
 }

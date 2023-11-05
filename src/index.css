@@ -8,3 +8,26 @@ html, body {
 .hero-section-gradient-bg{
   background: linear-gradient(117deg, rgba(252, 146, 91, 0.80) 0%, rgba(224, 213, 250, 0.80) 22.26%, rgba(68, 185, 237, 0.80) 45.98%, rgba(144, 177, 169, 0.80) 70.18%, rgba(247, 148, 158, 0.80) 92.93%);
 }
+.rc-virtual-list-holder-inner {
+  .ant-select-item {
+    padding: 0px;
+  }
+
+  div:not(:last-child) {
+    .ant-select-item-option-content {
+      border-bottom: 1px solid rgb(112 112 112 / 20%);
+    }
+  }
+}
+
+.ant-select-item-option-content {
+  color: #272930DE;
+  margin: 0px 14px 0px;
+  padding: 10px 0;
+}
+
+.ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 600;
+  background-color: #FFEDEF;
+}

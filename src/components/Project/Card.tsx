@@ -1,9 +1,8 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
 import { Link } from "react-router-dom";
-import { UserImageAddress } from "../common/UserImageAddress";
-import { categoryLabel } from "../../utils/project";
 import { ProjectMetadata } from "../../types/Project";
 import { addrParse } from "../../utils/common";
+import { categoryLabel } from "../../utils/project";
+import { UserImageAddress } from "../common/UserImageAddress";
 import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
 
 export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
@@ -19,7 +18,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
             backgroundColor: "rgb(220, 220, 220)",
             backgroundSize: "cover",
             backgroundImage: `url(${project.bannerImageUrl})`,
-            paddingTop: "37.5%"
+            paddingTop: "37.5%",
           }}
           className="rounded-t-2xl relative"
         >
@@ -27,7 +26,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
             <ProjectEligibilityBadge status={project.prelimResult} />
           </div>
         </div>
-        
+
         <div className="flex items-center justify-between">
           <div className="flex gap-2 items-center mb-2">
             <img
@@ -43,7 +42,11 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
         </div>
 
         <div className="text-[#4C4E64AD] line-clamp-2 text-sm mb-3">
-          {project.prelimResult.toLowerCase() == 'keep' ? project.bio : <span className="text-red-600">{project.reportReason}</span>}
+          {project.prelimResult.toLowerCase() == "keep" ? (
+            project.bio
+          ) : (
+            <span className="text-red-600">{project.reportReason}</span>
+          )}
         </div>
         <div className="my-3">
           <UserImageAddress
