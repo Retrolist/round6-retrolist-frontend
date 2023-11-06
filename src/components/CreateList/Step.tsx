@@ -1,7 +1,9 @@
 import { Divider } from "antd";
+import { useParams } from "react-router-dom";
 import { CreateListStepCard } from "./Card";
 
 export const CreateListStep = () => {
+  const data = useParams();
   return (
     <div className="flex flex-col">
       <CreateListStepCard

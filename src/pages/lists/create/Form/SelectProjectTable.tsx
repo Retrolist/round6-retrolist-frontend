@@ -1,12 +1,11 @@
+import { Icon } from "@iconify/react/dist/iconify.js";
 import { Space, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
 interface DataType {
   key: string;
-  name: string;
-  age: number;
-  address: string;
-  tags: string[];
+  project: string;
+  bio: string;
 }
 
 const columns: ColumnsType<DataType> = [
@@ -22,12 +21,11 @@ const columns: ColumnsType<DataType> = [
     key: "bio",
   },
   {
-    title: "Action",
+    title: "",
     key: "action",
     render: (_, record) => (
       <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
+        <Icon icon="lucide:trash" />
       </Space>
     ),
   },
@@ -36,10 +34,8 @@ const columns: ColumnsType<DataType> = [
 const data: DataType[] = [
   {
     key: "1",
-    name: "John Brown",
-    age: 32,
-    address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
+    project: "wwww",
+    bio: "wwwww",
   },
 ];
 

@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex gap-4">
             <div>
               <Link
-                to="/lists/create"
+                to="/lists/create/user-detail"
                 className="flex items-center gap-2 bg-red-600 rounded-lg py-2.5 px-4 text-white"
               >
                 <Icon icon="lucide:plus" color="white" />

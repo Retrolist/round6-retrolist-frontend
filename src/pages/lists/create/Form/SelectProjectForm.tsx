@@ -51,7 +51,7 @@ export const SelectProjectForm = () => {
         layout="vertical"
         onFinish={(data) => {
           console.log(data);
-          navigate("/lists/create/choose-projects");
+          navigate("/lists/create/rubric-score");
         }}
       >
         <div className="grid grid-cols-3 gap-4">
@@ -69,7 +69,6 @@ export const SelectProjectForm = () => {
           defaultValue={[]}
           onChange={handleChange}
           tagRender={(props) => <></>}
-          open
         >
           {options.map((option) => {
             return (

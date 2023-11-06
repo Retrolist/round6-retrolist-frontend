@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "@rainbow-me/rainbowkit/styles.css";
 import "./index.css";
 
+import { RubricBaseScoreFormRoute } from "./pages/lists/create/Form/RubicBaseScoreForm";
 import { SelectProjectFormRoute } from "./pages/lists/create/Form/SelectProjectForm";
 import { CreateListUserDetailFormRoute } from "./pages/lists/create/Form/UserDetailForm";
 import { ListsPageRoute } from "./pages/lists/ListsPage";
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
     children: [
       CreateListUserDetailFormRoute,
       SelectProjectFormRoute,
+      RubricBaseScoreFormRoute,
       // CreateListTypePageRoute,
       // CreateListInfoPageRoute,
       // CreateListChooseProjectsPageRoute,
