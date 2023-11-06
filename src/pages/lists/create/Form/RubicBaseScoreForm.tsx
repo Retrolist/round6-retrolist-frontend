@@ -1,10 +1,12 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Divider, Form, Slider } from "antd";
 import TextArea from "antd/es/input/TextArea";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../../components/buttons/PrimaryButton";
 import SecondaryButton from "../../../../components/buttons/SecondaryButton";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
+import { RubricBaseScoreModal } from "./RubicBaseScoreModal";
 import { RubicBaseScoreTable } from "./RubicBaseScoreTable";
 
 export const RubricBaseScoreForm = () => {
@@ -34,7 +36,15 @@ export const RubricBaseScoreForm = () => {
     },
   ];
   const [state, dispatch] = useCreateListReducer();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsModalOpen(false);
+  };
   const handleChange = (value: string[]) => {
     console.log(`selected ${value}`);
   };
@@ -85,16 +95,19 @@ export const RubricBaseScoreForm = () => {
           />
         </Form.Item>
         <Divider className="my-6" />
-        <RubicBaseScoreTable />
+        <RubicBaseScoreTable onOpen={handleOpen} />
         <Divider />
         <div className="flex justify-between">
           <Link to="/lists/create">
             <SecondaryButton type="button">Cancel</SecondaryButton>
           </Link>
-
           <PrimaryButton>Next</PrimaryButton>
         </div>
       </Form>
+      <RubricBaseScoreModal
+        isModalOpen={isModalOpen}
+        handleClose={handleClose}
+      />
     </div>
   );
 };
