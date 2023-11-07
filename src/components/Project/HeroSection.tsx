@@ -45,10 +45,10 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
                   <Icon icon="mdi:heart" width={24} height={24} color="red" />
                 </div> */}
               </div>
-              <div className="flex gap-3 hidden md:block">
-                {/* <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5">
+              {/* <div className="flex gap-3 hidden md:block">
+                <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5 hidden">
                   <Icon icon="mdi:dots-horizontal" />
-                </button> */}
+                </button>
                 <button
                   className="flex gap-1 h-10 items-center  border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
                   onClick={() => {
@@ -64,7 +64,7 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
                     {project.prelimResult.toLowerCase() == 'keep' ? 'Add to List' : 'Appeal'}
                   </div>
                 </button>
-              </div>
+              </div> */}
             </div>
             <div className="flex gap-2 items-center">
               <div className="bg-[#E2E8F0] rounded py-0.5 px-2">{project?.applicantType == 'PROJECT' ? 'Project' : 'Individual'}</div>
