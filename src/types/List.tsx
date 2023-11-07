@@ -1,3 +1,4 @@
+import { ProjectMetadataSimple } from "./Project";
 import { IRubric } from "./Rubric";
 
 export enum ListImpactEvaluationType {
@@ -37,6 +38,7 @@ export interface ListData extends ListAttestation {
   impactEvaluationInput: string;
   impactEvaluationType: ListImpactEvaluationType;
   listContent: ListContentWithRubrics[];
+  projectsMetadata: ProjectMetadataSimple[];
   // walletAddress: string;
   // isBadgeholder: boolean;
   // attestationUid: string;

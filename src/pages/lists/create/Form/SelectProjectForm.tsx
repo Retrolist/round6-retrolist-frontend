@@ -9,6 +9,7 @@ import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { SelectProjectTable } from "./SelectProjectTable";
 import { useEffect, useMemo, useState } from "react";
 import { useProjects } from "../../../../hooks/useProjects";
+import { ProjectMetadataSimple } from "../../../../types/Project";
 
 export const SelectProjectForm = () => {
   const navigate = useNavigate();
@@ -28,7 +29,12 @@ export const SelectProjectForm = () => {
     if (projects.length > 0) {
       setOptions(
         projects.map(project => ({
-          value: project.id,
+          value: JSON.stringify({
+            id: project.id,
+            displayName: project.displayName,
+            profileImageUrl: project.profileImageUrl,
+            bio: project.bio,
+          }),
           label: project.displayName,
           img: project.profileImageUrl,
           description: project.bio,
@@ -64,15 +70,21 @@ export const SelectProjectForm = () => {
   const [state, dispatch] = useCreateListReducer();
 
   const handleChange = (value: string[]) => {
-    console.log(`selected ${value}`);
+    // console.log(`selected ${value}`);
+
+    const projects: ProjectMetadataSimple[] = value.map(x => JSON.parse(x))
+    dispatch({
+      type: "updateProjects",
+      projects,
+    })
   };
 
   return (
     <div className="p-6 bg-white rounded-lg border border-[#EAECF0]">
-      <div className="flex gap-3">
+      {/* <div className="flex gap-3">
         <Icon icon="noto:fire" width={20} />
         <div>Hot Pick Project</div>
-      </div>
+      </div> */}
       <Form
         form={form}
         initialValues={state}
@@ -82,21 +94,21 @@ export const SelectProjectForm = () => {
           navigate("/lists/create/rubric-score");
         }}
       >
-        <div className="grid grid-cols-3 gap-4">
+        {/* <div className="grid grid-cols-3 gap-4">
           <HotPickProject />
           <HotPickProject />
           <HotPickProject />
-        </div>
+        </div> */}
         <Select
           className="mt-6"
           size="large"
-          // mode="multiple"
+          mode="multiple"
           showSearch
           filterOption={false}
           allowClear
           style={{ width: "100%" }}
-          placeholder="Search project"
-          defaultValue={[]}
+          placeholder="Select project"
+          value={state.projectsMetadata.map(project => JSON.stringify(project))}
           onChange={handleChange}
           tagRender={(props) => <></>}
           onSearch={(search) => setSearch(search)}
@@ -119,7 +131,11 @@ export const SelectProjectForm = () => {
             );
           })}
         </Select>
-        <SelectProjectTable />
+        <SelectProjectTable data={state.projectsMetadata.map(project => ({
+          key: project.id,
+          project: project.displayName,
+          bio: project.bio,
+        }))} />
         <Divider />
         <div className="flex justify-between">
           <Link to="/lists/create/user-detail">

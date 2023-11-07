@@ -6,6 +6,13 @@ export interface ProjectQueryOptions {
   limit?: number
 }
 
+export interface ProjectMetadataSimple {
+  id: string
+  displayName: string
+  profileImageUrl: string
+  bio: string
+}
+
 export interface ProjectMetadata {
   id: string
   displayName: string

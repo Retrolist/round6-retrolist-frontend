@@ -11,13 +11,16 @@ import {
   ListMetadata,
 } from "../types/List";
 import { IRubric } from "../types/Rubric";
+import { ProjectMetadataSimple } from "../types/Project";
 
 type ListReducerAction =
   | { type: "new"; impactEvaluationType: ListImpactEvaluationType }
   | { type: "load"; list: ListData }
   // | { type: "fork"; list: ListData }
   | { type: "updateMetadata"; metadata: ListMetadata; rubric: IRubric }
-  | { type: "updateProjects"; projectUids: string[]; totalOp: number; impactEvaluationInput: string; }
+  | { type: "updateProjects"; projects: ProjectMetadataSimple[]; }
+  | { type: "deleteProject"; projectId: string; }
+  | { type: "updateTotalOp"; totalOp: number; impactEvaluationInput: string; }
   | { type: "updateOPAmount"; listContent: ListContent[] }
   // | { type: "updateRubric"; rubric: IRubric }
   | {
@@ -38,6 +41,7 @@ const initialList: ListData = {
   impactEvaluationType: ListImpactEvaluationType.RUBRIC,
 
   listContent: [],
+  projectsMetadata: [],
 
   // walletAddress: "",
   // isBadgeholder: true,
@@ -100,24 +104,59 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
     }
 
     case "updateProjects": {
-      const projects = cloneDeep(state.listContent);
-      for (const uid of action.projectUids) {
-        if (!projects.find((x) => x.RPGF3_Application_UID == uid)) {
-          projects.push({
-            RPGF3_Application_UID: uid,
+      const listContent = cloneDeep(state.listContent);
+      const projectsMetadata = cloneDeep(state.projectsMetadata);
+
+      for (const project of action.projects) {
+        if (!listContent.find((x) => x.RPGF3_Application_UID == project.id)) {
+          listContent.push({
+            RPGF3_Application_UID: project.id,
             OPAmount: 0,
             comment: "",
             evaluation: {},
           });
+
+          projectsMetadata.push(project)
         }
+      }
+
+      console.log(projectsMetadata)
+
+      return {
+        ...state,
+        listContent,
+        projectsMetadata,
+      };
+    }
+
+    case "deleteProject": {
+      const listContent = cloneDeep(state.listContent);
+      const projectsMetadata = cloneDeep(state.projectsMetadata);
+
+      const listContentIndex = listContent.findIndex(x => x.RPGF3_Application_UID == action.projectId);
+      const projectsMetadataIndex = projectsMetadata.findIndex(x => x.id == action.projectId);
+
+      if (listContentIndex != -1) {
+        listContent.splice(listContentIndex, 1)
+      }
+
+      if (projectsMetadataIndex != -1) {
+        projectsMetadata.splice(projectsMetadataIndex, 1)
       }
 
       return {
         ...state,
-        listContent: projects,
+        listContent,
+        projectsMetadata,
+      };
+    }
+
+    case "updateTotalOp": {
+      return {
+        ...state,
         totalOp: action.totalOp,
         impactEvaluationInput: action.impactEvaluationInput,
-      };
+      }
     }
 
     case "updateOPAmount": {
