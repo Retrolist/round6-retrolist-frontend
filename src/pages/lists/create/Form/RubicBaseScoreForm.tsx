@@ -67,7 +67,7 @@ export const RubricBaseScoreForm = () => {
         layout="vertical"
         onFinish={(data) => {
           console.log(data);
-          navigate("/lists/create/choose-projects");
+          navigate("/lists/create/submit-list");
         }}
       >
         <div className="text-[#4C4E64AD] text-sm mt-6">

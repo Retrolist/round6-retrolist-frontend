@@ -56,10 +56,9 @@ export const UserDetailForm = () => {
         </div>
         <Divider />
         <div className="flex justify-between">
-          <Link to="/lists/create">
+          <Link to="/">
             <SecondaryButton type="button">Cancel</SecondaryButton>
           </Link>
-
           <PrimaryButton>Next</PrimaryButton>
         </div>
       </Form>

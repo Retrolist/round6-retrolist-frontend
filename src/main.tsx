@@ -7,6 +7,7 @@ import "./index.css";
 
 import { RubricBaseScoreFormRoute } from "./pages/lists/create/Form/RubicBaseScoreForm";
 import { SelectProjectFormRoute } from "./pages/lists/create/Form/SelectProjectForm";
+import { SubmitListFormRoute } from "./pages/lists/create/Form/SubmitListForm";
 import { CreateListUserDetailFormRoute } from "./pages/lists/create/Form/UserDetailForm";
 import { ListsPageRoute } from "./pages/lists/ListsPage";
 import ProjectPage from "./pages/lists/project";
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       CreateListUserDetailFormRoute,
       SelectProjectFormRoute,
       RubricBaseScoreFormRoute,
+      SubmitListFormRoute,
       // CreateListTypePageRoute,
       // CreateListInfoPageRoute,
       // CreateListChooseProjectsPageRoute,
