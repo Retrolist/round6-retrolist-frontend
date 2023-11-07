@@ -53,7 +53,7 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
                   className="flex gap-1 h-10 items-center  border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
                   onClick={() => {
                     if (project.prelimResult.toLowerCase() == 'keep') {
-                      alert('Rubric-based list creation system will be live on Nov, 6th')
+                      alert('Rubric-based list creation system will be live in a few days!')
                     } else {
                       window.open('https://app.deform.cc/form/78499a28-ecff-4928-a814-cd3364741051')
                     }
