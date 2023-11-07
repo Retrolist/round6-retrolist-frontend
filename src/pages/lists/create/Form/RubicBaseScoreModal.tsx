@@ -1,4 +1,5 @@
 import { Button, Divider, Form, Modal, Progress, Radio } from "antd";
+import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 
 const questions = [
   {
@@ -97,6 +98,7 @@ export const RubricBaseScoreModal = ({
   handleClose,
 }: RubricBaseScoreModalProps) => {
   const [form] = Form.useForm();
+  const [state, dispatch] = useCreateListReducer();
 
   return (
     <Modal
@@ -118,26 +120,26 @@ export const RubricBaseScoreModal = ({
       >
         <h2 className="text-2xl">Rubric</h2>
         <p className="text-[#858796] text-xs">
-          Questions in each topic are calculated to affect the gain OP token
+          Questions in each topic are calculated to allocate the OP token
         </p>
-        <div className="mt-4 mb-3">Builder Reach</div>
+        <div className="mt-4 mb-3 text-lg">{state.rubric?.name}</div>
         <>
-          {questions.map((question, index) => {
+          {state.rubric?.criteria.map((criteria, index) => {
             return (
               <div className="p-3 rounded-lg border border-[#EAECF0] bg-[#FAFAFA] mb-3">
                 <div>
-                  {index + 1}.{question.title}
+                  {index + 1}. {criteria.title}
                 </div>
-                <p className="py-1 text-[#858796]">{question.description}</p>
+                {/* <p className="py-1 text-[#858796]">{criteria.description}</p> */}
                 <Divider className="my-2" />
                 <Form.Item className="mb-0">
                   <Radio.Group className="flex flex-col gap-2">
-                    {question.answers.map((answer, index) => {
+                    {Object.entries(criteria.scores).map(([score, answer], index) => {
                       return (
                         <RadioItem
-                          value={answer.value}
-                          description={answer.label}
-                          questionNumber={index}
+                          value={score}
+                          description={answer}
+                          questionNumber={parseInt(score)}
                         />
                       );
                     })}
@@ -160,13 +162,13 @@ export const RubricBaseScoreModal = ({
               className="w-1/2 border border-[#FF04207D] text-[#FF0420] h-10"
               onClick={handleClose}
             >
-              Back
+              Cancel
             </Button>
             <Button
               className="w-1/2 bg-[#FF0420] text-white h-10"
               htmlType="submit"
             >
-              Next
+              Vote
             </Button>
           </div>
         </Form.Item>

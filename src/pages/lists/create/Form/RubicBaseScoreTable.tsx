@@ -29,7 +29,7 @@ export const RubicBaseScoreTable = ({ onOpen }: RubicBaseScoreTableProps) => {
       title: "Project",
       dataIndex: "project",
       key: "project",
-      render: (text) => (
+      render: (text, record) => (
         <div className="flex gap-3">
           <div>
             <img width={40} height={40} src="/img/op-icon.png" alt="" />
