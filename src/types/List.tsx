@@ -1,3 +1,5 @@
+import { IRubric } from "./Rubric";
+
 export enum ListImpactEvaluationType {
   UNKNOWN = "",
   CLASSIC = "classic",
@@ -5,72 +7,58 @@ export enum ListImpactEvaluationType {
 }
 
 export interface ListContent {
-  RPGF3_Application_UID: string
-  OPAmount: number
+  RPGF3_Application_UID: string;
+  OPAmount: number;
 }
 
 export interface ListContentWithRubrics extends ListContent {
-  comment: string
-  evaluation: {[rubric_id: string]: number}
+  comment: string;
+  evaluation: { [rubric_id: string]: number };
 }
 
 export interface ListMetadata {
-  listName: string
-  listDescription: string
-  impactEvaluationInput: string
-  impactEvaluationLink: string
+  listName: string;
+  listDescription: string;
+  relevantResourceInput: string;
+  rubricInput: string;
 }
 
 export interface ListAttestation {
-  listName: string
-  listDescription: string
-  impactEvaluationDescription: string
-  impactEvaluationLink: string
-  listContent: ListContent[]
+  listName: string;
+  listDescription: string;
+  impactEvaluationDescription: string;
+  impactEvaluationLink: string;
+  listContent: ListContent[];
 }
 
 export interface ListRubric {
-  id: string
-  title: string
-  scores: {[score: number]: string}
+  id: string;
+  title: string;
+  scores: { [score: number]: string };
 }
 
 export interface ListData extends ListAttestation {
-  id: string
-  impactEvaluationInput: string
-  impactEvaluationType: ListImpactEvaluationType
-  listContent: ListContentWithRubrics[]
-  walletAddress: string
-  isBadgeholder: boolean
-  attestationUid: string
-  forkedFrom: string
-  rubrics: ListRubric[]
-  histories: ListData[]
-  createdAt: Date
-  updatedAt: Date
+  id: string;
+  impactEvaluationInput: string;
+  impactEvaluationType: ListImpactEvaluationType;
+  listContent: ListContentWithRubrics[];
+  walletAddress: string;
+  isBadgeholder: boolean;
+  attestationUid: string;
+  forkedFrom: string;
+  rubrics: ListRubric[];
+  histories: ListData[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface ListContentView extends ListContentWithRubrics {
-  score: number
+  score: number;
 }
 
 export interface ListView extends ListData {
   listContent: ListContentView[]
   creatorDomainName: string
-}
-
-export interface ICriteria extends Document {
-  id: string;
-  title: string;
-  isNegative: boolean;
-  scores: { [score: string]: string };
-}
-
-export interface IRubric extends Document {
-  name: string;
-  createdBy: string;
-  isActive: boolean;
-  criteria: ICriteria[];
 }
 
 export interface ListDto {

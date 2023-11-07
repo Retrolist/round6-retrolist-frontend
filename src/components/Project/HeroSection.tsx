@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { UserImageAddress } from "../common/UserImageAddress";
 import { Project } from "../../types/Project";
 import { addrParse } from "../../utils/common";
+import { UserImageAddress } from "../common/UserImageAddress";
 import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
 
 export const ProjectHeroSection = ({ project }: { project: Project }) => {
@@ -16,20 +16,23 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
           backgroundColor: "rgb(220, 220, 220)",
           backgroundSize: "cover",
           backgroundImage: `url(${project?.profile.bannerImageUrl})`,
-          paddingTop: "37.5%"
+          paddingTop: "37.5%",
         }}
         className="rounded-2xl relative"
       >
         <div className="absolute top-3 left-3">
-          <ProjectEligibilityBadge status={project.prelimResult} size={'sm'} />
+          <ProjectEligibilityBadge status={project.prelimResult} size={"sm"} />
         </div>
       </div>
 
-      <div className="flex px-8 relative -top-12">
-        <div className="flex w-full items-end gap-8">
+      <div className="flex md:px-8 relative -top-12">
+        <div className="flex flex-wrap md:flex-nowrap w-full items-end gap-8">
           <div>
             <img
-              src={project?.profile.profileImageUrl || "/img/project-placeholder.svg"}
+              src={
+                project?.profile.profileImageUrl ||
+                "/img/project-placeholder.svg"
+              }
               alt="project logo"
               className="w-[154px] rounded-full h-[154px] object-cover border-2 border-[#E2E8F0]"
             />
@@ -52,26 +55,39 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
                 <button
                   className="flex gap-1 h-10 items-center  border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
                   onClick={() => {
-                    if (project.prelimResult.toLowerCase() == 'keep') {
-                      alert('Rubric-based list creation system will be live on Nov, 6th')
+                    if (project.prelimResult.toLowerCase() == "keep") {
+                      alert(
+                        "Rubric-based list creation system will be live on Nov, 6th"
+                      );
                     } else {
-                      window.open('https://app.deform.cc/form/78499a28-ecff-4928-a814-cd3364741051')
+                      window.open(
+                        "https://app.deform.cc/form/78499a28-ecff-4928-a814-cd3364741051"
+                      );
                     }
                   }}
                 >
-                  {project.prelimResult.toLowerCase() == 'keep' && <Icon icon="lucide:plus" color="white" />}
+                  {project.prelimResult.toLowerCase() == "keep" && (
+                    <Icon icon="lucide:plus" color="white" />
+                  )}
                   <div className="text-white">
-                    {project.prelimResult.toLowerCase() == 'keep' ? 'Add to List' : 'Appeal'}
+                    {project.prelimResult.toLowerCase() == "keep"
+                      ? "Add to List"
+                      : "Appeal"}
                   </div>
                 </button>
               </div>
             </div>
             <div className="flex gap-2 items-center">
-              <div className="bg-[#E2E8F0] rounded py-0.5 px-2">{project?.applicantType == 'PROJECT' ? 'Project' : 'Individual'}</div>
+              <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
+                {project?.applicantType == "PROJECT" ? "Project" : "Individual"}
+              </div>
               <div className="border-l-[0.5px] border border-[#CBD5E0] h-6" />
               <UserImageAddress
                 img="/img/test-avatar.png"
-                address={project?.applicant.address.resolvedName?.name || addrParse(project?.applicant.address.address)}
+                address={
+                  project?.applicant.address.resolvedName?.name ||
+                  addrParse(project?.applicant.address.address)
+                }
               />
             </div>
             {project?.websiteUrl && (
@@ -82,7 +98,6 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
                 </div>
               </a>
             )}
-
           </div>
         </div>
       </div>

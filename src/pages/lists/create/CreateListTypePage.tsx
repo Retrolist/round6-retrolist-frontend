@@ -1,8 +1,7 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 import Layout from "../../../components/Layout";
 import { useCreateListReducer } from "../../../stores/CreateListReducer";
 import { ListImpactEvaluationType } from "../../../types/List";
-import { useNavigate } from "react-router-dom";
 
 export default function CreateListTypePage() {
   const navigate = useNavigate();
@@ -23,8 +22,8 @@ export default function CreateListTypePage() {
             dispatch({
               type: "new",
               impactEvaluationType: ListImpactEvaluationType.CLASSIC,
-            })
-            navigate('/lists/create/info')
+            });
+            navigate("/lists/create/info");
           }}
         >
           <div className="text-xl mb-1 text-gray-800">Classical</div>
@@ -40,8 +39,8 @@ export default function CreateListTypePage() {
             dispatch({
               type: "new",
               impactEvaluationType: ListImpactEvaluationType.RUBRIC,
-            })
-            navigate('/lists/create/info')
+            });
+            navigate("/lists/create/info");
           }}
         >
           <div className="text-xl mb-1 text-gray-800">Rubric-based</div>

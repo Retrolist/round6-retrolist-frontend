@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -6,13 +5,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "@rainbow-me/rainbowkit/styles.css";
 import "./index.css";
 
-import { CreateListChooseProjectsPageRoute } from "./pages/lists/create/CreateListChooseProjectsPage";
-import { CreateListClassicScoringPageRoute } from "./pages/lists/create/CreateListClassicScoringPage";
-import { CreateListFinalizePageRoute } from "./pages/lists/create/CreateListFinalizePage";
-import { CreateListInfoPageRoute } from "./pages/lists/create/CreateListInfoPage";
-import { CreateListRubricPageRoute } from "./pages/lists/create/CreateListRubricPage";
-import { CreateListRubricScoringPageRoute } from "./pages/lists/create/CreateListRubricScoringPage";
-import { CreateListTypePageRoute } from "./pages/lists/create/CreateListTypePage";
+import { RubricBaseScoreFormRoute } from "./pages/lists/create/Form/RubicBaseScoreForm";
+import { SelectProjectFormRoute } from "./pages/lists/create/Form/SelectProjectForm";
+import { SubmitListFormRoute } from "./pages/lists/create/Form/SubmitListForm";
+import { CreateListUserDetailFormRoute } from "./pages/lists/create/Form/UserDetailForm";
 import { ListsPageRoute } from "./pages/lists/ListsPage";
 import ProjectPage from "./pages/lists/project";
 import { AntdAlertProvider } from "./providers/AntdAlertProvider";
@@ -32,13 +28,17 @@ const router = createBrowserRouter([
     path: "/lists/create",
     element: <CreateListReducerRouteWrapper />,
     children: [
-      CreateListTypePageRoute,
-      CreateListInfoPageRoute,
-      CreateListChooseProjectsPageRoute,
-      CreateListRubricPageRoute,
-      CreateListRubricScoringPageRoute,
-      CreateListClassicScoringPageRoute,
-      CreateListFinalizePageRoute,
+      CreateListUserDetailFormRoute,
+      SelectProjectFormRoute,
+      RubricBaseScoreFormRoute,
+      SubmitListFormRoute,
+      // CreateListTypePageRoute,
+      // CreateListInfoPageRoute,
+      // CreateListChooseProjectsPageRoute,
+      // CreateListRubricPageRoute,
+      // CreateListRubricScoringPageRoute,
+      // CreateListClassicScoringPageRoute,
+      // CreateListFinalizePageRoute,
     ],
   },
 
