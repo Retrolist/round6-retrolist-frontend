@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { IRubric } from "../types/List";
 import { api } from "../utils/api";
+import { IRubric } from "../types/Rubric";
 
 export function useRubrics() {
   const [ rubrics, setRubrics ] = useState<IRubric[]>([])

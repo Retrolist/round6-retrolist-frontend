@@ -1,13 +1,16 @@
-import { Divider, Form, Input, Select } from "antd";
+import { Divider, Form, Input, Select, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../../components/buttons/PrimaryButton";
 import SecondaryButton from "../../../../components/buttons/SecondaryButton";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
+import { useRubrics } from "../../../../hooks/useRubrics";
 
 export const UserDetailForm = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [state, dispatch] = useCreateListReducer();
+  const rubrics = useRubrics();
+
   return (
     <div className="p-6 bg-white rounded-lg border border-[#EAECF0]">
       <Form
@@ -17,9 +20,16 @@ export const UserDetailForm = () => {
         onFinish={(data) => {
           console.log(data);
 
+          const rubric = rubrics.find(rubric => rubric._id == data.rubricId);
+
+          if (!rubric) {
+            return message.error("Please choose a rubric")
+          }
+
           dispatch({
             type: "updateMetadata",
             metadata: data,
+            rubric,
           });
 
           navigate("/lists/create/choose-projects");
@@ -38,19 +48,26 @@ export const UserDetailForm = () => {
           <Input size="large" />
         </Form.Item>
 
-        <Form.Item
+        {/* <Form.Item
           label="Link to relevant resource"
           name="relevantResourceInput"
         >
           <Input prefix="https://" size="large" />
-        </Form.Item>
+        </Form.Item> */}
 
-        <Form.Item label="Select rubric" name="rubricInput">
-          <Select placeholder="Select rubric type" size="large" />
+        <Form.Item label="Select rubric" name="rubricId" required={true}>
+          <Select
+            placeholder="Select rubric type"
+            size="large"
+            options={rubrics.map((rubric) => ({
+              label: rubric.name,
+              value: rubric._id,
+            }))}
+          />
         </Form.Item>
 
         <div className="text-[16px] text-[#4C4E64AD] mb-8">
-          In rubric mode, rubrics score details are automatically appended into
+          In rubric mode, rubrics details are automatically appended into
           the impact evaluation description and the impact evaluation link is
           generated automatically.
         </div>

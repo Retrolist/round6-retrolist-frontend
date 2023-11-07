@@ -9,17 +9,17 @@ import {
   ListData,
   ListImpactEvaluationType,
   ListMetadata,
-  ListRubric,
 } from "../types/List";
+import { IRubric } from "../types/Rubric";
 
 type ListReducerAction =
   | { type: "new"; impactEvaluationType: ListImpactEvaluationType }
   | { type: "load"; list: ListData }
-  | { type: "fork"; list: ListData }
-  | { type: "updateMetadata"; metadata: ListMetadata }
-  | { type: "updateProjects"; projectUids: string[] }
+  // | { type: "fork"; list: ListData }
+  | { type: "updateMetadata"; metadata: ListMetadata; rubric: IRubric }
+  | { type: "updateProjects"; projectUids: string[]; totalOp: number; impactEvaluationInput: string; }
   | { type: "updateOPAmount"; listContent: ListContent[] }
-  | { type: "updateRubrics"; rubrics: ListRubric[] }
+  // | { type: "updateRubric"; rubric: IRubric }
   | {
       type: "updateRubricEvaluation";
       listContent: Partial<ListContentWithRubrics>[];
@@ -39,13 +39,16 @@ const initialList: ListData = {
 
   listContent: [],
 
-  walletAddress: "",
-  isBadgeholder: true,
-  attestationUid: "",
-  forkedFrom: "",
+  // walletAddress: "",
+  // isBadgeholder: true,
+  // attestationUid: "",
+  // forkedFrom: "",
 
-  rubrics: [],
+  rubricId: "",
+  rubric: null,
   histories: [],
+
+  totalOp: 0,
 
   createdAt: new Date(),
   updatedAt: new Date(),
@@ -67,14 +70,14 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
       };
     }
 
-    case "fork": {
-      return {
-        ...cloneDeep(initialList),
-        ...cloneDeep(action.list),
-        id: "",
-        forkedFrom: action.list.id,
-      };
-    }
+    // case "fork": {
+    //   return {
+    //     ...cloneDeep(initialList),
+    //     ...cloneDeep(action.list),
+    //     id: "",
+    //     forkedFrom: action.list.id,
+    //   };
+    // }
 
     case "updateMetadata": {
       if (state.impactEvaluationType == ListImpactEvaluationType.CLASSIC) {
@@ -82,15 +85,16 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           ...state,
           listName: action.metadata.listName,
           listDescription: action.metadata.listDescription,
-          impactEvaluationInput: action.metadata.relevantResourceInput,
-          impactEvaluationLink: action.metadata.rubricInput,
+          // impactEvaluationInput: action.metadata.relevantResourceInput,
+          // impactEvaluationLink: action.metadata.rubricInput,
         };
       } else {
         return {
           ...state,
           listName: action.metadata.listName,
           listDescription: action.metadata.listDescription,
-          impactEvaluationInput: action.metadata.relevantResourceInput,
+          rubricId: action.metadata.rubricId,
+          rubric: action.rubric,
         };
       }
     }
@@ -111,6 +115,8 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
       return {
         ...state,
         listContent: projects,
+        totalOp: action.totalOp,
+        impactEvaluationInput: action.impactEvaluationInput,
       };
     }
 
@@ -131,13 +137,6 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
       };
     }
 
-    case "updateRubrics": {
-      return {
-        ...state,
-        rubrics: cloneDeep(action.rubrics),
-      };
-    }
-
     case "updateRubricEvaluation": {
       const projects = cloneDeep(state.listContent);
       for (const item of action.listContent) {
@@ -148,11 +147,10 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           project.comment = item.comment || "";
           project.evaluation = item.evaluation;
 
-          for (const rubricId in project.evaluation) {
+          for (const criteriaId in project.evaluation) {
             // Fix data type passed from ant design form
-            // @ts-ignore
-            project.evaluation[rubricId] = parseInt(
-              project.evaluation[rubricId]
+            project.evaluation[criteriaId] = parseInt(
+              project.evaluation[criteriaId].toString()
             );
           }
         }
@@ -180,8 +178,8 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
 
           for (const project of newState.listContent) {
             let score = 0;
-            for (const rubricId in project.evaluation) {
-              score += project.evaluation[rubricId];
+            for (const criteriaId in project.evaluation) {
+              score += project.evaluation[criteriaId];
             }
 
             totalScore += score;
@@ -194,7 +192,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
 
           if (totalScore > 0) {
             for (const project of projects) {
-              project.OPAmount = (project.score / totalScore) * action.totalOP;
+              project.OPAmount = (project.score / totalScore) * newState.totalOp;
             }
           }
 
@@ -204,22 +202,24 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           );
 
           // Generate impact description
-          let description = "Impact evaluation rubrics:\n\n";
+          // let description = "Impact evaluation rubrics:\n\n";
 
-          for (const rubric of newState.rubrics) {
-            description += `${rubric.title}\n`;
-            for (const score in rubric.scores) {
-              if (rubric.scores[score]) {
-                description += `* ${score} - ${rubric.scores[score]}\n`;
-              }
-            }
-            description += "\n";
-          }
+          // for (const rubric of newState.rubric.criteria) {
+          //   description += `${rubric.title}\n`;
+          //   for (const score in rubric.scores) {
+          //     if (rubric.scores[score]) {
+          //       description += `* ${score} - ${rubric.scores[score]}\n`;
+          //     }
+          //   }
+          //   description += "\n";
+          // }
+
+          let description = `Created using RetroList with "${newState.rubric?.name}" rubric`;
 
           newState.impactEvaluationDescription =
             `${newState.impactEvaluationInput}\n\n${description}`.trim();
-          newState.impactEvaluationLink =
-            "https://retrolist.opti.domains/lists/...";
+          // newState.impactEvaluationLink =
+          //   "https://retropgf3.retrolist.app/";
 
           break;
         }

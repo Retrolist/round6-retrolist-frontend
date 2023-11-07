@@ -19,8 +19,9 @@ export interface ListContentWithRubrics extends ListContent {
 export interface ListMetadata {
   listName: string;
   listDescription: string;
-  relevantResourceInput: string;
-  rubricInput: string;
+  // relevantResourceInput: string;
+  rubricId: string;
+  rubric: IRubric;
 }
 
 export interface ListAttestation {
@@ -31,22 +32,18 @@ export interface ListAttestation {
   listContent: ListContent[];
 }
 
-export interface ListRubric {
-  id: string;
-  title: string;
-  scores: { [score: number]: string };
-}
-
 export interface ListData extends ListAttestation {
   id: string;
   impactEvaluationInput: string;
   impactEvaluationType: ListImpactEvaluationType;
   listContent: ListContentWithRubrics[];
-  walletAddress: string;
-  isBadgeholder: boolean;
-  attestationUid: string;
-  forkedFrom: string;
-  rubrics: ListRubric[];
+  // walletAddress: string;
+  // isBadgeholder: boolean;
+  // attestationUid: string;
+  // forkedFrom: string;
+  rubricId: string;
+  rubric: IRubric | null;
+  totalOp: number;
   histories: ListData[];
   createdAt: Date;
   updatedAt: Date;
