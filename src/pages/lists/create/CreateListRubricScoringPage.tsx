@@ -72,7 +72,7 @@ export default function CreateListRubricScoringPage() {
                           )}
                         </Form.Item>
 
-                        {state.rubrics.map((rubric) => (
+                        {/* {state.rubrics.map((rubric) => (
                           <Form.Item
                             className="mb-2"
                             label={rubric.title}
@@ -88,7 +88,7 @@ export default function CreateListRubricScoringPage() {
                                 }))}
                             ></Select>
                           </Form.Item>
-                        ))}
+                        ))} */}
 
                         <Form.Item
                           className="mb-2"

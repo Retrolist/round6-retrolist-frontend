@@ -48,10 +48,10 @@ export default function CreateListClassicScoringPage() {
 
   useEffect(() => {
     if (state.listContent.length == 0) {
-      dispatch({
-        type: "updateProjects",
-        projectUids: MOCK_PROJECT_UIDS,
-      });
+      // dispatch({
+      //   type: "updateProjects",
+      //   projectUids: MOCK_PROJECT_UIDS,
+      // });
     }
   }, [state]);
 

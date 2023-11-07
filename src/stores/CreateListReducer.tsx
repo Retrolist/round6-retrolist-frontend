@@ -35,7 +35,7 @@ const initialList: ListData = {
   impactEvaluationInput: "",
   impactEvaluationDescription: "",
   impactEvaluationLink: "",
-  impactEvaluationType: ListImpactEvaluationType.UNKNOWN,
+  impactEvaluationType: ListImpactEvaluationType.RUBRIC,
 
   listContent: [],
 

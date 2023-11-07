@@ -82,7 +82,7 @@ export default function CreateListFinalizePage() {
                 <div>
                   {project.comment && <div className="mb-1">Comment: {project.comment}</div>}
 
-                  <ul>
+                  {/* <ul>
                     {Object.entries(project.evaluation).map(([rubricId, score]) => {
                       const rubric = state.rubrics.find(x => x.id == rubricId)
                       const scoreLabel = rubric?.scores[score]
@@ -91,7 +91,7 @@ export default function CreateListFinalizePage() {
                         <li>{rubric?.title}: {score} - {scoreLabel}</li>
                       )
                     })}
-                  </ul>
+                  </ul> */}
                 </div>
               )}
             </div>
