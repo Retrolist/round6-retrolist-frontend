@@ -1,5 +1,7 @@
 import { Button, Divider, Form, Modal, Progress, Radio } from "antd";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
+import { useCallback, useEffect, useState } from "react";
+import { ICriteria } from "../../../../types/Rubric";
 
 const questions = [
   {
@@ -89,16 +91,39 @@ const RadioItem = ({ questionNumber, description, value }: RadioItemProps) => {
 };
 
 interface RubricBaseScoreModalProps {
+  projectId: string;
   isModalOpen: boolean;
   handleClose: () => void;
 }
 
+interface ICriteriaWithValue extends ICriteria {
+  value: string | number;
+  comment: string;
+}
+
 export const RubricBaseScoreModal = ({
+  projectId,
   isModalOpen,
   handleClose,
 }: RubricBaseScoreModalProps) => {
   const [form] = Form.useForm();
   const [state, dispatch] = useCreateListReducer();
+  const [criterias, setCriterias] = useState<ICriteriaWithValue[]>([]);
+
+  useEffect(() => {
+    console.log(projectId, state, state.rubric)
+    if (projectId && state && state.rubric) {
+      const criterias = state.rubric.criteria.map(criteria => ({
+        ...criteria,
+        value: 0,
+        comment: "",
+      }))
+      
+      setCriterias(criterias)
+
+      form.setFieldValue("criterias", criterias)
+    }
+  }, [state, projectId]);
 
   return (
     <Modal
@@ -110,7 +135,7 @@ export const RubricBaseScoreModal = ({
     >
       <Form
         form={form}
-        // initialValues={state}
+        initialValues={{ criterias }}
         layout="vertical"
         onFinish={(data) => {
           console.log(data);
@@ -123,32 +148,40 @@ export const RubricBaseScoreModal = ({
           Questions in each topic are calculated to allocate the OP token
         </p>
         <div className="mt-4 mb-3 text-lg">{state.rubric?.name}</div>
-        <>
-          {state.rubric?.criteria.map((criteria, index) => {
-            return (
-              <div className="p-3 rounded-lg border border-[#EAECF0] bg-[#FAFAFA] mb-3">
-                <div>
-                  {index + 1}. {criteria.title}
+        <Form.List name="criterias">
+          {(fields) => (
+            <>
+              {fields.map(({ key, name: index }) => (
+                <div
+                  className="p-3 rounded-lg border border-[#EAECF0] bg-[#FAFAFA] mb-3"
+                  key={key}
+                >
+                  <div>
+                    {index + 1}. {form.getFieldValue(["criterias", index, "title"])}
+                  </div>
+
+                  {/* <p className="py-1 text-[#858796]">{criteria.description}</p> */}
+                  <Divider className="my-2" />
+                  <Form.Item name={[index, "value"]} className="mb-0">
+                    <Radio.Group className="flex flex-col gap-2">
+                      {Object.entries<string>(
+                        form.getFieldValue(["criterias", index, "scores"])
+                      ).map(([score, answer]) => {
+                        return (
+                          <RadioItem
+                            value={score}
+                            description={answer}
+                            questionNumber={parseInt(score)}
+                          />
+                        );
+                      })}
+                    </Radio.Group>
+                  </Form.Item>
                 </div>
-                {/* <p className="py-1 text-[#858796]">{criteria.description}</p> */}
-                <Divider className="my-2" />
-                <Form.Item className="mb-0">
-                  <Radio.Group className="flex flex-col gap-2">
-                    {Object.entries(criteria.scores).map(([score, answer], index) => {
-                      return (
-                        <RadioItem
-                          value={score}
-                          description={answer}
-                          questionNumber={parseInt(score)}
-                        />
-                      );
-                    })}
-                  </Radio.Group>
-                </Form.Item>
-              </div>
-            );
-          })}
-        </>
+              ))}
+            </>
+          )}
+        </Form.List>
         <Progress
           percent={20}
           showInfo={false}

@@ -38,9 +38,11 @@ export const RubricBaseScoreForm = () => {
   ];
   const [state, dispatch] = useCreateListReducer();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [votingProjectId, setVotingProjectId] = useState('')
 
-  const handleOpen = () => {
+  const handleOpen = (projectId: string) => {
     setIsModalOpen(true);
+    setVotingProjectId(projectId)
   };
 
   const handleClose = () => {
@@ -115,6 +117,7 @@ export const RubricBaseScoreForm = () => {
         </div>
       </Form>
       <RubricBaseScoreModal
+        projectId={votingProjectId}
         isModalOpen={isModalOpen}
         handleClose={handleClose}
       />
