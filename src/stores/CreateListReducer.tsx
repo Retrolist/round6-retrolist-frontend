@@ -112,7 +112,6 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           listContent.push({
             RPGF3_Application_UID: project.id,
             OPAmount: 0,
-            comment: "",
             evaluation: {},
           });
 
@@ -183,13 +182,12 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           (x) => x.RPGF3_Application_UID == item.RPGF3_Application_UID
         );
         if (project && item.evaluation) {
-          project.comment = item.comment || "";
           project.evaluation = item.evaluation;
 
           for (const criteriaId in project.evaluation) {
             // Fix data type passed from ant design form
-            project.evaluation[criteriaId] = parseInt(
-              project.evaluation[criteriaId].toString()
+            project.evaluation[criteriaId].score = parseInt(
+              project.evaluation[criteriaId].score.toString()
             );
           }
         }
@@ -218,7 +216,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           for (const project of newState.listContent) {
             let score = 0;
             for (const criteriaId in project.evaluation) {
-              score += project.evaluation[criteriaId];
+              score += project.evaluation[criteriaId].score;
             }
 
             totalScore += score;

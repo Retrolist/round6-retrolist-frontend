@@ -1,4 +1,4 @@
-import { Button, Divider, Form, Modal, Progress, Radio } from "antd";
+import { Button, Divider, Form, Input, Modal, Progress, Radio } from "antd";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { useCallback, useEffect, useState } from "react";
 import { ICriteria } from "../../../../types/Rubric";
@@ -113,10 +113,12 @@ export const RubricBaseScoreModal = ({
   useEffect(() => {
     console.log(projectId, state, state.rubric)
     if (projectId && state && state.rubric) {
+      const listContent = state.listContent.find(x => x.RPGF3_Application_UID == projectId)
+
       const criterias = state.rubric.criteria.map(criteria => ({
         ...criteria,
-        value: 0,
-        comment: "",
+        value: (listContent?.evaluation[criteria._id] && listContent?.evaluation[criteria._id].score) || '',
+        comment: (listContent?.evaluation[criteria._id] && listContent?.evaluation[criteria._id].comment) || "",
       }))
       
       setCriterias(criterias)
@@ -162,6 +164,7 @@ export const RubricBaseScoreModal = ({
 
                   {/* <p className="py-1 text-[#858796]">{criteria.description}</p> */}
                   <Divider className="my-2" />
+
                   <Form.Item name={[index, "value"]} className="mb-0">
                     <Radio.Group className="flex flex-col gap-2">
                       {Object.entries<string>(
@@ -176,6 +179,12 @@ export const RubricBaseScoreModal = ({
                         );
                       })}
                     </Radio.Group>
+                  </Form.Item>
+
+                  <Divider className="my-2" />
+
+                  <Form.Item style={{ marginBottom: 0 }}>
+                    <Input placeholder="Comment (Optional)" />
                   </Form.Item>
                 </div>
               ))}

@@ -12,9 +12,13 @@ export interface ListContent {
   OPAmount: number;
 }
 
-export interface ListContentWithRubrics extends ListContent {
+export interface CommentAndScore {
   comment: string;
-  evaluation: { [criteriaId: string]: number };
+  score: number;
+}
+
+export interface ListContentWithRubrics extends ListContent {
+  evaluation: { [criteriaId: string]: CommentAndScore };
 }
 
 export interface ListMetadata {
