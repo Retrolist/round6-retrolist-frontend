@@ -6,6 +6,7 @@ interface DataType {
   key: string;
   project: string;
   score: number;
+  logo: string;
 }
 
 const data: DataType[] = [
@@ -13,17 +14,21 @@ const data: DataType[] = [
     key: "1",
     project: "wwww",
     score: 10,
+    logo: "/img/op-icon.png",
   },
   {
     key: "1",
     project: "wwww",
     score: 10,
+    logo: "/img/op-icon.png",
   },
 ];
 interface RubicBaseScoreTableProps {
-  onOpen: () => void;
+  onOpen: (projectId: string) => void;
+  data: DataType[];
+  totalScore: number;
 }
-export const RubicBaseScoreTable = ({ onOpen }: RubicBaseScoreTableProps) => {
+export const RubicBaseScoreTable = ({ onOpen, data, totalScore }: RubicBaseScoreTableProps) => {
   const columns: ColumnsType<DataType> = [
     {
       title: "Project",
@@ -32,14 +37,17 @@ export const RubicBaseScoreTable = ({ onOpen }: RubicBaseScoreTableProps) => {
       render: (text, record) => (
         <div className="flex gap-3">
           <div>
-            <img width={40} height={40} src="/img/op-icon.png" alt="" />
+            <img width={40} height={40} src={record.logo || "/img/project-placeholder.svg"} alt="" className="rounded-full" />
           </div>
           <div>
-            <div>RetroList</div>
-            <div className="flex gap-1 items-center">
-              <div>Project detail</div>
-              <Icon icon="lucide:external-link" />
-            </div>
+            <div>{text}</div>
+
+            <a href={"https://retrolist.app/project/" + record.key} target="_blank">
+              <div className="flex gap-1 items-center">
+                <div>Project detail</div>
+                <Icon icon="lucide:external-link" />
+              </div>
+            </a>
           </div>
         </div>
       ),
@@ -51,10 +59,10 @@ export const RubicBaseScoreTable = ({ onOpen }: RubicBaseScoreTableProps) => {
       render: (text) => (
         <>
           <Progress
-            percent={(11 / 12) * 100}
+            percent={(parseInt(text) / totalScore) * 100}
             status="exception"
             format={() => {
-              return <div className="text-black ml-1">11/12</div>;
+              return <div className="text-black ml-1">{text}/{totalScore}</div>;
             }}
           />
         </>
@@ -66,8 +74,8 @@ export const RubicBaseScoreTable = ({ onOpen }: RubicBaseScoreTableProps) => {
       render: (_, record) => (
         <Space
           size="middle"
-          className="flex justify-center"
-          onClick={() => onOpen()}
+          className="flex justify-center hover:cursor-pointer"
+          onClick={() => onOpen(record.key)}
         >
           Vote
         </Space>

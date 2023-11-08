@@ -106,7 +106,7 @@ export async function getAssociatedSocialProfiles(walletAddress: string, node: s
           node,
           chainId,
           simple: 1,
-          isTestnet: import.meta.env.VITE_DEV_MODE,
+          isTestnet: 0,
         }
       })
 
@@ -134,7 +134,7 @@ export async function getAssociatedSocialProfiles(walletAddress: string, node: s
         node,
         chainId,
         simple: 1,
-        isTestnet: import.meta.env.VITE_DEV_MODE,
+        isTestnet: 0,
       }
     })
   

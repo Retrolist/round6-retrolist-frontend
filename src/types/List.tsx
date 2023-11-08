@@ -14,7 +14,7 @@ export interface ListContent {
 
 export interface ListContentWithRubrics extends ListContent {
   comment: string;
-  evaluation: { [rubric_id: string]: number };
+  evaluation: { [criteriaId: string]: number };
 }
 
 export interface ListMetadata {
@@ -53,6 +53,7 @@ export interface ListData extends ListAttestation {
 
 export interface ListContentView extends ListContentWithRubrics {
   score: number;
+  project?: ProjectMetadataSimple;
 }
 
 export interface ListView extends ListData {

@@ -8,6 +8,7 @@ import SecondaryButton from "../../../../components/buttons/SecondaryButton";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { RubricBaseScoreModal } from "./RubicBaseScoreModal";
 import { RubicBaseScoreTable } from "./RubicBaseScoreTable";
+import { listContentView, rubricTotalScore } from "../../../../utils/list";
 
 export const RubricBaseScoreForm = () => {
   const navigate = useNavigate();
@@ -95,7 +96,16 @@ export const RubricBaseScoreForm = () => {
           />
         </Form.Item>
         <Divider className="my-6" />
-        <RubicBaseScoreTable onOpen={handleOpen} />
+        <RubicBaseScoreTable
+          onOpen={handleOpen}
+          data={listContentView(state).map(project => ({
+            key: project.RPGF3_Application_UID,
+            project: project.project?.displayName || '',
+            score: project.score,
+            logo: project.project?.profileImageUrl || '',
+          }))}
+          totalScore={state.rubric ? rubricTotalScore(state.rubric) : 0}
+        />
         <Divider />
         <div className="flex justify-between">
           <Link to="/lists/create">
