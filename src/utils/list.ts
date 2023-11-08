@@ -11,7 +11,7 @@ export function listContentView(data: ListData) {
     let score = 0;
 
     for (let criteriaId in (item.evaluation || [])) {
-      score += item.evaluation[criteriaId]
+      score += item.evaluation[criteriaId].score
     }
     
     result.push({

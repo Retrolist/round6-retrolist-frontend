@@ -3,6 +3,7 @@ import React, { ReactNode, useContext, useReducer } from "react";
 import { Outlet } from "react-router-dom";
 import CreateListInfoPageLayout from "../pages/lists/create/Form/CreateListLayout";
 import {
+  CommentAndScore,
   ListContent,
   ListContentView,
   ListContentWithRubrics,
@@ -18,13 +19,18 @@ type ListReducerAction =
   | { type: "load"; list: ListData }
   // | { type: "fork"; list: ListData }
   | { type: "updateMetadata"; metadata: ListMetadata; rubric: IRubric }
-  | { type: "updateProjects"; projects: ProjectMetadataSimple[]; }
-  | { type: "deleteProject"; projectId: string; }
-  | { type: "updateTotalOp"; totalOp: number; impactEvaluationInput: string; }
+  | { type: "updateProjects"; projects: ProjectMetadataSimple[] }
+  | { type: "deleteProject"; projectId: string }
+  | { type: "updateTotalOp"; totalOp: number; impactEvaluationInput: string }
   | { type: "updateOPAmount"; listContent: ListContent[] }
   // | { type: "updateRubric"; rubric: IRubric }
   | {
       type: "updateRubricEvaluation";
+      projectId: string;
+      evaluation: { [criteriaId: string]: CommentAndScore };
+    }
+  | {
+      type: "updateRubricEvaluations";
       listContent: Partial<ListContentWithRubrics>[];
     }
   | { type: "finalize"; totalOP: number };
@@ -115,11 +121,11 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
             evaluation: {},
           });
 
-          projectsMetadata.push(project)
+          projectsMetadata.push(project);
         }
       }
 
-      console.log(projectsMetadata)
+      console.log(projectsMetadata);
 
       return {
         ...state,
@@ -132,15 +138,19 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
       const listContent = cloneDeep(state.listContent);
       const projectsMetadata = cloneDeep(state.projectsMetadata);
 
-      const listContentIndex = listContent.findIndex(x => x.RPGF3_Application_UID == action.projectId);
-      const projectsMetadataIndex = projectsMetadata.findIndex(x => x.id == action.projectId);
+      const listContentIndex = listContent.findIndex(
+        (x) => x.RPGF3_Application_UID == action.projectId
+      );
+      const projectsMetadataIndex = projectsMetadata.findIndex(
+        (x) => x.id == action.projectId
+      );
 
       if (listContentIndex != -1) {
-        listContent.splice(listContentIndex, 1)
+        listContent.splice(listContentIndex, 1);
       }
 
       if (projectsMetadataIndex != -1) {
-        projectsMetadata.splice(projectsMetadataIndex, 1)
+        projectsMetadata.splice(projectsMetadataIndex, 1);
       }
 
       return {
@@ -155,7 +165,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
         ...state,
         totalOp: action.totalOp,
         impactEvaluationInput: action.impactEvaluationInput,
-      }
+      };
     }
 
     case "updateOPAmount": {
@@ -176,6 +186,20 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
     }
 
     case "updateRubricEvaluation": {
+      const listContent = cloneDeep(state.listContent);
+      const project = listContent.find(x => x.RPGF3_Application_UID == action.projectId);
+
+      if (project) {
+        project.evaluation = action.evaluation;
+      }
+
+      return {
+        ...state,
+        listContent,
+      }
+    }
+
+    case "updateRubricEvaluations": {
       const projects = cloneDeep(state.listContent);
       for (const item of action.listContent) {
         const project = projects.find(
@@ -229,7 +253,8 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
 
           if (totalScore > 0) {
             for (const project of projects) {
-              project.OPAmount = (project.score / totalScore) * newState.totalOp;
+              project.OPAmount =
+                (project.score / totalScore) * newState.totalOp;
             }
           }
 

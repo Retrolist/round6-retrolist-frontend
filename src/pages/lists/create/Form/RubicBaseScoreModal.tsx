@@ -2,6 +2,7 @@ import { Button, Divider, Form, Input, Modal, Progress, Radio } from "antd";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { useCallback, useEffect, useState } from "react";
 import { ICriteria } from "../../../../types/Rubric";
+import { CommentAndScore } from "../../../../types/List";
 
 const questions = [
   {
@@ -117,9 +118,11 @@ export const RubricBaseScoreModal = ({
 
       const criterias = state.rubric.criteria.map(criteria => ({
         ...criteria,
-        value: (listContent?.evaluation[criteria._id] && listContent?.evaluation[criteria._id].score) || '',
+        value: (listContent?.evaluation[criteria._id] && listContent?.evaluation[criteria._id].score)?.toString() || '',
         comment: (listContent?.evaluation[criteria._id] && listContent?.evaluation[criteria._id].comment) || "",
       }))
+
+      console.log(criterias)
       
       setCriterias(criterias)
 
@@ -140,7 +143,27 @@ export const RubricBaseScoreModal = ({
         initialValues={{ criterias }}
         layout="vertical"
         onFinish={(data) => {
+          const evaluation: { [criteriaId: string]: CommentAndScore } = {};
+
+          for (const criteria of data.criterias) {
+            if (!isNaN(parseInt(criteria.value))) {
+              evaluation[criteria._id] = {
+                score: parseInt(criteria.value),
+                comment: criteria.comment,
+              }
+            } else {
+              // TODO: Alert that criteria is not fulfilled
+            }
+          }
+
           console.log(data);
+
+          dispatch({
+            type: "updateRubricEvaluation",
+            projectId,
+            evaluation,
+          })
+
           handleClose();
           // navigate("/lists/create/choose-projects");
         }}
@@ -183,7 +206,7 @@ export const RubricBaseScoreModal = ({
 
                   <Divider className="my-2" />
 
-                  <Form.Item style={{ marginBottom: 0 }}>
+                  <Form.Item name={[index, "comment"]} style={{ marginBottom: 0 }}>
                     <Input placeholder="Comment (Optional)" />
                   </Form.Item>
                 </div>
