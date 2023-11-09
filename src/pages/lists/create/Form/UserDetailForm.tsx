@@ -4,6 +4,7 @@ import PrimaryButton from "../../../../components/buttons/PrimaryButton";
 import SecondaryButton from "../../../../components/buttons/SecondaryButton";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { useRubrics } from "../../../../hooks/useRubrics";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 export const UserDetailForm = () => {
   const navigate = useNavigate();
@@ -65,6 +66,14 @@ export const UserDetailForm = () => {
             }))}
           />
         </Form.Item>
+
+        <button
+          className="flex items-center gap-2 mt-2.5 border border-[#00A0E6] text-[#00A0E6] rounded-lg py-2.5 px-4 mb-4"
+          onClick={() => window.open("https://docs.google.com/spreadsheets/d/16E2_RSRXbLIBZMfa9YLVdF56ll1bT6fHfZ7pdi058OE/edit?usp=sharing")}
+        >
+          <Icon icon="lucide:file-text" />
+          <div>Rubric Details</div>
+        </button>
 
         <div className="text-[16px] text-[#4C4E64AD] mb-8">
           In rubric mode, rubrics details are automatically appended into

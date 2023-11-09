@@ -17,7 +17,7 @@ export default function CreateListFinalizePage() {
   useEffect(() => {
     dispatch({
       type: "finalize",
-      totalOP: 30000000,
+      // totalOP: 30000000,
     })
   }, [])
 

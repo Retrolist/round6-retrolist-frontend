@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Divider, Form, Slider } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../../components/buttons/PrimaryButton";
 import SecondaryButton from "../../../../components/buttons/SecondaryButton";
@@ -9,6 +9,11 @@ import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { RubricBaseScoreModal } from "./RubicBaseScoreModal";
 import { RubicBaseScoreTable } from "./RubicBaseScoreTable";
 import { listContentView, rubricTotalScore } from "../../../../utils/list";
+import { sigmoid } from "../../../../utils/common";
+
+const TOTAL_PROJECT_SHARE = 644
+const TOTAL_OP = 30_000_000
+const EXP_CONST = 6;
 
 export const RubricBaseScoreForm = () => {
   const navigate = useNavigate();
@@ -39,6 +44,8 @@ export const RubricBaseScoreForm = () => {
   const [state, dispatch] = useCreateListReducer();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [votingProjectId, setVotingProjectId] = useState('')
+  const [totalOpSlider, setTotalOpSlider] = useState(50)
+  const [totalOp, setTotalOp] = useState(0)
 
   const handleOpen = (projectId: string) => {
     setIsModalOpen(true);
@@ -48,9 +55,15 @@ export const RubricBaseScoreForm = () => {
   const handleClose = () => {
     setIsModalOpen(false);
   };
-  const handleChange = (value: string[]) => {
-    console.log(`selected ${value}`);
-  };
+
+  useEffect(() => {
+    const selectedShare = state.listContent.length * Math.exp(EXP_CONST * (sigmoid((totalOpSlider - 50) / 50, 2) - 0.5))
+    const totalShare = selectedShare + (TOTAL_PROJECT_SHARE - state.listContent.length)
+    const opPerShare = TOTAL_OP / totalShare
+
+    setTotalOp(Math.floor(selectedShare * opPerShare))
+  }, [state, totalOpSlider])
+
   return (
     <div className="p-6 bg-white rounded-lg border border-[#EAECF0]">
       <div>Rubric-based</div>
@@ -60,9 +73,12 @@ export const RubricBaseScoreForm = () => {
         Preliminary Review to the Final Review, a proposer much achieve an
         average score of 20 or higher from the two preliminary reviewers.
       </p>
-      <button className="flex items-center gap-2 mt-2.5 border border-[#00A0E6] text-[#00A0E6] rounded-lg py-2.5 px-4 ">
+      <button
+        className="flex items-center gap-2 mt-2.5 border border-[#00A0E6] text-[#00A0E6] rounded-lg py-2.5 px-4"
+        onClick={() => window.open("https://docs.google.com/spreadsheets/d/16E2_RSRXbLIBZMfa9YLVdF56ll1bT6fHfZ7pdi058OE/edit?usp=sharing")}
+      >
         <Icon icon="lucide:file-text" />
-        <div>Documentation</div>
+        <div>Rubric Details</div>
       </button>
       <Form
         form={form}
@@ -70,6 +86,13 @@ export const RubricBaseScoreForm = () => {
         layout="vertical"
         onFinish={(data) => {
           console.log(data);
+
+          dispatch({
+            type: "updateTotalOp",
+            impactEvaluationInput: data.impactEvaluationInput,
+            totalOp,
+          })
+
           navigate("/lists/create/submit-list");
         }}
       >
@@ -77,17 +100,21 @@ export const RubricBaseScoreForm = () => {
           Select your OP allocated
         </div>
         <Slider
-          defaultValue={30}
+          defaultValue={50}
+          step={5}
           trackStyle={{ background: "red" }}
           handleStyle={{ borderColor: "red" }}
           className="my-1.5"
+          onChange={(value) => {
+            setTotalOpSlider(value)
+          }}
         />
         <div className="text-[#4C4E64AD] text-sm">
-          List allocated = 15,000,000 OP
+          List allocated = {totalOp.toLocaleString("en-US")} OP
         </div>
         <Form.Item
           label="Impact evaluation"
-          name="impactEvaluation"
+          name="impactEvaluationInput"
           required={true}
           style={{ color: "##858796" }}
           className="mt-6"

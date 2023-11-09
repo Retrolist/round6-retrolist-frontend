@@ -33,7 +33,7 @@ type ListReducerAction =
       type: "updateRubricEvaluations";
       listContent: Partial<ListContentWithRubrics>[];
     }
-  | { type: "finalize"; totalOP: number };
+  | { type: "finalize"; };
 
 const initialList: ListData = {
   id: "",
