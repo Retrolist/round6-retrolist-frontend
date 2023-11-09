@@ -80,7 +80,7 @@ export default function CreateListFinalizePage() {
 
               {state.impactEvaluationType == ListImpactEvaluationType.RUBRIC && (
                 <div>
-                  {project.comment && <div className="mb-1">Comment: {project.comment}</div>}
+                  {/* {project.comment && <div className="mb-1">Comment: {project.comment}</div>} */}
 
                   {/* <ul>
                     {Object.entries(project.evaluation).map(([rubricId, score]) => {
