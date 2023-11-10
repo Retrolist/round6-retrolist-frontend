@@ -8,6 +8,7 @@ import { namehash } from "viem";
 export function useOptidomainsRegister() {
   const { address } = useAccount();
 
+  const [isExistingDomainName, setIsExistingDomainName] = useState(false)
   const [domainName, setDomainName] = useState<string | null>(null);
   const [twitter, setTwitter] = useState("");
   const [discord, setDiscord] = useState("");
@@ -25,6 +26,7 @@ export function useOptidomainsRegister() {
         setDomainName(existingDomainName)
         setTwitter(twitter_)
         setDiscord(discord_)
+        setIsExistingDomainName(true)
       }
     }
   }, [existingDomainName, existingProfiles]);
@@ -85,5 +87,6 @@ export function useOptidomainsRegister() {
     twitter,
     discord,
     performSocialLogin,
+    isExistingDomainName,
   }
 }

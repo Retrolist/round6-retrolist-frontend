@@ -3,9 +3,10 @@ import { ReactNode } from "react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { optimism, optimismGoerli } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
+import { SiweAuthProvider } from "./SiweAuthProvider";
 
 const { chains, publicClient } = configureChains(
-  [optimismGoerli],
+  [optimism],
   [publicProvider()]
 );
 
@@ -28,7 +29,9 @@ export function RainbowKitConfigProvider({
 }) {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
+      <SiweAuthProvider>
+        <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
+      </SiweAuthProvider>
     </WagmiConfig>
   );
 }

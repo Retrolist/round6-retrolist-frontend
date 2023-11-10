@@ -8,7 +8,11 @@ export function sigmoid(x: number, xmul: number) {
   return 1/(1+Math.exp(-xmul * x))
 }
 
-export function buildSignatureHex(signature: ethers.Signature) {
+export function buildSignatureHex(signature: {
+  r: string;
+  s: string;
+  v: number;
+}) {
   return ethers.concat([
     signature.r,
     signature.s,

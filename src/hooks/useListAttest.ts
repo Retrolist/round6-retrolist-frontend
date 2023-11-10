@@ -1,8 +1,11 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { ListSubmitDto } from "../types/List";
 import { uselistSubmit } from "./useListSubmit";
 import { useOptidomainsRegister } from "./useOptidomainsRegister";
 import { useAccount } from "wagmi";
+import { listAttestSignature } from "../utils/list";
+import { buildSignatureHex } from "../utils/common";
+import { useEthersSigner } from "../utils/wagmi-ethers";
 
 // Note: Use list attest combine list submission and optidomains registration together
 export function useListAttest() {
@@ -13,6 +16,7 @@ export function useListAttest() {
     twitter,
     discord,
     performSocialLogin,
+    isExistingDomainName,
   } = useOptidomainsRegister()
 
   const {
@@ -20,11 +24,20 @@ export function useListAttest() {
     listSubmit,
   } = uselistSubmit(domainName!)
 
-  const listAttest = useCallback(async (list: ListSubmitDto) => {
+  const signer = useEthersSigner()
+
+  const [signature, setSignature] = useState("");
+
+  const listSign = useCallback(async (list: ListSubmitDto) => {
     if (domainName && twitter && discord) {
       const id = await listSubmit(list)
-      const link = `https://retropgf3-listdata.retrolist.app/lists/${id}`
       
+      if (signer) {
+        const rawSignature = await listAttestSignature(id, list.listName, signer)
+        setSignature(buildSignatureHex(rawSignature.signature))
+      } else {
+        throw new Error("Please connect your wallet")
+      }
     } else {
       throw new Error("Missing domain")
     }
@@ -35,7 +48,30 @@ export function useListAttest() {
     discord,
   ])
 
+  const listAttest = useCallback(async () => {
+    if (signature && domainName && twitter && discord) {
+      if (isExistingDomainName) {
+
+      } else {
+
+      }
+    } else {
+      throw new Error("Attestation is not signed")
+    }
+  }, [
+    signature,
+    domainName,
+    twitter,
+    discord,
+    isExistingDomainName,
+  ])
+
   return {
+    listSign,
+    listAttest,
+
+    signature,
+
     listId,
     listSubmit,
 
@@ -43,5 +79,6 @@ export function useListAttest() {
     twitter,
     discord,
     performSocialLogin,
+    isExistingDomainName,
   }
 }

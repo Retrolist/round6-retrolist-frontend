@@ -5,6 +5,7 @@ import SecondaryButton from "../../../../components/buttons/SecondaryButton";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { useRubrics } from "../../../../hooks/useRubrics";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { ListSubmitModal } from "./ListSubmitModal";
 
 export const UserDetailForm = () => {
   const navigate = useNavigate();
@@ -88,6 +89,11 @@ export const UserDetailForm = () => {
           <PrimaryButton>Next</PrimaryButton>
         </div>
       </Form>
+
+      {/* <ListSubmitModal
+        isModalOpen={true}
+        handleClose={() => {}}
+      /> */}
     </div>
   );
 };
