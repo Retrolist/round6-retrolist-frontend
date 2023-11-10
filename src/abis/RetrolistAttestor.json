@@ -16,6 +16,42 @@
     "type": "error"
   },
   {
+    "inputs": [],
+    "name": "InvalidBadgeholderAttestation",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "attestor",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "refUid",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "internalType": "bytes32",
+        "name": "attestationUid",
+        "type": "bytes32"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes32",
+        "name": "badgeholderAttUid",
+        "type": "bytes32"
+      }
+    ],
+    "name": "BadgeholderApprove",
+    "type": "event"
+  },
+  {
     "anonymous": false,
     "inputs": [
       {
@@ -106,7 +142,42 @@
       }
     ],
     "name": "attest",
-    "outputs": [],
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "uid",
+        "type": "bytes32"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "listUid",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "badgeholderAttUid",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes",
+        "name": "listSignature",
+        "type": "bytes"
+      }
+    ],
+    "name": "badgeholderApprove",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "uid",
+        "type": "bytes32"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
