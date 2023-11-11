@@ -1,10 +1,14 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Collapse, Divider, Form, Progress, theme } from "antd";
 import { PieChart } from "react-minimal-pie-chart";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { ItemSubmitListForm } from "./ItemSubmitListForm";
 import { ListData } from "../../../../types/List";
+import PrimaryButton from "../../../../components/buttons/PrimaryButton";
+import SecondaryButton from "../../../../components/buttons/SecondaryButton";
+import { ReactNode, useState } from "react";
+import { ListSubmitModal } from "./ListSubmitModal";
 const Comment = () => {
   return (
     <>
@@ -18,7 +22,7 @@ const Comment = () => {
   );
 };
 
-export const SubmitListView = ({ state }: { state: ListData }) => {
+export const SubmitListView = ({ state, children }: { state: ListData, children: ReactNode }) => {
   const { token } = theme.useToken();
   const panelStyle: React.CSSProperties = {
     marginBottom: 24,
@@ -196,6 +200,8 @@ export const SubmitListView = ({ state }: { state: ListData }) => {
         
         className="border border-gray-300"
       />
+
+      {children}
     </div>
   );
 };
@@ -211,9 +217,25 @@ export const SubmitListForm = () => {
   const [form] = Form.useForm();
   const [state, dispatch] = useCreateListReducer();
 
+  const [ showSubmitModal, setShowSubmitModal ] = useState(false)
+
   return (
     <div>
-      <SubmitListView state={state} />
+      <SubmitListView state={state}>
+        <Divider />
+        
+        <div className="flex justify-between">
+          <Link to="/lists/create/rubric-score">
+            <SecondaryButton type="button">Back</SecondaryButton>
+          </Link>
+          <PrimaryButton onClick={() => setShowSubmitModal(true)}>Submit</PrimaryButton>
+        </div>
+
+        <ListSubmitModal
+          isModalOpen={showSubmitModal}
+          handleClose={() => setShowSubmitModal(false)}
+        ></ListSubmitModal>
+      </SubmitListView>
     </div>
   );
 };

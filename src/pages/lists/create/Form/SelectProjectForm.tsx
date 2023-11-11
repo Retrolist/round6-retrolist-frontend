@@ -21,6 +21,7 @@ export const SelectProjectForm = () => {
   const { projects } = useProjects({
     search,
     categories: categories,
+    approved: true,
   })
 
   const [options, setOptions] = useState<any[]>([])

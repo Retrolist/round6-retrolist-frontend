@@ -4,6 +4,7 @@ export interface ProjectQueryOptions {
   orderBy?: string
   seed?: string
   limit?: number
+  approved?: boolean
 }
 
 export interface ProjectMetadataSimple {

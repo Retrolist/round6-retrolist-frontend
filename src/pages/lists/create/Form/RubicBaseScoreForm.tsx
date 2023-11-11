@@ -137,8 +137,8 @@ export const RubricBaseScoreForm = () => {
         />
         <Divider />
         <div className="flex justify-between">
-          <Link to="/lists/create">
-            <SecondaryButton type="button">Cancel</SecondaryButton>
+          <Link to="/lists/create/choose-projects">
+            <SecondaryButton type="button">Back</SecondaryButton>
           </Link>
           <PrimaryButton>Next</PrimaryButton>
         </div>

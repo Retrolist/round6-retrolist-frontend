@@ -25,6 +25,7 @@ export function useProjects(options: ProjectQueryOptions) {
           seed: options.seed,
           orderBy: options.orderBy,
           cursor: cursor.current,
+          approved: options.approved ? 1 : 0,
         }
       });
 
