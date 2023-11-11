@@ -4,6 +4,7 @@ import { PieChart } from "react-minimal-pie-chart";
 import { useNavigate } from "react-router-dom";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { ItemSubmitListForm } from "./ItemSubmitListForm";
+import { ListData } from "../../../../types/List";
 const Comment = () => {
   return (
     <>
@@ -16,7 +17,8 @@ const Comment = () => {
     </>
   );
 };
-export const SubmitListForm = () => {
+
+export const SubmitListView = ({ state }: { state: ListData }) => {
   const { token } = theme.useToken();
   const panelStyle: React.CSSProperties = {
     marginBottom: 24,
@@ -25,7 +27,7 @@ export const SubmitListForm = () => {
   };
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const [state, dispatch] = useCreateListReducer();
+
   return (
     <div className="p-6 bg-white rounded-lg border border-[#EAECF0]">
       <div className="flex gap-3">
@@ -102,25 +104,25 @@ export const SubmitListForm = () => {
                     </div>
                     <div>70% = 70,000 OP</div>
                   </div>
-                  <Divider />
-                  <ItemSubmitListForm
-                    title="1.Reach"
-                    score={4}
-                    description="Reaches an expansive set of prospective OP users who are likely to
-              use Optimism over other networks"
-                  />
-                  <Comment />
-                  <ItemSubmitListForm
-                    title="2.Users"
-                    score={4}
-                    description="Likely to reach power users, key Web3 ecosystems, and core developers who have a need to use OP"
-                  />
-                  <Comment />
                 </div>
               </>
             ),
             children: (
               <div className="ml-4">
+                <Divider className="border-gray-300" />
+                <ItemSubmitListForm
+                  title="1.Reach"
+                  score={4}
+                  description="Reaches an expansive set of prospective OP users who are likely to
+              use Optimism over other networks"
+                />
+
+                <ItemSubmitListForm
+                  title="2.Users"
+                  score={4}
+                  description="Likely to reach power users, key Web3 ecosystems, and core developers who have a need to use OP"
+                />
+
                 <ItemSubmitListForm
                   title="3.Experimentation and Novelty"
                   score={2}
@@ -136,19 +138,19 @@ export const SubmitListForm = () => {
                   score={4}
                   description="The project has a substantial likelihood to generate long-term, sustainable value for the Optimism ecosystem"
                 />
-                <Comment />
+  
                 <ItemSubmitListForm
                   title="6.Distribution implementation plan"
                   score={2}
                   description="The proposed plan creates a likelihood that the grant will reach the breadth of the recipients' intended"
                 />
-                <Comment />
+
                 <ItemSubmitListForm
                   title="6.Distribution implementation plan"
                   score={2}
                   description="The proposed plan creates a likelihood that the grant will reach the breadth of the recipients' intended"
                 />
-                <Comment />
+
                 <ItemSubmitListForm
                   title="7.Grant size"
                   score={2}
@@ -159,31 +161,31 @@ export const SubmitListForm = () => {
                   score={4}
                   description="The team shows a reasonable ability to deliver on the plan"
                 />
-                <Comment />
+
                 <ItemSubmitListForm
                   title="9.Optimism Relationship"
                   score={4}
                   description="Milestones are reasonably likely to hold the proposer accountable"
                 />
-                <Comment />
+
                 <ItemSubmitListForm
                   title="10.Code Audit"
                   score={4}
                   description="Some code audits but not by a well-known auditor"
                 />
-                <Comment />
+
                 <ItemSubmitListForm
                   title="11.Milestone Trackability"
                   score={4}
                   description="Somewhat trackable"
                 />
-                <Comment />
+
                 <ItemSubmitListForm
                   title="12.Timely Submission"
                   score={-1}
                   description="Proposal submitted in last 48 hours of Submission Period"
                 />
-                <Comment />
+
                 <Divider style={{ borderStyle: "dashed" }} className="my-2" />
               </div>
             ),
@@ -193,6 +195,24 @@ export const SubmitListForm = () => {
         expandIcon={({ isActive }) => <></>}
         style={{ background: "#FAFAFA" }}
       />
+    </div>
+  );
+};
+
+export const SubmitListForm = () => {
+  const { token } = theme.useToken();
+  const panelStyle: React.CSSProperties = {
+    marginBottom: 24,
+    background: "#FAFAFA",
+    borderRadius: token.borderRadiusLG,
+  };
+  const navigate = useNavigate();
+  const [form] = Form.useForm();
+  const [state, dispatch] = useCreateListReducer();
+
+  return (
+    <div>
+      <SubmitListView state={state} />
     </div>
   );
 };
