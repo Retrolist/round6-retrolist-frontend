@@ -5,7 +5,8 @@ import { Delegated } from "@ethereum-attestation-service/eas-sdk";
 import { Signer } from "ethers";
 import { AbiCoder } from "ethers";
 
-const LIST_ATTESTATION_DEADLINE = 1704067200n;
+// const LIST_ATTESTATION_DEADLINE = 1704067200n;
+const LIST_ATTESTATION_DEADLINE = 0n;
 const LIST_SCHEMA = "0x3e3e2172aebb902cf7aa6e1820809c5b469af139e7a4265442b1c22b97c6b2a5";
 
 export function listContentView(data: ListData) {

@@ -94,10 +94,10 @@ export const UserDetailForm = () => {
         </div>
       </Form>
 
-      <ListSubmitModal
+      {/* <ListSubmitModal
         isModalOpen={true}
         handleClose={() => {}}
-      />
+      /> */}
     </div>
   );
 };

@@ -33,6 +33,7 @@ type ListReducerAction =
       type: "updateRubricEvaluations";
       listContent: Partial<ListContentWithRubrics>[];
     }
+  | { type: "assignId"; id: string }
   | { type: "finalize"; };
 
 const initialList: ListData = {
@@ -222,6 +223,13 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
         ...state,
         listContent: projects,
       };
+    }
+
+    case "assignId": {
+      return {
+        ...state,
+        id: state.id,
+      }
     }
 
     case "finalize": {

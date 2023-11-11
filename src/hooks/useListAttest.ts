@@ -27,40 +27,61 @@ export function useListAttest() {
   const signer = useEthersSigner()
 
   const [signature, setSignature] = useState("");
+  const [listName, setListName] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const listSign = useCallback(async (list: ListSubmitDto) => {
-    if (domainName && twitter && discord) {
-      const id = await listSubmit(list)
-      
-      if (signer) {
-        const rawSignature = await listAttestSignature(id, list.listName, signer)
-        setSignature(buildSignatureHex(rawSignature.signature))
+    try {
+      setLoading(true)
+
+      if (domainName && twitter && discord) {
+        const id = await listSubmit(list)
+        
+        if (signer) {
+          const rawSignature = await listAttestSignature(id, list.listName, signer)
+          setSignature(buildSignatureHex(rawSignature.signature))
+          setListName(list.listName)
+        } else {
+          throw new Error("Please connect your wallet")
+        }
+  
+        return id;
       } else {
-        throw new Error("Please connect your wallet")
+        throw new Error("Missing domain")
       }
-    } else {
-      throw new Error("Missing domain")
+    } finally {
+      setLoading(false)
     }
   }, [
-    listSubmit,
     domainName,
     twitter,
     discord,
+    signer,
+
+    listSubmit,
+    setSignature,
+    setListName,
   ])
 
   const listAttest = useCallback(async () => {
-    if (domainName && twitter && discord) {
-      if (signature) {
-        if (isExistingDomainName) {
+    try {
+      setLoading(true)
 
-        } else {
+      if (domainName && twitter && discord) {
+        if (signature) {
+          if (isExistingDomainName) {
   
+          } else {
+    
+          }
+        } else {
+          throw new Error("Attestation is not signed")
         }
       } else {
-        throw new Error("Attestation is not signed")
+        throw new Error("Missing domain")
       }
-    } else {
-      throw new Error("Missing domain")
+    } finally {
+      setLoading(false)
     }
   }, [
     signature,
@@ -68,6 +89,8 @@ export function useListAttest() {
     twitter,
     discord,
     isExistingDomainName,
+    listId,
+    listName,
   ])
 
   return {
@@ -84,5 +107,7 @@ export function useListAttest() {
     discord,
     performSocialLogin,
     isExistingDomainName,
+
+    loading,
   }
 }
