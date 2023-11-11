@@ -1,8 +1,28 @@
-import { Form } from "antd";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { Collapse, Divider, Form, Progress, theme } from "antd";
+import { PieChart } from "react-minimal-pie-chart";
 import { useNavigate } from "react-router-dom";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
-
+import { ItemSubmitListForm } from "./ItemSubmitListForm";
+const Comment = () => {
+  return (
+    <>
+      <Divider style={{ borderStyle: "dashed" }} className="my-2" />
+      <p className="text-[12px] text-[#4C4E64AD]">
+        Comment : Thank you for participating in RetroPGF 3. Please help us
+        improve the process by providing feedback on your experience as a
+        badgeholder!
+      </p>
+    </>
+  );
+};
 export const SubmitListForm = () => {
+  const { token } = theme.useToken();
+  const panelStyle: React.CSSProperties = {
+    marginBottom: 24,
+    background: "#FAFAFA",
+    borderRadius: token.borderRadiusLG,
+  };
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [state, dispatch] = useCreateListReducer();
@@ -17,9 +37,162 @@ export const SubmitListForm = () => {
             feasible and have already made some progress. If they receive
             support from OP, I think they will bring a lot of good things to us.
           </p>
+          <div className="text-lg">Impact Evaluation</div>
+          <p className="text-[#858796]">
+            Since many projects tend to prioritize the selection and
+            proportionate management of tokens, if the projects I've chosen
+            adhere to their intentions, I believe it will greatly benefit our
+            ecosystem and is quite likely to succeed.
+          </p>
         </div>
-        <div></div>
+        <div>
+          <div className="relative">
+            <PieChart
+              lineWidth={30}
+              data={[
+                { title: "One", value: 10, color: "#E38627" },
+                { title: "Two", value: 15, color: "#C13C37" },
+                { title: "Three", value: 20, color: "#6A2135" },
+              ]}
+            />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-[20px] text-[#202327]">
+              100,000 OP allocated
+            </div>
+          </div>
+        </div>
       </div>
+      <Divider style={{ borderStyle: "dashed" }} />
+      <div className="text-[#202327] text-[16px] mb-5">
+        3 projects 100,000 OP allocated
+      </div>
+      <Collapse
+        defaultActiveKey={["1"]}
+        bordered={false}
+        items={[
+          {
+            key: "1",
+            label: (
+              <>
+                <div>
+                  <div className="flex gap-3 justify-between">
+                    <div className="flex gap-3 w-1/3">
+                      <div>
+                        <img
+                          width={40}
+                          height={40}
+                          src="/img/op-icon.png"
+                          alt=""
+                        />
+                      </div>
+                      <div>
+                        <div>RetroList</div>
+                        <div className="flex gap-1 items-center">
+                          <div>Project detail</div>
+                          <Icon icon="lucide:external-link" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex w-1/3">
+                      <Progress
+                        showInfo={false}
+                        percent={10}
+                        strokeColor={"#10C200"}
+                      />
+                      <div>19/20</div>
+                    </div>
+                    <div>70% = 70,000 OP</div>
+                  </div>
+                  <Divider />
+                  <ItemSubmitListForm
+                    title="1.Reach"
+                    score={4}
+                    description="Reaches an expansive set of prospective OP users who are likely to
+              use Optimism over other networks"
+                  />
+                  <Comment />
+                  <ItemSubmitListForm
+                    title="2.Users"
+                    score={4}
+                    description="Likely to reach power users, key Web3 ecosystems, and core developers who have a need to use OP"
+                  />
+                  <Comment />
+                </div>
+              </>
+            ),
+            children: (
+              <div className="ml-4">
+                <ItemSubmitListForm
+                  title="3.Experimentation and Novelty"
+                  score={2}
+                  description="The project tests the limits of Web3 technology and offers promising new technology or infrastructure"
+                />
+                <ItemSubmitListForm
+                  title="4.Tangible Use Case for Web3 Technology"
+                  score={4}
+                  description="This project presents a critical stepping stone for the broad adoption of Web3 technology built on the OP Stack"
+                />
+                <ItemSubmitListForm
+                  title="5.Likelihood of success"
+                  score={4}
+                  description="The project has a substantial likelihood to generate long-term, sustainable value for the Optimism ecosystem"
+                />
+                <Comment />
+                <ItemSubmitListForm
+                  title="6.Distribution implementation plan"
+                  score={2}
+                  description="The proposed plan creates a likelihood that the grant will reach the breadth of the recipients' intended"
+                />
+                <Comment />
+                <ItemSubmitListForm
+                  title="6.Distribution implementation plan"
+                  score={2}
+                  description="The proposed plan creates a likelihood that the grant will reach the breadth of the recipients' intended"
+                />
+                <Comment />
+                <ItemSubmitListForm
+                  title="7.Grant size"
+                  score={2}
+                  description="Grant size is proportional to expected benefit OR Grant Size is greater than 65k OP, this is the highest score possible for this category"
+                />
+                <ItemSubmitListForm
+                  title="8.Milestone Assessment"
+                  score={4}
+                  description="The team shows a reasonable ability to deliver on the plan"
+                />
+                <Comment />
+                <ItemSubmitListForm
+                  title="9.Optimism Relationship"
+                  score={4}
+                  description="Milestones are reasonably likely to hold the proposer accountable"
+                />
+                <Comment />
+                <ItemSubmitListForm
+                  title="10.Code Audit"
+                  score={4}
+                  description="Some code audits but not by a well-known auditor"
+                />
+                <Comment />
+                <ItemSubmitListForm
+                  title="11.Milestone Trackability"
+                  score={4}
+                  description="Somewhat trackable"
+                />
+                <Comment />
+                <ItemSubmitListForm
+                  title="12.Timely Submission"
+                  score={-1}
+                  description="Proposal submitted in last 48 hours of Submission Period"
+                />
+                <Comment />
+                <Divider style={{ borderStyle: "dashed" }} className="my-2" />
+              </div>
+            ),
+            style: panelStyle,
+          },
+        ]}
+        expandIcon={({ isActive }) => <></>}
+        style={{ background: "#FAFAFA" }}
+      />
     </div>
   );
 };
