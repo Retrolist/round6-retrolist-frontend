@@ -32,15 +32,15 @@ export const SubmitListView = ({ state }: { state: ListData }) => {
     <div className="p-6 bg-white rounded-lg border border-[#EAECF0]">
       <div className="flex gap-3">
         <div className="w-3/4">
-          <div className="text-lg">OP Good List A</div>
-          <p className="text-[#858796]">
+          <div className="text-lg font-bold">OP Good List A</div>
+          <p className="text-[#858796] mt-1">
             I believe that the various projects in these lists are quite
             community-oriented. I've selected only 3-4 projects that seem
             feasible and have already made some progress. If they receive
             support from OP, I think they will bring a lot of good things to us.
           </p>
-          <div className="text-lg">Impact Evaluation</div>
-          <p className="text-[#858796]">
+          <div className="font-bold mt-4">Impact Evaluation</div>
+          <p className="text-[#858796] mt-1">
             Since many projects tend to prioritize the selection and
             proportionate management of tokens, if the projects I've chosen
             adhere to their intentions, I believe it will greatly benefit our
@@ -69,13 +69,13 @@ export const SubmitListView = ({ state }: { state: ListData }) => {
       </div>
       <Collapse
         defaultActiveKey={["1"]}
-        bordered={false}
+        bordered={true}
         items={[
           {
             key: "1",
             label: (
               <>
-                <div>
+                <div className="my-1">
                   <div className="flex gap-3 justify-between">
                     <div className="flex gap-3 w-1/3">
                       <div>
@@ -87,8 +87,8 @@ export const SubmitListView = ({ state }: { state: ListData }) => {
                         />
                       </div>
                       <div>
-                        <div>RetroList</div>
-                        <div className="flex gap-1 items-center">
+                        <div className="font-bold">RetroList</div>
+                        <div className="flex gap-1 items-center text-xs text-gray-600">
                           <div>Project detail</div>
                           <Icon icon="lucide:external-link" />
                         </div>
@@ -109,7 +109,6 @@ export const SubmitListView = ({ state }: { state: ListData }) => {
             ),
             children: (
               <div className="ml-4">
-                <Divider className="border-gray-300" />
                 <ItemSubmitListForm
                   title="1.Reach"
                   score={4}
@@ -194,6 +193,8 @@ export const SubmitListView = ({ state }: { state: ListData }) => {
         ]}
         expandIcon={({ isActive }) => <></>}
         style={{ background: "#FAFAFA" }}
+        
+        className="border border-gray-300"
       />
     </div>
   );

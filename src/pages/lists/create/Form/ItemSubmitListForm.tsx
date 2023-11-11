@@ -18,7 +18,7 @@ export const ItemSubmitListForm = ({
           <div>{title}</div>
         </div>
         <div className="flex gap-3 w-3/5">
-          <div className="w-10">
+          <div style={{ width: 24, height: 24 }}>
             <div
               className={`${
                 score < 0 ? "bg-[#FF0420]" : "bg-[#10C200]"
@@ -39,7 +39,7 @@ export const ItemSubmitListForm = ({
         </p>
       </div>
 
-      <Divider dashed className="my-2 border-gray-300" />
+      <Divider dashed className="my-3 border-gray-300" />
     </div>
   );
 };
