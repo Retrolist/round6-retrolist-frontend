@@ -6,13 +6,13 @@ import { publicProvider } from "wagmi/providers/public";
 import { SiweAuthProvider } from "./SiweAuthProvider";
 
 const { chains, publicClient } = configureChains(
-  [optimism],
+  [optimismGoerli],
   [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
   appName: "RetroList",
-  projectId: "YOUR_PROJECT_ID",
+  projectId: "f670e3d45e24922bea0541d7aa2862b7",
   chains,
 });
 
