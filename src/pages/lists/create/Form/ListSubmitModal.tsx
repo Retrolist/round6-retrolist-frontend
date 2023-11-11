@@ -31,7 +31,7 @@ export const ListSubmitModal = ({
     discord,
     performSocialLogin,
     isExistingDomainName,
-  } = useListAttest()
+  } = useListAttest();
 
   return (
     <Modal
@@ -41,9 +41,7 @@ export const ListSubmitModal = ({
       className="relative"
       onCancel={handleClose}
     >
-      <h2 className="text-2xl">
-        Submit your list
-      </h2>
+      <h2 className="text-2xl">Submit your list</h2>
 
       <p className="text-[#858796] mt-1">
         Follow these steps to submit your list
@@ -56,7 +54,9 @@ export const ListSubmitModal = ({
         </div>
 
         <div>
-          <div>Connect your social profiles to verify authencity of the list</div>
+          <div>
+            Connect your social profiles to verify authencity of the list
+          </div>
         </div>
 
         <Divider />
@@ -64,13 +64,48 @@ export const ListSubmitModal = ({
         <div>
           <div>
             <div>Link X / Twitter</div>
-            <div><span>Linked as:</span> Chomtana</div>
+            {twitter ? (
+              <div>
+                <span>Linked as:</span> {twitter}
+              </div>
+            ) : (
+              <div>Not linked</div>
+            )}
           </div>
 
           <div>
-            <PrimaryButton onClick={() => performSocialLogin('twitter')}>Verify</PrimaryButton>
+            <PrimaryButton onClick={() => performSocialLogin("twitter")}>
+              Verify
+            </PrimaryButton>
           </div>
         </div>
+      </div>
+
+      <div>
+        <div>
+          <div>2</div>
+          <div>Sign your list attestation</div>
+        </div>
+
+        <div>
+          <PrimaryButton
+            onClick={() => {
+              if (domainName) {
+                listSign({
+                  ...state,
+                  domainName,
+                });
+              }
+            }}
+            disabled={!domainName}
+          >
+            Sign
+          </PrimaryButton>
+        </div>
+      </div>
+
+      <div>
+        <PrimaryButton disabled>Claim Domain</PrimaryButton>
       </div>
     </Modal>
   );

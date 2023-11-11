@@ -18,7 +18,7 @@ type ListReducerAction =
   | { type: "new"; impactEvaluationType: ListImpactEvaluationType }
   | { type: "load"; list: ListData }
   // | { type: "fork"; list: ListData }
-  | { type: "updateMetadata"; metadata: ListMetadata; rubric: IRubric }
+  | { type: "updateMetadata"; metadata: ListMetadata; }
   | { type: "updateProjects"; projects: ProjectMetadataSimple[] }
   | { type: "deleteProject"; projectId: string }
   | { type: "updateTotalOp"; totalOp: number; impactEvaluationInput: string }
@@ -56,9 +56,10 @@ const initialList: ListData = {
 
   rubricId: "",
   rubric: null,
-  histories: [],
-
+  categories: [],
   totalOp: 0,
+
+  histories: [],
 
   createdAt: new Date(),
   updatedAt: new Date(),
@@ -104,7 +105,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           listName: action.metadata.listName,
           listDescription: action.metadata.listDescription,
           rubricId: action.metadata.rubricId,
-          rubric: action.rubric,
+          rubric: action.metadata.rubric,
         };
       }
     }

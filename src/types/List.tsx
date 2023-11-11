@@ -27,6 +27,7 @@ export interface ListMetadata {
   // relevantResourceInput: string;
   rubricId: string;
   rubric: IRubric;
+  categories: string[];
 }
 
 export interface ListAttestation {
@@ -49,6 +50,7 @@ export interface ListData extends ListAttestation {
   // forkedFrom: string;
   rubricId: string;
   rubric: IRubric | null;
+  categories: string[];
   totalOp: number;
   histories: ListData[];
   createdAt: Date;

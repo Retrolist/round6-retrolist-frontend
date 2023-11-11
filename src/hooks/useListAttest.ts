@@ -49,14 +49,18 @@ export function useListAttest() {
   ])
 
   const listAttest = useCallback(async () => {
-    if (signature && domainName && twitter && discord) {
-      if (isExistingDomainName) {
+    if (domainName && twitter && discord) {
+      if (signature) {
+        if (isExistingDomainName) {
 
+        } else {
+  
+        }
       } else {
-
+        throw new Error("Attestation is not signed")
       }
     } else {
-      throw new Error("Attestation is not signed")
+      throw new Error("Missing domain")
     }
   }, [
     signature,

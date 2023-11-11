@@ -11,6 +11,7 @@ export const UserDetailForm = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [state, dispatch] = useCreateListReducer();
+
   const rubrics = useRubrics();
 
   return (
@@ -30,8 +31,11 @@ export const UserDetailForm = () => {
 
           dispatch({
             type: "updateMetadata",
-            metadata: data,
-            rubric,
+            metadata: {
+              ...data,
+              rubric,
+              categories: rubrics.find(x => x._id == rubric._id)?.categories || [],
+            },
           });
 
           navigate("/lists/create/choose-projects");
@@ -90,10 +94,10 @@ export const UserDetailForm = () => {
         </div>
       </Form>
 
-      {/* <ListSubmitModal
+      <ListSubmitModal
         isModalOpen={true}
         handleClose={() => {}}
-      /> */}
+      />
     </div>
   );
 };
