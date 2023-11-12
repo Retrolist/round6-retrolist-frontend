@@ -6,7 +6,7 @@ import { useAccount, useContractRead, useContractWrite, useNetwork } from "wagmi
 import { listAttestSignature, listMetadataPtr } from "../utils/list";
 import { buildSignatureHex } from "../utils/common";
 import { useEthersSigner } from "../utils/wagmi-ethers";
-import { namehash } from "viem";
+import { namehash, parseEther } from "viem";
 import { useTransactionReceiptFn } from "./useTransactionReceiptFn";
 import { ethers } from "ethers";
 
@@ -140,7 +140,7 @@ export function useListAttest() {
                 'setTextWithRef',
                 [
                   node,
-                  process.env.VITE_SOCIAL_REF_ID,
+                  import.meta.env.VITE_SOCIAL_REF_ID,
                   'com.twitter',
                   twitter,
                 ],
@@ -156,7 +156,7 @@ export function useListAttest() {
                 'setTextWithRef',
                 [
                   node,
-                  process.env.VITE_SOCIAL_REF_ID,
+                  import.meta.env.VITE_SOCIAL_REF_ID,
                   'com.discord',
                   discord,
                 ],
@@ -185,7 +185,7 @@ export function useListAttest() {
               controllerAddress: "0xB02EDc247246ACD78294c62F403B3e64D5917031",
               chainId: chain?.id,
       
-              name,
+              name: domainName.split('.')[0],
               owner: address,
               secret: '0x' + Buffer.from(secret).toString("hex"),
               resolver: "0x888811Da0c852089cc8DFE6f3bAd190a46acaAE6",
@@ -214,7 +214,8 @@ export function useListAttest() {
                 listName,
                 listMetadataPtr(listId),
                 signature,
-              ]
+              ],
+              value: parseEther('0.0009')
             })
 
             return await getTransactionReceipt(tx.hash)
