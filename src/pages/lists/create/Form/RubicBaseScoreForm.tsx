@@ -68,12 +68,9 @@ export const RubricBaseScoreForm = () => {
 
   return (
     <div className="p-6 bg-white rounded-lg border border-[#EAECF0]">
-      <div>Rubric-based</div>
+      <div>Rubric-based Scoring</div>
       <p className="text-[#4C4E64AD] text-sm mt-2">
-        The Rubric for grading initial proposals should be used by Sub-Committee
-        members based on the criteria in the table below. To pass from
-        Preliminary Review to the Final Review, a proposer much achieve an
-        average score of 20 or higher from the two preliminary reviewers.
+        Grade projects in the list with selected rubric
       </p>
       <button
         className="flex items-center gap-2 mt-2.5 border border-[#00A0E6] text-[#00A0E6] rounded-lg py-2.5 px-4"
@@ -126,7 +123,7 @@ export const RubricBaseScoreForm = () => {
           className="mt-6"
         >
           <TextArea
-            placeholder="How did you evaluate the impact of projects? Help other badgeholders understand your methodology."
+            placeholder="Ex: This list should receive the maximum OP allocation for their contribution to the OP Stack technology."
             size="large"
           />
         </Form.Item>

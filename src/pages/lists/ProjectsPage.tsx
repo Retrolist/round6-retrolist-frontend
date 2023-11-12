@@ -12,7 +12,7 @@ import {
 
 const { Search } = Input;
 
-export default function ListsPage() {
+export default function ProjectsPage() {
   const [ search, setSearch ] = useState('')
   const [ categories, setCategories ] = useState<string[]>([])
   const [ eligibleFilter, setEligibleFilter ] = useState('')
@@ -178,7 +178,7 @@ export default function ListsPage() {
   );
 }
 
-export const ListsPageRoute = {
+export const ProjectsPageRoute = {
   path: "/",
-  element: <ListsPage />,
+  element: <ProjectsPage />,
 };

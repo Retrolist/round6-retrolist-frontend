@@ -103,6 +103,6 @@ export const UserDetailForm = () => {
 };
 
 export const CreateListUserDetailFormRoute = {
-  path: "/lists/create/user-detail",
+  path: "/lists/create/list-detail",
   element: <UserDetailForm />,
 };

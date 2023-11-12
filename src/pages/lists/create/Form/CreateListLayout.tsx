@@ -17,11 +17,11 @@ export default function CreateListInfoPageLayout({
         separator={<RightOutlined />}
         items={[
           {
-            href: "",
+            href: "/",
             title: <HomeOutlined />,
           },
           {
-            href: "",
+            href: "/list",
             title: <span>Lists</span>,
           },
           {
@@ -30,17 +30,17 @@ export default function CreateListInfoPageLayout({
         ]}
       />
       <div className="flex gap-8">
-        <div className="w-2/3">
+        <div className="w-full lg:w-2/3">
           <div className="text-base font-bold mb-3">Create List</div>
           <div className="mb-5 text-xs text-gray-600">
-            Lists are a new form of flexible delegation. Create a List to share
-            your votes with other badgeholders. Be sure to reference some
-            methodology for allocating OP to each project Be sure to check out
-            the guidelines on creating a list: LInk
+            Create a List to share your votes with badgeholders.
           </div>
           {children}
         </div>
-        <CreateListStep />
+
+        <div className="hidden lg:block">
+          <CreateListStep />
+        </div>
       </div>
     </Layout>
   );

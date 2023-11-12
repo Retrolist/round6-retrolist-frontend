@@ -8,8 +8,8 @@ import "./index.css";
 import { RubricBaseScoreFormRoute } from "./pages/lists/create/Form/RubicBaseScoreForm";
 import { SelectProjectFormRoute } from "./pages/lists/create/Form/SelectProjectForm";
 import { SubmitListFormRoute } from "./pages/lists/create/Form/SubmitListForm";
-import { CreateListUserDetailFormRoute } from "./pages/lists/create/Form/UserDetailForm";
-import { ListsPageRoute } from "./pages/lists/ListsPage";
+import { CreateListUserDetailFormRoute } from "./pages/lists/create/Form/ListDetailForm";
+import { ProjectsPageRoute } from "./pages/lists/ProjectsPage";
 import ProjectPage from "./pages/lists/project";
 import { AntdAlertProvider } from "./providers/AntdAlertProvider";
 import { RainbowKitConfigProvider } from "./providers/RainbowKitConfigProvider";
@@ -17,10 +17,10 @@ import { CreateListReducerRouteWrapper } from "./stores/CreateListReducer";
 import SocialOracleCallback from "./pages/optidomains/SocialOracleCallback";
 
 const router = createBrowserRouter([
-  ListsPageRoute,
+  ProjectsPageRoute,
   {
-    ...ListsPageRoute,
-    path: "/lists",
+    ...ProjectsPageRoute,
+    path: "/project",
   },
 
   // Create List

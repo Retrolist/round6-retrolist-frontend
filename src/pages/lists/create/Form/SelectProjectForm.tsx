@@ -139,7 +139,7 @@ export const SelectProjectForm = () => {
         }))} />
         <Divider />
         <div className="flex justify-between">
-          <Link to="/lists/create/user-detail">
+          <Link to="/lists/create/list-detail">
             <SecondaryButton type="button">Back</SecondaryButton>
           </Link>
 

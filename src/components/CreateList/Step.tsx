@@ -1,40 +1,46 @@
 import { Divider } from "antd";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { CreateListStepCard } from "./Card";
 
 export const CreateListStep = () => {
-  const data = useParams();
+  const { pathname } = useLocation();
+
+  // console.log(pathname)
+
   return (
     <div className="flex flex-col">
       <CreateListStepCard
-        title="Your details"
-        description="Please provide your name and email"
+        title="List details"
+        description="Name, description and rubric"
         icon="lucide:user-2"
-        selected
+        selected={pathname == '/lists/create/list-detail'}
       />
       <div className="w-[50px] text-center">
         <Divider type="vertical" className="h-6 my-1.5" />
       </div>
       <CreateListStepCard
         title="Select project"
-        description="A few details about your company"
+        description="Choose projects to be included"
         icon="lucide:flag"
+        selected={pathname == '/lists/create/choose-projects'}
       />
       <div className="w-[50px] text-center">
         <Divider type="vertical" className="h-6 my-1.5" />
       </div>
       <CreateListStepCard
         title="Rubric based score"
-        description="Start collaborating with your team"
+        description="Grade projects using selected rubric"
         icon="tabler:users-plus"
+        selected={pathname == '/lists/create/rubric-score'}
       />
       <div className="w-[50px] text-center">
         <Divider type="vertical" className="h-6 my-1.5" />
       </div>
       <CreateListStepCard
         title="Submit your list"
-        description="Share posts to your social accounts"
+        description="Publish your list on-chain"
         icon="lucide:sparkles"
+        selected={pathname == '/lists/create/submit-list' || pathname == '/lists/create/success'}
       />
     </div>
   );
