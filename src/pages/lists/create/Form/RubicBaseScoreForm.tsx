@@ -64,6 +64,8 @@ export const RubricBaseScoreForm = () => {
     setTotalOp(Math.floor(selectedShare * opPerShare))
   }, [state, totalOpSlider])
 
+  const totalScore = state.rubric ? rubricTotalScore(state.rubric) : 0;
+
   return (
     <div className="p-6 bg-white rounded-lg border border-[#EAECF0]">
       <div>Rubric-based</div>
@@ -91,6 +93,10 @@ export const RubricBaseScoreForm = () => {
             type: "updateTotalOp",
             impactEvaluationInput: data.impactEvaluationInput,
             totalOp,
+          })
+
+          dispatch({
+            type: "finalize",
           })
 
           navigate("/lists/create/submit-list");
@@ -133,7 +139,7 @@ export const RubricBaseScoreForm = () => {
             score: project.score,
             logo: project.project?.profileImageUrl || '',
           }))}
-          totalScore={state.rubric ? rubricTotalScore(state.rubric) : 0}
+          totalScore={state.rubric ? totalScore : 0}
         />
         <Divider />
         <div className="flex justify-between">

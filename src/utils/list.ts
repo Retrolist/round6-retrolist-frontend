@@ -4,12 +4,15 @@ import { IRubric } from "../types/Rubric";
 import { Delegated } from "@ethereum-attestation-service/eas-sdk";
 import { Signer } from "ethers";
 import { AbiCoder } from "ethers";
+import { shadeColor } from "./common";
 
 // const LIST_ATTESTATION_DEADLINE = 1704067200n;
 const LIST_ATTESTATION_DEADLINE = 0n;
 const LIST_SCHEMA = "0x3e3e2172aebb902cf7aa6e1820809c5b469af139e7a4265442b1c22b97c6b2a5";
 
-export function listContentView(data: ListData) {
+const PIE_CHART_BASE_COLOR = '#FF0420';
+
+export function listContentView(data: ListData, sort = false) {
   const result: ListContentView[] = []
 
   for (const item of data.listContent) {
@@ -26,6 +29,10 @@ export function listContentView(data: ListData) {
       score,
       project,
     })
+  }
+
+  if (sort) {
+    result.sort((a, b) => b.score - a.score)
   }
 
   return result
@@ -81,4 +88,23 @@ export async function listAttestSignature(listId: string, listName: string, sign
   }, signer)
 
   return signature
+}
+
+export function listPieChart(data: ListData) {
+  const chart: { title: string, value: number, color: string }[] = []
+  const listContent = listContentView(data, true)
+
+  let accOp = 0;
+
+  for (let content of listContent) {
+    chart.push({
+      title: content.project?.displayName || '',
+      color: shadeColor(PIE_CHART_BASE_COLOR, (accOp / data.totalOp * 100) - 50),
+      value: content.OPAmount,
+    })
+
+    accOp += content.OPAmount
+  }
+
+  return chart
 }

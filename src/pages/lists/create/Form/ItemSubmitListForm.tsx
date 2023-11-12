@@ -4,12 +4,14 @@ interface ItemSubmitListFormProps {
   title: string;
   score: number;
   description: string;
+  comment?: string;
 }
 
 export const ItemSubmitListForm = ({
   title,
   description,
   score,
+  comment,
 }: ItemSubmitListFormProps) => {
   return (
     <div>
@@ -31,13 +33,13 @@ export const ItemSubmitListForm = ({
         </div>
       </div>
 
-      <div className="mt-1">
-        <p className="text-[12px] text-[#4C4E64AD]">
-          Comment : Thank you for participating in RetroPGF 3. Please help us
-          improve the process by providing feedback on your experience as a
-          badgeholder!
-        </p>
-      </div>
+      {comment && (
+        <div className="mt-1">
+          <p className="text-[12px] text-[#4C4E64AD]">
+            Comment : {comment}
+          </p>
+        </div>
+      )}
 
       <Divider dashed className="my-3 border-gray-300" />
     </div>

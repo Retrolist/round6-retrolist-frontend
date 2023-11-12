@@ -263,7 +263,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           if (totalScore > 0) {
             for (const project of projects) {
               project.OPAmount =
-                (project.score / totalScore) * newState.totalOp;
+                Math.floor((project.score / totalScore) * newState.totalOp);
             }
           }
 
