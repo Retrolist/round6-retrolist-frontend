@@ -49,6 +49,10 @@ export function rubricTotalScore(rubric: IRubric) {
   return score;
 }
 
+export function listMetadataPtr(listId: string) {
+  return `https://retropgf3.retrolist.app/lists/attestation/${listId}`
+}
+
 export async function listAttestSignature(listId: string, listName: string, signer: Signer, refUID = "0x0000000000000000000000000000000000000000000000000000000000000000") {
   const delegate = new Delegated({
     address: "0x4200000000000000000000000000000000000021",
@@ -71,7 +75,7 @@ export async function listAttestSignature(listId: string, listName: string, sign
       [
         listName,
         2,
-        `https://retropgf3.retrolist.app/lists/attestation/${listId}`
+        listMetadataPtr(listId),
       ],
     )
   }, signer)

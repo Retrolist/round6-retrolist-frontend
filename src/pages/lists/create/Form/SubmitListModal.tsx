@@ -7,7 +7,7 @@ import PrimaryButton from "../../../../components/buttons/PrimaryButton";
 import { useListAttest } from "../../../../hooks/useListAttest";
 import { CheckCircleTwoTone, CheckCircleFilled } from '@ant-design/icons';
 
-interface ListSubmitModalProps {
+interface SubmitListModalProps {
   isModalOpen: boolean;
   handleClose: () => void;
 }
@@ -35,10 +35,10 @@ function DividerDarker({ dashed = false }) {
 const BOX_CLASSNAME = "mt-3 bg-gray-100 rounded-xl p-3 border border-gray-300"
 const BOX_CHECKED_CLASSNAME = "mt-3 bg-green-100 rounded-xl p-3 border border-2 border-green-500"
 
-export const ListSubmitModal = ({
+export const SubmitListModal = ({
   isModalOpen,
   handleClose,
-}: ListSubmitModalProps) => {
+}: SubmitListModalProps) => {
   const [state, dispatch] = useCreateListReducer();
 
   const {

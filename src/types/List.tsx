@@ -103,8 +103,6 @@ export interface ListSubmitDto {
   impactEvaluationType: string;
   listContent: ListContentWithRubrics[];
 
-  categories: string[];
-
   domainName: string;
   rubricId: string;
 }

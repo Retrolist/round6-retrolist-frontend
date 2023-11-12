@@ -8,7 +8,7 @@ import { ListData } from "../../../../types/List";
 import PrimaryButton from "../../../../components/buttons/PrimaryButton";
 import SecondaryButton from "../../../../components/buttons/SecondaryButton";
 import { ReactNode, useState } from "react";
-import { ListSubmitModal } from "./ListSubmitModal";
+import { SubmitListModal } from "./SubmitListModal";
 const Comment = () => {
   return (
     <>
@@ -231,10 +231,10 @@ export const SubmitListForm = () => {
           <PrimaryButton onClick={() => setShowSubmitModal(true)}>Submit</PrimaryButton>
         </div>
 
-        <ListSubmitModal
+        <SubmitListModal
           isModalOpen={showSubmitModal}
           handleClose={() => setShowSubmitModal(false)}
-        ></ListSubmitModal>
+        ></SubmitListModal>
       </SubmitListView>
     </div>
   );
