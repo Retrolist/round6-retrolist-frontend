@@ -1,10 +1,11 @@
 import { cloneDeep, max } from "lodash";
 import { ListContentView, ListData } from "../types/List";
 import { IRubric } from "../types/Rubric";
-import { Delegated } from "@ethereum-attestation-service/eas-sdk";
+import { Delegated, EAS } from "@ethereum-attestation-service/eas-sdk";
 import { Signer } from "ethers";
 import { AbiCoder } from "ethers";
 import { shadeColor } from "./common";
+import { encodeAbiParameters, parseAbiParameters } from "viem";
 
 // const LIST_ATTESTATION_DEADLINE = 1704067200n;
 const LIST_ATTESTATION_DEADLINE = 0n;
@@ -61,13 +62,26 @@ export function listMetadataPtr(listId: string) {
 }
 
 export async function listAttestSignature(listId: string, listName: string, signer: Signer, refUID = "0x0000000000000000000000000000000000000000000000000000000000000000") {
+  const chainId = (await signer.provider!.getNetwork()).chainId;
+
+  const testnetMode = import.meta.env.VITE_DEV_MODE == "1"
+
+  if ((testnetMode && chainId != 420n) || (!testnetMode && chainId != 10n)) {
+    throw new Error("Please switch to Optimism")
+  }
+
+  const eas = new EAS("0x4200000000000000000000000000000000000021")
+  eas.connect(signer)
+
   const delegate = new Delegated({
     address: "0x4200000000000000000000000000000000000021",
-    chainId: BigInt(10),
+    chainId: chainId,
     version: '1.0.0',
   })
 
   const address = await signer.getAddress()
+
+  console.log(delegate.getDomainTypedData())
 
   const signature = await delegate.signDelegatedAttestation({
     schema: LIST_SCHEMA,
@@ -77,15 +91,18 @@ export async function listAttestSignature(listId: string, listName: string, sign
     revocable: true,
     refUID,
     value: 0n,
-    data: AbiCoder.defaultAbiCoder().encode(
-      ['string', 'uint256', 'string'],
+    data: encodeAbiParameters(
+      parseAbiParameters('string a, uint256 b, string c'),
       [
         listName,
-        2,
+        2n,
         listMetadataPtr(listId),
       ],
-    )
+    ),
+    nonce: await eas.getNonce(address),
   }, signer)
+
+  console.log(signature)
 
   return signature
 }

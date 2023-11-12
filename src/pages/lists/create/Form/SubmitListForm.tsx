@@ -19,8 +19,9 @@ export const SubmitListView = ({ state, children }: { state: ListData, children:
   };
 
   const listContent = listContentView(state, true)
-
   const totalScore = state.rubric ? rubricTotalScore(state.rubric) : 0;
+
+  const [ activeKeys, setActiveKeys ] = useState(state.listContent.length > 0 ? [state.listContent[0].RPGF3_Application_UID] : [])
 
   return (
     <div>
@@ -53,7 +54,8 @@ export const SubmitListView = ({ state, children }: { state: ListData, children:
         {listContent.length} projects {state.totalOp.toLocaleString("en-US")} OP allocated
       </div>
       <Collapse
-        defaultActiveKey={["1"]}
+        defaultActiveKey={activeKeys}
+        onChange={() => setActiveKeys(activeKeys)}
         bordered={true}
         items={listContent.map(project => (
           {
@@ -62,7 +64,7 @@ export const SubmitListView = ({ state, children }: { state: ListData, children:
               <>
                 <div className="my-1">
                   <div className="flex gap-3 justify-between">
-                    <div className="flex gap-3 w-1/3">
+                    <div className="flex gap-3 w-full">
                       <div>
                         <img
                           width={40}
@@ -83,7 +85,7 @@ export const SubmitListView = ({ state, children }: { state: ListData, children:
                         </a>
                       </div>
                     </div>
-                    <div className="flex w-1/3">
+                    <div className="flex shrink-0" style={{ flexBasis: 240 }}>
                       <Progress
                         showInfo={false}
                         percent={project.score / totalScore * 100}
@@ -91,7 +93,7 @@ export const SubmitListView = ({ state, children }: { state: ListData, children:
                       />
                       <div>{project.score}/{totalScore}</div>
                     </div>
-                    <div>{(project.OPAmount / state.totalOp * 100).toPrecision(2)}% = {project.OPAmount.toLocaleString('en-US')} OP</div>
+                    <div className="text-right shrink-0" style={{ flexBasis: 140 }}>{(project.OPAmount / state.totalOp * 100).toPrecision(2)}% = {project.OPAmount.toLocaleString('en-US')} OP</div>
                   </div>
                 </div>
               </>

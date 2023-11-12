@@ -42,29 +42,37 @@ export function SiweAuthProvider({
     },
   
     verify: async ({ message, signature }) => {
-      const verifyRes = await fetch(import.meta.env.VITE_SOCIAL_ORACLE_ENDPOINT + '/siwe/verify?testnet=' + import.meta.env.VITE_DEV_MODE, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, signature }),
-        credentials: 'include',
-      });
+      const authEndpoints = [
+        import.meta.env.VITE_SOCIAL_ORACLE_ENDPOINT + '/siwe/verify?testnet=' + import.meta.env.VITE_DEV_MODE,
+        import.meta.env.VITE_API_HOST + '/siwe/verify?testnet=' + import.meta.env.VITE_DEV_MODE,
+      ]
+
+      for (const endpoint of authEndpoints) {
+        const verifyRes = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, signature }),
+          credentials: 'include',
+        });
+    
+        if (verifyRes.ok) {
+          setStatus("authenticated")
+        } else {
+          setStatus("unauthenticated")
   
-      if (verifyRes.ok) {
-        setStatus("authenticated")
-        return true
-      } else {
-        setStatus("unauthenticated")
-
-        try {
-          const data = await verifyRes.json();
-
-          if (data.message) {
-            window.alert(data.message)
+          try {
+            const data = await verifyRes.json();
+  
+            if (data.message) {
+              window.alert(data.message)
+            }
+          } finally {
+            return false
           }
-        } finally {
-          return false
         }
       }
+
+      return true
     },
   
     signOut: async () => {

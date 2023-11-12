@@ -207,16 +207,13 @@ export const SubmitListModal = ({
           <PrimaryButton
             onClick={() => {
               if (domainName) {
-                listSign({
-                  ...state,
-                  domainName,
-                });
+                listAttest()
               }
             }}
             disabled={loading || !domainName || !twitter || !discord || !signature}
             className={"w-full flex justify-center"}
           >
-            {loading ? 'Submitting' : 'Submit and Publish'}
+            {loading && signature ? 'Submitting' : 'Submit and Publish'}
           </PrimaryButton>
         </div>
       </div>
