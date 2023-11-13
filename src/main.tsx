@@ -15,6 +15,8 @@ import { AntdAlertProvider } from "./providers/AntdAlertProvider";
 import { RainbowKitConfigProvider } from "./providers/RainbowKitConfigProvider";
 import { CreateListReducerRouteWrapper } from "./stores/CreateListReducer";
 import SocialOracleCallback from "./pages/optidomains/SocialOracleCallback";
+import { ListsPageRoute } from "./pages/lists/ListsPage";
+import { ListPageRoute } from "./pages/lists/ListPage";
 
 const router = createBrowserRouter([
   ProjectsPageRoute,
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
     ...ProjectsPageRoute,
     path: "/project",
   },
+
+  // View List
+  ListsPageRoute,
+  ListPageRoute,
 
   // Create List
   {

@@ -38,6 +38,8 @@ export const SubmitListView = ({
       : []
   );
 
+  console.log(state)
+
   return (
     <div>
       <div className="flex gap-3">

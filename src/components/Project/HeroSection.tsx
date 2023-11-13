@@ -13,9 +13,8 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
           marginLeft: -16,
           marginRight: -16,
           marginBottom: 16,
-          backgroundColor: "rgb(220, 220, 220)",
+          background: project?.profile.bannerImageUrl ? `url(${project?.profile.bannerImageUrl})` : `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
           backgroundSize: "cover",
-          backgroundImage: `url(${project?.profile.bannerImageUrl})`,
           paddingTop: "37.5%",
         }}
         className="rounded-2xl relative"

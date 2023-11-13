@@ -68,6 +68,7 @@ export interface ListView extends ListData {
 }
 
 export interface ListDto {
+  _id: string;
   listName: string;
   listDescription: string;
   impactEvaluationInput: string;
@@ -75,11 +76,14 @@ export interface ListDto {
   impactEvaluationLink: string;
   impactEvaluationType: string;
   listContent: ListContentWithRubrics[];
+  projectsMetadata: ProjectMetadataSimple[];
 
   status: string;
 
   walletAddress: string;
   domainName: string;
+  twitter: string
+  discord: string
   isBadgeholder: boolean;
   attestationUid: string;
   approvalAttestationUid: string;
