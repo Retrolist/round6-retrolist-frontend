@@ -96,18 +96,34 @@ export function SiweAuthProvider({
       });
       
       if (response.ok) {
-        const data = await response.json()
-        const nowPlus1day = new Date()
-        nowPlus1day.setDate(nowPlus1day.getDate() + 1)
-        
-        if (
-          data.address?.toLowerCase() == address?.toLowerCase() && 
-          data.chainId == chainId &&
-          (!data.expirationTime || nowPlus1day < new Date(data.expirationTime))
-        ) {
-          setStatus('authenticated')
-        } else {
-          setStatus('unauthenticated')
+        const soData = await response.json()
+
+        {
+          const response = await fetch(import.meta.env.VITE_API_HOST + '/siwe/me', {
+            credentials: 'include',
+          });
+  
+          if (response.ok) {
+            const data = await response.json()
+            const nowPlus1day = new Date()
+            nowPlus1day.setDate(nowPlus1day.getDate() + 1)
+            
+            if (
+              soData.address?.toLowerCase() == address?.toLowerCase() && 
+              soData.chainId == chainId &&
+              (!soData.expirationTime || nowPlus1day < new Date(soData.expirationTime)) &&
+
+              data.address?.toLowerCase() == address?.toLowerCase() && 
+              data.chainId == chainId &&
+              (!data.expirationTime || nowPlus1day < new Date(data.expirationTime))
+            ) {
+              setStatus('authenticated')
+            } else {
+              setStatus('unauthenticated')
+            }
+          } else {
+            setStatus('unauthenticated')
+          }
         }
       } else {
         setStatus('unauthenticated')
