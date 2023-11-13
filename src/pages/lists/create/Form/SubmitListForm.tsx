@@ -52,7 +52,7 @@ export const SubmitListView = ({
           </p>
         </div>
         <div>
-          <div className="relative">
+          <div className="relative hidden md:block">
             <PieChart lineWidth={30} data={listPieChart(state)} />
 
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-[20px] text-[#202327]">
@@ -105,7 +105,15 @@ export const SubmitListView = ({
                       </a>
                     </div>
                   </div>
-                  <div className="flex shrink-0" style={{ flexBasis: 240 }}>
+                  <div className="block md:hidden shrink-0" style={{ flexBasis: 100 }}>
+                    <div>{project.score}/{totalScore} ({removeScientificNotation(
+                      ((project.OPAmount / state.totalOp) * 100).toPrecision(2)
+                    )})%</div>
+                    <div>
+                      {project.OPAmount.toLocaleString("en-US")} OP
+                    </div>
+                  </div>
+                  <div className="flex shrink-0 hidden md:block" style={{ flexBasis: 240 }}>
                     <Progress
                       showInfo={false}
                       percent={(project.score / totalScore) * 100}
@@ -116,7 +124,7 @@ export const SubmitListView = ({
                     </div>
                   </div>
                   <div
-                    className="text-right shrink-0"
+                    className="text-right shrink-0 hidden md:block"
                     style={{ flexBasis: 140 }}
                   >
                     {removeScientificNotation(
@@ -149,6 +157,7 @@ export const SubmitListView = ({
             </div>
           ),
           style: panelStyle,
+          showArrow: false,
         }))}
         expandIcon={({ isActive }) => <></>}
         style={{ background: "#FAFAFA" }}
