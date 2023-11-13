@@ -6,7 +6,7 @@ import { publicProvider } from "wagmi/providers/public";
 import { SiweAuthProvider } from "./SiweAuthProvider";
 
 const { chains, publicClient } = configureChains(
-  [optimismGoerli],
+  [import.meta.env.VITE_DEV_MODE == '1' ? optimismGoerli : optimism],
   [publicProvider()]
 );
 
