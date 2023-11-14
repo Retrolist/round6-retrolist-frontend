@@ -1,39 +1,30 @@
-export const ProjectListCard = () => {
+import { ListDto } from "../../types/List";
+
+export const ProjectListCard = ({ list }: { list: ListDto}) => {
+  const totalOp = list.listContent.reduce((acc, x) => acc + x.OPAmount, 0);
+
   return (
     <div className="border bg-white border-[#EAECF0] rounded-lg p-4 mb-2">
       <div className="flex justify-between">
         <div className="flex -space-x-2 overflow-hidden">
-          <img
-            className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-            src="/img/platform/1.png"
-            alt=""
-          />
-          <img
-            className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-            src="/img/platform/2.png"
-            alt=""
-          />
-          <img
-            className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-            src="/img/platform/3.png"
-            alt=""
-          />
-          <img
-            className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
-            src="/img/platform/4.png"
-            alt=""
-          />
+          {list.projectsMetadata.slice(0, 4).map(project => (
+            <img
+              className="inline-block h-8 w-8 rounded-full ring-2 ring-white"
+              src={project.profileImageUrl || "/img/project-placeholder.svg"}
+              alt=""
+            />
+          ))}
         </div>
         <div className="rounded-full border border-[#B2DDFF] text-[#175CD3] bg-[#EFF8FF] px-3 py-1">
-          Qualified
+          {list.status}
         </div>
       </div>
       <div className="flex justify-between text-[#272930DE] mt-4">
-        <div className="text-sm">List Demo</div>
-        <div className="text-base font-medium">10,000 OP</div>
+        <div className="text-sm">{list.listName}</div>
+        <div className="text-base font-medium">{totalOp} OP</div>
       </div>
       <p className="text-[10px] text-[#4C4E64AD]">
-        Rubric-based list creation system will be live on Nov, 6th
+        {list.listDescription}
       </p>
     </div>
   );

@@ -6,6 +6,7 @@ import { useAccount } from "wagmi";
 import useAccountSiwe from "../../hooks/useAccountSiwe";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { ProjectListCard } from "../../components/Project/ListsCard";
 
 export default function ListsPage() {
   const { address, isConnected } = useAccountSiwe()
@@ -21,7 +22,7 @@ export default function ListsPage() {
     if (address && isConnected) {
       const response = await api.get("/lists", {
         params: {
-          status: "all",
+          status: "attested",
           wallet: address,
         }
       })
@@ -32,18 +33,20 @@ export default function ListsPage() {
   useEffect(() => {
     fetchList()
   }, [ address, isConnected ])
-  
-  if (!lists || !myLists) {
-    return (
-      <Layout>
-        <div>Loading...</div>
-      </Layout>
-    )
-  }
 
   return (
     <Layout>
+      <div>
+        <div>My Lists</div>
 
+        {myLists ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {myLists.map(list => (
+              <ProjectListCard list={list}></ProjectListCard>
+            ))}
+          </div>
+        ) : <div>Loading...</div>}
+      </div>
     </Layout>
   )
 }

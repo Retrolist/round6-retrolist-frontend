@@ -17,6 +17,7 @@ import { CreateListReducerRouteWrapper } from "./stores/CreateListReducer";
 import SocialOracleCallback from "./pages/optidomains/SocialOracleCallback";
 import { ListsPageRoute } from "./pages/lists/ListsPage";
 import { ListPageRoute } from "./pages/lists/ListPage";
+import { SubmitListSuccessRoute } from "./pages/lists/create/Form/SubmitListSuccess";
 
 const router = createBrowserRouter([
   ProjectsPageRoute,
@@ -38,6 +39,8 @@ const router = createBrowserRouter([
       SelectProjectFormRoute,
       RubricBaseScoreFormRoute,
       SubmitListFormRoute,
+      SubmitListSuccessRoute,
+
       // CreateListTypePageRoute,
       // CreateListInfoPageRoute,
       // CreateListChooseProjectsPageRoute,

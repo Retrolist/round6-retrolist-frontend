@@ -6,6 +6,7 @@ import { Signer } from "ethers";
 import { AbiCoder } from "ethers";
 import { shadeColor } from "./common";
 import { encodeAbiParameters, parseAbiParameters } from "viem";
+import badgeholderAttestation from "../dataset/badgeholderAttestation.json"
 
 // const LIST_ATTESTATION_DEADLINE = 1704067200n;
 const LIST_ATTESTATION_DEADLINE = 0n;
@@ -76,7 +77,7 @@ export async function listAttestSignature(listId: string, listName: string, sign
   const delegate = new Delegated({
     address: "0x4200000000000000000000000000000000000021",
     chainId: chainId,
-    version: '1.0.0',
+    version: await eas.getVersion(),
   })
 
   const address = await signer.getAddress()
@@ -124,4 +125,8 @@ export function listPieChart(data: ListData) {
   }
 
   return chart
+}
+
+export function getBadgeholderAttestationUid(address: string) {
+  return (badgeholderAttestation as {[x: string]: string})[address]
 }

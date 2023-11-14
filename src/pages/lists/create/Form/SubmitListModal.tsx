@@ -6,6 +6,7 @@ import { CommentAndScore } from "../../../../types/List";
 import PrimaryButton from "../../../../components/buttons/PrimaryButton";
 import { useListAttest } from "../../../../hooks/useListAttest";
 import { CheckCircleTwoTone, CheckCircleFilled } from '@ant-design/icons';
+import { useNavigate } from "react-router-dom";
 
 interface SubmitListModalProps {
   isModalOpen: boolean;
@@ -39,6 +40,7 @@ export const SubmitListModal = ({
   isModalOpen,
   handleClose,
 }: SubmitListModalProps) => {
+  const navigate = useNavigate()
   const [state, dispatch] = useCreateListReducer();
 
   const {
@@ -205,9 +207,16 @@ export const SubmitListModal = ({
 
         <div>
           <PrimaryButton
-            onClick={() => {
+            onClick={async () => {
               if (domainName) {
-                listAttest()
+                try {
+                  await listAttest()
+
+                  navigate("/lists/create/success")
+                } catch (err: any) {
+                  console.error(err)
+                  message.error(err.shortMessage || err.message || 'List signing failed!')
+                }
               }
             }}
             disabled={loading || !domainName || !twitter || !discord || !signature}

@@ -20,9 +20,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <Link to="/" className="py-2 px-3">
                 <div>Projects</div>
               </Link>
-              {/* <Link to="/list" className="py-2 px-3">
+              <Link to="/list" className="py-2 px-3">
                 <div>Lists</div>
-              </Link> */}
+              </Link>
               {/* <Link to="/" className="py-2 px-3">
                 <div>My Lists</div>
               </Link> */}
@@ -49,9 +49,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Link to="/" className="py-2 px-3">
               <div>Projects</div>
             </Link>
-            {/* <Link to="/list" className="py-2 px-3">
+            <Link to="/list" className="py-2 px-3">
               <div>Lists</div>
-            </Link> */}
+            </Link>
             {/* <Link to="/" className="py-2 px-3">
               <div>My Lists</div>
             </Link> */}
