@@ -6,6 +6,7 @@ import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { useRubrics } from "../../../../hooks/useRubrics";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { SubmitListModal } from "./SubmitListModal";
+import { SIMPLE_REQUIRED } from "../../../../utils/form";
 
 export const UserDetailForm = () => {
   const navigate = useNavigate();
@@ -23,10 +24,10 @@ export const UserDetailForm = () => {
         onFinish={(data) => {
           console.log(data);
 
-          const rubric = rubrics.find(rubric => rubric._id == data.rubricId);
+          const rubric = rubrics.find((rubric) => rubric._id == data.rubricId);
 
           if (!rubric) {
-            return message.error("Please choose a rubric")
+            return message.error("Please choose a rubric");
           }
 
           dispatch({
@@ -34,7 +35,8 @@ export const UserDetailForm = () => {
             metadata: {
               ...data,
               rubric,
-              categories: rubrics.find(x => x._id == rubric._id)?.categories || [],
+              categories:
+                rubrics.find((x) => x._id == rubric._id)?.categories || [],
             },
           });
 
@@ -46,11 +48,17 @@ export const UserDetailForm = () => {
           name="listName"
           required={true}
           style={{ color: "##858796" }}
+          rules={SIMPLE_REQUIRED}
         >
           <Input size="large" />
         </Form.Item>
 
-        <Form.Item label="Description" name="listDescription" required={true}>
+        <Form.Item
+          label="Description"
+          name="listDescription"
+          required={true}
+          rules={SIMPLE_REQUIRED}
+        >
           <Input size="large" />
         </Form.Item>
 
@@ -61,7 +69,12 @@ export const UserDetailForm = () => {
           <Input prefix="https://" size="large" />
         </Form.Item> */}
 
-        <Form.Item label="Select rubric" name="rubricId" required={true}>
+        <Form.Item
+          label="Select rubric"
+          name="rubricId"
+          required={true}
+          rules={SIMPLE_REQUIRED}
+        >
           <Select
             placeholder="Select rubric type"
             size="large"
@@ -74,15 +87,19 @@ export const UserDetailForm = () => {
 
         <button
           className="flex items-center gap-2 mt-2.5 border border-[#00A0E6] text-[#00A0E6] rounded-lg py-2.5 px-4 mb-4"
-          onClick={() => window.open("https://docs.google.com/spreadsheets/d/16E2_RSRXbLIBZMfa9YLVdF56ll1bT6fHfZ7pdi058OE/edit?usp=sharing")}
+          onClick={() =>
+            window.open(
+              "https://docs.google.com/spreadsheets/d/16E2_RSRXbLIBZMfa9YLVdF56ll1bT6fHfZ7pdi058OE/edit?usp=sharing"
+            )
+          }
         >
           <Icon icon="lucide:file-text" />
           <div>Rubric Details</div>
         </button>
 
         <div className="text-[16px] text-[#4C4E64AD] mb-8">
-          In rubric mode, rubrics details are automatically appended into
-          the impact evaluation description and the impact evaluation link is
+          In rubric mode, rubrics details are automatically appended into the
+          impact evaluation description and the impact evaluation link is
           generated automatically.
         </div>
         <Divider />

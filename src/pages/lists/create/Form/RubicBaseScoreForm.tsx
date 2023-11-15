@@ -118,7 +118,6 @@ export const RubricBaseScoreForm = () => {
         <Form.Item
           label="Impact evaluation"
           name="impactEvaluationInput"
-          required={true}
           style={{ color: "##858796" }}
           className="mt-6"
         >

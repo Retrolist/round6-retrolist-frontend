@@ -3,8 +3,10 @@ import { ListDto } from "../../types/List";
 export const ProjectListCard = ({ list }: { list: ListDto}) => {
   const totalOp = list.listContent.reduce((acc, x) => acc + x.OPAmount, 0);
 
+  console.log(list)
+
   return (
-    <div className="border bg-white border-[#EAECF0] rounded-lg p-4 mb-2">
+    <div className="border bg-white border-[#EAECF0] rounded-lg p-4 mb-2 hover:cursor-pointer hover:border-gray-400">
       <div className="flex justify-between">
         <div className="flex -space-x-2 overflow-hidden">
           {list.projectsMetadata.slice(0, 4).map(project => (

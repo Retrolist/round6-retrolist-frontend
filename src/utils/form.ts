@@ -1,0 +1,2 @@
+export const SIMPLE_REQUIRED = [{ required: true, message: 'Required' }]
+export const ALPHA_HYPHEN_REQUIRED = [{ required: true, pattern: /^[a-z\-0-9]*$/, message: "Only lowercase characters (a-z) and hyphen (-) are valid" }]
