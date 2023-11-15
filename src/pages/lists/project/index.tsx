@@ -148,7 +148,7 @@ export default function ProjectPage() {
                 )}
               </div>
             </div>
-            <div className="w-full md:w-1/4">
+            {/* <div className="w-full md:w-1/4">
               <div className="text-base text-[#858796]">
                 Included in lists (40)
               </div>
@@ -156,7 +156,7 @@ export default function ProjectPage() {
                 <ProjectListCard />
                 <ProjectListCard />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </Layout>
