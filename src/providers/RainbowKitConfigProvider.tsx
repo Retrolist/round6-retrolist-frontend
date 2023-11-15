@@ -3,15 +3,16 @@ import { ReactNode } from "react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
 import { optimism, optimismGoerli } from "wagmi/chains";
 import { publicProvider } from "wagmi/providers/public";
+import { SiweAuthProvider } from "./SiweAuthProvider";
 
 const { chains, publicClient } = configureChains(
-  [optimismGoerli],
+  [import.meta.env.VITE_DEV_MODE == '1' ? optimismGoerli : optimism],
   [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
   appName: "RetroList",
-  projectId: "YOUR_PROJECT_ID",
+  projectId: "f670e3d45e24922bea0541d7aa2862b7",
   chains,
 });
 
@@ -28,7 +29,9 @@ export function RainbowKitConfigProvider({
 }) {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
+      <SiweAuthProvider>
+        <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
+      </SiweAuthProvider>
     </WagmiConfig>
   );
 }

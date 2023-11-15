@@ -4,6 +4,14 @@ export interface ProjectQueryOptions {
   orderBy?: string
   seed?: string
   limit?: number
+  approved?: boolean
+}
+
+export interface ProjectMetadataSimple {
+  id: string
+  displayName: string
+  profileImageUrl: string
+  bio: string
 }
 
 export interface ProjectMetadata {

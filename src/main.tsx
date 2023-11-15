@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -6,43 +5,62 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "@rainbow-me/rainbowkit/styles.css";
 import "./index.css";
 
-import { CreateListChooseProjectsPageRoute } from "./pages/lists/create/CreateListChooseProjectsPage";
-import { CreateListClassicScoringPageRoute } from "./pages/lists/create/CreateListClassicScoringPage";
-import { CreateListFinalizePageRoute } from "./pages/lists/create/CreateListFinalizePage";
-import { CreateListInfoPageRoute } from "./pages/lists/create/CreateListInfoPage";
-import { CreateListRubricPageRoute } from "./pages/lists/create/CreateListRubricPage";
-import { CreateListRubricScoringPageRoute } from "./pages/lists/create/CreateListRubricScoringPage";
-import { CreateListTypePageRoute } from "./pages/lists/create/CreateListTypePage";
-import { ListsPageRoute } from "./pages/lists/ListsPage";
+import { RubricBaseScoreFormRoute } from "./pages/lists/create/Form/RubicBaseScoreForm";
+import { SelectProjectFormRoute } from "./pages/lists/create/Form/SelectProjectForm";
+import { SubmitListFormRoute } from "./pages/lists/create/Form/SubmitListForm";
+import { CreateListUserDetailFormRoute } from "./pages/lists/create/Form/ListDetailForm";
+import { ProjectsPageRoute } from "./pages/lists/ProjectsPage";
 import ProjectPage from "./pages/lists/project";
 import { AntdAlertProvider } from "./providers/AntdAlertProvider";
 import { RainbowKitConfigProvider } from "./providers/RainbowKitConfigProvider";
 import { CreateListReducerRouteWrapper } from "./stores/CreateListReducer";
+import SocialOracleCallback from "./pages/optidomains/SocialOracleCallback";
+import { ListsPageRoute } from "./pages/lists/ListsPage";
+import { ListPageRoute } from "./pages/lists/ListPage";
+import { SubmitListSuccessRoute } from "./pages/lists/create/Form/SubmitListSuccess";
 
 const router = createBrowserRouter([
-  ListsPageRoute,
+  ProjectsPageRoute,
   {
-    ...ListsPageRoute,
-    path: "/lists",
+    ...ProjectsPageRoute,
+    path: "/project",
   },
+
+  // View List
+  ListsPageRoute,
+  ListPageRoute,
 
   // Create List
   {
     path: "/lists/create",
     element: <CreateListReducerRouteWrapper />,
     children: [
-      CreateListTypePageRoute,
-      CreateListInfoPageRoute,
-      CreateListChooseProjectsPageRoute,
-      CreateListRubricPageRoute,
-      CreateListRubricScoringPageRoute,
-      CreateListClassicScoringPageRoute,
-      CreateListFinalizePageRoute,
+      CreateListUserDetailFormRoute,
+      SelectProjectFormRoute,
+      RubricBaseScoreFormRoute,
+      SubmitListFormRoute,
+      SubmitListSuccessRoute,
+
+      // CreateListTypePageRoute,
+      // CreateListInfoPageRoute,
+      // CreateListChooseProjectsPageRoute,
+      // CreateListRubricPageRoute,
+      // CreateListRubricScoringPageRoute,
+      // CreateListClassicScoringPageRoute,
+      // CreateListFinalizePageRoute,
     ],
   },
+
+  // Project
   {
     path: "/project/:projectId",
     element: <ProjectPage />,
+  },
+
+  // Opti.domains
+  {
+    path: "/social-oracle-callback",
+    element: <SocialOracleCallback />,
   },
 ]);
 

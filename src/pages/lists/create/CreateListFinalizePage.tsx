@@ -17,7 +17,7 @@ export default function CreateListFinalizePage() {
   useEffect(() => {
     dispatch({
       type: "finalize",
-      totalOP: 30000000,
+      // totalOP: 30000000,
     })
   }, [])
 
@@ -80,9 +80,9 @@ export default function CreateListFinalizePage() {
 
               {state.impactEvaluationType == ListImpactEvaluationType.RUBRIC && (
                 <div>
-                  {project.comment && <div className="mb-1">Comment: {project.comment}</div>}
+                  {/* {project.comment && <div className="mb-1">Comment: {project.comment}</div>} */}
 
-                  <ul>
+                  {/* <ul>
                     {Object.entries(project.evaluation).map(([rubricId, score]) => {
                       const rubric = state.rubrics.find(x => x.id == rubricId)
                       const scoreLabel = rubric?.scores[score]
@@ -91,7 +91,7 @@ export default function CreateListFinalizePage() {
                         <li>{rubric?.title}: {score} - {scoreLabel}</li>
                       )
                     })}
-                  </ul>
+                  </ul> */}
                 </div>
               )}
             </div>

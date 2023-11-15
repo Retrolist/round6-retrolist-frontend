@@ -1,53 +1,45 @@
-import { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react"
 import Layout from "../../components/Layout";
+import { api } from "../../utils/api";
+import { ListDto } from "../../types/List";
+import { useAccount } from "wagmi";
+import useAccountSiwe from "../../hooks/useAccountSiwe";
+import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { ProjectListCard } from "../../components/Project/ListsCard";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
-import { ProjectCard } from "../../components/Project/Card";
-import { useProjects } from "../../hooks/useProjects";
-import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryButton";
-import InfiniteScroll from "react-infinite-scroller";
-import { Alert, Input } from 'antd';
-import {
-  SearchOutlined,
-} from '@ant-design/icons';
-
-const { Search } = Input;
 
 export default function ListsPage() {
-  const [ search, setSearch ] = useState('')
-  const [ categories, setCategories ] = useState<string[]>([])
-  const [ eligibleFilter, setEligibleFilter ] = useState('')
-  const [ seed, setSeed ] = useState(Math.floor(Math.random() * 1000000000).toString())
+  const { address, isConnected } = useAccountSiwe()
+  const [ lists, setLists ] = useState<ListDto[] | null>(null)
+  const [ myLists, setMyLists ] = useState<ListDto[] | null>(null)
 
-  const setCategory = useCallback((category?: string) => {
-    if (category) {
-      setCategories([category])
-    } else {
-      setCategories([])
+  const fetchList = useCallback(async () => {
+    {
+      const response = await api.get("/lists")
+      setLists(response.data)
     }
-  }, [setCategories])
 
-  const {
-    projects,
-    loading,
-    isError,
-    hasNext,
-    refreshProjects,
-    paginate,
-  } = useProjects({
-    search,
-    categories,
-    seed,
-    orderBy: search ? 'alphabeticalAZ' : 'shuffle',
-  })
+    if (address && isConnected) {
+      const response = await api.get("/lists", {
+        params: {
+          status: "attested",
+          wallet: address,
+        }
+      })
+      setMyLists(response.data)
+    }
+  }, [ setLists, setMyLists, address, isConnected ])
 
-  // console.log(projects)
-
-  // console.log(search)
+  useEffect(() => {
+    fetchList()
+  }, [ address, isConnected ])
 
   return (
     <Layout>
       <LayoutSideInfo>
         <div>
+
           {/* <div className="mb-5">
             <Alert
               message="My project is Removed! What to do?"
@@ -160,25 +152,22 @@ export default function ListsPage() {
             />
           </div>
 
-          <InfiniteScroll
-            pageStart={0}
-            loadMore={paginate}
-            hasMore={hasNext}
-            loader={<div>Loading...</div>}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {projects.filter(project => project.prelimResult.toLowerCase().indexOf(eligibleFilter) != -1).map((project) => (
-                <ProjectCard project={project} />
+          {myLists ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {myLists.map(list => (
+                <Link to={"/list/" + list._id}>
+                  <ProjectListCard list={list}></ProjectListCard>
+                </Link>
               ))}
             </div>
-          </InfiniteScroll>
+          ) : <div>Loading...</div>}
         </div>
       </LayoutSideInfo>
     </Layout>
-  );
+  )
 }
 
 export const ListsPageRoute = {
-  path: "/",
+  path: "/list",
   element: <ListsPage />,
 };

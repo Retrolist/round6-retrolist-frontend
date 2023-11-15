@@ -30,10 +30,10 @@ export default function CreateListRubricPage() {
             onFinish={(data) => {
               console.log(data);
 
-              dispatch({
-                type: "updateRubrics",
-                rubrics: data.rubrics,
-              })
+              // dispatch({
+              //   type: "updateRubrics",
+              //   rubrics: data.rubrics,
+              // })
 
               navigate("/lists/create/rubric-scoring")
             }}

@@ -1,19 +1,18 @@
-import React, { useEffect } from "react";
+import { Form } from "antd";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../../../components/Layout";
-import { useCreateListReducer } from "../../../stores/CreateListReducer";
-import { Form, Input } from "antd";
-import TextArea from "antd/es/input/TextArea";
-import { ListImpactEvaluationType } from "../../../types/List";
 import PrimaryButton from "../../../components/buttons/PrimaryButton";
 import SecondaryButton from "../../../components/buttons/SecondaryButton";
-import { Link, useNavigate } from "react-router-dom";
+import { useCreateListReducer } from "../../../stores/CreateListReducer";
+import { ListImpactEvaluationType } from "../../../types/List";
 
 const MOCK_PROJECT_UIDS = [
-  'optidomains',
-  'bored-town',
-  'bored-artist',
-  'laika',
-]
+  "optidomains",
+  "bored-town",
+  "bored-artist",
+  "laika",
+];
 
 export default function CreateListChooseProjectsPage() {
   const navigate = useNavigate();
@@ -22,17 +21,17 @@ export default function CreateListChooseProjectsPage() {
 
   useEffect(() => {
     if (state.listContent.length == 0) {
-      dispatch({
-        type: "updateProjects",
-        projectUids: MOCK_PROJECT_UIDS,
-      })
+      // dispatch({
+      //   type: "updateProjects",
+      //   projectUids: MOCK_PROJECT_UIDS,
+      // });
     }
-  }, [state])
+  }, [state]);
 
   useEffect(() => {
-    form.setFieldsValue(state)
-    console.log(state.listContent)
-  }, [state])
+    form.setFieldsValue(state);
+    console.log(state.listContent);
+  }, [state]);
 
   return (
     <Layout>
@@ -55,10 +54,12 @@ export default function CreateListChooseProjectsPage() {
               //   metadata: data,
               // })
 
-              if (state.impactEvaluationType == ListImpactEvaluationType.RUBRIC) {
-                navigate("/lists/create/rubric")
+              if (
+                state.impactEvaluationType == ListImpactEvaluationType.RUBRIC
+              ) {
+                navigate("/lists/create/rubric");
               } else {
-                navigate("/lists/create/classic-scoring")
+                navigate("/lists/create/classic-scoring");
               }
             }}
           >
@@ -73,13 +74,26 @@ export default function CreateListChooseProjectsPage() {
                   </div>
 
                   <div className="flex flex-col mb-3">
-                    {fields.map(field => (
-                      <Form.Item noStyle key={field.key} dependencies={["listContent", field.name]}>
-                        {({ getFieldValue}) => (
+                    {fields.map((field) => (
+                      <Form.Item
+                        noStyle
+                        key={field.key}
+                        dependencies={["listContent", field.name]}
+                      >
+                        {({ getFieldValue }) => (
                           <div className="flex justify-between mb-3">
                             <div className="flex items-center">
-                              <div className="rounded-full bg-gray-300 mr-2" style={{ width: 28, height: 28 }}></div>
-                              <div className="text-lg">{getFieldValue(["listContent", field.name, "RPGF3_Application_UID"])}</div>
+                              <div
+                                className="rounded-full bg-gray-300 mr-2"
+                                style={{ width: 28, height: 28 }}
+                              ></div>
+                              <div className="text-lg">
+                                {getFieldValue([
+                                  "listContent",
+                                  field.name,
+                                  "RPGF3_Application_UID",
+                                ])}
+                              </div>
                             </div>
 
                             <div className="flex items-center">
@@ -91,9 +105,7 @@ export default function CreateListChooseProjectsPage() {
                     ))}
                   </div>
 
-                  <div>
-
-                  </div>
+                  <div></div>
                 </div>
               )}
             </Form.List>
