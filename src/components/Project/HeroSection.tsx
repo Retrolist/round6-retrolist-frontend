@@ -47,17 +47,15 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
                   <Icon icon="mdi:heart" width={24} height={24} color="red" />
                 </div> */}
               </div>
-              <div className="flex gap-3 hidden md:block">
-                {/* <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5">
+              {/* <div className="flex gap-3 hidden md:block">
+                <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5 hidden">
                   <Icon icon="mdi:dots-horizontal" />
-                </button> */}
+                </button>
                 <button
                   className="flex gap-1 h-10 items-center  border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
                   onClick={() => {
-                    if (project.prelimResult.toLowerCase() == "keep") {
-                      alert(
-                        "Rubric-based list creation system will be live on Nov, 6th"
-                      );
+                    if (project.prelimResult.toLowerCase() == 'keep') {
+                      alert('Rubric-based list creation system will be live in a few days!')
                     } else {
                       window.open(
                         "https://app.deform.cc/form/78499a28-ecff-4928-a814-cd3364741051"
@@ -74,7 +72,7 @@ export const ProjectHeroSection = ({ project }: { project: Project }) => {
                       : "Appeal"}
                   </div>
                 </button>
-              </div>
+              </div> */}
             </div>
             <div className="flex gap-2 items-center">
               <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
