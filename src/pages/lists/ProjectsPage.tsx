@@ -48,7 +48,7 @@ export default function ProjectsPage() {
     <Layout>
       <LayoutSideInfo>
         <div>
-          <div className="mb-5">
+          {/* <div className="mb-5">
             <Alert
               message="My project is Removed! What to do?"
               description={
@@ -59,7 +59,7 @@ export default function ProjectsPage() {
               }
               type="error"
             />
-          </div>
+          </div> */}
 
           <div className="mb-5">
             <div className="text-2xl font-bold mb-1">All Projects</div>
