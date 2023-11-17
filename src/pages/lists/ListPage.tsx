@@ -8,7 +8,7 @@ import project from "./project";
 import { SubmitListView } from "./create/Form/SubmitListForm";
 import { getBadgeholderAttestationUid, listAttestSignature } from "../../utils/list";
 import useAccountSiwe from "../../hooks/useAccountSiwe";
-import { Alert, message } from "antd";
+import { Alert, Tooltip, message } from "antd";
 import { useContractWrite } from "wagmi";
 import RetrolistAttesterABI from "../../abis/RetrolistAttester.json";
 import { useEthersSigner } from "../../utils/wagmi-ethers";
@@ -16,6 +16,7 @@ import { buildSignatureHex } from "../../utils/common";
 import { useTransactionReceiptFn } from "../../hooks/useTransactionReceiptFn";
 import PrimaryButton from "../../components/buttons/PrimaryButton";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { CheckCircleOutlined } from "@ant-design/icons"
 
 export default function ListPage() {
   const { address, isConnected } = useAccountSiwe()
@@ -130,40 +131,72 @@ export default function ListPage() {
       <div>
         <div className="mb-4">
           <div className="text-2xl font-bold">{list.listName}</div>
-          <div className="text-[#858796] text-sm">By {list.domainName}</div>
+          <div className="text-[#858796] text-sm mb-3">By {list.domainName}</div>
+
+          <div className="flex gap-2 items-center">
+            <Tooltip title={list.twitter}>
+              <a href={"https://twitter.com/" + list.twitter} target="_blank" className="transition hover:cursor-pointer hover:scale-110">
+                <img className="rounded-full w-8 h-8" src={"/img/social/twitter.png"}></img>
+              </a>
+            </Tooltip>
+
+            <Tooltip title={list.discord}>
+              <a href={"https://discord.com"} target="_blank" className="transition hover:cursor-pointer hover:scale-110">
+                <img className="rounded-full w-8 h-8" src={"/img/social/discord.png"}></img>
+              </a>
+            </Tooltip>
+
+            <div className="text-sm text-green-700 ml-2">
+              <CheckCircleOutlined /> Social verified by Opti.domains
+            </div>
+          </div>
         </div>
 
-        {!address || !isConnected || badgeholderAttestationUid && (
-          <div className="mb-4">
-            <Alert
-              message="For Badgeholders"
-              description={
-                (
-                  address && isConnected ? (
-                    <div>
-                      <div className="mb-2">Please approve this list if you want to include it in your ballot</div>
-                      <div>
-                        <PrimaryButton
-                          onClick={() => badgeholderApproveFn()}
-                          disabled={attesting}
-                        >
-                          {attesting ? 'Processing...' : 'Approve'}
-                        </PrimaryButton>
-                      </div>
-                    </div>
-                  ) : (
-                    <div>
-                      <div className="mb-2">Please connect your wallet to approve this list</div>
-                      <div>
-                        <ConnectButton></ConnectButton>
-                      </div>
-                    </div>
-                  )
-                )
-              }
-              type="info"
-            />
-          </div>
+        {list.status != "approved" && (
+          <>
+            {(!address || !isConnected || badgeholderAttestationUid) && (
+              <div className="mb-4">
+                <Alert
+                  message={address && isConnected ? "For Badgeholders" : "Are you a badgeholder?"}
+                  description={
+                    (
+                      address && isConnected ? (
+                        <div>
+                          <div className="mb-2">Please approve this list if you want to include it in your ballot</div>
+                          <div>
+                            <PrimaryButton
+                              onClick={() => badgeholderApproveFn()}
+                              disabled={attesting}
+                            >
+                              {attesting ? 'Processing...' : 'Approve'}
+                            </PrimaryButton>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="mb-2">If you are a badgeholder, connect your wallet to approve this list</div>
+                          <div>
+                            <ConnectButton></ConnectButton>
+                          </div>
+                        </div>
+                      )
+                    )
+                  }
+                  type="info"
+                />
+              </div>
+            )}
+
+            {(address && isConnected && !badgeholderAttestationUid) && (
+              <div className="mb-4">
+                <Alert
+                  message="You are not a badgeholder"
+                  description="If you know a badgeholder, please help by forwarding this list to them for approval."
+                  type="warning"
+                ></Alert>
+              </div>
+            )}
+          </>
         )}
 
         <SubmitListView
