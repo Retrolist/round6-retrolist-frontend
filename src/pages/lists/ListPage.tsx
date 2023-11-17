@@ -17,6 +17,7 @@ import { useTransactionReceiptFn } from "../../hooks/useTransactionReceiptFn";
 import PrimaryButton from "../../components/buttons/PrimaryButton";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { CheckCircleOutlined } from "@ant-design/icons"
+import ListStatusBadge from "../../components/Project/ListStatusBadge";
 
 export default function ListPage() {
   const { address, isConnected } = useAccountSiwe()
@@ -116,7 +117,11 @@ export default function ListPage() {
           minHeight: 100
         }}
         className="rounded-2xl relative"
-      ></div>
+      >
+        <div className="absolute top-3 left-3">
+          <ListStatusBadge status={list.status} size={"sm"} />
+        </div>
+      </div>
 
       <div className="flex -space-x-2 mb-4 -mt-8 overflow-hidden relative z-10">
         {list.projectsMetadata.slice(0, 4).map(project => (

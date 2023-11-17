@@ -25,6 +25,8 @@ export function listContentView(data: ListData, sort = false) {
     for (let criteriaId in (item.evaluation || [])) {
       score += item.evaluation[criteriaId].score
     }
+
+    score = Math.max(0, score)
     
     result.push({
       ...item,

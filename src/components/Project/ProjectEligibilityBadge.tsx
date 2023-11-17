@@ -16,7 +16,7 @@ export default function ProjectEligibilityBadge({ status, size = 'xs' }: { statu
 
   if (status.toLowerCase() == 'remove') {
     return (
-      <div className="rounded-2xl px-3 py-1 border-2 border-red-600 text-red-800 bg-red-100 text-xs">
+      <div className={`rounded-2xl px-3 py-1 border-2 border-red-600 text-red-800 bg-red-100 text-${size}`}>
         <CloseCircleOutlined /> Removed
       </div>
     )
@@ -24,14 +24,14 @@ export default function ProjectEligibilityBadge({ status, size = 'xs' }: { statu
 
   if (status.toLowerCase() == '#n/a') {
     return (
-      <div className="rounded-2xl px-3 py-1 border-2 border-cyan-600 text-cyan-800 bg-cyan-100 text-xs">
+      <div className={`rounded-2xl px-3 py-1 border-2 border-cyan-600 text-cyan-800 bg-cyan-100 text-${size}`}>
         <ClockCircleOutlined /> Pending Approval
       </div>
     )
   }
 
   return (
-    <div className="rounded-2xl px-3 py-1 border-2 border-cyan-600 text-cyan-800 bg-cyan-100 text-xs">
+    <div className={`rounded-2xl px-3 py-1 border-2 border-cyan-600 text-cyan-800 bg-cyan-100 text-${size}`}>
       <ClockCircleOutlined /> Reviewing
     </div>
   )
