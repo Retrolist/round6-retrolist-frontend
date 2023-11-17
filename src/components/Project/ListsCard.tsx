@@ -1,4 +1,5 @@
 import { ListDto } from "../../types/List";
+import ListStatusBadge from "./ListStatusBadge";
 
 export const ProjectListCard = ({ list }: { list: ListDto}) => {
   const totalOp = list.listContent.reduce((acc, x) => acc + x.OPAmount, 0);
@@ -7,7 +8,7 @@ export const ProjectListCard = ({ list }: { list: ListDto}) => {
 
   return (
     <div className="border bg-white border-[#EAECF0] rounded-lg p-4 mb-2 hover:cursor-pointer hover:border-gray-400">
-      <div className="flex justify-between">
+      <div className="flex justify-between items-start">
         <div className="flex -space-x-2 overflow-hidden">
           {list.projectsMetadata.slice(0, 4).map(project => (
             <img
@@ -17,9 +18,12 @@ export const ProjectListCard = ({ list }: { list: ListDto}) => {
             />
           ))}
         </div>
-        <div className="rounded-full border border-[#B2DDFF] text-[#175CD3] bg-[#EFF8FF] px-3 py-1">
+
+        <ListStatusBadge status={list.status}></ListStatusBadge>
+
+        {/* <div className="rounded-full border border-[#B2DDFF] text-[#175CD3] bg-[#EFF8FF] px-3 py-1">
           {list.status}
-        </div>
+        </div> */}
       </div>
       <div className="flex justify-between text-[#272930DE] mt-4">
         <div className="text-sm">{list.listName}</div>

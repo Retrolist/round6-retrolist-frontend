@@ -4,14 +4,14 @@ import { addrParse } from "../../utils/common";
 import { UserImageAddress } from "../common/UserImageAddress";
 import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
 
-export const ProjectHeroSection = ({ project }: { project: Project }) => {
+export const ProjectHeroSection = ({ project, noMargin = false }: { project: Project, noMargin?: boolean }) => {
   return (
     <div className="mt-8">
       <div
         style={{
-          marginTop: -16,
-          marginLeft: -16,
-          marginRight: -16,
+          marginTop: noMargin ? 0 : -16,
+          marginLeft: noMargin ? 0 : -16,
+          marginRight: noMargin ? 0 : -16,
           marginBottom: 16,
           background: project?.profile.bannerImageUrl ? `url(${project?.profile.bannerImageUrl})` : `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
           backgroundSize: "cover",

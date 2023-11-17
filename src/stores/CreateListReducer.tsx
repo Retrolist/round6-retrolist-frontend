@@ -252,6 +252,8 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
               score += project.evaluation[criteriaId].score;
             }
 
+            score = Math.max(score, 0)
+
             totalScore += score;
 
             projects.push({
