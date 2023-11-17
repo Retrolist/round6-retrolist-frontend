@@ -21,7 +21,7 @@ export const SubmitListView = ({
   children,
 }: {
   state: ListData;
-  children: ReactNode;
+  children?: ReactNode;
 }) => {
   const { token } = theme.useToken();
   const panelStyle: React.CSSProperties = {
@@ -44,11 +44,11 @@ export const SubmitListView = ({
     <div>
       <div className="flex gap-3">
         <div className="w-3/4">
-          <div className="text-lg font-bold">{state.listName}</div>
+          <div className="font-bold text-gray-700">About</div>
           <p className="text-[#858796] mt-1 whitespace-pre-line">
             {state.listDescription}
           </p>
-          <div className="font-bold mt-4">Impact Evaluation</div>
+          <div className="font-bold mt-4 text-gray-700">Impact Evaluation</div>
           <p className="text-[#858796] mt-1 whitespace-pre-line">
             {state.impactEvaluationDescription}
           </p>
@@ -178,14 +178,14 @@ export const SubmitListForm = () => {
     background: "#FAFAFA",
     borderRadius: token.borderRadiusLG,
   };
-  const navigate = useNavigate();
-  const [form] = Form.useForm();
   const [state, dispatch] = useCreateListReducer();
 
   const [showSubmitModal, setShowSubmitModal] = useState(false);
 
   return (
     <div className="p-6 bg-white rounded-lg border border-[#EAECF0]">
+      <div className="text-2xl font-bold mb-4">{state.listName}</div>
+
       <SubmitListView state={state}>
         <Divider />
 

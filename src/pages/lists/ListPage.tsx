@@ -8,13 +8,14 @@ import project from "./project";
 import { SubmitListView } from "./create/Form/SubmitListForm";
 import { getBadgeholderAttestationUid, listAttestSignature } from "../../utils/list";
 import useAccountSiwe from "../../hooks/useAccountSiwe";
-import { message } from "antd";
+import { Alert, message } from "antd";
 import { useContractWrite } from "wagmi";
 import RetrolistAttesterABI from "../../abis/RetrolistAttester.json";
 import { useEthersSigner } from "../../utils/wagmi-ethers";
 import { buildSignatureHex } from "../../utils/common";
 import { useTransactionReceiptFn } from "../../hooks/useTransactionReceiptFn";
 import PrimaryButton from "../../components/buttons/PrimaryButton";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function ListPage() {
   const { address, isConnected } = useAccountSiwe()
@@ -24,6 +25,8 @@ export default function ListPage() {
 
   const signer = useEthersSigner()
   const getTransactionReceipt = useTransactionReceiptFn()
+
+  const badgeholderAttestationUid = address ? getBadgeholderAttestationUid(address) : undefined
 
   const fetchList = useCallback(async () => {
     const response = await api.get("/lists/" + listId)
@@ -72,6 +75,10 @@ export default function ListPage() {
       })
 
       await getTransactionReceipt(tx.hash)
+
+      message.success("List Approved! Thank you.")
+
+      fetchList()
     } catch(err: any) {
       console.error(err)
       message.error(err.shortMessage || err.message || 'List signing failed!')
@@ -101,58 +108,95 @@ export default function ListPage() {
         style={{
           marginLeft: -16,
           marginRight: -16,
-          marginBottom: 16,
+          marginTop: 16,
           background: `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
           backgroundSize: "cover",
           paddingTop: "17.5%",
+          minHeight: 100
         }}
         className="rounded-2xl relative"
       ></div>
 
-      <div>
-        {address && getBadgeholderAttestationUid(address) && (
-          <PrimaryButton
-            onClick={() => badgeholderApproveFn()}
-            disabled={attesting}
-          >
-            {attesting ? 'Processing...' : 'Approve'}
-          </PrimaryButton>
-        )}
+      <div className="flex -space-x-2 mb-4 -mt-8 overflow-hidden relative z-10">
+        {list.projectsMetadata.slice(0, 4).map(project => (
+          <img
+            className="inline-block h-16 w-16 rounded-full ring-2 ring-white"
+            src={project.profileImageUrl || "/img/project-placeholder.svg"}
+            alt=""
+          />
+        ))}
       </div>
 
-      <SubmitListView
-        state={{
-          id: list._id,
+      <div>
+        <div className="mb-4">
+          <div className="text-2xl font-bold">{list.listName}</div>
+          <div className="text-[#858796] text-sm">By {list.domainName}</div>
+        </div>
 
-          listName: list.listName,
-          listDescription: list.listDescription,
-        
-          impactEvaluationInput: list.impactEvaluationInput,
-          impactEvaluationDescription: list.impactEvaluationDescription,
-          impactEvaluationLink: list.impactEvaluationLink,
-          impactEvaluationType: ListImpactEvaluationType.RUBRIC,
-        
-          listContent: list.listContent,
-          projectsMetadata: list.projectsMetadata,
-        
-          // walletAddress: "",
-          // isBadgeholder: true,
-          // attestationUid: "",
-          // forkedFrom: "",
-        
-          rubricId: list.rubricId,
-          rubric: list.rubric,
-          categories: list.categories,
-          totalOp: list.listContent.reduce((acc, x) => acc + x.OPAmount, 0),
-        
-          histories: [],
-        
-          createdAt: new Date(list.createdAt),
-          updatedAt: new Date(list.updatedAt),
-        }}
-      >
+        {!address || !isConnected || badgeholderAttestationUid && (
+          <div className="mb-4">
+            <Alert
+              message="For Badgeholders"
+              description={
+                (
+                  address && isConnected ? (
+                    <div>
+                      <div className="mb-2">Please approve this list if you want to include it in your ballot</div>
+                      <div>
+                        <PrimaryButton
+                          onClick={() => badgeholderApproveFn()}
+                          disabled={attesting}
+                        >
+                          {attesting ? 'Processing...' : 'Approve'}
+                        </PrimaryButton>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="mb-2">Please connect your wallet to approve this list</div>
+                      <div>
+                        <ConnectButton></ConnectButton>
+                      </div>
+                    </div>
+                  )
+                )
+              }
+              type="info"
+            />
+          </div>
+        )}
 
-      </SubmitListView>
+        <SubmitListView
+          state={{
+            id: list._id,
+            listName: list.listName,
+            listDescription: list.listDescription,
+        
+            impactEvaluationInput: list.impactEvaluationInput,
+            impactEvaluationDescription: list.impactEvaluationDescription,
+            impactEvaluationLink: list.impactEvaluationLink,
+            impactEvaluationType: ListImpactEvaluationType.RUBRIC,
+        
+            listContent: list.listContent,
+            projectsMetadata: list.projectsMetadata,
+        
+            // walletAddress: "",
+            // isBadgeholder: true,
+            // attestationUid: "",
+            // forkedFrom: "",
+        
+            rubricId: list.rubricId,
+            rubric: list.rubric,
+            categories: list.categories,
+            totalOp: list.listContent.reduce((acc, x) => acc + x.OPAmount, 0),
+        
+            histories: [],
+        
+            createdAt: new Date(list.createdAt),
+            updatedAt: new Date(list.updatedAt),
+          }}
+        ></SubmitListView>
+      </div>
     </Layout>
   )
 }
