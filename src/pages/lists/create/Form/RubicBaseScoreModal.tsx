@@ -159,7 +159,7 @@ export const RubricBaseScoreModal = ({
     <Modal
       open={isModalOpen}
       footer={<></>}
-      bodyStyle={{ height: '80vh', overflowY: "scroll", padding: 0 }}
+      bodyStyle={{ height: '70vh', overflowY: "scroll", padding: 0 }}
       width={xlScreen ? 1000 : undefined}
       className="relative"
       onCancel={handleClose}
@@ -247,13 +247,13 @@ export const RubricBaseScoreModal = ({
                 </>
               )}
             </Form.List>
-            <Progress
+            {/* <Progress
               percent={20}
               showInfo={false}
               strokeLinecap="butt"
               strokeColor="#45D700"
               className="absolute left-0 bottom-[70px] z-50"
-            />
+            /> */}
             <Form.Item className="sticky bottom-0 bg-white pt-5">
               <div className="flex justify-between gap-2 w-full">
                 <Button

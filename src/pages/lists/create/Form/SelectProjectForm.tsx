@@ -10,11 +10,13 @@ import { SelectProjectTable } from "./SelectProjectTable";
 import { useEffect, useMemo, useState } from "react";
 import { useProjects } from "../../../../hooks/useProjects";
 import { ProjectMetadataSimple } from "../../../../types/Project";
+import { SelectProjectPairwiseModal } from "./SelectProjectPairwiseModal";
 
 export const SelectProjectForm = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [search, setSearch] = useState("")
+  const [showPairwiseModal, setShowPairwiseModal] = useState(false)
 
   const categories = useMemo(() => [], [])
 
@@ -86,6 +88,7 @@ export const SelectProjectForm = () => {
         <Icon icon="noto:fire" width={20} />
         <div>Hot Pick Project</div>
       </div>
+
       <Form
         form={form}
         initialValues={state}
@@ -101,7 +104,7 @@ export const SelectProjectForm = () => {
             icon="/img/platform/pairwise.png"
             description="Add projects to the list more quickly by using categorization from Pairwise."
             onClick={() => {
-
+              setShowPairwiseModal(true)
             }}
           />
 
@@ -173,6 +176,11 @@ export const SelectProjectForm = () => {
           <PrimaryButton>Next</PrimaryButton>
         </div>
       </Form>
+
+      <SelectProjectPairwiseModal
+        isModalOpen={showPairwiseModal}
+        handleClose={() => setShowPairwiseModal(false)}
+      ></SelectProjectPairwiseModal>
     </div>
   );
 };
