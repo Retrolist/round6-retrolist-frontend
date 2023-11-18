@@ -39,6 +39,8 @@ export const SubmitListView = ({
   );
 
   console.log(state)
+  // console.log("Rubric", state.rubric?.criteria)
+  // console.log("Evaluation", state.listContent[0].evaluation[state.rubric?.criteria[0]._id!])
 
   return (
     <div>

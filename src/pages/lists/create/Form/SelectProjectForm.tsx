@@ -107,7 +107,7 @@ export const SelectProjectForm = () => {
 
           <HotPickProject
             name="RetroList"
-            icon="/img/platform/1.png"
+            icon="/img/platform/retrolist.png"
             description="Add RetroList to your list and include it in your ballot to signal your support for RetroList."
             onClick={() => {
               dispatch({
