@@ -122,6 +122,7 @@ export const SubmitListView = ({
                       showInfo={false}
                       percent={(project.score / totalScore) * 100}
                       strokeColor={"#10C200"}
+                      className="mb-0"
                     />
                     <div>
                       {project.score}/{totalScore}
