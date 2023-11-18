@@ -64,6 +64,15 @@ export const SubmitListModal = ({
   const passed1 = Boolean(domainName) && Boolean(twitter) && Boolean(discord);
   const passed2 = Boolean(signature);
 
+  useEffect(() => {
+    if (domainName) {
+      dispatch({
+        type: "domainToDescription",
+        domainName,
+      })
+    }
+  }, [domainName])
+
   return (
     <Modal
       open={isModalOpen}

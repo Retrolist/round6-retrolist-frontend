@@ -80,7 +80,7 @@ export default function ProjectsPage() {
 
             <ProjectCategoryButton
               text="Collective Governance"
-              amount={609}
+              // amount={609}
               categories={categories}
               category="COLLECTIVE_GOVERNANCE"
               setCategory={setCategory}
@@ -88,7 +88,7 @@ export default function ProjectsPage() {
 
             <ProjectCategoryButton
               text="OP Stack"
-              amount={603}
+              // amount={603}
               categories={categories}
               category="OP_STACK"
               setCategory={setCategory}
@@ -96,7 +96,7 @@ export default function ProjectsPage() {
 
             <ProjectCategoryButton
               text="Developer Ecosystem"
-              amount={665}
+              // amount={665}
               categories={categories}
               category="DEVELOPER_ECOSYSTEM"
               setCategory={setCategory}
@@ -104,7 +104,7 @@ export default function ProjectsPage() {
 
             <ProjectCategoryButton
               text="End user UX"
-              amount={1240}
+              // amount={1240}
               categories={categories}
               category="END_USER_EXPERIENCE_AND_ADOPTION"
               setCategory={setCategory}

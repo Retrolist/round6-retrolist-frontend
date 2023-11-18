@@ -7,6 +7,7 @@ interface DataType {
   key: string;
   project: string;
   bio: string;
+  icon?: string;
 }
 
 function DeleteButton({ projectId }: { projectId: string }) {
@@ -33,12 +34,16 @@ const columns: ColumnsType<DataType> = [
     title: "Project",
     dataIndex: "project",
     key: "project",
-    render: (text) => <a>{text}</a>,
+    render: (text, record) => <div className="flex items-center">
+      <img src={record.icon || "/img/project-placeholder.svg"} className="w-8 h-8 rounded-full mr-2"></img>
+      <a>{text}</a>
+    </div>,
   },
   {
     title: "Short bio",
     dataIndex: "bio",
     key: "bio",
+    responsive: ['md'],
   },
   {
     title: "",
