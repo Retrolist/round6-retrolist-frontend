@@ -18,6 +18,7 @@ import PrimaryButton from "../../components/buttons/PrimaryButton";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { CheckCircleOutlined } from "@ant-design/icons"
 import ListStatusBadge from "../../components/Project/ListStatusBadge";
+import SecondaryButton from "../../components/buttons/SecondaryButton";
 
 export default function ListPage() {
   const { address, isConnected } = useAccountSiwe()
@@ -30,6 +31,8 @@ export default function ListPage() {
 
   const badgeholderAttestationUid = address ? getBadgeholderAttestationUid(address) : undefined
 
+  const RETROLIST_SECRET = window.localStorage.getItem("RETROLIST_SECRET")
+
   const fetchList = useCallback(async () => {
     const response = await api.get("/lists/" + listId)
     setList(response.data)
@@ -38,6 +41,22 @@ export default function ListPage() {
   useEffect(() => {
     fetchList()
   }, [])
+
+  const qualifyAction = useCallback(async (action: string) => {
+    if (list) {
+      await api.post('/approval/' + action, {
+        domainName: list.domainName,
+      }, {
+        headers: {
+          retrolist_secret: RETROLIST_SECRET,
+        }
+      })
+
+      fetchList()
+
+      message.success(action + " success!")
+    }
+  }, [fetchList, list])
 
   const { writeAsync: badgeholderApprove } = useContractWrite({
     address: import.meta.env.VITE_ATTESTER_CONTRACT!,
@@ -202,6 +221,14 @@ export default function ListPage() {
               </div>
             )}
           </>
+        )}
+
+        {RETROLIST_SECRET && (
+          <div className="flex gap-3 mb-4">
+            <PrimaryButton onClick={() => qualifyAction('qualify')}>Qualify</PrimaryButton>
+            <SecondaryButton onClick={() => qualifyAction('unqualify')}>Reset</SecondaryButton>
+            <PrimaryButton onClick={() => qualifyAction('ban')}>BAN</PrimaryButton>
+          </div>
         )}
 
         <SubmitListView
