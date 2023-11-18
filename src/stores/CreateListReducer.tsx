@@ -231,7 +231,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
     case "assignId": {
       return {
         ...state,
-        id: state.id,
+        id: action.id,
       }
     }
 
