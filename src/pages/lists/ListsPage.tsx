@@ -9,6 +9,7 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 import { ProjectListCard } from "../../components/Project/ListsCard";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { shuffle } from "lodash";
 
 export default function ListsPage() {
   const { address, isConnected } = useAccountSiwe()
@@ -20,14 +21,14 @@ export default function ListsPage() {
 
     if (!RETROLIST_SECRET) {
       const response = await api.get("/lists")
-      setLists(response.data)
+      setLists(shuffle(response.data))
     } else {
       const response = await api.get("/lists", {
         params: {
           status: "attested",
         }
       })
-      setLists(response.data)
+      setLists(response.data.reverse())
     }
 
     if (address && isConnected) {

@@ -17,7 +17,7 @@ export default function ListStatusBadge({ status, size = 'xs' }: { status: strin
 
   if (status.toLowerCase() == 'qualified') {
     return (
-      <div className={`flex gap-1 items-center rounded-2xl px-3 py-1 border-2 border-green-600 text-green-800 bg-green-100 text-${size}`}>
+      <div className={`flex gap-1 items-center rounded-2xl px-3 py-1 border-2 border-cyan-600 text-cyan-800 bg-cyan-100 text-${size}`}>
         <CheckCircleOutlined /> Qualified
       </div>
     )
