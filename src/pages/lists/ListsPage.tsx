@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { ProjectListCard } from "../../components/Project/ListsCard";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function ListsPage() {
   const { address, isConnected } = useAccountSiwe()
@@ -28,6 +29,8 @@ export default function ListsPage() {
         }
       })
       setMyLists(response.data)
+    } else {
+      setMyLists(null)
     }
   }, [ setLists, setMyLists, address, isConnected ])
 
@@ -54,7 +57,14 @@ export default function ListsPage() {
                 </Link>
               ))}
             </div>
-          ) : <div>Loading...</div>}
+          ) : ( address && isConnected ? (
+            <div>Loading...</div>
+          ) : (
+            <div>
+              <div className="mb-2">Connect wallet to view your lists</div>
+              <ConnectButton />
+            </div>
+          ))}
         </div>
       </LayoutSideInfo>
     </Layout>
