@@ -290,7 +290,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
           //   description += "\n";
           // }
 
-          let description = `Created using RetroList with "${newState.rubric?.name}" rubric`;
+          let description = `Created using RetroList with "${newState.rubric?.name}" rubric.`;
 
           newState.impactEvaluationDescription =
             `${newState.impactEvaluationInput}\n\n${description}`.trim();
@@ -305,7 +305,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
     }
 
     case "domainToDescription": {
-      let description = `Created by ${action.domainName} using RetroList with "${state.rubric?.name}" rubric`;
+      let description = `Created by ${action.domainName} using RetroList with "${state.rubric?.name}" rubric.`;
 
       return {
         ...state,
