@@ -20,6 +20,7 @@ type ListReducerAction =
   // | { type: "fork"; list: ListData }
   | { type: "updateMetadata"; metadata: ListMetadata; }
   | { type: "updateProjects"; projects: ProjectMetadataSimple[] }
+  | { type: "appendProjects"; projects: ProjectMetadataSimple[] }
   | { type: "deleteProject"; projectId: string }
   | { type: "updateTotalOp"; totalOp: number; impactEvaluationInput: string }
   | { type: "updateOPAmount"; listContent: ListContent[] }
@@ -34,7 +35,8 @@ type ListReducerAction =
       listContent: Partial<ListContentWithRubrics>[];
     }
   | { type: "assignId"; id: string }
-  | { type: "finalize"; };
+  | { type: "finalize"; }
+  | { type: "domainToDescription"; domainName: string };
 
 const initialList: ListData = {
   id: "",
@@ -111,9 +113,10 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
       }
     }
 
-    case "updateProjects": {
-      const listContent = cloneDeep(state.listContent);
-      const projectsMetadata = cloneDeep(state.projectsMetadata);
+    case "updateProjects":
+    case "appendProjects": {
+      const listContent = cloneDeep(state.listContent).filter(x => action.type == 'appendProjects' || action.projects.find(project => project.id == x.RPGF3_Application_UID));
+      const projectsMetadata = cloneDeep(state.projectsMetadata).filter(x => action.type == 'appendProjects' || action.projects.find(project => project.id == x.id));
 
       for (const project of action.projects) {
         if (!listContent.find((x) => x.RPGF3_Application_UID == project.id)) {
@@ -127,7 +130,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
         }
       }
 
-      console.log(projectsMetadata);
+      // console.log(projectsMetadata);
 
       return {
         ...state,
@@ -299,6 +302,15 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
       }
 
       return newState;
+    }
+
+    case "domainToDescription": {
+      let description = `Created by ${action.domainName} using RetroList with "${state.rubric?.name}" rubric`;
+
+      return {
+        ...state,
+        impactEvaluationDescription: `${state.impactEvaluationInput}\n\n${description}`.trim(),
+      }
     }
 
     default:

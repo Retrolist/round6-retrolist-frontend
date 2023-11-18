@@ -82,10 +82,10 @@ export const SelectProjectForm = () => {
 
   return (
     <div className="p-6 bg-white rounded-lg border border-[#EAECF0]">
-      {/* <div className="flex gap-3">
+      <div className="flex gap-3 mb-3">
         <Icon icon="noto:fire" width={20} />
         <div>Hot Pick Project</div>
-      </div> */}
+      </div>
       <Form
         form={form}
         initialValues={state}
@@ -95,11 +95,37 @@ export const SelectProjectForm = () => {
           navigate("/lists/create/rubric-score");
         }}
       >
-        {/* <div className="grid grid-cols-3 gap-4">
-          <HotPickProject />
-          <HotPickProject />
-          <HotPickProject />
-        </div> */}
+        <div className="grid sm:grid-cols-3 gap-4">
+          <HotPickProject
+            name="Pairwise Categorization"
+            icon="/img/platform/pairwise.png"
+            description="Add projects to the list more quickly by using categorization from Pairwise."
+            onClick={() => {
+
+            }}
+          />
+
+          <HotPickProject
+            name="RetroList"
+            icon="/img/platform/1.png"
+            description="Add RetroList to your list and include it in your ballot to signal your support for RetroList."
+            onClick={() => {
+              dispatch({
+                type: "appendProjects",
+                projects: [
+                  {
+                    "id": "0x6886a3d5da589ee9fc5528548edca61cbefa640ff7b11d7d545281d3423cfd93",
+                    "displayName": "Retrolist | RetroPGF Rubric-based List Creation UI",
+                    "bio": "RetroPGF Rubric-based List Creation UI opening to public crowdsourcing",
+                    "profileImageUrl": "https://content.optimism.io/profile/v0/profile-image/10/0x73F4e6132Cd9E4a3945d9CA6E98e5985BBe16d2D.png",
+                  }
+                ]
+              })
+            }}
+          />
+
+          {/* <HotPickProject /> */}
+        </div>
         <Select
           className="mt-6"
           size="large"
@@ -136,6 +162,7 @@ export const SelectProjectForm = () => {
           key: project.id,
           project: project.displayName,
           bio: project.bio,
+          icon: project.profileImageUrl,
         }))} />
         <Divider />
         <div className="flex justify-between">
