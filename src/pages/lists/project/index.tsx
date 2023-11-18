@@ -8,6 +8,8 @@ import { ProjectListCard } from "../../../components/Project/ListsCard";
 import { Project } from "../../../types/Project";
 import { api } from "../../../utils/api";
 import { categoryLabel } from "../../../utils/project";
+import { Alert } from "antd";
+import PrimaryButton from "../../../components/buttons/PrimaryButton";
 
 export function ProjectView({ project }: { project: Project }) {
   return (
@@ -157,15 +159,33 @@ export default function ProjectPage() {
               <ProjectView project={project} />
             </div>
 
-            {/* <div className="w-full md:w-1/4">
+            <div className="w-full md:w-1/4">
               <div className="text-base text-[#858796]">
-                Included in lists (40)
+                Included in lists ({project.lists.length})
               </div>
-              <div className="mt-4">
-                <ProjectListCard />
-                <ProjectListCard />
-              </div>
-            </div> */}
+
+              {project.lists.length > 0 ? (
+                <div className="mt-4">
+                  {project.lists.map(list => <ProjectListCard list={list} key={list._id} />)}
+                </div>
+              ) : (
+                <div className="mt-4">
+                  <Alert
+                    message="Not included in any list"
+                    description={
+                      <div>
+                        <Link to="/lists/create/list-detail">
+                          <PrimaryButton>
+                            <Icon icon="lucide:plus" color="white" />&nbsp;
+                            Create List
+                          </PrimaryButton>
+                        </Link>
+                      </div>
+                    }
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </Layout>
