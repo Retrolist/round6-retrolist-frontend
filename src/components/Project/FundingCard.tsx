@@ -1,6 +1,14 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { ProjectFundingSource } from "../../types/Project";
 
+function fundingSourceIcon(currency: string) {
+  if (currency == 'OP') {
+    return "/img/op-icon.png"
+  } else {
+    return "/img/usdc.png"
+  }
+}
+
 export const ProjectFundingCard = ({ fundingSource }: { fundingSource: ProjectFundingSource }) => {
   return (
     <div className="border bg-white border-[#EAECF0] rounded-lg p-4 my-5">
@@ -13,7 +21,7 @@ export const ProjectFundingCard = ({ fundingSource }: { fundingSource: ProjectFu
         </div>
         <div className="flex gap-2">
           <div>{ fundingSource.amount.toLocaleString("en-US") }</div>
-          <img width={24} height={24} src="/img/op-icon.png" alt="" />
+          <img width={24} height={24} src={fundingSourceIcon(fundingSource.currency)} alt="" />
         </div>
       </div>
       <hr className="border-dashed my-2" />
