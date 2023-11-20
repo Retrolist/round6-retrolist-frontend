@@ -37,6 +37,8 @@ function SelectProjectPairwiseCheckbox({
     }
   }
 
+  console.log(value)
+
   if (labelClickable) {
     return (
       <Checkbox
@@ -69,7 +71,7 @@ export const SelectProjectPairwiseModal = ({
   const [value, setValue] = useState<string[]>([]);
 
   useEffect(() => {
-    setValue(state.listContent.map(x => x.RPGF3_Application_UID.split('|')[1]))
+    setValue(state.listContent.map(x => x.RPGF3_Application_UID))
   }, [state, isModalOpen]);
 
   const onSelect = useCallback((projectIds: string[]) => {
