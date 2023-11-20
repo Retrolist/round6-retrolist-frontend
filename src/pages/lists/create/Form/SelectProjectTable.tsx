@@ -36,7 +36,7 @@ const columns: ColumnsType<DataType> = [
     key: "project",
     render: (text, record) => <div className="flex items-center">
       <img src={record.icon || "/img/project-placeholder.svg"} className="w-8 h-8 rounded-full mr-2"></img>
-      <a>{text}</a>
+      <a href={"https://retrolist.app/project/" + record.key} target="_blank">{text}</a>
     </div>,
   },
   {

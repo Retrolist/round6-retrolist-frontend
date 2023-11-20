@@ -40,7 +40,7 @@ export const UserDetailForm = () => {
             },
           });
 
-          navigate("/lists/create/rubric-score");
+          navigate("/lists/create/choose-projects");
         }}
       >
         <Form.Item
@@ -104,12 +104,12 @@ export const UserDetailForm = () => {
         </div>
         <Divider />
         <div className="flex justify-between">
-          {/* <Link to="/">
+          <Link to="/">
             <SecondaryButton type="button">Cancel</SecondaryButton>
-          </Link> */}
-          <Link to="/lists/create/choose-projects">
-            <SecondaryButton type="button">Back</SecondaryButton>
           </Link>
+          {/* <Link to="/lists/create/choose-projects">
+            <SecondaryButton type="button">Back</SecondaryButton>
+          </Link> */}
           
           <PrimaryButton>Next</PrimaryButton>
         </div>

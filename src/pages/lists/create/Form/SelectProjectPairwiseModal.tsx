@@ -4,6 +4,7 @@ import pairwise from "../../../../dataset/pairwise.json";
 import { remove, uniq } from "lodash";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { api } from "../../../../utils/api";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 interface SelectProjectPairwiseModalProps {
   isModalOpen: boolean;
@@ -141,6 +142,10 @@ export const SelectProjectPairwiseModal = ({
                           >
                             {project.name.trim()}
                           </SelectProjectPairwiseCheckbox>
+                          
+                          <a href={"https://retrolist.app/project/" + project.RPGF3Id} target="_blank">
+                            <Icon icon="lucide:external-link" />
+                          </a>
                         </div>
                       ))}
                     </div>
