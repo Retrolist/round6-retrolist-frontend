@@ -37,7 +37,7 @@ function SelectProjectPairwiseCheckbox({
     }
   }
 
-  console.log(value)
+  // console.log(value)
 
   if (labelClickable) {
     return (
