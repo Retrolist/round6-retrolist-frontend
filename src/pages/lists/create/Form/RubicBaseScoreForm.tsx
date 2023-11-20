@@ -10,6 +10,7 @@ import { RubricBaseScoreModal } from "./RubicBaseScoreModal";
 import { RubicBaseScoreTable } from "./RubicBaseScoreTable";
 import { listContentView, rubricTotalScore } from "../../../../utils/list";
 import { sigmoid } from "../../../../utils/common";
+import { useWatch } from "antd/es/form/Form";
 
 const TOTAL_PROJECT_SHARE = 644
 const TOTAL_OP = 30_000_000
@@ -44,8 +45,9 @@ export const RubricBaseScoreForm = () => {
   const [state, dispatch] = useCreateListReducer();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [votingProjectId, setVotingProjectId] = useState('')
-  const [totalOpSlider, setTotalOpSlider] = useState(50)
-  const [totalOp, setTotalOp] = useState(0)
+  const [totalOpSlider, setTotalOpSlider] = useState(state.totalOpSlider!)
+  const totalOp = state.totalOp
+  const impactEvaluationInput = useWatch('impactEvaluationInput', form)
 
   const handleOpen = (projectId: string) => {
     setIsModalOpen(true);
@@ -61,7 +63,12 @@ export const RubricBaseScoreForm = () => {
     const totalShare = selectedShare + (TOTAL_PROJECT_SHARE - state.listContent.length)
     const opPerShare = TOTAL_OP / totalShare
 
-    setTotalOp(Math.floor(selectedShare * opPerShare))
+    dispatch({
+      type: "updateTotalOp",
+      impactEvaluationInput: impactEvaluationInput,
+      totalOp: Math.floor(selectedShare * opPerShare),
+      totalOpSlider,
+    })
   }, [state, totalOpSlider])
 
   const totalScore = state.rubric ? rubricTotalScore(state.rubric) : 0;
@@ -90,6 +97,7 @@ export const RubricBaseScoreForm = () => {
             type: "updateTotalOp",
             impactEvaluationInput: data.impactEvaluationInput,
             totalOp,
+            totalOpSlider,
           })
 
           dispatch({
@@ -103,7 +111,7 @@ export const RubricBaseScoreForm = () => {
           Select your OP allocated
         </div>
         <Slider
-          defaultValue={50}
+          value={totalOpSlider}
           step={5}
           trackStyle={{ background: "red" }}
           handleStyle={{ borderColor: "red" }}
@@ -140,7 +148,14 @@ export const RubricBaseScoreForm = () => {
         <Divider />
         <div className="flex justify-between">
           <Link to="/lists/create/choose-projects">
-            <SecondaryButton type="button">Back</SecondaryButton>
+            <SecondaryButton type="button" onClick={() => {
+              dispatch({
+                type: "updateTotalOp",
+                impactEvaluationInput: impactEvaluationInput,
+                totalOp,
+                totalOpSlider,
+              })
+            }}>Back</SecondaryButton>
           </Link>
           <PrimaryButton>Next</PrimaryButton>
         </div>

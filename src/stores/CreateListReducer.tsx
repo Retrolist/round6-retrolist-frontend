@@ -22,7 +22,7 @@ type ListReducerAction =
   | { type: "updateProjects"; projects: ProjectMetadataSimple[] }
   | { type: "appendProjects"; projects: ProjectMetadataSimple[] }
   | { type: "deleteProject"; projectId: string }
-  | { type: "updateTotalOp"; totalOp: number; impactEvaluationInput: string }
+  | { type: "updateTotalOp"; totalOp: number; totalOpSlider: number; impactEvaluationInput: string }
   | { type: "updateOPAmount"; listContent: ListContent[] }
   // | { type: "updateRubric"; rubric: IRubric }
   | {
@@ -61,6 +61,7 @@ const initialList: ListData = {
   rubric: null,
   categories: [],
   totalOp: 0,
+  totalOpSlider: 50,
 
   histories: [],
 
@@ -169,6 +170,7 @@ const reducer = (state: ListData, action: ListReducerAction): ListData => {
       return {
         ...state,
         totalOp: action.totalOp,
+        totalOpSlider: action.totalOpSlider,
         impactEvaluationInput: action.impactEvaluationInput,
       };
     }
