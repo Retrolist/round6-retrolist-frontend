@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Divider, Form, Select } from "antd";
+import { Divider, Form, Input, Select, message } from "antd";
 import { Option } from "antd/es/mentions";
 import { Link, useNavigate } from "react-router-dom";
 import { HotPickProject } from "../../../../components/CreateList/HotPickProject";
@@ -11,6 +11,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useProjects } from "../../../../hooks/useProjects";
 import { ProjectMetadataSimple } from "../../../../types/Project";
 import { SelectProjectPairwiseModal } from "./SelectProjectPairwiseModal";
+import { SIMPLE_REQUIRED } from "../../../../utils/form";
+import { useRubrics } from "../../../../hooks/useRubrics";
 
 export const SelectProjectForm = () => {
   const navigate = useNavigate();
@@ -27,6 +29,8 @@ export const SelectProjectForm = () => {
   })
 
   const [options, setOptions] = useState<any[]>([])
+
+  const rubrics = useRubrics();
 
   useEffect(() => {
     if (projects.length > 0) {
@@ -84,20 +88,99 @@ export const SelectProjectForm = () => {
 
   return (
     <div className="p-6 bg-white rounded-lg border border-[#EAECF0]">
-      <div className="flex gap-3 mb-3">
-        <Icon icon="noto:fire" width={20} />
-        <div>Hot Pick Project</div>
-      </div>
-
       <Form
         form={form}
         initialValues={state}
         layout="vertical"
         onFinish={(data) => {
           console.log(data);
+          
+          const rubric = rubrics.find((rubric) => rubric._id == data.rubricId);
+
+          if (!rubric) {
+            return message.error("Please choose a rubric");
+          }
+
+          dispatch({
+            type: "updateMetadata",
+            metadata: {
+              ...data,
+              rubric,
+              categories:
+                rubrics.find((x) => x._id == rubric._id)?.categories || [],
+            },
+          });
+
           navigate("/lists/create/rubric-score");
         }}
       >
+        <Form.Item
+          label="List name"
+          name="listName"
+          required={true}
+          style={{ color: "##858796" }}
+          rules={SIMPLE_REQUIRED}
+        >
+          <Input size="large" />
+        </Form.Item>
+
+        <Form.Item
+          label="Description"
+          name="listDescription"
+          required={true}
+          rules={SIMPLE_REQUIRED}
+        >
+          <Input size="large" />
+        </Form.Item>
+
+        {/* <Form.Item
+          label="Link to relevant resource"
+          name="relevantResourceInput"
+        >
+          <Input prefix="https://" size="large" />
+        </Form.Item> */}
+
+        <Form.Item
+          label="Select rubric"
+          name="rubricId"
+          required={true}
+          rules={SIMPLE_REQUIRED}
+        >
+          <Select
+            placeholder="Select rubric type"
+            size="large"
+            options={rubrics.map((rubric) => ({
+              label: rubric.name,
+              value: rubric._id,
+            }))}
+          />
+        </Form.Item>
+
+        <button
+          className="flex items-center gap-2 mt-2.5 border border-[#00A0E6] text-[#00A0E6] rounded-lg py-2.5 px-4 mb-4"
+          onClick={() =>
+            window.open(
+              "https://docs.google.com/spreadsheets/d/16E2_RSRXbLIBZMfa9YLVdF56ll1bT6fHfZ7pdi058OE/edit?usp=sharing"
+            )
+          }
+        >
+          <Icon icon="lucide:file-text" />
+          <div>Rubric Details</div>
+        </button>
+
+        <div className="text-[16px] text-[#4C4E64AD] mb-8">
+          In rubric mode, rubrics details are automatically appended into the
+          impact evaluation description and the impact evaluation link is
+          generated automatically.
+        </div>
+
+        <Divider />
+
+        <div className="flex gap-3 mb-3">
+          <Icon icon="noto:fire" width={20} />
+          <div>Hot Pick Project</div>
+        </div>
+
         <div className="grid sm:grid-cols-3 gap-4">
           <HotPickProject
             name="Pairwise Categorization"
@@ -169,9 +252,12 @@ export const SelectProjectForm = () => {
         }))} />
         <Divider />
         <div className="flex justify-between">
-          <Link to="/lists/create/list-detail">
-            <SecondaryButton type="button">Back</SecondaryButton>
+          <Link to="/">
+            <SecondaryButton type="button">Cancel</SecondaryButton>
           </Link>
+          {/* <Link to="/lists/create/list-detail">
+            <SecondaryButton type="button">Back</SecondaryButton>
+          </Link> */}
 
           <PrimaryButton>Next</PrimaryButton>
         </div>

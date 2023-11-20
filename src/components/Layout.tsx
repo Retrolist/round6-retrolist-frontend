@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex gap-4">
             <div className="hidden sm:block">
               <Link
-                to="/lists/create/list-detail"
+                to="/lists/create/choose-projects"
                 className="flex items-center gap-2 bg-red-600 rounded-lg py-2.5 px-4 text-white"
               >
                 <Icon icon="lucide:plus" color="white" />
@@ -59,7 +59,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
           <div>
             <Link
-              to="/lists/create/list-detail"
+              to="/lists/create/choose-projects"
               className="flex items-center gap-2 bg-red-600 rounded-lg py-2 px-4 text-white"
             >
               <Icon icon="lucide:plus" color="white" />

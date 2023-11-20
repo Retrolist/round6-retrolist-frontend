@@ -174,7 +174,7 @@ export default function ProjectPage() {
                     message="Not included in any list"
                     description={
                       <div>
-                        <Link to="/lists/create/list-detail">
+                        <Link to="/lists/create/choose-projects">
                           <PrimaryButton>
                             <Icon icon="lucide:plus" color="white" />&nbsp;
                             Create List

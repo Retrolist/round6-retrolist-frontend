@@ -52,6 +52,7 @@ export interface ListData extends ListAttestation {
   rubric: IRubric | null;
   categories: string[];
   totalOp: number;
+  totalOpSlider?: number;
   histories: ListData[];
   createdAt: Date;
   updatedAt: Date;

@@ -33,8 +33,8 @@ export const SubmitListView = ({
   const totalScore = state.rubric ? rubricTotalScore(state.rubric) : 0;
 
   const [activeKeys, setActiveKeys] = useState(
-    state.listContent.length > 0
-      ? [state.listContent[0].RPGF3_Application_UID]
+    listContent.length > 0
+      ? [listContent[0].RPGF3_Application_UID]
       : []
   );
 
