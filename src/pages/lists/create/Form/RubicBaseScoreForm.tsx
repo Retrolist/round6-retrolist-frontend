@@ -63,12 +63,16 @@ export const RubricBaseScoreForm = () => {
     const totalShare = selectedShare + (TOTAL_PROJECT_SHARE - state.listContent.length)
     const opPerShare = TOTAL_OP / totalShare
 
-    dispatch({
-      type: "updateTotalOp",
-      impactEvaluationInput: impactEvaluationInput,
-      totalOp: Math.floor(selectedShare * opPerShare),
-      totalOpSlider,
-    })
+    const totalOp = Math.floor(selectedShare * opPerShare);
+
+    if (totalOp != state.totalOp) {
+      dispatch({
+        type: "updateTotalOp",
+        impactEvaluationInput: impactEvaluationInput,
+        totalOp,
+        totalOpSlider,
+      })
+    }
   }, [state, totalOpSlider])
 
   const totalScore = state.rubric ? rubricTotalScore(state.rubric) : 0;

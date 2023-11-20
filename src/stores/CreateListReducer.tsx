@@ -70,6 +70,7 @@ const initialList: ListData = {
 };
 
 const reducer = (state: ListData, action: ListReducerAction): ListData => {
+  // console.log(action.type)
   switch (action.type) {
     case "new": {
       return {
