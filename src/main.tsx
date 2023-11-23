@@ -19,6 +19,8 @@ import { ListsPageRoute } from "./pages/lists/ListsPage";
 import { ListPageRoute } from "./pages/lists/ListPage";
 import { SubmitListSuccessRoute } from "./pages/lists/create/Form/SubmitListSuccess";
 
+import "./polyfills.ts"
+
 const router = createBrowserRouter([
   ProjectsPageRoute,
   {
