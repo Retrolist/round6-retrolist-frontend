@@ -10,15 +10,19 @@ import { SelectProjectTable } from "./SelectProjectTable";
 import { useEffect, useMemo, useState } from "react";
 import { useProjects } from "../../../../hooks/useProjects";
 import { ProjectMetadataSimple } from "../../../../types/Project";
-import { SelectProjectPairwiseModal } from "./SelectProjectPairwiseModal";
+import { SelectProjectCategorizationModal } from "./SelectProjectCategorizationModal";
 import { SIMPLE_REQUIRED } from "../../../../utils/form";
 import { useRubrics } from "../../../../hooks/useRubrics";
+
+import pairwise from "../../../../dataset/pairwise.json";
+import recategorization from "../../../../dataset/recategorization.json";
 
 export const SelectProjectForm = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [search, setSearch] = useState("")
   const [showPairwiseModal, setShowPairwiseModal] = useState(false)
+  const [showRecategorizationModal, setShowRecategorizationModal] = useState(false)
 
   const categories = useMemo(() => [], [])
 
@@ -183,6 +187,15 @@ export const SelectProjectForm = () => {
 
         <div className="grid sm:grid-cols-3 gap-4">
           <HotPickProject
+            name="Badgeholder Categorization"
+            icon="/img/platform/op.png"
+            description="[RECOMMENDED] Quickly add project with categorization from OP and badgeholders."
+            onClick={() => {
+              setShowRecategorizationModal(true)
+            }}
+          />
+
+          <HotPickProject
             name="Pairwise Categorization"
             icon="/img/platform/pairwise.png"
             description="Add projects to the list more quickly by using categorization from Pairwise."
@@ -263,10 +276,21 @@ export const SelectProjectForm = () => {
         </div>
       </Form>
 
-      <SelectProjectPairwiseModal
+      <SelectProjectCategorizationModal
         isModalOpen={showPairwiseModal}
         handleClose={() => setShowPairwiseModal(false)}
-      ></SelectProjectPairwiseModal>
+        dataset={pairwise}
+        sourceLabel="Pairwise"
+        sourceUrl="https://www.pairwise.vote"
+      ></SelectProjectCategorizationModal>
+
+      <SelectProjectCategorizationModal
+        isModalOpen={showRecategorizationModal}
+        handleClose={() => setShowRecategorizationModal(false)}
+        dataset={recategorization}
+        sourceLabel="OP & Badgeholder categorization"
+        sourceUrl="https://plaid-cement-e44.notion.site/b54253ffc6d749b2b8adf9035202fa10?v=95202c84c71f4b158115c1da4ec26dbc"
+      ></SelectProjectCategorizationModal>
     </div>
   );
 };

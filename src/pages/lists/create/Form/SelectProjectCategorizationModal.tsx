@@ -1,17 +1,21 @@
 import { Button, Checkbox, Collapse, Modal, message } from "antd";
 import { ReactNode, useCallback, useEffect, useState } from "react";
-import pairwise from "../../../../dataset/pairwise.json";
+
 import { remove, uniq } from "lodash";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
 import { api } from "../../../../utils/api";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { CategorizationCollection } from "../../../../types/Categorization";
 
-interface SelectProjectPairwiseModalProps {
+interface SelectProjectCategorizationModalProps {
   isModalOpen: boolean;
   handleClose: () => void;
+  dataset: CategorizationCollection[];
+  sourceUrl: string
+  sourceLabel: string
 }
 
-function SelectProjectPairwiseCheckbox({
+function SelectProjectCheckbox({
   projectIds,
   value,
   children,
@@ -63,10 +67,13 @@ function SelectProjectPairwiseCheckbox({
   );
 }
 
-export const SelectProjectPairwiseModal = ({
+export const SelectProjectCategorizationModal = ({
   isModalOpen,
   handleClose,
-}: SelectProjectPairwiseModalProps) => {
+  dataset,
+  sourceLabel,
+  sourceUrl,
+}: SelectProjectCategorizationModalProps) => {
   const [state, dispatch] = useCreateListReducer();
   const [value, setValue] = useState<string[]>([]);
 
@@ -95,11 +102,11 @@ export const SelectProjectPairwiseModal = ({
       <p className="text-[#858796] mt-1">
         Using categorization from{" "}
         <a
-          href="https://www.pairwise.vote/"
+          href={sourceUrl}
           target="_blank"
           className="underline"
         >
-          Pairwise
+          {sourceLabel}
         </a>
       </p>
 
@@ -110,7 +117,7 @@ export const SelectProjectPairwiseModal = ({
       <div className="mt-3">
         <Collapse
           expandIconPosition="end"
-          items={pairwise.map((collection) => ({
+          items={dataset.map((collection) => ({
             key: collection.id,
             label: collection.name.trim(),
             children: (
@@ -119,14 +126,14 @@ export const SelectProjectPairwiseModal = ({
                 items={collection.ranking.map((category) => ({
                   key: category.id,
                   label: (
-                    <SelectProjectPairwiseCheckbox
+                    <SelectProjectCheckbox
                       projectIds={category.ranking.map((x) => x.RPGF3Id)}
                       value={value}
                       onSelect={projectIds => onSelect(projectIds)}
                       onUnselect={projectIds => onUnselect(projectIds)}
                     >
                       {category.name.trim()}
-                    </SelectProjectPairwiseCheckbox>
+                    </SelectProjectCheckbox>
                   ),
                   children: (
                     <div>
@@ -135,7 +142,7 @@ export const SelectProjectPairwiseModal = ({
                           key={project.id}
                           className="mb-1 flex items-center"
                         >
-                          <SelectProjectPairwiseCheckbox
+                          <SelectProjectCheckbox
                             projectIds={[project.RPGF3Id]}
                             value={value}
                             onSelect={projectIds => onSelect(projectIds)}
@@ -143,7 +150,7 @@ export const SelectProjectPairwiseModal = ({
                             labelClickable
                           >
                             {project.name.trim()}
-                          </SelectProjectPairwiseCheckbox>
+                          </SelectProjectCheckbox>
                           
                           <a href={"https://retrolist.app/project/" + project.RPGF3Id} target="_blank">
                             <Icon icon="lucide:external-link" />
