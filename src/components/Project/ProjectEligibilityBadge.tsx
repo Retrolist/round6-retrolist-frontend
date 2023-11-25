@@ -1,15 +1,39 @@
 import React from "react"
 import ClockCircleOutlined from "@ant-design/icons/ClockCircleOutlined"
 import CloseCircleOutlined from "@ant-design/icons/CloseCircleOutlined"
-import CheckCircleOutlined from "@ant-design/icons/CheckCircleOutlined"
+import CheckOutlined from "@ant-design/icons/CheckOutlined"
 
-export default function ProjectEligibilityBadge({ status, size = 'xs' }: { status: string, size?: string }) {
+export default function ProjectEligibilityBadge({ status, ballots = 0, size = 'xs' }: { status: string, ballots?: number, size?: string }) {
   // console.log(status)
 
   if (status.toLowerCase() == 'keep') {
+    let bgColor = ''
+    let fgColor = ''
+
+    if (ballots < 5) {
+      bgColor = '#FFCCCB' // Light Red
+      fgColor = '#990000' 
+    } else if (ballots < 10) {
+      bgColor = '#FFD099'
+      fgColor = '#CC4C10'
+    } else if (ballots < 14) {
+      bgColor = '#ffffe0'
+      fgColor = '#ee9902'
+    } else if (ballots < 17) {
+      bgColor = '#E9FFC2'
+      fgColor = '#82954B'
+    } else {
+      bgColor = '#E9FFC2'
+      fgColor = '#379237'
+    }
+
     return (
-      <div className={`rounded-2xl px-3 py-1 border-2 border-green-600 text-green-800 bg-green-100 text-${size}`}>
-        <CheckCircleOutlined /> Eligible
+      <div className={`rounded-2xl font-bold px-3 py-1 border-2 text-sm`} style={{
+        backgroundColor: bgColor,
+        color: fgColor,
+        borderColor: fgColor,
+      }}>
+        {ballots >= 17 && <CheckOutlined />} {ballots} Vote
       </div>
     )
   }

@@ -24,6 +24,7 @@ export interface ProjectMetadata {
   bannerImageUrl: string
   prelimResult: string
   reportReason: string
+  includedInBallots?: number
 }
 
 export interface Project {
@@ -43,6 +44,7 @@ export interface Project {
   id: string
   prelimResult: string
   reportReason: string
+  includedInBallots?: number
 }
 
 export interface ProjectApplicant {

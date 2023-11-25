@@ -22,7 +22,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
           className="rounded-t-2xl relative"
         >
           <div className="absolute top-2 left-2">
-            <ProjectEligibilityBadge status={project.prelimResult} />
+            <ProjectEligibilityBadge status={project.prelimResult} ballots={project.includedInBallots} />
           </div>
         </div>
 

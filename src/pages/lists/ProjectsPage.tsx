@@ -38,6 +38,7 @@ export default function ProjectsPage() {
     categories,
     seed,
     orderBy: search ? 'alphabeticalAZ' : 'shuffle',
+    approved: true,
   })
 
   // console.log(projects)
@@ -111,7 +112,7 @@ export default function ProjectsPage() {
             />
           </div>
 
-          <div className="flex flex-col md:flex-row gap-2 items-center mb-8">
+          <div className="flex flex-col md:flex-row gap-2 items-center mb-8 hidden">
             <ProjectCategoryButton
               text="All Status"
               categories={eligibleFilter ? [eligibleFilter] : []}
