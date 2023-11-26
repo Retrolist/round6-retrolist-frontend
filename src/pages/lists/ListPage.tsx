@@ -48,7 +48,7 @@ export default function ListPage() {
         domainName: list.domainName,
       }, {
         headers: {
-          retrolist_secret: RETROLIST_SECRET,
+          "retrolist-secret": RETROLIST_SECRET,
         }
       })
 
