@@ -9,6 +9,7 @@ import { Alert, Input } from 'antd';
 import {
   SearchOutlined,
 } from '@ant-design/icons';
+import { Analytics } from "../analytics/AnalyticsPage";
 
 const { Search } = Input;
 
@@ -61,6 +62,8 @@ export default function ProjectsPage() {
               type="error"
             />
           </div> */}
+
+          <Analytics />
 
           <div className="mb-5">
             <div className="text-2xl font-bold mb-1">All Projects</div>

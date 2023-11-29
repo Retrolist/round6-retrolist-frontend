@@ -7,3 +7,30 @@ export function categoryLabel(category: string) {
     case 'OP_STACK': return 'OP Stack'
   }
 }
+
+export function ballotsColor(ballots: number): [ string, string ] {
+  let bgColor = ''
+  let fgColor = ''
+
+  if (ballots < 5) {
+    bgColor = '#FFCCCB' // Light Red
+    fgColor = '#990000' 
+  } else if (ballots < 10) {
+    bgColor = '#FFD099'
+    fgColor = '#CC4C10'
+  } else if (ballots < 14) {
+    bgColor = '#ffffe0'
+    fgColor = '#ee9902'
+  } else if (ballots < 17) {
+    bgColor = '#E9FFC2'
+    fgColor = '#82954B'
+  } else {
+    // bgColor = '#E9FFC2'
+    // fgColor = '#379237'
+
+    bgColor = '#BFDBFE'
+    fgColor = '#1D4ED8'
+  }
+
+  return [ fgColor, bgColor ]
+}
