@@ -1,5 +1,6 @@
 import React from "react"
 import { ballotsColor } from "../../utils/project";
+import { Tooltip } from "antd";
 
 const PROGRESS_HEIGHT = 10
 
@@ -44,14 +45,29 @@ export default function BallotProgress({ ballots }: { ballots: {[projectId: stri
   return (
     <div>
       <div className="flex rounded-xl overflow-hidden">
-        <div style={{ width: (countActive / totalCount * 100) + '%', background: colorActive, height: PROGRESS_HEIGHT }}></div>
-        <div style={{ width: (count17 / totalCount * 100) + '%', background: color17, height: PROGRESS_HEIGHT }}></div>
-        <div style={{ width: (count14 / totalCount * 100) + '%', background: color14, height: PROGRESS_HEIGHT }}></div>
-        <div style={{ width: (count10 / totalCount * 100) + '%', background: color10, height: PROGRESS_HEIGHT }}></div>
-        <div style={{ width: (count5 / totalCount * 100) + '%', background: color5, height: PROGRESS_HEIGHT }}></div>
+        <Tooltip title={`Passed: ${countActive}`}>
+          <div style={{ width: (countActive / totalCount * 100) + '%', background: colorActive, height: PROGRESS_HEIGHT }}></div>
+        </Tooltip>
+        
+        <Tooltip title={`14 - 16 Votes: ${countActive}`}>
+          <div style={{ width: (count17 / totalCount * 100) + '%', background: color17, height: PROGRESS_HEIGHT }}></div>
+        </Tooltip>
+        
+        <Tooltip title={`10 - 13 Votes: ${countActive}`}>
+          <div style={{ width: (count14 / totalCount * 100) + '%', background: color14, height: PROGRESS_HEIGHT }}></div>
+        </Tooltip>
+        
+        <Tooltip title={`5 - 9 Votes: ${countActive}`}>
+          <div style={{ width: (count10 / totalCount * 100) + '%', background: color10, height: PROGRESS_HEIGHT }}></div>
+        </Tooltip>
+        
+        <Tooltip title={`0 - 4 Votes: ${countActive}`}>
+          <div style={{ width: (count5 / totalCount * 100) + '%', background: color5, height: PROGRESS_HEIGHT }}></div>
+        </Tooltip>
+
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-center gap-1 sm:gap-12 flex-wrap mt-2">
+      <div className="flex flex-col sm:flex-row justify-center gap-1 sm:gap-x-12 flex-wrap mt-2">
         <BallotLegend label="Passed" color={colorActive} count={countActive}></BallotLegend>
         <BallotLegend label="14 - 16 Votes" color={color17} count={count17}></BallotLegend>
         <BallotLegend label="10 - 13 Votes" color={color14} count={count14}></BallotLegend>
