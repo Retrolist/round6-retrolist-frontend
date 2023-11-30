@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Collapse, Divider, Form, Progress, Tooltip, theme } from "antd";
+import { Badge, Collapse, Divider, Form, Progress, Tooltip, theme } from "antd";
 import { PieChart } from "react-minimal-pie-chart";
 import { Link, useNavigate } from "react-router-dom";
 import { useCreateListReducer } from "../../../../stores/CreateListReducer";
@@ -15,6 +15,9 @@ import {
   rubricTotalScore,
 } from "../../../../utils/list";
 import { removeScientificNotation } from "../../../../utils/common";
+import { useIncludedInBallots } from "../../../../hooks/useIncludedInBallots";
+import BallotSquares from "../../../../components/analytics/BallotSquares";
+import { ballotsColor } from "../../../../utils/project";
 
 export const SubmitListView = ({
   state,
@@ -37,6 +40,8 @@ export const SubmitListView = ({
       ? [listContent[0].RPGF3_Application_UID]
       : []
   );
+
+  const [ballots, ballotsLoading] = useIncludedInBallots();
 
   console.log(state)
   // console.log("Rubric", state.rubric?.criteria)
@@ -65,6 +70,20 @@ export const SubmitListView = ({
           </div>
         </div>
       </div>
+
+      {!ballotsLoading && (
+        <div className="mt-4">
+          <div className="font-bold text-gray-700 mb-1">Included in Ballots</div>
+          <BallotSquares
+            projects={listContent.map(project => ({
+              id: project.RPGF3_Application_UID,
+              name: project.project?.displayName || '',
+            }))}
+            ballots={ballots}
+          ></BallotSquares>
+        </div>
+      )}
+
       <Divider style={{ borderStyle: "dashed" }} />
       <div className="text-[#202327] text-[16px] mb-5">
         {listContent.length} projects {state.totalOp.toLocaleString("en-US")} OP
@@ -82,19 +101,30 @@ export const SubmitListView = ({
                 <div className="flex gap-3 justify-between">
                   <div className="flex gap-3 w-full">
                     <div>
-                      <img
-                        width={40}
-                        height={40}
-                        src={
-                          project.project?.profileImageUrl ||
-                          "/img/project-placeholder.svg"
-                        }
-                        className="rounded-full"
-                        alt=""
-                      />
+                      {!ballotsLoading && (
+                        <span className="">
+                          <Badge
+                            count={ballots[project.RPGF3_Application_UID] || 0} 
+                            color={ballotsColor(ballots[project.RPGF3_Application_UID])[0]} 
+                            offset={[-3, 8]}
+                            showZero
+                          >
+                            <img
+                              width={40}
+                              height={40}
+                              src={
+                                project.project?.profileImageUrl ||
+                                "/img/project-placeholder.svg"
+                              }
+                              className="rounded-full"
+                              alt=""
+                            />
+                          </Badge>
+                        </span>
+                      )}
                     </div>
                     <div>
-                      <div className="font-bold">
+                      <div className="font-bold flex items-center">
                         {project.project?.displayName}
                       </div>
 

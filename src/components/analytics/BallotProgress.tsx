@@ -14,7 +14,8 @@ function BallotLegend({ color, label, count }: { color: string, label: string, c
 }
 
 export default function BallotProgress({ ballots }: { ballots: {[projectId: string]: number} }) {
-  let count5 = 0;
+  let count2 = 0;
+  let count6 = 0;
   let count10 = 0;
   let count14 = 0;
   let count17 = 0;
@@ -22,8 +23,10 @@ export default function BallotProgress({ ballots }: { ballots: {[projectId: stri
   let totalCount = 0;
 
   for (const projectId in ballots) {
-    if (ballots[projectId] < 5) {
-      count5++;
+    if (ballots[projectId] < 2) {
+      count2++;
+    } else if (ballots[projectId] < 6) {
+      count6++;
     } else if (ballots[projectId] < 10) {
       count10++;
     } else if (ballots[projectId] < 14) {
@@ -36,7 +39,8 @@ export default function BallotProgress({ ballots }: { ballots: {[projectId: stri
     totalCount++;
   }
 
-  const [ color5 ] = ballotsColor(4)
+  const [ color2 ] = ballotsColor(0)
+  const [ color6 ] = ballotsColor(4)
   const [ color10 ] = ballotsColor(9)
   const [ color14 ] = ballotsColor(13)
   const [ color17 ] = ballotsColor(16)
@@ -57,12 +61,16 @@ export default function BallotProgress({ ballots }: { ballots: {[projectId: stri
           <div style={{ width: (count14 / totalCount * 100) + '%', background: color14, height: PROGRESS_HEIGHT }}></div>
         </Tooltip>
         
-        <Tooltip title={`5 - 9 Votes: ${countActive}`}>
+        <Tooltip title={`6 - 9 Votes: ${countActive}`}>
           <div style={{ width: (count10 / totalCount * 100) + '%', background: color10, height: PROGRESS_HEIGHT }}></div>
         </Tooltip>
         
-        <Tooltip title={`0 - 4 Votes: ${countActive}`}>
-          <div style={{ width: (count5 / totalCount * 100) + '%', background: color5, height: PROGRESS_HEIGHT }}></div>
+        <Tooltip title={`2 - 5 Votes: ${countActive}`}>
+          <div style={{ width: (count6 / totalCount * 100) + '%', background: color6, height: PROGRESS_HEIGHT }}></div>
+        </Tooltip>
+
+        <Tooltip title={`0 - 1 Votes: ${countActive}`}>
+          <div style={{ width: (count2 / totalCount * 100) + '%', background: color2, height: PROGRESS_HEIGHT }}></div>
         </Tooltip>
 
       </div>
@@ -71,8 +79,9 @@ export default function BallotProgress({ ballots }: { ballots: {[projectId: stri
         <BallotLegend label="Passed" color={colorActive} count={countActive}></BallotLegend>
         <BallotLegend label="14 - 16 Votes" color={color17} count={count17}></BallotLegend>
         <BallotLegend label="10 - 13 Votes" color={color14} count={count14}></BallotLegend>
-        <BallotLegend label="5 - 9 Votes" color={color10} count={count10}></BallotLegend>
-        <BallotLegend label="0 - 4 Votes" color={color5} count={count5}></BallotLegend>
+        <BallotLegend label="6 - 9 Votes" color={color10} count={count10}></BallotLegend>
+        <BallotLegend label="2 - 5 Votes" color={color6} count={count6}></BallotLegend>
+        <BallotLegend label="0 - 1 Votes" color={color2} count={count2}></BallotLegend>
       </div>
     </div>
   )
