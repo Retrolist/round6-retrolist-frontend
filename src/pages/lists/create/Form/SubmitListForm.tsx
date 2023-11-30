@@ -15,6 +15,8 @@ import {
   rubricTotalScore,
 } from "../../../../utils/list";
 import { removeScientificNotation } from "../../../../utils/common";
+import { useIncludedInBallots } from "../../../../hooks/useIncludedInBallots";
+import BallotSquares from "../../../../components/analytics/BallotSquares";
 
 export const SubmitListView = ({
   state,
@@ -37,6 +39,8 @@ export const SubmitListView = ({
       ? [listContent[0].RPGF3_Application_UID]
       : []
   );
+
+  const [ballots, ballotsLoading] = useIncludedInBallots();
 
   console.log(state)
   // console.log("Rubric", state.rubric?.criteria)
@@ -65,6 +69,20 @@ export const SubmitListView = ({
           </div>
         </div>
       </div>
+
+      {!ballotsLoading && (
+        <div>
+          <div className="font-bold text-gray-700 mb-1">Included in Ballots</div>
+          <BallotSquares
+            projects={listContent.map(project => ({
+              id: project.RPGF3_Application_UID,
+              name: project.project?.displayName || '',
+            }))}
+            ballots={ballots}
+          ></BallotSquares>
+        </div>
+      )}
+
       <Divider style={{ borderStyle: "dashed" }} />
       <div className="text-[#202327] text-[16px] mb-5">
         {listContent.length} projects {state.totalOp.toLocaleString("en-US")} OP

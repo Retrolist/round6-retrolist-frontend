@@ -19,6 +19,8 @@ export function useIncludedInBallots(): [{ [projectId: string]: number }, boolea
 
       if (ballots) {
         setIncludedInBallots(ballots)
+        window.localStorage.setItem('RETROLIST_BALLOTS_CACHED', JSON.stringify(ballots))
+        window.localStorage.setItem('RETROLIST_BALLOTS_LAST_CACHED', Date.now().toString())
         return true;
       } else {
         return false;

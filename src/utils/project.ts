@@ -13,7 +13,7 @@ export function ballotsColor(ballots: number): [ string, string ] {
   let fgColor = ''
 
   if (ballots < 2) {
-    bgColor = '#AAAAAA' // Light Gray
+    bgColor = '#CCCCCC' // Light Gray
     fgColor = '#000000'
   } else if (ballots < 6) {
     bgColor = '#FFCCCB' // Light Red
