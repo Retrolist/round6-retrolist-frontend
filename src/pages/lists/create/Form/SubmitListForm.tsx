@@ -72,7 +72,7 @@ export const SubmitListView = ({
       </div>
 
       {!ballotsLoading && (
-        <div>
+        <div className="mt-4">
           <div className="font-bold text-gray-700 mb-1">Included in Ballots</div>
           <BallotSquares
             projects={listContent.map(project => ({
