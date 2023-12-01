@@ -1,7 +1,11 @@
+import { useIncludedInBallots } from "../../hooks/useIncludedInBallots";
 import { ListDto } from "../../types/List";
+import BallotSquares from "../analytics/BallotSquares";
 import ListStatusBadge from "./ListStatusBadge";
 
 export const ProjectListCard = ({ list }: { list: ListDto}) => {
+  const [ballots, ballotsLoading] = useIncludedInBallots();
+
   const totalOp = list.listContent.reduce((acc, x) => acc + x.OPAmount, 0);
 
   console.log(list)
@@ -32,6 +36,19 @@ export const ProjectListCard = ({ list }: { list: ListDto}) => {
       <p className="text-[10px] text-[#4C4E64AD]">
         {list.listDescription}
       </p>
+
+      {!ballotsLoading && (
+        <div className="mt-2">
+          <BallotSquares
+            projects={list.projectsMetadata.map(project => ({
+              id: project.id,
+              name: project.displayName,
+            }))}
+            ballots={ballots}
+            limit={15}
+          ></BallotSquares>
+        </div>
+      )}
     </div>
   );
 };
