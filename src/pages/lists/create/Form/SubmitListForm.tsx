@@ -35,11 +35,15 @@ export const SubmitListView = ({
   const listContent = listContentView(state, true);
   const totalScore = state.rubric ? rubricTotalScore(state.rubric) : 0;
 
-  const [activeKeys, setActiveKeys] = useState(
-    listContent.length > 0
-      ? [listContent[0].RPGF3_Application_UID]
-      : []
-  );
+  const isSimple = !state.rubricId || state.rubricId == '65695f889c41a3dbb680a30c'
+
+  // const [activeKeys, setActiveKeys] = useState(
+  //   listContent.length > 0
+  //     ? [listContent[0].RPGF3_Application_UID]
+  //     : []
+  // );
+
+  const [activeKeys, setActiveKeys] = useState([]);
 
   const [ballots, ballotsLoading] = useIncludedInBallots();
 
@@ -50,7 +54,7 @@ export const SubmitListView = ({
   return (
     <div>
       <div className="flex gap-3">
-        <div className="w-3/4">
+        <div className={state.totalOp <= 0 ? "w-full" : "w-3/4"}>
           <div className="font-bold text-gray-700">About</div>
           <p className="text-[#858796] mt-1 whitespace-pre-line">
             {state.listDescription}
@@ -60,15 +64,19 @@ export const SubmitListView = ({
             {state.impactEvaluationDescription}
           </p>
         </div>
-        <div>
-          <div className="relative hidden md:block">
-            <PieChart lineWidth={30} data={listPieChart(state)} />
+        {state.totalOp > 0 &&
+          <div>
+            <div className="relative hidden md:block">
+              <PieChart lineWidth={30} data={listPieChart(state)} />
 
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-[20px] text-[#202327]">
-              {state.totalOp.toLocaleString("en-US")} OP allocated
+              {state.totalOp > 0 &&
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-[20px] text-[#202327]">
+                  {state.totalOp.toLocaleString("en-US")} OP allocated
+                </div>
+              }
             </div>
           </div>
-        </div>
+        }
       </div>
 
       {!ballotsLoading && (
@@ -100,7 +108,7 @@ export const SubmitListView = ({
               <div className="my-1">
                 <div className="flex gap-3 justify-between">
                   <div className="flex gap-3 w-full">
-                    <div>
+                    <div className="flex-shrink-0">
                       {!ballotsLoading && (
                         <span className="">
                           <Badge
@@ -139,57 +147,69 @@ export const SubmitListView = ({
                       </a>
                     </div>
                   </div>
-                  <div className="block md:hidden shrink-0" style={{ flexBasis: 100 }}>
-                    <div>{project.score}/{totalScore} ({removeScientificNotation(
-                      ((project.OPAmount / state.totalOp) * 100).toPrecision(2)
-                    )})%</div>
-                    <div>
-                      {project.OPAmount.toLocaleString("en-US")} OP
-                    </div>
-                  </div>
-                  <div className="flex shrink-0 hidden md:block" style={{ flexBasis: 240 }}>
-                    <Progress
-                      showInfo={false}
-                      percent={(project.score / totalScore) * 100}
-                      strokeColor={"#10C200"}
-                      className="mb-0"
-                    />
-                    <div>
-                      {project.score}/{totalScore}
-                    </div>
-                  </div>
-                  <div
-                    className="text-right shrink-0 hidden md:block"
-                    style={{ flexBasis: 140 }}
-                  >
-                    {removeScientificNotation(
-                      ((project.OPAmount / state.totalOp) * 100).toPrecision(2)
-                    )}
-                    % = {project.OPAmount.toLocaleString("en-US")} OP
-                  </div>
+                  {state.totalOp > 0 && (
+                    <>
+                      <div className="block md:hidden shrink-0" style={{ flexBasis: 100 }}>
+                        <div>{!isSimple && <span>{project.score}/{totalScore}</span>} ({removeScientificNotation(
+                          ((project.OPAmount / state.totalOp) * 100).toPrecision(2)
+                        )})%</div>
+                        <div>
+                          {project.OPAmount.toLocaleString("en-US")} OP
+                        </div>
+                      </div>
+                      <div className="flex shrink-0 hidden md:block" style={{ flexBasis: 200 }}>
+                        <Progress
+                          showInfo={false}
+                          percent={(project.OPAmount / state.totalOp) * 100}
+                          strokeColor={"#10C200"}
+                          className="mb-0"
+                        />
+                        {!isSimple && (
+                          <div>
+                            {project.score}/{totalScore}
+                          </div>
+                        )}
+                      </div>
+                      <div
+                        className="text-right shrink-0 hidden md:block"
+                        style={{ flexBasis: 140 }}
+                      >
+                        {removeScientificNotation(
+                          ((project.OPAmount / state.totalOp) * 100).toPrecision(2)
+                        )}
+                        % = {project.OPAmount.toLocaleString("en-US")} OP
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </>
           ),
           children: (
-            <div className="ml-4">
-              {state.rubric?.criteria.map(
-                (criteria) =>
-                  project.evaluation[criteria._id] && (
-                    <ItemSubmitListForm
-                      title={criteria.title}
-                      score={project.evaluation[criteria._id].score}
-                      description={
-                        criteria.scores[
-                          project.evaluation[criteria._id].score
-                        ] || "ERROR"
-                      }
-                      comment={project.evaluation[criteria._id].comment}
-                      key={criteria._id}
-                    />
-                  )
-              )}
-            </div>
+            isSimple ? (
+              <div className="ml-4">
+                This list isn't voted with a rubric
+              </div>
+            ) : (
+              <div className="ml-4">
+                {state.rubric?.criteria.map(
+                  (criteria) =>
+                    project.evaluation[criteria._id] && (
+                      <ItemSubmitListForm
+                        title={criteria.title}
+                        score={project.evaluation[criteria._id].score}
+                        description={
+                          criteria.scores[
+                            project.evaluation[criteria._id].score
+                          ] || "ERROR"
+                        }
+                        comment={project.evaluation[criteria._id].comment}
+                        key={criteria._id}
+                      />
+                    )
+                )}
+              </div>
+            )
           ),
           style: panelStyle,
           showArrow: false,
@@ -223,7 +243,7 @@ export const SubmitListForm = () => {
         <Divider />
 
         <div className="flex justify-between">
-          <Link to="/lists/create/rubric-score">
+          <Link to={state.rubricId == '65695f889c41a3dbb680a30c' ? "/lists/create/choose-projects" : "/lists/create/rubric-score"}>
             <SecondaryButton type="button">Back</SecondaryButton>
           </Link>
           <PrimaryButton onClick={() => setShowSubmitModal(true)}>
