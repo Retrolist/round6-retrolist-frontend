@@ -1,7 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useContext, useEffect, useState } from "react";
 import { api } from "../utils/api";
+import React from "react";
 
-export function useIncludedInBallots(): [{ [projectId: string]: number }, boolean] {
+const IncludedInBallotsContext = React.createContext<[{[projectId: string]: number}, boolean]>([{}, false])
+
+function useFetchIncludedInBallots(): [{ [projectId: string]: number }, boolean] {
   const [ loading, setLoading ] = useState(true)
   const [ includedInBallots, setIncludedInBallots ] = useState({})
 
@@ -54,4 +57,18 @@ export function useIncludedInBallots(): [{ [projectId: string]: number }, boolea
   }, [])
 
   return [ includedInBallots, loading ]
+}
+
+export function useIncludedInBallots() {
+  return useContext(IncludedInBallotsContext)
+}
+
+export function IncludedInBallotsProvider({ children }: { children: ReactNode }) {
+  const data = useFetchIncludedInBallots()
+
+  return (
+    <IncludedInBallotsContext.Provider value={data}>
+      {children}
+    </IncludedInBallotsContext.Provider>
+  )
 }
