@@ -15,12 +15,18 @@ export default function ListsPage() {
   const { address, isConnected } = useAccountSiwe()
   const [ lists, setLists ] = useState<ListDto[] | null>(null)
   const [ myLists, setMyLists ] = useState<ListDto[] | null>(null)
+  const [ agoraLists, setAgoraLists ] = useState<ListDto[] | null>(null)
 
   const fetchList = useCallback(async () => {
     const RETROLIST_SECRET = window.localStorage.getItem("RETROLIST_SECRET")
 
     if (!RETROLIST_SECRET) {
-      const response = await api.get("/lists")
+      // const response = await api.get("/lists")
+      const response = await api.get("/lists", {
+        params: {
+          status: "attested",
+        }
+      })
       setLists(shuffle(response.data))
     } else {
       const response = await api.get("/lists", {
@@ -41,6 +47,11 @@ export default function ListsPage() {
       setMyLists(response.data)
     } else {
       setMyLists(null)
+    }
+
+    {
+      const response = await api.get("/lists/agora")
+      setAgoraLists(response.data)
     }
   }, [ setLists, setMyLists, address, isConnected ])
 
@@ -89,6 +100,27 @@ export default function ListsPage() {
             {lists ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {lists.map(list => (
+                  <Link to={"/list/" + list._id}>
+                    <ProjectListCard list={list}></ProjectListCard>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div>Loading...</div>
+            )}
+          </div>
+
+          <div className="mb-5">
+            <div className="text-2xl font-bold mb-1">Badgeholder Lists</div>
+            {/* <div className="text-sm text-[#4C4E64AD] border-b border-[#4C4E641F] pb-3">
+              Categorize projects and share impact evaluation
+            </div> */}
+          </div>
+
+          <div className="mb-5">
+            {agoraLists ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {agoraLists.map(list => (
                   <Link to={"/list/" + list._id}>
                     <ProjectListCard list={list}></ProjectListCard>
                   </Link>

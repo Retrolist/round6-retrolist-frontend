@@ -36,6 +36,7 @@ export const SubmitListView = ({
   const totalScore = state.rubric ? rubricTotalScore(state.rubric) : 0;
 
   const isSimple = !state.rubricId || state.rubricId == '65695f889c41a3dbb680a30c'
+  const isAgora = state.id.startsWith('0x')
 
   // const [activeKeys, setActiveKeys] = useState(
   //   listContent.length > 0

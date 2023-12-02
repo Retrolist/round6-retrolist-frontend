@@ -26,6 +26,7 @@ export default function ListPage() {
   const [ list, setList ] = useState<ListDto | null>(null)
   const [ attesting, setAttesting ] = useState(false)
 
+  const isAgora = listId?.startsWith('0x')
   const signer = useEthersSigner()
   const getTransactionReceipt = useTransactionReceiptFn()
 
@@ -153,30 +154,34 @@ export default function ListPage() {
       </div>
 
       <div>
-        <div className="mb-4">
-          <div className="text-2xl font-bold">{list.listName}</div>
-          <div className="text-[#858796] text-sm mb-3">By {list.domainName}</div>
+        
+          <div className="mb-4">
+            <div className="text-2xl font-bold">{list.listName}</div>
+            {!isAgora && <>
+              <div className="text-[#858796] text-sm mb-3">By {list.domainName}</div>
 
-          <div className="flex gap-2 items-center">
-            <Tooltip title={list.twitter}>
-              <a href={"https://twitter.com/" + list.twitter} target="_blank" className="transition hover:cursor-pointer hover:scale-110">
-                <img className="rounded-full w-8 h-8" src={"/img/social/twitter.png"}></img>
-              </a>
-            </Tooltip>
+              <div className="flex gap-2 items-center">
+                <Tooltip title={list.twitter}>
+                  <a href={"https://twitter.com/" + list.twitter} target="_blank" className="transition hover:cursor-pointer hover:scale-110">
+                    <img className="rounded-full w-8 h-8" src={"/img/social/twitter.png"}></img>
+                  </a>
+                </Tooltip>
 
-            <Tooltip title={list.discord}>
-              <a href={"https://discord.com"} target="_blank" className="transition hover:cursor-pointer hover:scale-110">
-                <img className="rounded-full w-8 h-8" src={"/img/social/discord.png"}></img>
-              </a>
-            </Tooltip>
+                <Tooltip title={list.discord}>
+                  <a href={"https://discord.com"} target="_blank" className="transition hover:cursor-pointer hover:scale-110">
+                    <img className="rounded-full w-8 h-8" src={"/img/social/discord.png"}></img>
+                  </a>
+                </Tooltip>
 
-            <div className="text-sm text-green-700 ml-2">
-              <CheckCircleOutlined /> Social verified by Opti.domains
-            </div>
+                <div className="text-sm text-green-700 ml-2">
+                  <CheckCircleOutlined /> Social verified by Opti.domains
+                </div>
+              </div>
+            </>}
           </div>
-        </div>
+        
 
-        {list.status != "approved" && (
+        {!isAgora && list.status != "approved" && (
           <>
             {(!address || !isConnected || badgeholderAttestationUid) && (
               <div className="mb-4">
@@ -223,7 +228,7 @@ export default function ListPage() {
           </>
         )}
 
-        {RETROLIST_SECRET && (
+        {!isAgora && RETROLIST_SECRET && (
           <div className="flex gap-3 mb-4">
             <PrimaryButton onClick={() => qualifyAction('qualify')}>Qualify</PrimaryButton>
             <SecondaryButton onClick={() => qualifyAction('unqualify')}>Reset</SecondaryButton>

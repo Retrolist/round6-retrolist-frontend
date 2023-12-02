@@ -33,7 +33,7 @@ export const ProjectListCard = ({ list }: { list: ListDto}) => {
         <div className="text-sm">{list.listName}</div>
         <div className="text-base font-medium">{totalOp} OP</div>
       </div>
-      <p className="text-[10px] text-[#4C4E64AD]">
+      <p className="text-[10px] text-[#4C4E64AD] line-clamp-3">
         {list.listDescription}
       </p>
 
