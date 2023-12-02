@@ -7,6 +7,8 @@ import CheckCircleFilled from "@ant-design/icons/CheckCircleFilled"
 export default function ListStatusBadge({ status, size = 'xs' }: { status: string, size?: string }) {
   // console.log(status)
 
+  if (!status) return <div></div>
+
   if (status.toLowerCase() == 'approved') {
     return (
       <div className={`flex gap-1 items-center rounded-2xl px-3 py-1 border-2 border-green-600 text-green-800 bg-green-100 text-${size}`}>
@@ -16,6 +18,7 @@ export default function ListStatusBadge({ status, size = 'xs' }: { status: strin
   }
 
   if (status.toLowerCase() == 'qualified') {
+    return <div></div>
     return (
       <div className={`flex gap-1 items-center rounded-2xl px-3 py-1 border-2 border-cyan-600 text-cyan-800 bg-cyan-100 text-${size}`}>
         <CheckCircleOutlined /> Qualified
@@ -30,6 +33,8 @@ export default function ListStatusBadge({ status, size = 'xs' }: { status: strin
       </div>
     )
   }
+
+  return <div></div>
 
   return (
     <div className={`flex gap-1 items-center rounded-2xl px-3 py-1 border-2 border-cyan-600 text-cyan-800 bg-cyan-100 text-${size}`}>
