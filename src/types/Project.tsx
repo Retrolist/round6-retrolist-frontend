@@ -24,6 +24,8 @@ export interface ProjectMetadata {
   bannerImageUrl: string
   prelimResult: string
   reportReason: string
+  recategorization?: string
+  primaryCategory?: string
   includedInBallots?: number
 }
 

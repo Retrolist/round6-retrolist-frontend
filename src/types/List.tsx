@@ -111,3 +111,15 @@ export interface ListSubmitDto {
   domainName: string;
   rubricId: string;
 }
+
+export interface ListHeader {
+  id: string;
+  listName: string;
+  impactEvaluationType: string;
+  categories: string[];
+  projectsMetadata: {
+    id: string,
+    displayName: string,
+    profileImageUrl: string,
+  }[]
+}

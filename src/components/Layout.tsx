@@ -31,7 +31,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </Link> */}
             </div>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 hidden">
             <div className="hidden sm:block">
               <Link
                 to="/lists/create/choose-projects"
@@ -48,7 +48,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
 
         <div className="sm:hidden -mt-1 flex justify-between px-4 pb-3">
-          <div className="flex gap-5 text-base font-semibold text-gray-800">
+          <div className="flex w-full justify-around gap-5 text-base font-semibold text-gray-800">
             <Link to="/" className="py-2 px-3">
               <div>Projects</div>
             </Link>
@@ -63,7 +63,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </Link> */}
           </div>
 
-          <div>
+          <div className="hidden">
             <Link
               to="/lists/create/choose-projects"
               className="flex items-center gap-2 bg-red-600 rounded-lg py-2 px-4 text-white"

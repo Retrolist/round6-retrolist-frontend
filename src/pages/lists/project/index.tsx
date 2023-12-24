@@ -10,6 +10,7 @@ import { api } from "../../../utils/api";
 import { categoryLabel } from "../../../utils/project";
 import { Alert } from "antd";
 import PrimaryButton from "../../../components/buttons/PrimaryButton";
+import axios from "axios";
 
 export function ProjectView({ project }: { project: Project }) {
   return (
@@ -121,7 +122,7 @@ export default function ProjectPage() {
   const [project, setProject] = useState<Project | undefined>();
 
   const fetchProject = useCallback(async () => {
-    const response = await api.get("/projects/" + projectId);
+    const response = await axios.get("/dataset/rpgf3/projects/" + projectId + ".json");
     setProject(response.data);
 
     console.log(response.data);

@@ -10,7 +10,7 @@ export default function LayoutSideInfo({
       <div className="relative hero-section-gradient-bg rounded-2xl flex items-center px-20 h-60 pb-8">
         <div className="hidden sm:block" style={{ maxWidth: 'calc(100% - 260px)' }}>
           <div className="text-3xl lg:text-4xl font-bold">
-            Voting for RetroPGF 3 is <span className="text-red-600">Live!</span>
+            Voting for RetroPGF 3 is <span className="text-red-600">Ended!</span>
           </div>
           <p className="pt-3 w-full hidden md:block">
             View projects that are eligible
@@ -26,7 +26,7 @@ export default function LayoutSideInfo({
       <div className="flex flex-col lg:flex-row gap-6 justify-center relative -top-10 px-8">
         <StatCard
           title="Eligible for RetroPGF 3"
-          description="644"
+          description="643"
           icon="lucide:users-2"
         />
         <StatCard

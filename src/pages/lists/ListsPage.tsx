@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react"
 import Layout from "../../components/Layout";
 import { api } from "../../utils/api";
-import { ListDto } from "../../types/List";
+import { ListDto, ListHeader } from "../../types/List";
 import { useAccount } from "wagmi";
 import useAccountSiwe from "../../hooks/useAccountSiwe";
 import { Link } from "react-router-dom";
@@ -10,50 +10,63 @@ import { ProjectListCard } from "../../components/Project/ListsCard";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { shuffle } from "lodash";
+import axios from "axios";
 
 export default function ListsPage() {
   const { address, isConnected } = useAccountSiwe()
-  const [ lists, setLists ] = useState<ListDto[] | null>(null)
-  const [ myLists, setMyLists ] = useState<ListDto[] | null>(null)
-  const [ agoraLists, setAgoraLists ] = useState<ListDto[] | null>(null)
+  const [ lists, setLists ] = useState<ListHeader[] | null>(null)
+  const [ myLists, setMyLists ] = useState<ListHeader[] | null>(null)
+  const [ retrolistLists, setRetrolistLists ] = useState<ListHeader[] | null>(null)
+  const [ agoraLists, setAgoraLists ] = useState<ListHeader[] | null>(null)
+  const [ pairwiseLists, setPairwiseLists ] = useState<ListHeader[] | null>(null)
+  const [ otherLists, setOtherLists ] = useState<ListHeader[] | null>(null)
 
   const fetchList = useCallback(async () => {
     const RETROLIST_SECRET = window.localStorage.getItem("RETROLIST_SECRET")
 
-    if (!RETROLIST_SECRET) {
-      // const response = await api.get("/lists")
-      const response = await api.get("/lists", {
-        params: {
-          status: "attested",
-        }
-      })
-      setLists(shuffle(response.data))
-    } else {
-      const response = await api.get("/lists", {
-        params: {
-          status: "attested",
-        }
-      })
-      setLists(response.data.reverse())
-    }
+    const response = await axios.get("/dataset/rpgf3/listsHeader.json")
+    const lists: ListHeader[] = shuffle(response.data)
 
-    if (address && isConnected) {
-      const response = await api.get("/lists", {
-        params: {
-          status: "attested",
-          wallet: address,
-        }
-      })
-      setMyLists(response.data)
-    } else {
-      setMyLists(null)
-    }
+    setLists(lists)
+    setRetrolistLists(lists.filter(x => x.impactEvaluationType == 'rubric'))
+    setAgoraLists(lists.filter(x => x.impactEvaluationType == 'BADGEHOLDER'))
+    setPairwiseLists(lists.filter(x => x.impactEvaluationType == 'PAIRWISE'))
+    setOtherLists(lists.filter(x => x.impactEvaluationType == 'OTHER'))
 
-    {
-      const response = await api.get("/lists/agora")
-      setAgoraLists(response.data)
-    }
-  }, [ setLists, setMyLists, address, isConnected ])
+    // if (!RETROLIST_SECRET) {
+    //   // const response = await api.get("/lists")
+    //   const response = await api.get("/lists", {
+    //     params: {
+    //       status: "attested",
+    //     }
+    //   })
+    //   setLists(shuffle(response.data))
+    // } else {
+    //   const response = await api.get("/lists", {
+    //     params: {
+    //       status: "attested",
+    //     }
+    //   })
+    //   setLists(response.data.reverse())
+    // }
+
+    // if (address && isConnected) {
+    //   const response = await api.get("/lists", {
+    //     params: {
+    //       status: "attested",
+    //       wallet: address,
+    //     }
+    //   })
+    //   setMyLists(response.data)
+    // } else {
+    //   setMyLists(null)
+    // }
+
+    // {
+    //   const response = await api.get("/lists/agora")
+    //   setAgoraLists(response.data)
+    // }
+  }, [ setLists, setMyLists, setRetrolistLists, setAgoraLists, setPairwiseLists, setOtherLists, address, isConnected ])
 
   useEffect(() => {
     fetchList()
@@ -64,43 +77,17 @@ export default function ListsPage() {
       <LayoutSideInfo>
         <div>
           <div className="mb-5">
-            <div className="text-2xl font-bold mb-1">My Lists</div>
-            {/* <div className="text-sm text-[#4C4E64AD] border-b border-[#4C4E641F] pb-3">
-              Categorize projects and share impact evaluation
-            </div> */}
-          </div>
-
-          <div className="mb-8">
-            {myLists ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {myLists.map(list => (
-                  <Link to={"/list/" + list._id}>
-                    <ProjectListCard list={list}></ProjectListCard>
-                  </Link>
-                ))}
-              </div>
-            ) : ( address && isConnected ? (
-              <div>Loading...</div>
-            ) : (
-              <div>
-                <div className="mb-2">Connect wallet to view your lists</div>
-                <ConnectButton />
-              </div>
-            ))}
+            <div className="text-2xl font-bold mb-1">RetroList Lists ({retrolistLists?.length ?? '...'})</div>
+            <div className="text-sm text-[#4C4E64AD] border-b border-[#4C4E641F] pb-3">
+              Community lists created on RetroList
+            </div>
           </div>
 
           <div className="mb-5">
-            <div className="text-2xl font-bold mb-1">Lists</div>
-            {/* <div className="text-sm text-[#4C4E64AD] border-b border-[#4C4E641F] pb-3">
-              Categorize projects and share impact evaluation
-            </div> */}
-          </div>
-
-          <div className="mb-5">
-            {lists ? (
+            {retrolistLists ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {lists.map(list => (
-                  <Link to={"/list/" + list._id}>
+                {retrolistLists.map(list => (
+                  <Link to={"/list/" + list.id}>
                     <ProjectListCard list={list}></ProjectListCard>
                   </Link>
                 ))}
@@ -111,17 +98,59 @@ export default function ListsPage() {
           </div>
 
           <div className="mb-5">
-            <div className="text-2xl font-bold mb-1">Badgeholder Lists</div>
-            {/* <div className="text-sm text-[#4C4E64AD] border-b border-[#4C4E641F] pb-3">
-              Categorize projects and share impact evaluation
-            </div> */}
+            <div className="text-2xl font-bold mb-1">Badgeholder Lists ({agoraLists?.length ?? '...'})</div>
+            <div className="text-sm text-[#4C4E64AD] border-b border-[#4C4E641F] pb-3">
+              Lists created by Badgeholders
+            </div>
           </div>
 
           <div className="mb-5">
             {agoraLists ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {agoraLists.map(list => (
-                  <Link to={"/list/" + list._id}>
+                  <Link to={"/list/" + list.id}>
+                    <ProjectListCard list={list}></ProjectListCard>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div>Loading...</div>
+            )}
+          </div>
+
+          <div className="mb-5">
+            <div className="text-2xl font-bold mb-1">Pairwise Lists ({pairwiseLists?.length ?? '...'})</div>
+            <div className="text-sm text-[#4C4E64AD] border-b border-[#4C4E641F] pb-3">
+              Lists created with <a href="https://pairwise.vote" className="underline" target="_blank">Pairwise</a> by non-badgeholders
+            </div>
+          </div>
+
+          <div className="mb-5">
+            {pairwiseLists ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {pairwiseLists.map(list => (
+                  <Link to={"/list/" + list.id}>
+                    <ProjectListCard list={list}></ProjectListCard>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div>Loading...</div>
+            )}
+          </div>
+
+          <div className="mb-5">
+            <div className="text-2xl font-bold mb-1">Other Lists ({otherLists?.length ?? '...'})</div>
+            <div className="text-sm text-[#4C4E64AD] border-b border-[#4C4E641F] pb-3">
+              Lists created by non-badgeholder using other tools
+            </div>
+          </div>
+
+          <div className="mb-5">
+            {otherLists ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {otherLists.map(list => (
+                  <Link to={"/list/" + list.id}>
                     <ProjectListCard list={list}></ProjectListCard>
                   </Link>
                 ))}

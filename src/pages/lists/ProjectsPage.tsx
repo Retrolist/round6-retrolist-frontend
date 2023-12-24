@@ -72,7 +72,7 @@ export default function ProjectsPage() {
               the builder.
             </div>
           </div>
-          <div className="flex flex-col md:flex-row gap-2 items-center mb-8">
+          <div className="flex flex-col md:flex-row gap-2 items-center mb-8 hidden">
             <ProjectCategoryButton
               text="All Projects"
               categories={categories}

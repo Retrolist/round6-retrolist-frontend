@@ -19,6 +19,7 @@ import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { CheckCircleOutlined } from "@ant-design/icons"
 import ListStatusBadge from "../../components/Project/ListStatusBadge";
 import SecondaryButton from "../../components/buttons/SecondaryButton";
+import axios from "axios";
 
 export default function ListPage() {
   const { address, isConnected } = useAccountSiwe()
@@ -35,7 +36,9 @@ export default function ListPage() {
   const RETROLIST_SECRET = window.localStorage.getItem("RETROLIST_SECRET")
 
   const fetchList = useCallback(async () => {
-    const response = await api.get("/lists/" + listId)
+    // const response = await api.get("/lists/" + listId)
+    const response = await axios.get("/dataset/rpgf3/lists/" + listId + ".json")
+    response.data._id = response.data.id
     setList(response.data)
   }, [ listId, setList ])
 

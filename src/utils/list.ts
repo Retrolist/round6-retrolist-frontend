@@ -119,12 +119,15 @@ export function listPieChart(data: ListData) {
   for (let content of listContent) {
     chart.push({
       title: content.project?.displayName || '',
-      color: shadeColor(PIE_CHART_BASE_COLOR, (accOp / data.totalOp * 100) - 50),
+      // color: shadeColor(PIE_CHART_BASE_COLOR, (accOp / data.totalOp * 100) - 50),
+      color: '#'+Math.floor(Math.random()*16777215).toString(16).padStart(6, '0'),
       value: content.OPAmount,
     })
 
     accOp += content.OPAmount
   }
+
+  console.log(chart)
 
   return chart
 }

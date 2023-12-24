@@ -1,6 +1,7 @@
 import { ReactNode, useCallback, useContext, useEffect, useState } from "react";
 import { api } from "../utils/api";
 import React from "react";
+import axios from "axios";
 
 const IncludedInBallotsContext = React.createContext<[{[projectId: string]: number}, boolean]>([{}, false])
 
@@ -40,7 +41,7 @@ function useFetchIncludedInBallots(): [{ [projectId: string]: number }, boolean]
     try {
       setLoading(true)
 
-      const response = await api.get('/projects/ballots')
+      const response = await axios.get('/dataset/rpgf3/ballots.json')
 
       setIncludedInBallots(response.data)
     } catch (err) {

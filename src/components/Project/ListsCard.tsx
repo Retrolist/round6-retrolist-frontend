@@ -1,12 +1,12 @@
 import { useIncludedInBallots } from "../../hooks/useIncludedInBallots";
-import { ListDto } from "../../types/List";
+import { ListDto, ListHeader } from "../../types/List";
 import BallotSquares from "../analytics/BallotSquares";
 import ListStatusBadge from "./ListStatusBadge";
 
-export const ProjectListCard = ({ list }: { list: ListDto}) => {
+export const ProjectListCard = ({ list }: { list: ListHeader }) => {
   const [ballots, ballotsLoading] = useIncludedInBallots();
 
-  const totalOp = list.listContent.reduce((acc, x) => acc + x.OPAmount, 0);
+  // const totalOp = list.listContent.reduce((acc, x) => acc + x.OPAmount, 0);
 
   console.log(list)
 
@@ -23,7 +23,7 @@ export const ProjectListCard = ({ list }: { list: ListDto}) => {
           ))}
         </div>
 
-        <ListStatusBadge status={list.status}></ListStatusBadge>
+        {/* <ListStatusBadge status={list.status}></ListStatusBadge> */}
 
         {/* <div className="rounded-full border border-[#B2DDFF] text-[#175CD3] bg-[#EFF8FF] px-3 py-1">
           {list.status}
@@ -31,11 +31,11 @@ export const ProjectListCard = ({ list }: { list: ListDto}) => {
       </div>
       <div className="flex justify-between text-[#272930DE] mt-4">
         <div className="text-sm">{list.listName}</div>
-        <div className="text-base font-medium">{totalOp} OP</div>
+        {/* <div className="text-base font-medium">{totalOp} OP</div> */}
       </div>
-      <p className="text-[10px] text-[#4C4E64AD] line-clamp-3">
+      {/* <p className="text-[10px] text-[#4C4E64AD] line-clamp-3">
         {list.listDescription}
-      </p>
+      </p> */}
 
       {!ballotsLoading && (
         <div className="mt-2">
@@ -45,7 +45,7 @@ export const ProjectListCard = ({ list }: { list: ListDto}) => {
               name: project.displayName,
             }))}
             ballots={ballots}
-            limit={15}
+            limit={10}
           ></BallotSquares>
         </div>
       )}
