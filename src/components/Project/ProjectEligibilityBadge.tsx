@@ -11,7 +11,7 @@ export default function ProjectEligibilityBadge({ status, ballots = 0, size = 'x
     const [ fgColor, bgColor ] = ballotsColor(ballots)
 
     return (
-      <div className={`rounded-2xl font-bold px-3 py-1 border-2 text-sm`} style={{
+      <div className={`rounded-2xl font-bold px-3 py-1 border-2 text-${size}`} style={{
         backgroundColor: bgColor,
         color: fgColor,
         borderColor: fgColor,

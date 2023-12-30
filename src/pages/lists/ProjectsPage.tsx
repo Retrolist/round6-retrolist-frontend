@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import Layout from "../../components/Layout";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
-import { ProjectCard } from "../../components/Project/Card";
+import { ProjectCard } from "../../components/Project/ProjectCard";
 import { useProjects } from "../../hooks/useProjects";
 import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryButton";
 import InfiniteScroll from "react-infinite-scroller";
@@ -10,6 +10,7 @@ import {
   SearchOutlined,
 } from '@ant-design/icons';
 import { Analytics } from "../analytics/AnalyticsPage";
+import { ProjectList } from "../../components/Project/ProjectList";
 
 const { Search } = Input;
 
@@ -18,6 +19,7 @@ export default function ProjectsPage() {
   const [ categories, setCategories ] = useState<string[]>([])
   const [ eligibleFilter, setEligibleFilter ] = useState('')
   const [ seed, setSeed ] = useState(Math.floor(Math.random() * 1000000000).toString())
+  const [ listView, setListView ] = useState(true)
 
   const setCategory = useCallback((category?: string) => {
     if (category) {
@@ -170,11 +172,19 @@ export default function ProjectsPage() {
             hasMore={hasNext}
             loader={<div>Loading...</div>}
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {projects.filter(project => project.prelimResult.toLowerCase().indexOf(eligibleFilter) != -1).map((project) => (
-                <ProjectCard project={project} />
-              ))}
-            </div>
+            {listView ? (
+              <div className="grid grid-cols-1 gap-3">
+                {projects.filter(project => project.prelimResult.toLowerCase().indexOf(eligibleFilter) != -1).map((project) => (
+                  <ProjectList project={project} />
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {projects.filter(project => project.prelimResult.toLowerCase().indexOf(eligibleFilter) != -1).map((project) => (
+                  <ProjectCard project={project} />
+                ))}
+              </div>
+            )}
           </InfiniteScroll>
         </div>
       </LayoutSideInfo>
