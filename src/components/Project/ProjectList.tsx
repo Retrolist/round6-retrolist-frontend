@@ -51,10 +51,26 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
             </div>
           </div>
           <div className="hidden gap-10 md:flex">
-            <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-              <Crown />
-              <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
-            </div>
+            {project.rank && project.rank < 10 && (
+              <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                <Crown />
+                <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+              </div>
+            )}
+
+            {project.rank && project.rank >= 10 && project.rank <= 99 && (
+              <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                <Crown />
+                <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
+              </div>
+            )}
+
+            {project.rank && project.rank >= 100 && (
+              <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
+              </div>
+            )}
+
             <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
               <VoteSvg />
               <div className="text-2xl font-medium">{project.includedInBallots}</div>
@@ -81,14 +97,32 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
             <span className="text-red-600">{project.reportReason}</span>
           )}
         </div>
-        <div className="flex gap-10 md:hidden mt-3">
-          <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+        <div className="flex gap-4 md:hidden mt-3">
+          {project.rank && project.rank < 10 && (
+            <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+              <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+            </div>
+          )}
+
+          {project.rank && project.rank >= 10 && project.rank <= 99 && (
+            <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+              <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+            </div>
+          )}
+
+          {project.rank && project.rank >= 100 && (
+            <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+              <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+            </div>
+          )}
+
+          <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
             <VoteSvg />
-            <div className="text-2xl font-medium">{project.includedInBallots}</div>
+            <div className="text-xl font-medium">{project.includedInBallots}</div>
           </div>
-          <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+          <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
             <OpCoin />
-            <div className="text-2xl font-medium">{Math.round(project.totalOP!).toLocaleString("en-US")}</div>
+            <div className="text-xl font-medium">{Math.round(project.totalOP!).toLocaleString("en-US")}</div>
           </div>
         </div>
 
