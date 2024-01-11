@@ -76,7 +76,7 @@ export default function TotalOPProgress({ ballots, showLegend = true }: { ballot
       </div>
 
       {showLegend && (
-        <div className="flex flex-col sm:flex-row justify-center gap-1 sm:gap-x-12 flex-wrap mt-2">
+        <div className="grid grid-cols-2 sm:flex sm:flex-row justify-center gap-1 sm:gap-x-12 flex-wrap mt-2">
           <TotalOPLegend label=">99k OP" color={colorActive} count={countActive}></TotalOPLegend>
           <TotalOPLegend label="49k - 99k OP" color={color17} count={count17}></TotalOPLegend>
           <TotalOPLegend label="24k - 49k OP" color={color14} count={count14}></TotalOPLegend>
