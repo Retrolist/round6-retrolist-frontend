@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
+import { Crown } from "../../assets/Crown";
+import { OpCoin } from "../../assets/OPCoin";
+import { VoteSvg } from "../../assets/VoteSvg";
 import { ProjectMetadata } from "../../types/Project";
-import { addrParse } from "../../utils/common";
-import { categoryLabel } from "../../utils/project";
-import { UserImageAddress } from "../common/UserImageAddress";
-import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
 
 export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
   return (
@@ -26,14 +25,21 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
           </div>
         </div> */}
 
-        <div className="md:grid gap-4" style={{ gridTemplateColumns: "300px 1fr" }}>
+        <div
+          className="flex justify-between items-end gap-4"
+          style={{ gridTemplateColumns: "300px 1fr" }}
+        >
           <div>
             <div className="flex items-center justify-between">
               <div className="flex gap-2 items-center mb-2">
-                <img
-                  className="rounded-full w-[28px] h-[28px]"
-                  src={project.profileImageUrl || "/img/project-placeholder.svg"}
-                />
+                <div className="w-10 h-10 p-0.5 border border-[#E2E8F0] rounded-full">
+                  <img
+                    className="rounded-full"
+                    src={
+                      project.profileImageUrl || "/img/project-placeholder.svg"
+                    }
+                  />
+                </div>
                 <div className="">{project.displayName}</div>
               </div>
             </div>
@@ -44,19 +50,45 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
               </div>
             </div>
           </div>
-
-          <div className="truncate mt-1">
-            <div className="text-[#4C4E64AD] truncate text-sm mb-2">
-              {project.prelimResult.toLowerCase() == "keep" ? (
-                project.bio
-              ) : (
-                <span className="text-red-600">{project.reportReason}</span>
-              )}
+          <div className="hidden gap-10 md:flex">
+            <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+              <Crown />
+              <div className="text-2xl font-medium linear-wipe">Top 2</div>
             </div>
-
+            <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+              <VoteSvg />
+              <div className="text-2xl font-medium">415</div>
+            </div>
+            <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+              <OpCoin />
+              <div className="text-2xl font-medium">111,000</div>
+            </div>
+          </div>
+          {/* <div className="truncate mt-1">
             <div className="flex gap-4">
-              <ProjectEligibilityBadge status={project.prelimResult} ballots={project.includedInBallots} size="xs" />
+              <ProjectEligibilityBadge
+                status={project.prelimResult}
+                ballots={project.includedInBallots}
+                size="xs"
+              />
             </div>
+          </div> */}
+        </div>
+        <div className="text-[#4C4E64AD] text-xs mt-2 font-normal">
+          {project.prelimResult.toLowerCase() == "keep" ? (
+            project.bio
+          ) : (
+            <span className="text-red-600">{project.reportReason}</span>
+          )}
+        </div>
+        <div className="flex gap-10 md:hidden mt-3">
+          <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+            <VoteSvg />
+            <div className="text-2xl font-medium">415</div>
+          </div>
+          <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+            <OpCoin />
+            <div className="text-2xl font-medium">111,000</div>
           </div>
         </div>
 

@@ -31,3 +31,25 @@ html, body {
   font-weight: 600;
   background-color: #FFEDEF;
 }
+
+.linear-wipe {
+  text-align: center;
+  
+  background: linear-gradient(130deg, #FC925B 0%, #E0D5FA 26.14%, #44B9ED 53.98%, #90B1A9 82.39%, #F7949E 109.1%);
+  background-size: 200% auto;
+  
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  animation: shine 1s linear infinite;
+
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}

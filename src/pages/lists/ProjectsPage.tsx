@@ -1,48 +1,45 @@
+import { SearchOutlined } from "@ant-design/icons";
+import { Input } from "antd";
 import { useCallback, useState } from "react";
+import InfiniteScroll from "react-infinite-scroller";
 import Layout from "../../components/Layout";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
 import { ProjectCard } from "../../components/Project/ProjectCard";
-import { useProjects } from "../../hooks/useProjects";
 import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryButton";
-import InfiniteScroll from "react-infinite-scroller";
-import { Alert, Input } from 'antd';
-import {
-  SearchOutlined,
-} from '@ant-design/icons';
-import { Analytics } from "../analytics/AnalyticsPage";
 import { ProjectList } from "../../components/Project/ProjectList";
+import { useProjects } from "../../hooks/useProjects";
+import { Analytics } from "../analytics/AnalyticsPage";
 
 const { Search } = Input;
 
 export default function ProjectsPage() {
-  const [ search, setSearch ] = useState('')
-  const [ categories, setCategories ] = useState<string[]>([])
-  const [ eligibleFilter, setEligibleFilter ] = useState('')
-  const [ seed, setSeed ] = useState(Math.floor(Math.random() * 1000000000).toString())
-  const [ listView, setListView ] = useState(true)
+  const [search, setSearch] = useState("");
+  const [categories, setCategories] = useState<string[]>([]);
+  const [eligibleFilter, setEligibleFilter] = useState("");
+  const [seed, setSeed] = useState(
+    Math.floor(Math.random() * 1000000000).toString()
+  );
+  const [listView, setListView] = useState(true);
 
-  const setCategory = useCallback((category?: string) => {
-    if (category) {
-      setCategories([category])
-    } else {
-      setCategories([])
-    }
-  }, [setCategories])
+  const setCategory = useCallback(
+    (category?: string) => {
+      if (category) {
+        setCategories([category]);
+      } else {
+        setCategories([]);
+      }
+    },
+    [setCategories]
+  );
 
-  const {
-    projects,
-    loading,
-    isError,
-    hasNext,
-    refreshProjects,
-    paginate,
-  } = useProjects({
-    search,
-    categories,
-    seed,
-    orderBy: search ? 'alphabeticalAZ' : 'shuffle',
-    approved: true,
-  })
+  const { projects, loading, isError, hasNext, refreshProjects, paginate } =
+    useProjects({
+      search,
+      categories,
+      seed,
+      orderBy: search ? "alphabeticalAZ" : "shuffle",
+      approved: true,
+    });
 
   // console.log(projects)
 
@@ -81,7 +78,7 @@ export default function ProjectsPage() {
               category=""
               setCategory={setCategory}
             />
-            
+
             <div className="border-l-[1px] border border-[#CBD5E0] h-4"></div>
 
             <ProjectCategoryButton
@@ -124,7 +121,7 @@ export default function ProjectsPage() {
               category=""
               setCategory={setEligibleFilter}
             />
-            
+
             <div className="border-l-[1px] border border-[#CBD5E0] h-4"></div>
 
             {/* <ProjectCategoryButton
@@ -162,7 +159,7 @@ export default function ProjectsPage() {
               placeholder="Search projects"
               size="large"
               value={search}
-              onChange={e => setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </div>
 
@@ -174,15 +171,29 @@ export default function ProjectsPage() {
           >
             {listView ? (
               <div className="grid grid-cols-1 gap-3">
-                {projects.filter(project => project.prelimResult.toLowerCase().indexOf(eligibleFilter) != -1).map((project) => (
-                  <ProjectList project={project} />
-                ))}
+                {projects
+                  .filter(
+                    (project) =>
+                      project.prelimResult
+                        .toLowerCase()
+                        .indexOf(eligibleFilter) != -1
+                  )
+                  .map((project) => (
+                    <ProjectList project={project} />
+                  ))}
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {projects.filter(project => project.prelimResult.toLowerCase().indexOf(eligibleFilter) != -1).map((project) => (
-                  <ProjectCard project={project} />
-                ))}
+                {projects
+                  .filter(
+                    (project) =>
+                      project.prelimResult
+                        .toLowerCase()
+                        .indexOf(eligibleFilter) != -1
+                  )
+                  .map((project) => (
+                    <ProjectCard project={project} />
+                  ))}
               </div>
             )}
           </InfiniteScroll>
