@@ -30,7 +30,7 @@ export function Analytics() {
 
       <div className="mb-6">
         {/* <div className="text-2xl font-bold mb-3">Ballots by Category</div> */}
-        <div>
+        {/* <div>
           {recategorization.map((collection) => (
             <div className="mb-4">
               <div className="text-xl font-bold mb-2">{collection.name}</div>
@@ -54,7 +54,7 @@ export function Analytics() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );
