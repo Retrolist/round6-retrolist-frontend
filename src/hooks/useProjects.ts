@@ -25,8 +25,8 @@ export function useProjects(options: ProjectQueryOptions) {
         const response = await axios.get("/dataset/rpgf3/projects.json")
         PROJECTS = response.data
 
-        // Force order by ballot
-        PROJECTS = PROJECTS.sort((a, b) => b.includedInBallots! - a.includedInBallots!)
+        // Force order by rank
+        PROJECTS = PROJECTS.sort((a, b) => a.rank! - a.rank!)
 
         PROJECT_FUSE = new Fuse(PROJECTS, {
           keys: [

@@ -27,6 +27,8 @@ export interface ProjectMetadata {
   recategorization?: string
   primaryCategory?: string
   includedInBallots?: number
+  totalOP?: number
+  rank?: number
 }
 
 export interface Project {

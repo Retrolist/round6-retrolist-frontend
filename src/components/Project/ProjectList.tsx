@@ -53,15 +53,15 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
           <div className="hidden gap-10 md:flex">
             <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
               <Crown />
-              <div className="text-2xl font-medium linear-wipe">Top 2</div>
+              <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
             </div>
             <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
               <VoteSvg />
-              <div className="text-2xl font-medium">415</div>
+              <div className="text-2xl font-medium">{project.includedInBallots}</div>
             </div>
             <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
               <OpCoin />
-              <div className="text-2xl font-medium">111,000</div>
+              <div className="text-2xl font-medium">{Math.round(project.totalOP!).toLocaleString("en-US")}</div>
             </div>
           </div>
           {/* <div className="truncate mt-1">
@@ -84,11 +84,11 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
         <div className="flex gap-10 md:hidden mt-3">
           <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
             <VoteSvg />
-            <div className="text-2xl font-medium">415</div>
+            <div className="text-2xl font-medium">{project.includedInBallots}</div>
           </div>
           <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
             <OpCoin />
-            <div className="text-2xl font-medium">111,000</div>
+            <div className="text-2xl font-medium">{Math.round(project.totalOP!).toLocaleString("en-US")}</div>
           </div>
         </div>
 
