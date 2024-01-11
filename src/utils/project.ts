@@ -37,3 +37,33 @@ export function ballotsColor(ballots: number): [ string, string ] {
 
   return [ fgColor, bgColor ]
 }
+
+export function totalOpColor(totalOp: number): [ string, string ] {
+  let bgColor = ''
+  let fgColor = ''
+
+  if (!totalOp || totalOp < 1500) {
+    bgColor = '#CCCCCC' // Light Gray
+    fgColor = '#000000'
+  } else if (totalOp < 10000) {
+    bgColor = '#FFCCCB' // Light Red
+    fgColor = '#990000' 
+  } else if (totalOp < 24000) {
+    bgColor = '#FFD099'
+    fgColor = '#CC4C10'
+  } else if (totalOp < 49000) {
+    bgColor = '#ffffe0'
+    fgColor = '#ee9902'
+  } else if (totalOp < 99000) {
+    bgColor = '#E9FFC2'
+    fgColor = '#82954B'
+  } else {
+    // bgColor = '#E9FFC2'
+    // fgColor = '#379237'
+
+    bgColor = '#BFDBFE'
+    fgColor = '#1D4ED8'
+  }
+
+  return [ fgColor, bgColor ]
+}

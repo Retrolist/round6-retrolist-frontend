@@ -45,7 +45,7 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
             </div>
           </div>
 
-          <div className="truncate mt-1">
+          <div className="truncate mt-1 md:mt-0">
             <div className="text-[#4C4E64AD] truncate text-sm mb-2">
               {project.prelimResult.toLowerCase() == "keep" ? (
                 project.bio

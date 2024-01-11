@@ -22,6 +22,7 @@ import { SubmitListSuccessRoute } from "./pages/lists/create/Form/SubmitListSucc
 import "./polyfills.ts"
 import { AnalyticsPageRoute } from "./pages/analytics/AnalyticsPage.tsx";
 import { IncludedInBallotsProvider } from "./hooks/useIncludedInBallots.tsx";
+import { OPDistributionProvider } from "./hooks/useOPDistribution.tsx";
 
 const router = createBrowserRouter([
   ProjectsPageRoute,
@@ -75,7 +76,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <RainbowKitConfigProvider>
     <AntdAlertProvider>
       <IncludedInBallotsProvider>
-        <RouterProvider router={router} />
+        <OPDistributionProvider>
+          <RouterProvider router={router} />
+        </OPDistributionProvider>
       </IncludedInBallotsProvider>
     </AntdAlertProvider>
   </RainbowKitConfigProvider>
