@@ -11,6 +11,8 @@ import { useOPDistribution } from "../../hooks/useOPDistribution";
 export function Analytics() {
   const [categories, ballots, loading] = useOPDistribution();
 
+  console.log(categories)
+
   if (loading) {
     return (
       <div>
@@ -29,6 +31,35 @@ export function Analytics() {
       </div>
 
       <div className="mb-6">
+        <div>
+          {recategorization.map((collection) => (
+            <div className="mb-4">
+              <div className="font-bold mb-2">{collection.name} - {(categories[collection.name].total / 1000000).toFixed(2)}M</div>
+              <div className="overflow-auto">
+                <div className="flex gap-4">
+                  {collection.ranking.sort((a, b) => (
+                    categories[b.name].total - categories[a.name].total
+                  )).map((category) => (
+                    <div className="lg:w-1/5 border border-gray-200 bg-white rounded-xl p-3 px-4" style={{ minWidth: 140 }}>
+                      <div className="flex flex-col justify-between h-full">
+                        <div className="text-xs text-[#4C4E64]">{category.name}</div>
+                        <div>
+                          <div className="my-1 mb-2 text-xl text-[#272930] font-bold">{(categories[category.name].total / 1000000).toFixed(2)}M</div>
+                          <div>
+                            <TotalOPProgress ballots={categories[category.name].projects} showLegend={false} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mb-6 hidden">
         {/* <div className="text-2xl font-bold mb-3">Ballots by Category</div> */}
         {/* <div>
           {recategorization.map((collection) => (

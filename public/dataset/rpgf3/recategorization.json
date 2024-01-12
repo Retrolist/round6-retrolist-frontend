@@ -1,6 +1,1230 @@
 [
   {
     "type": "collection",
+    "name": "Developer Ecosystem",
+    "id": 20,
+    "ranking": [
+      {
+        "type": "collection",
+        "id": 21,
+        "name": "Conferences, Events & Hackathons",
+        "ranking": [
+          {
+            "id": "0x04e06f777a3b41ba6db7f8f1c77b7439cbb5f5b8b8d3cabe4038a9ccbb924aeb",
+            "RPGF3Id": "0x04e06f777a3b41ba6db7f8f1c77b7439cbb5f5b8b8d3cabe4038a9ccbb924aeb",
+            "name": "Onboard en Perú Optimistas e Indexer ",
+            "type": "project"
+          },
+          {
+            "id": "0x083cc62e08ddd1cafe05d94c4694b684bc5cbb44513b02ac884d368dea7f9c24",
+            "RPGF3Id": "0x083cc62e08ddd1cafe05d94c4694b684bc5cbb44513b02ac884d368dea7f9c24",
+            "name": "Ethereum France",
+            "type": "project"
+          },
+          {
+            "id": "0x0b2ba3709c19f531dab7bb989f2d7086b4080561f6f49269dd1a3d469c7ef6b1",
+            "RPGF3Id": "0x0b2ba3709c19f531dab7bb989f2d7086b4080561f6f49269dd1a3d469c7ef6b1",
+            "name": "StreamETH",
+            "type": "project"
+          },
+          {
+            "id": "0x101871d3c582cd1a8322f911e6f9623d8c1a6f19108149d9c1a6ef4650080780",
+            "RPGF3Id": "0x101871d3c582cd1a8322f911e6f9623d8c1a6f19108149d9c1a6ef4650080780",
+            "name": "Funding the Commons",
+            "type": "project"
+          },
+          {
+            "id": "0x1335374f0d00c61bf195d9eaeb9c4c55ae4a1a0b883ee0d71b680a4783ad528f",
+            "RPGF3Id": "0x1335374f0d00c61bf195d9eaeb9c4c55ae4a1a0b883ee0d71b680a4783ad528f",
+            "name": "ETHSafari 2023",
+            "type": "project"
+          },
+          {
+            "id": "0x2113aa30f96029c1a9af0c1c15677fb80ecc169fb05b3d0c90e6eb77f5e758c1",
+            "RPGF3Id": "0x2113aa30f96029c1a9af0c1c15677fb80ecc169fb05b3d0c90e6eb77f5e758c1",
+            "name": "Ethereum Mexico",
+            "type": "project"
+          },
+          {
+            "id": "0x33fcfbefe71202245fd492bd9b161dfe49dc2119edc7a42a0b8a9e5936a416d5",
+            "RPGF3Id": "0x33fcfbefe71202245fd492bd9b161dfe49dc2119edc7a42a0b8a9e5936a416d5",
+            "name": "Jessy's Hacker House",
+            "type": "project"
+          },
+          {
+            "id": "0x3f414ca96d84352f4b9a9a5096bb750677a4328e1a9c56830cf3edea12cd4fcb",
+            "RPGF3Id": "0x3f414ca96d84352f4b9a9a5096bb750677a4328e1a9c56830cf3edea12cd4fcb",
+            "name": "First NFT Agency",
+            "type": "project"
+          },
+          {
+            "id": "0x4227de0db7d9388d6c08f297043098cb2de64c8ecc89d08b6bef8b71d4493e47",
+            "RPGF3Id": "0x4227de0db7d9388d6c08f297043098cb2de64c8ecc89d08b6bef8b71d4493e47",
+            "name": "Duct Tape ",
+            "type": "project"
+          },
+          {
+            "id": "0x54090220e92626ad3d3cee164a9cd14f808abc69257217691a8b1f0b65e5f551",
+            "RPGF3Id": "0x54090220e92626ad3d3cee164a9cd14f808abc69257217691a8b1f0b65e5f551",
+            "name": "Andino - Talent in technology",
+            "type": "project"
+          },
+          {
+            "id": "0x5c26992a23287833260d79c0d697129c168d5fbe366d3716484ffb6073e01db4",
+            "RPGF3Id": "0x5c26992a23287833260d79c0d697129c168d5fbe366d3716484ffb6073e01db4",
+            "name": "Giveth Web3 House",
+            "type": "project"
+          },
+          {
+            "id": "0x7768eb79db734845f9afaec4741e064eee319fd25fb35bd2956d10739e22d94a",
+            "RPGF3Id": "0x7768eb79db734845f9afaec4741e064eee319fd25fb35bd2956d10739e22d94a",
+            "name": "RADAR",
+            "type": "project"
+          },
+          {
+            "id": "0x83acb708e662400cbe8f8e9ec313f26d40e78e789577bce3e895d16eea8b5fbc",
+            "RPGF3Id": "0x83acb708e662400cbe8f8e9ec313f26d40e78e789577bce3e895d16eea8b5fbc",
+            "name": "AW House/Komorebi's Hacker House",
+            "type": "project"
+          },
+          {
+            "id": "0x8785599241f957b73e9e24576741bb3e02943bfbd38570135566a1cc61134168",
+            "RPGF3Id": "0x8785599241f957b73e9e24576741bb3e02943bfbd38570135566a1cc61134168",
+            "name": "SpaghettETH",
+            "type": "project"
+          },
+          {
+            "id": "0x8788f5efe99abf2a82ff0c27361baf9321c7601c06599551635aadfdd7980cf9",
+            "RPGF3Id": "0x8788f5efe99abf2a82ff0c27361baf9321c7601c06599551635aadfdd7980cf9",
+            "name": "Ethereum Lima",
+            "type": "project"
+          },
+          {
+            "id": "0x8f6fc027d996489f020e2b5591374f2c97833fe20cab3124e1c7377f5b7e583f",
+            "RPGF3Id": "0x8f6fc027d996489f020e2b5591374f2c97833fe20cab3124e1c7377f5b7e583f",
+            "name": "ETHBarcelona",
+            "type": "project"
+          },
+          {
+            "id": "0xf41f199697d23be53eb353e02947670e439498081fd2c733ff8befea0c974c37",
+            "RPGF3Id": "0xf41f199697d23be53eb353e02947670e439498081fd2c733ff8befea0c974c37",
+            "name": "ETHAccra",
+            "type": "project"
+          },
+          {
+            "id": "0xa4f5f97064e5ebdc97591521be056a911731925f81c694ed0bc84f6fc1b7ddea",
+            "RPGF3Id": "0xa4f5f97064e5ebdc97591521be056a911731925f81c694ed0bc84f6fc1b7ddea",
+            "name": "Cryptosquare",
+            "type": "project"
+          },
+          {
+            "id": "0xf3526ec21d5b1146008c629fe9837f2c5ab099b1590e28dfb7005c126234fb11",
+            "RPGF3Id": "0xf3526ec21d5b1146008c629fe9837f2c5ab099b1590e28dfb7005c126234fb11",
+            "name": "Eth-Volcano",
+            "type": "project"
+          },
+          {
+            "id": "0xe7d4cf0cda38c0f0b1ac0853ccaaa23d7c0569412604935edfa57cbb1ec7077b",
+            "RPGF3Id": "0xe7d4cf0cda38c0f0b1ac0853ccaaa23d7c0569412604935edfa57cbb1ec7077b",
+            "name": "Crypto Commons Association",
+            "type": "project"
+          },
+          {
+            "id": "0xa9f6de6ad7b1cb903f0063e588f0f729f13ddd76d77495e25a3860c27a721773",
+            "RPGF3Id": "0xa9f6de6ad7b1cb903f0063e588f0f729f13ddd76d77495e25a3860c27a721773",
+            "name": "ETHGlobal",
+            "type": "project"
+          },
+          {
+            "id": "0xf136f5a299e27269045ab60239a6c3897826e7019fb2c534344ad448a16cef8a",
+            "RPGF3Id": "0xf136f5a299e27269045ab60239a6c3897826e7019fb2c534344ad448a16cef8a",
+            "name": "Ethereum Colombia",
+            "type": "project"
+          }
+        ]
+      },
+      {
+        "type": "collection",
+        "id": 22,
+        "name": "Dev Services & Support",
+        "ranking": [
+          {
+            "id": "0x07fb115980ac6617d4b4b6f0cfcbc52bacfbb395b5c0d2d71fc735435627c555",
+            "RPGF3Id": "0x07fb115980ac6617d4b4b6f0cfcbc52bacfbb395b5c0d2d71fc735435627c555",
+            "name": "LXDAO",
+            "type": "project"
+          },
+          {
+            "id": "0x0c50a589d092ac078d4fecce888b1ec40a22cacd7d5d32b59ea277147113f173",
+            "RPGF3Id": "0x0c50a589d092ac078d4fecce888b1ec40a22cacd7d5d32b59ea277147113f173",
+            "name": "eth.limo",
+            "type": "project"
+          },
+          {
+            "id": "0x0cdf83271ae4293cc360b68edb92f4438ecf6d054ec1ec04a82fd7bd5b96c7ad",
+            "RPGF3Id": "0x0cdf83271ae4293cc360b68edb92f4438ecf6d054ec1ec04a82fd7bd5b96c7ad",
+            "name": "Sourcify",
+            "type": "project"
+          },
+          {
+            "id": "0x127bdc6d776fb958f986cd2059b43e917a2d74e912c0b360316f77a05b30087b",
+            "RPGF3Id": "0x127bdc6d776fb958f986cd2059b43e917a2d74e912c0b360316f77a05b30087b",
+            "name": "TechNERD Program",
+            "type": "project"
+          },
+          {
+            "id": "0x22440f20a9316a1d01cab2cfc8d8572560b026a538418f1416c3f5289869229f",
+            "RPGF3Id": "0x22440f20a9316a1d01cab2cfc8d8572560b026a538418f1416c3f5289869229f",
+            "name": "Pyth Network",
+            "type": "project"
+          },
+          {
+            "id": "0x32033fcd4dc814d1c0e903446719154dc1466ba27b1422a1e6c664ade1c8adbf",
+            "RPGF3Id": "0x32033fcd4dc814d1c0e903446719154dc1466ba27b1422a1e6c664ade1c8adbf",
+            "name": "ACryptoS",
+            "type": "project"
+          },
+          {
+            "id": "0x33fda246eee3e56ffd2ae97a87574bdd1278439dde91e33a235368913d6da48a",
+            "RPGF3Id": "0x33fda246eee3e56ffd2ae97a87574bdd1278439dde91e33a235368913d6da48a",
+            "name": "Clique",
+            "type": "project"
+          },
+          {
+            "id": "0x3bf8db795aafd69b9382756dfeeffa5a2f3353adb60158beb60665f4dd2a3f4d",
+            "RPGF3Id": "0x3bf8db795aafd69b9382756dfeeffa5a2f3353adb60158beb60665f4dd2a3f4d",
+            "name": "Buildooor",
+            "type": "project"
+          },
+          {
+            "id": "0x3c5bf96d1ae3c4e995b0892b515cb837d877a11f6f63878bded9b5020598fd3f",
+            "RPGF3Id": "0x3c5bf96d1ae3c4e995b0892b515cb837d877a11f6f63878bded9b5020598fd3f",
+            "name": "Bware Labs",
+            "type": "project"
+          },
+          {
+            "id": "0x490ad76a69ed6e4999c570bf5b7eb2336ff8e31906a3df6bf88b9144558acccf",
+            "RPGF3Id": "0x490ad76a69ed6e4999c570bf5b7eb2336ff8e31906a3df6bf88b9144558acccf",
+            "name": "Edge & Node / The Graph",
+            "type": "project"
+          },
+          {
+            "id": "0x4a9fce27c66e104b86ebb868d1811b3c4b3b66d4332eba4a83c50838ba231c99",
+            "RPGF3Id": "0x4a9fce27c66e104b86ebb868d1811b3c4b3b66d4332eba4a83c50838ba231c99",
+            "name": "Marko",
+            "type": "project"
+          },
+          {
+            "id": "0x52a5eb33b424f5d62f6cdac8943d4b180adb5cdd5d0dbd861c0d38f522386542",
+            "RPGF3Id": "0x52a5eb33b424f5d62f6cdac8943d4b180adb5cdd5d0dbd861c0d38f522386542",
+            "name": "Launchcaster",
+            "type": "project"
+          },
+          {
+            "id": "0x5effc6bf83d22623146bdd81e6bb55bc287b68aced8ad0d4be8cccbf5f408b19",
+            "RPGF3Id": "0x5effc6bf83d22623146bdd81e6bb55bc287b68aced8ad0d4be8cccbf5f408b19",
+            "name": "0xSalman",
+            "type": "project"
+          },
+          {
+            "id": "0x60da4d7694d025119a3c47f6fd67aa417718fe089f8c98d4f0ccda524cd777df",
+            "RPGF3Id": "0x60da4d7694d025119a3c47f6fd67aa417718fe089f8c98d4f0ccda524cd777df",
+            "name": "Synthetix IPFS Node",
+            "type": "project"
+          },
+          {
+            "id": "0x67fab3ded419221982f0e55f3f63dbf701f18e39f90aef73ac2379ccf7a4fcd6",
+            "RPGF3Id": "0x67fab3ded419221982f0e55f3f63dbf701f18e39f90aef73ac2379ccf7a4fcd6",
+            "name": "CompareNodes",
+            "type": "project"
+          },
+          {
+            "id": "0x686631456b8a61089497f6cb36abb0b9965c47464383603402a8688b8b69fa93",
+            "RPGF3Id": "0x686631456b8a61089497f6cb36abb0b9965c47464383603402a8688b8b69fa93",
+            "name": "ZORA",
+            "type": "project"
+          },
+          {
+            "id": "0x6a534fd1cab7d3770c6f747abf1f481807df4220f3c0464d510b35eed65498a6",
+            "RPGF3Id": "0x6a534fd1cab7d3770c6f747abf1f481807df4220f3c0464d510b35eed65498a6",
+            "name": "Blocktorch",
+            "type": "project"
+          },
+          {
+            "id": "0x71e4915fe3b20feeb949e572cfa4204ab8e0a62ae385a0cbb8474071fb86eb80",
+            "RPGF3Id": "0x71e4915fe3b20feeb949e572cfa4204ab8e0a62ae385a0cbb8474071fb86eb80",
+            "name": "Chronicle Labs",
+            "type": "project"
+          },
+          {
+            "id": "0x72f6d960a8d3b50bcc6723270fd211884b60dabece4f3b400014369f442810ed",
+            "RPGF3Id": "0x72f6d960a8d3b50bcc6723270fd211884b60dabece4f3b400014369f442810ed",
+            "name": "Pocket Network",
+            "type": "project"
+          },
+          {
+            "id": "0x8311ffccc08b78bf4c7c52e4cc6e2d002e2641f68360f71e3c65ac3727de4a9e",
+            "RPGF3Id": "0x8311ffccc08b78bf4c7c52e4cc6e2d002e2641f68360f71e3c65ac3727de4a9e",
+            "name": "JobStash",
+            "type": "project"
+          },
+          {
+            "id": "0x8b7c072535aef80e3f2c2020327fb7975aaaf3a9aa39d843b947e8fd7fc70e64",
+            "RPGF3Id": "0x8b7c072535aef80e3f2c2020327fb7975aaaf3a9aa39d843b947e8fd7fc70e64",
+            "name": "Ultra Sound Relay",
+            "type": "project"
+          },
+          {
+            "id": "0x8d15e0dc5ed8352869c7c684287b7a24637d584172261b40f19790bac0466f45",
+            "RPGF3Id": "0x8d15e0dc5ed8352869c7c684287b7a24637d584172261b40f19790bac0466f45",
+            "name": "Index Supply",
+            "type": "project"
+          },
+          {
+            "id": "0x8dc985486bea3e55a0bf61a1622319985802a6a446a34b23d1c819811c10fb0f",
+            "RPGF3Id": "0x8dc985486bea3e55a0bf61a1622319985802a6a446a34b23d1c819811c10fb0f",
+            "name": "Castle Capital",
+            "type": "project"
+          },
+          {
+            "id": "0x90a0df94274a3baadba6bad013350182cf13c31242fc318e25ff8e2ca84ae2a9",
+            "RPGF3Id": "0x90a0df94274a3baadba6bad013350182cf13c31242fc318e25ff8e2ca84ae2a9",
+            "name": "Covalent",
+            "type": "project"
+          },
+          {
+            "id": "0x90dec3f7f6a32d24f8f6efbeaf449851331630abb0df56eeb39a6499a5572331",
+            "RPGF3Id": "0x90dec3f7f6a32d24f8f6efbeaf449851331630abb0df56eeb39a6499a5572331",
+            "name": "MultiBaas blockchain middleware",
+            "type": "project"
+          },
+          {
+            "id": "0x932ab86dcbf750b9224665f7d9974c6e9e428470974ae59658b61cd7c3283728",
+            "RPGF3Id": "0x932ab86dcbf750b9224665f7d9974c6e9e428470974ae59658b61cd7c3283728",
+            "name": "Nodies DLB",
+            "type": "project"
+          },
+          {
+            "id": "0x9b8f75de8014815d9a2ad460848c70f56248f855ac568c8ff8b8dc322267b4f9",
+            "RPGF3Id": "0x9b8f75de8014815d9a2ad460848c70f56248f855ac568c8ff8b8dc322267b4f9",
+            "name": "WakeUp Labs",
+            "type": "project"
+          },
+          {
+            "id": "0xd73aaa3a4013be0da321660ed59523edbeb6654e773a2f852fb3828156c3d7bd",
+            "RPGF3Id": "0xd73aaa3a4013be0da321660ed59523edbeb6654e773a2f852fb3828156c3d7bd",
+            "name": "Airstack",
+            "type": "project"
+          },
+          {
+            "id": "0xeb5da95440608276fea071123fbd4d7c292c2a5bd5a3d32ccb8905e8bb92e9a7",
+            "RPGF3Id": "0xeb5da95440608276fea071123fbd4d7c292c2a5bd5a3d32ccb8905e8bb92e9a7",
+            "name": "IDriss",
+            "type": "project"
+          },
+          {
+            "id": "0xaf72f298c070d96e72345b7f99ee16da493018914aaac00a1db76fda08f5e9f9",
+            "RPGF3Id": "0xaf72f298c070d96e72345b7f99ee16da493018914aaac00a1db76fda08f5e9f9",
+            "name": "DAC on OP Stack",
+            "type": "project"
+          },
+          {
+            "id": "0xd34b4f953913284fa62737fcec2439fd6b192149023f6dbd6f3a91f5b716d295",
+            "RPGF3Id": "0xd34b4f953913284fa62737fcec2439fd6b192149023f6dbd6f3a91f5b716d295",
+            "name": "GoPlus Security",
+            "type": "project"
+          },
+          {
+            "id": "0xdc8392820875414ecc45232f76592a17a65865e1e95411911e2508a2d196a94e",
+            "RPGF3Id": "0xdc8392820875414ecc45232f76592a17a65865e1e95411911e2508a2d196a94e",
+            "name": "EIP Fun",
+            "type": "project"
+          },
+          {
+            "id": "0xc3ad567e82145d15987c82efccc1aee7803bb69750cf221f2c68165c688c1878",
+            "RPGF3Id": "0xc3ad567e82145d15987c82efccc1aee7803bb69750cf221f2c68165c688c1878",
+            "name": "SupraOracles",
+            "type": "project"
+          },
+          {
+            "id": "0xc5e329a9f4b232618fe38dc93b49c64bd3d34d99dff253dd64ffef7daf683b76",
+            "RPGF3Id": "0xc5e329a9f4b232618fe38dc93b49c64bd3d34d99dff253dd64ffef7daf683b76",
+            "name": "API3 DAO ",
+            "type": "project"
+          },
+          {
+            "id": "0xd4125ec1c05bcc71b24dd03b518681a9b5aef8ff46cfcabb951374bfae6ca855",
+            "RPGF3Id": "0xd4125ec1c05bcc71b24dd03b518681a9b5aef8ff46cfcabb951374bfae6ca855",
+            "name": "Crust Network",
+            "type": "project"
+          },
+          {
+            "id": "0xe2e2f6f6ca6631af544462d867d1fd09f56182c4963ffd6be35dc3651df5ce86",
+            "RPGF3Id": "0xe2e2f6f6ca6631af544462d867d1fd09f56182c4963ffd6be35dc3651df5ce86",
+            "name": "Gelato",
+            "type": "project"
+          },
+          {
+            "id": "0xfed9d3effec10a210a6c15f27f3d6c23ee6b4a1c305a1cfeab84207ccd85ce33",
+            "RPGF3Id": "0xfed9d3effec10a210a6c15f27f3d6c23ee6b4a1c305a1cfeab84207ccd85ce33",
+            "name": "simple8720",
+            "type": "project"
+          },
+          {
+            "id": "0xf66f24a1481b4245017738ab5b95581a4622f7606c054eb45ea0a4a971050873",
+            "RPGF3Id": "0xf66f24a1481b4245017738ab5b95581a4622f7606c054eb45ea0a4a971050873",
+            "name": "DexKit",
+            "type": "project"
+          },
+          {
+            "id": "0xd2591c94e8666a5f1cf11b49d6ce9e85a970f48606316300793b8fed927ca94b",
+            "RPGF3Id": "0xd2591c94e8666a5f1cf11b49d6ce9e85a970f48606316300793b8fed927ca94b",
+            "name": "Cryptotesters",
+            "type": "project"
+          },
+          {
+            "id": "0xbeacd91e385918f18b4feb083757e7a4258008f313ad2aaa60ec90238e8153c1",
+            "RPGF3Id": "0xbeacd91e385918f18b4feb083757e7a4258008f313ad2aaa60ec90238e8153c1",
+            "name": "Squirtle0x",
+            "type": "project"
+          },
+          {
+            "id": "0xdfb5069840802be3fb1358f3bdb2af465654784db3227bf59f25e82ac46fc3b3",
+            "RPGF3Id": "0xdfb5069840802be3fb1358f3bdb2af465654784db3227bf59f25e82ac46fc3b3",
+            "name": "r72.fi",
+            "type": "project"
+          },
+          {
+            "id": "0xd2de2774bd9ffe36fdcab675bd37e2193f18a087253b0859ddfd1966e103c52a",
+            "RPGF3Id": "0xd2de2774bd9ffe36fdcab675bd37e2193f18a087253b0859ddfd1966e103c52a",
+            "name": "Cielo",
+            "type": "project"
+          },
+          {
+            "id": "0xcb6ac0e12379465dc8d9c9ef5396ef4b8fbbfc17067e20b21c01b4cf56657636",
+            "RPGF3Id": "0xcb6ac0e12379465dc8d9c9ef5396ef4b8fbbfc17067e20b21c01b4cf56657636",
+            "name": "Tenderly",
+            "type": "project"
+          }
+        ]
+      },
+      {
+        "type": "collection",
+        "id": 23,
+        "name": "Dev Tooling",
+        "ranking": [
+          {
+            "id": "0x020a49814aed7362cc564a227d7f1bda9c86b95b7d003080785c97a925fbf2b7",
+            "RPGF3Id": "0x020a49814aed7362cc564a227d7f1bda9c86b95b7d003080785c97a925fbf2b7",
+            "name": "ERC-6551 Tooling",
+            "type": "project"
+          },
+          {
+            "id": "0x07a0323c1fc9072714b937056ec35d0c5acff5df41fb3e266b329ac2ed68d5f8",
+            "RPGF3Id": "0x07a0323c1fc9072714b937056ec35d0c5acff5df41fb3e266b329ac2ed68d5f8",
+            "name": "Wagmi / Viem",
+            "type": "project"
+          },
+          {
+            "id": "0x0e82e66b2949507a8858863d4c4d886d2e582341e6f5f8b33ddaa0082edae04d",
+            "RPGF3Id": "0x0e82e66b2949507a8858863d4c4d886d2e582341e6f5f8b33ddaa0082edae04d",
+            "name": "markg85",
+            "type": "project"
+          },
+          {
+            "id": "0x1402768b4e6481137978e3ecd853cb0e7eefff51f2b8838c382b5d4907931224",
+            "RPGF3Id": "0x1402768b4e6481137978e3ecd853cb0e7eefff51f2b8838c382b5d4907931224",
+            "name": "ChainList",
+            "type": "project"
+          },
+          {
+            "id": "0x1834066a554054c55b1d01f9084c0059c384ff959364dca73bd7d87c1589a9de",
+            "RPGF3Id": "0x1834066a554054c55b1d01f9084c0059c384ff959364dca73bd7d87c1589a9de",
+            "name": "🐍 snekmate",
+            "type": "project"
+          },
+          {
+            "id": "0x1c03fba4505bdb618483c9c2a197e09753e8bdbc03f784d312039dd623ec8046",
+            "RPGF3Id": "0x1c03fba4505bdb618483c9c2a197e09753e8bdbc03f784d312039dd623ec8046",
+            "name": "Hardhat Tracer",
+            "type": "project"
+          },
+          {
+            "id": "0x1ecdeab23aea56e92ee2161bc0af97565d6b6d666e46fc3c1db106708ed50d97",
+            "RPGF3Id": "0x1ecdeab23aea56e92ee2161bc0af97565d6b6d666e46fc3c1db106708ed50d97",
+            "name": "TrueBlocks / Unchained Index",
+            "type": "project"
+          },
+          {
+            "id": "0x23afbebc655637c91f6a42572b8af43c2ae6e61655c55ba52e5ace484eff8e72",
+            "RPGF3Id": "0x23afbebc655637c91f6a42572b8af43c2ae6e61655c55ba52e5ace484eff8e72",
+            "name": "Synpress",
+            "type": "project"
+          },
+          {
+            "id": "0x414f74b8f9da96b3f0c0abbb870ea2928dcdbc454319129df7151f43467aa5e7",
+            "RPGF3Id": "0x414f74b8f9da96b3f0c0abbb870ea2928dcdbc454319129df7151f43467aa5e7",
+            "name": "Dasy",
+            "type": "project"
+          },
+          {
+            "id": "0x48000bf0277f99726173a59b47d05aa6371ea320866e3e9a77e4241a083a4009",
+            "RPGF3Id": "0x48000bf0277f99726173a59b47d05aa6371ea320866e3e9a77e4241a083a4009",
+            "name": "ApeWorX LTD",
+            "type": "project"
+          },
+          {
+            "id": "0x4fa62d7e6f1c9e324e6faeb6589d100573bd57b709df68edbe00204200670e1a",
+            "RPGF3Id": "0x4fa62d7e6f1c9e324e6faeb6589d100573bd57b709df68edbe00204200670e1a",
+            "name": "Ankr",
+            "type": "project"
+          },
+          {
+            "id": "0x4fc411cc40e4a1fbfa73f5b1750d11271456dd6ada8234a6e37f44df4e5658d9",
+            "RPGF3Id": "0x4fc411cc40e4a1fbfa73f5b1750d11271456dd6ada8234a6e37f44df4e5658d9",
+            "name": "Raiden",
+            "type": "project"
+          },
+          {
+            "id": "0x50421bd9176952237de8ac2f8898c1cd6217b8295596773c656dee03ef5d7aa7",
+            "RPGF3Id": "0x50421bd9176952237de8ac2f8898c1cd6217b8295596773c656dee03ef5d7aa7",
+            "name": "Remix Project",
+            "type": "project"
+          },
+          {
+            "id": "0x54b5917ba3ae0b4afb71efd0369f4b65b43bf2453710edcb3340581972f99dea",
+            "RPGF3Id": "0x54b5917ba3ae0b4afb71efd0369f4b65b43bf2453710edcb3340581972f99dea",
+            "name": "Optimism Prices Contracts",
+            "type": "project"
+          },
+          {
+            "id": "0x5c7db781f9c4ea6eadf270bb2e1e64cc888b4c57d7df92649bf039d5f6910d0a",
+            "RPGF3Id": "0x5c7db781f9c4ea6eadf270bb2e1e64cc888b4c57d7df92649bf039d5f6910d0a",
+            "name": "Flipside Crypto",
+            "type": "project"
+          },
+          {
+            "id": "0x6446bdf27ac66fec76a45bf216f7b9229db151554bf1e7057e02213f9746e562",
+            "RPGF3Id": "0x6446bdf27ac66fec76a45bf216f7b9229db151554bf1e7057e02213f9746e562",
+            "name": "UseDApp",
+            "type": "project"
+          },
+          {
+            "id": "0x673d8e5392f524e26a6b99ed445c2b7569cdc67423c47a5e6f9ba9c950b2fe79",
+            "RPGF3Id": "0x673d8e5392f524e26a6b99ed445c2b7569cdc67423c47a5e6f9ba9c950b2fe79",
+            "name": "WhatsABI",
+            "type": "project"
+          },
+          {
+            "id": "0x6752ee31f5e09caedd68da815fc684456bca90ffa4336fd021180f91ef5ac85a",
+            "RPGF3Id": "0x6752ee31f5e09caedd68da815fc684456bca90ffa4336fd021180f91ef5ac85a",
+            "name": "P256Verifier",
+            "type": "project"
+          },
+          {
+            "id": "0x67dbd30fb3b694f21e011722e2cccacfa51550ba8da895f036dc8819f5c65e28",
+            "RPGF3Id": "0x67dbd30fb3b694f21e011722e2cccacfa51550ba8da895f036dc8819f5c65e28",
+            "name": "Iggy Social - Web3 Social for DAOs",
+            "type": "project"
+          },
+          {
+            "id": "0x6d102cab70b4d3bca1330ef5f2f582ad611d92c3b0d912c7629e1f7c918a1a85",
+            "RPGF3Id": "0x6d102cab70b4d3bca1330ef5f2f582ad611d92c3b0d912c7629e1f7c918a1a85",
+            "name": "Inverter Network",
+            "type": "project"
+          },
+          {
+            "id": "0x6daec4e672f3f2cb019340ad474b2859b4c91f50dfa1fa062943ea5b866df01d",
+            "RPGF3Id": "0x6daec4e672f3f2cb019340ad474b2859b4c91f50dfa1fa062943ea5b866df01d",
+            "name": "Vue Dapp",
+            "type": "project"
+          },
+          {
+            "id": "0x723da383185924834ea462c791d4e21dac5dedc94ba164bd37adc571ba5008ed",
+            "RPGF3Id": "0x723da383185924834ea462c791d4e21dac5dedc94ba164bd37adc571ba5008ed",
+            "name": "RainbowKit",
+            "type": "project"
+          },
+          {
+            "id": "0x7500c59003e12f46731f0e3bf33ef270085e700ce1d0ec0ae2ae42b4ea655ebe",
+            "RPGF3Id": "0x7500c59003e12f46731f0e3bf33ef270085e700ce1d0ec0ae2ae42b4ea655ebe",
+            "name": "foundry",
+            "type": "project"
+          },
+          {
+            "id": "0x7a09be22acae5e2d531965a619820b6b9d985f60051c524c2e2b5036aac7489b",
+            "RPGF3Id": "0x7a09be22acae5e2d531965a619820b6b9d985f60051c524c2e2b5036aac7489b",
+            "name": "Cannon",
+            "type": "project"
+          },
+          {
+            "id": "0x7d188db9e7369a77fe3680893b65d95fcac5d7c00f9387f74c323efce908306e",
+            "RPGF3Id": "0x7d188db9e7369a77fe3680893b65d95fcac5d7c00f9387f74c323efce908306e",
+            "name": "Prettier Solidity",
+            "type": "project"
+          },
+          {
+            "id": "0x7ed37715e33c6d078e2ec8423e7e336e353261047a507733d2a999c3449d636c",
+            "RPGF3Id": "0x7ed37715e33c6d078e2ec8423e7e336e353261047a507733d2a999c3449d636c",
+            "name": "Ronan Sandford",
+            "type": "project"
+          },
+          {
+            "id": "0x8e8fab198e1f1e986b4d0c24992f1a57d42722a835c8afd80c5150184727b433",
+            "RPGF3Id": "0x8e8fab198e1f1e986b4d0c24992f1a57d42722a835c8afd80c5150184727b433",
+            "name": "🏰 BuidlGuidl",
+            "type": "project"
+          },
+          {
+            "id": "0x90ef634fad04d6ac2882db44d4a84f31c7f0621f3abd00efb067416e4ff1641c",
+            "RPGF3Id": "0x90ef634fad04d6ac2882db44d4a84f31c7f0621f3abd00efb067416e4ff1641c",
+            "name": "Optimistic Indexer",
+            "type": "project"
+          },
+          {
+            "id": "0x9267f0bdc4b12ded65ff21fc51648f0e0d510f2b0c9fe8f77f84308453859a53",
+            "RPGF3Id": "0x9267f0bdc4b12ded65ff21fc51648f0e0d510f2b0c9fe8f77f84308453859a53",
+            "name": "ARPA Randcast",
+            "type": "project"
+          },
+          {
+            "id": "0x973dd17bfead72018dfe2cc33042db418c82f518229b3ca32a0798ef13d393f5",
+            "RPGF3Id": "0x973dd17bfead72018dfe2cc33042db418c82f518229b3ca32a0798ef13d393f5",
+            "name": "Candide",
+            "type": "project"
+          },
+          {
+            "id": "0x99684d69323305f8db8feeb8a34d5057b76eb99ec660a9cf339e068b99803e60",
+            "RPGF3Id": "0x99684d69323305f8db8feeb8a34d5057b76eb99ec660a9cf339e068b99803e60",
+            "name": "Vectorized",
+            "type": "project"
+          },
+          {
+            "id": "0x9c44ab1650391a658a0e1febe3bfd3f64b0e12e2bf407b1eeda6b45117519858",
+            "RPGF3Id": "0x9c44ab1650391a658a0e1febe3bfd3f64b0e12e2bf407b1eeda6b45117519858",
+            "name": "Gitcoin Passport",
+            "type": "project"
+          },
+          {
+            "id": "0xbdf3e582179cedbd19e3c14d94e1936b5855653242054c3c4170d0b340700f4d",
+            "RPGF3Id": "0xbdf3e582179cedbd19e3c14d94e1936b5855653242054c3c4170d0b340700f4d",
+            "name": "Blocknative | Web3 Onboard",
+            "type": "project"
+          },
+          {
+            "id": "0xe0031e9ff51d941d62bcb1545812bdd132151a24d8767f4cc0d552b82c8567ac",
+            "RPGF3Id": "0xe0031e9ff51d941d62bcb1545812bdd132151a24d8767f4cc0d552b82c8567ac",
+            "name": "Hardhat",
+            "type": "project"
+          },
+          {
+            "id": "0xfaf9206c9d5c4c2df0edd60d2abef094b823610341f042e359e1c871956ee084",
+            "RPGF3Id": "0xfaf9206c9d5c4c2df0edd60d2abef094b823610341f042e359e1c871956ee084",
+            "name": "Sphinx (formerly ChugSplash)",
+            "type": "project"
+          },
+          {
+            "id": "0xb396a17448c7a2eb8a22f2982ac8bd4e51acb1bca4b5e58bed38aa8df066db0f",
+            "RPGF3Id": "0xb396a17448c7a2eb8a22f2982ac8bd4e51acb1bca4b5e58bed38aa8df066db0f",
+            "name": "Slither",
+            "type": "project"
+          },
+          {
+            "id": "0xf751fd5e236ec136a340fa5d2080938512056728c9301ac7dc27d6ab78791e72",
+            "RPGF3Id": "0xf751fd5e236ec136a340fa5d2080938512056728c9301ac7dc27d6ab78791e72",
+            "name": "OpenZeppelin Contracts",
+            "type": "project"
+          },
+          {
+            "id": "0xbedcd5e59e87c88e2d5b3f135cef429d5cdefd7e99e6fd8b40569ec5191dc1a1",
+            "RPGF3Id": "0xbedcd5e59e87c88e2d5b3f135cef429d5cdefd7e99e6fd8b40569ec5191dc1a1",
+            "name": "bh2smith",
+            "type": "project"
+          },
+          {
+            "id": "0xd5ced576ab6921e32ee00c18d49c69149ba5ccbec76f1e9bbc3d5b008f23145f",
+            "RPGF3Id": "0xd5ced576ab6921e32ee00c18d49c69149ba5ccbec76f1e9bbc3d5b008f23145f",
+            "name": "Web3js",
+            "type": "project"
+          },
+          {
+            "id": "0xf69eeb202a8fa1c807292b1c0ab800337d7fb2a18f8d9354a5441c9bcc289338",
+            "RPGF3Id": "0xf69eeb202a8fa1c807292b1c0ab800337d7fb2a18f8d9354a5441c9bcc289338",
+            "name": "Alloy",
+            "type": "project"
+          },
+          {
+            "id": "0xfdb5d70b4aea2de7ccb8b892d57916cab4dbfa2457531636d12b16bca68b3d35",
+            "RPGF3Id": "0xfdb5d70b4aea2de7ccb8b892d57916cab4dbfa2457531636d12b16bca68b3d35",
+            "name": "Ether.actor",
+            "type": "project"
+          },
+          {
+            "id": "0xcbd7ce5a3a7a13d43a1b169828dc2356c46d818493a6e1165ee7d07fae103e43",
+            "RPGF3Id": "0xcbd7ce5a3a7a13d43a1b169828dc2356c46d818493a6e1165ee7d07fae103e43",
+            "name": "Rollup.codes",
+            "type": "project"
+          },
+          {
+            "id": "0xf3e6f4737869efd0967440e4f97ea91b3ce3611c801675319874ea02f4d7a668",
+            "RPGF3Id": "0xf3e6f4737869efd0967440e4f97ea91b3ce3611c801675319874ea02f4d7a668",
+            "name": "ethers.js",
+            "type": "project"
+          },
+          {
+            "id": "0xd5102da53903c150aeeb5d43a20c3c191fcfe2d43bf1b5eb6939d073ee4e1fa5",
+            "RPGF3Id": "0xd5102da53903c150aeeb5d43a20c3c191fcfe2d43bf1b5eb6939d073ee4e1fa5",
+            "name": "EZKL",
+            "type": "project"
+          },
+          {
+            "id": "0xde309e83b1ceb3e9597c33601142d0cffe1b7d632e7312cddb30e9faa79cd1e1",
+            "RPGF3Id": "0xde309e83b1ceb3e9597c33601142d0cffe1b7d632e7312cddb30e9faa79cd1e1",
+            "name": "Antoine",
+            "type": "project"
+          },
+          {
+            "id": "0xc457be3a57bddfe68c852f20202b06ecf07a41c510a44bdf41afb1f77e63f78d",
+            "RPGF3Id": "0xc457be3a57bddfe68c852f20202b06ecf07a41c510a44bdf41afb1f77e63f78d",
+            "name": "Titanoboa",
+            "type": "project"
+          },
+          {
+            "id": "0xbd9046f085bcd22857b23dd1bf3965db8a97db88e14598f28b649918a783f60f",
+            "RPGF3Id": "0xbd9046f085bcd22857b23dd1bf3965db8a97db88e14598f28b649918a783f60f",
+            "name": "Socket ",
+            "type": "project"
+          },
+          {
+            "id": "0xb050be8189ff0dee56ad57c86088d3240e2d3192d9f426053400833599465720",
+            "RPGF3Id": "0xb050be8189ff0dee56ad57c86088d3240e2d3192d9f426053400833599465720",
+            "name": "Attest Fest",
+            "type": "project"
+          },
+          {
+            "id": "0xb04af6a6a336124fbf621ac380b23add5b6c53dee09dc19f2ad9caea8cdb5cdf",
+            "RPGF3Id": "0xb04af6a6a336124fbf621ac380b23add5b6c53dee09dc19f2ad9caea8cdb5cdf",
+            "name": "solidity-analyzer",
+            "type": "project"
+          },
+          {
+            "id": "0xb35269ecc1f0a00cdbd12ba986f61174ae69bc6274aaabbb8ec13eff0ea1b461",
+            "RPGF3Id": "0xb35269ecc1f0a00cdbd12ba986f61174ae69bc6274aaabbb8ec13eff0ea1b461",
+            "name": "abi-to-sol",
+            "type": "project"
+          },
+          {
+            "id": "0xd28e879c019aacabe65c062601000f9925e2f9686c8a6485d92d753132ba723b",
+            "RPGF3Id": "0xd28e879c019aacabe65c062601000f9925e2f9686c8a6485d92d753132ba723b",
+            "name": "Picodes",
+            "type": "project"
+          },
+          {
+            "id": "0xf162490ee7fc0844a9f2033eb1107cf910df56889ce42a28ea4bf049ae75bf63",
+            "RPGF3Id": "0xf162490ee7fc0844a9f2033eb1107cf910df56889ce42a28ea4bf049ae75bf63",
+            "name": "Waffle",
+            "type": "project"
+          },
+          {
+            "id": "0xf3df23e97d2c4b6936cafe233e48416ed37708a2a0eecd959450a82ed3a5f730",
+            "RPGF3Id": "0xf3df23e97d2c4b6936cafe233e48416ed37708a2a0eecd959450a82ed3a5f730",
+            "name": "Alchemy",
+            "type": "project"
+          },
+          {
+            "id": "0xe47991998f9a1046c12670765dd02b82353d11341b8f4341665d34ed235c8d8c",
+            "RPGF3Id": "0xe47991998f9a1046c12670765dd02b82353d11341b8f4341665d34ed235c8d8c",
+            "name": "TypeChain / DethCode",
+            "type": "project"
+          },
+          {
+            "id": "0xf4afe5bc5e36f35bdef48817c59d4e35a52bbab17bfbb946f0df3ef819539202",
+            "RPGF3Id": "0xf4afe5bc5e36f35bdef48817c59d4e35a52bbab17bfbb946f0df3ef819539202",
+            "name": "⚡️ TurboETH",
+            "type": "project"
+          },
+          {
+            "id": "0xdb7760ac3918bd6aaba6aaf7a84900c313ff3f05093cd87e49738a73b95ad28f",
+            "RPGF3Id": "0xdb7760ac3918bd6aaba6aaf7a84900c313ff3f05093cd87e49738a73b95ad28f",
+            "name": "Venom & Fang",
+            "type": "project"
+          },
+          {
+            "id": "0xa56c22c8a230b721d39e7dd1615802db826a3c5dfb1ffa86967afa5db890b5ea",
+            "RPGF3Id": "0xa56c22c8a230b721d39e7dd1615802db826a3c5dfb1ffa86967afa5db890b5ea",
+            "name": "PR0",
+            "type": "project"
+          }
+        ]
+      },
+      {
+        "type": "collection",
+        "id": 24,
+        "name": "Developer Education",
+        "ranking": [
+          {
+            "id": "0x04227ff23823ec09a03a531c924e8bdf5a6d486f3e0e3006b2fbb1a8de58f0d1",
+            "RPGF3Id": "0x04227ff23823ec09a03a531c924e8bdf5a6d486f3e0e3006b2fbb1a8de58f0d1",
+            "name": "DeFi Africa",
+            "type": "project"
+          },
+          {
+            "id": "0x06b26b0ba3df69696ea47a30cd1f8114824ff994556f5331c8eefc96bac8cf9e",
+            "RPGF3Id": "0x06b26b0ba3df69696ea47a30cd1f8114824ff994556f5331c8eefc96bac8cf9e",
+            "name": "Secureum",
+            "type": "project"
+          },
+          {
+            "id": "0x07cdfb60650fd3060411253b3c91abdab2739c0b122047ab6d014436fe912282",
+            "RPGF3Id": "0x07cdfb60650fd3060411253b3c91abdab2739c0b122047ab6d014436fe912282",
+            "name": "Web3bridge",
+            "type": "project"
+          },
+          {
+            "id": "0x0a337cfd252f13746c53175e32881945f64ee405fa9abccfefdc10b195d205ef",
+            "RPGF3Id": "0x0a337cfd252f13746c53175e32881945f64ee405fa9abccfefdc10b195d205ef",
+            "name": "LexDAO",
+            "type": "project"
+          },
+          {
+            "id": "0x0ace9050e3c67022816825143db0a483647bc719202adffc555e04b4bfd4f522",
+            "RPGF3Id": "0x0ace9050e3c67022816825143db0a483647bc719202adffc555e04b4bfd4f522",
+            "name": "Token Engineering Academy",
+            "type": "project"
+          },
+          {
+            "id": "0x0fd702364b086485a727ee20c94abe75c1c916e9ad9c6dc17eff8c64487dfd8a",
+            "RPGF3Id": "0x0fd702364b086485a727ee20c94abe75c1c916e9ad9c6dc17eff8c64487dfd8a",
+            "name": "WTF Academy",
+            "type": "project"
+          },
+          {
+            "id": "0x1dfca7cffa9babbcc0b9646e2e620da444285f4dc7d6e7f3692446ffe4d6b66b",
+            "RPGF3Id": "0x1dfca7cffa9babbcc0b9646e2e620da444285f4dc7d6e7f3692446ffe4d6b66b",
+            "name": "The Ethernaut",
+            "type": "project"
+          },
+          {
+            "id": "0x20c4b71b16d2edc8d09cce39a7c46b5346591f4e17a7c8636416292915b508e9",
+            "RPGF3Id": "0x20c4b71b16d2edc8d09cce39a7c46b5346591f4e17a7c8636416292915b508e9",
+            "name": "Decentraclasses",
+            "type": "project"
+          },
+          {
+            "id": "0x2f2cd001b7d7594cb3410bac53730a210ef12bf04bef2ee5d90d0cf88d515fed",
+            "RPGF3Id": "0x2f2cd001b7d7594cb3410bac53730a210ef12bf04bef2ee5d90d0cf88d515fed",
+            "name": "Remix CC",
+            "type": "project"
+          },
+          {
+            "id": "0x2f75e5c1fce8a95703eff8dbecda9d426edcca1db1b69628e151b57b21bfa25c",
+            "RPGF3Id": "0x2f75e5c1fce8a95703eff8dbecda9d426edcca1db1b69628e151b57b21bfa25c",
+            "name": "MyFirstLayer2",
+            "type": "project"
+          },
+          {
+            "id": "0x2fc8e32b9a7418d88d21e45fddeef7d8f4c7460ba26a447cf7bfd298b58cab3c",
+            "RPGF3Id": "0x2fc8e32b9a7418d88d21e45fddeef7d8f4c7460ba26a447cf7bfd298b58cab3c",
+            "name": "APAC DAO",
+            "type": "project"
+          },
+          {
+            "id": "0x39b4a7a07052cd200b017579a2717911881ffd3ed4bd94c085ba08435373c855",
+            "RPGF3Id": "0x39b4a7a07052cd200b017579a2717911881ffd3ed4bd94c085ba08435373c855",
+            "name": "EthernautDAO",
+            "type": "project"
+          },
+          {
+            "id": "0x3cda55b2201bc6838291f6dc8d6325d321f4b011d91f4e6dcd14371751ee3a2b",
+            "RPGF3Id": "0x3cda55b2201bc6838291f6dc8d6325d321f4b011d91f4e6dcd14371751ee3a2b",
+            "name": "0xs34n",
+            "type": "project"
+          },
+          {
+            "id": "0x4334d7ad70ff3adfe4310ce1433b92c242e7110f29091a0fd3e768f1a148bf8c",
+            "RPGF3Id": "0x4334d7ad70ff3adfe4310ce1433b92c242e7110f29091a0fd3e768f1a148bf8c",
+            "name": "DeSchool",
+            "type": "project"
+          },
+          {
+            "id": "0x4aa2191cde4ef94ed2bab5b0964b9fb219e7b306563ed809a7ec6aa3191e0618",
+            "RPGF3Id": "0x4aa2191cde4ef94ed2bab5b0964b9fb219e7b306563ed809a7ec6aa3191e0618",
+            "name": "Dapp-Learning",
+            "type": "project"
+          },
+          {
+            "id": "0x4abf6854e35bbc14e85ec879c4545b98934e75a6d4a28bfc7b8b088240f64435",
+            "RPGF3Id": "0x4abf6854e35bbc14e85ec879c4545b98934e75a6d4a28bfc7b8b088240f64435",
+            "name": "L2 Planet",
+            "type": "project"
+          },
+          {
+            "id": "0x5720f540f36e2884b5346bd8755aba69c9c87ee7cd626647d1a74f086aded3cb",
+            "RPGF3Id": "0x5720f540f36e2884b5346bd8755aba69c9c87ee7cd626647d1a74f086aded3cb",
+            "name": "DecentrAgora",
+            "type": "project"
+          },
+          {
+            "id": "0x66c36ca6f9138b613a0b76f54beeb24c9653bc5140acb272d58f4709f68a8a1c",
+            "RPGF3Id": "0x66c36ca6f9138b613a0b76f54beeb24c9653bc5140acb272d58f4709f68a8a1c",
+            "name": "The Red Guild",
+            "type": "project"
+          },
+          {
+            "id": "0x697c316dc17ec7545ca91226e3e82d7fa3891c642ac5207d52dd46999a7b45b2",
+            "RPGF3Id": "0x697c316dc17ec7545ca91226e3e82d7fa3891c642ac5207d52dd46999a7b45b2",
+            "name": "yAcademy/yAudit",
+            "type": "project"
+          },
+          {
+            "id": "0x77546f9209cf30b9a081467e9b5f6da1e59fd326fadae829fb8c50e2a64ad3fe",
+            "RPGF3Id": "0x77546f9209cf30b9a081467e9b5f6da1e59fd326fadae829fb8c50e2a64ad3fe",
+            "name": "zerokn0wledge",
+            "type": "project"
+          },
+          {
+            "id": "0x79c3f88b4adb9b32ba1ba2c460097f7f2b43bc1a591e4a6a555f052087724197",
+            "RPGF3Id": "0x79c3f88b4adb9b32ba1ba2c460097f7f2b43bc1a591e4a6a555f052087724197",
+            "name": "Perelyn",
+            "type": "project"
+          },
+          {
+            "id": "0x7d2de8099d2435961b98eb1456efab1b02d74bf818149397f099f69719c81eb4",
+            "RPGF3Id": "0x7d2de8099d2435961b98eb1456efab1b02d74bf818149397f099f69719c81eb4",
+            "name": "wslyvh",
+            "type": "project"
+          },
+          {
+            "id": "0x8d74ea236742a773f21486e6d66a187f5398171a44c8cae6993d62b104709fd9",
+            "RPGF3Id": "0x8d74ea236742a773f21486e6d66a187f5398171a44c8cae6993d62b104709fd9",
+            "name": "FilosofiaCodigo",
+            "type": "project"
+          },
+          {
+            "id": "0x9314a90f51d8187f3d317091c9ef15a4c14a0eee1a8c1d97318187cc0e0cc63f",
+            "RPGF3Id": "0x9314a90f51d8187f3d317091c9ef15a4c14a0eee1a8c1d97318187cc0e0cc63f",
+            "name": "Kernel",
+            "type": "project"
+          },
+          {
+            "id": "0x987e3249c439bb522909400c838dd27fc0fa42d4a1b4728f303dcc16ee059482",
+            "RPGF3Id": "0x987e3249c439bb522909400c838dd27fc0fa42d4a1b4728f303dcc16ee059482",
+            "name": "Node Guardians",
+            "type": "project"
+          },
+          {
+            "id": "0x99d9058b2dc841fb614fa9351f3a93df1718e5f38b14e396ba764d53450924ab",
+            "RPGF3Id": "0x99d9058b2dc841fb614fa9351f3a93df1718e5f38b14e396ba764d53450924ab",
+            "name": "Golden Boys (GOLD)",
+            "type": "project"
+          },
+          {
+            "id": "0xba2e0392ddef461fea23821d7098b917bab9532d2d2cb297d0449d3a446c9bf7",
+            "RPGF3Id": "0xba2e0392ddef461fea23821d7098b917bab9532d2d2cb297d0449d3a446c9bf7",
+            "name": "jordanmmck",
+            "type": "project"
+          },
+          {
+            "id": "0xc72bc291e1063c2981475f586b6b62ba77eb05b8acca3501c80839659fbf3ad3",
+            "RPGF3Id": "0xc72bc291e1063c2981475f586b6b62ba77eb05b8acca3501c80839659fbf3ad3",
+            "name": "Kiwi News",
+            "type": "project"
+          },
+          {
+            "id": "0xe237f0d7617a275ce51d12a838ec720d6bb0ad6056de347698d43c30ceed579d",
+            "RPGF3Id": "0xe237f0d7617a275ce51d12a838ec720d6bb0ad6056de347698d43c30ceed579d",
+            "name": "zenbit.eth",
+            "type": "project"
+          },
+          {
+            "id": "0xcb3b30c752b2594f4fc4377496ab5c301dc299abd8701507f4b1674b99e2cf8a",
+            "RPGF3Id": "0xcb3b30c752b2594f4fc4377496ab5c301dc299abd8701507f4b1674b99e2cf8a",
+            "name": "Ryan Berckmans",
+            "type": "project"
+          },
+          {
+            "id": "0xa1dfddef3afe0156af5fd5870560d13423820a235ec8550e7f66a0e7d5c947c5",
+            "RPGF3Id": "0xa1dfddef3afe0156af5fd5870560d13423820a235ec8550e7f66a0e7d5c947c5",
+            "name": "AyaHQ",
+            "type": "project"
+          },
+          {
+            "id": "0xb013f320dfc52223d553455adbec3dad79691698c85b5ea8c27e81c46fd014b5",
+            "RPGF3Id": "0xb013f320dfc52223d553455adbec3dad79691698c85b5ea8c27e81c46fd014b5",
+            "name": "Cardo",
+            "type": "project"
+          },
+          {
+            "id": "0x9e5ea1680af47702c711090ece55c5ce8a73d1122196274c4ffcdd60a2004972",
+            "RPGF3Id": "0x9e5ea1680af47702c711090ece55c5ce8a73d1122196274c4ffcdd60a2004972",
+            "name": "Token Engineering Commons",
+            "type": "project"
+          },
+          {
+            "id": "0xd2ea00dba1cb56582c77344a4678996d72c35f39c853b3b6b5c6be49876e3018",
+            "RPGF3Id": "0xd2ea00dba1cb56582c77344a4678996d72c35f39c853b3b6b5c6be49876e3018",
+            "name": "BlockchainOAU",
+            "type": "project"
+          },
+          {
+            "id": "0xd0be450b707867d713e589deeeb24b3edc78e417cf673c0ea25f537b9e6f8bb3",
+            "RPGF3Id": "0xd0be450b707867d713e589deeeb24b3edc78e417cf673c0ea25f537b9e6f8bb3",
+            "name": "LearnWeb3",
+            "type": "project"
+          },
+          {
+            "id": "0xef2ca4e31c3116f3bc99105c6c10d5bfc7ecfd73b79dde360ea76340c893b105",
+            "RPGF3Id": "0xef2ca4e31c3116f3bc99105c6c10d5bfc7ecfd73b79dde360ea76340c893b105",
+            "name": "Taz",
+            "type": "project"
+          },
+          {
+            "id": "0xa4593794fec99c360105db59a4a337a2ce652f6259448462b75db63de702ba8f",
+            "RPGF3Id": "0xa4593794fec99c360105db59a4a337a2ce652f6259448462b75db63de702ba8f",
+            "name": "CryptoZombies",
+            "type": "project"
+          },
+          {
+            "id": "0xcc7d599bd163798695c68910ae40ea5da4f548b2c141525f461fab0d9c1f62dd",
+            "RPGF3Id": "0xcc7d599bd163798695c68910ae40ea5da4f548b2c141525f461fab0d9c1f62dd",
+            "name": "Protofire Blockchain Learning Path",
+            "type": "project"
+          },
+          {
+            "id": "0xe335a5fbf54f168e20655053d3d3da7d7a04bdbbfa9d0cb419e514087f314db6",
+            "RPGF3Id": "0xe335a5fbf54f168e20655053d3d3da7d7a04bdbbfa9d0cb419e514087f314db6",
+            "name": "RareSkills Book of Zero Knowledge Proofs",
+            "type": "project"
+          },
+          {
+            "id": "0xf5b0141c481f483b77750169a01a20df2661b9da668a019b640fd37d50be7b4f",
+            "RPGF3Id": "0xf5b0141c481f483b77750169a01a20df2661b9da668a019b640fd37d50be7b4f",
+            "name": "DevRel Uni",
+            "type": "project"
+          },
+          {
+            "id": "0xabf8a11afc616116d966b45900c77737cbe34dcdab0198c17c3376e1526d6403",
+            "RPGF3Id": "0xabf8a11afc616116d966b45900c77737cbe34dcdab0198c17c3376e1526d6403",
+            "name": "Zero Knowledge Podcast",
+            "type": "project"
+          }
+        ]
+      },
+      {
+        "type": "collection",
+        "id": 25,
+        "name": "Research & Analytics",
+        "ranking": [
+          {
+            "id": "0x007d41961338c04bb3a18e498d6d955072d4df3ea1fb43b16381269ea581049a",
+            "RPGF3Id": "0x007d41961338c04bb3a18e498d6d955072d4df3ea1fb43b16381269ea581049a",
+            "name": "Public Assembly ",
+            "type": "project"
+          },
+          {
+            "id": "0x013c4c5aa12146fb2c42a6864e3cc9afb7212a62145487b514bceab1f588ae79",
+            "RPGF3Id": "0x013c4c5aa12146fb2c42a6864e3cc9afb7212a62145487b514bceab1f588ae79",
+            "name": "growthepie",
+            "type": "project"
+          },
+          {
+            "id": "0x1440934dcf3ca194befd08b28e86eb6c2d68dd984070cf51f68fb3ad144b496c",
+            "RPGF3Id": "0x1440934dcf3ca194befd08b28e86eb6c2d68dd984070cf51f68fb3ad144b496c",
+            "name": "L2BEAT 💗",
+            "type": "project"
+          },
+          {
+            "id": "0x1d0fd9b7e22d5104b7581d43eca15536106894dc0800877f624b2acac306f234",
+            "RPGF3Id": "0x1d0fd9b7e22d5104b7581d43eca15536106894dc0800877f624b2acac306f234",
+            "name": "Andrew Hong (ilemi)",
+            "type": "project"
+          },
+          {
+            "id": "0x319e92614fd4d193ae32199f9459862ba5def14978cf005b19343843ca2e0693",
+            "RPGF3Id": "0x319e92614fd4d193ae32199f9459862ba5def14978cf005b19343843ca2e0693",
+            "name": "Rollup Economics Dune Spell",
+            "type": "project"
+          },
+          {
+            "id": "0x3291020a053ac45717fc2eed0e44a5fe7156889a4d9e015b0e50fff081caea77",
+            "RPGF3Id": "0x3291020a053ac45717fc2eed0e44a5fe7156889a4d9e015b0e50fff081caea77",
+            "name": "Redacted Research",
+            "type": "project"
+          },
+          {
+            "id": "0x32a2e7a1ffaeb5a4259aacf2263474f9a93d7759bb672e13102a9851f94fb05b",
+            "RPGF3Id": "0x32a2e7a1ffaeb5a4259aacf2263474f9a93d7759bb672e13102a9851f94fb05b",
+            "name": "Parsec Finance",
+            "type": "project"
+          },
+          {
+            "id": "0x33135d1d7ea18427c5096af97f5d5bcac392b8bbe871a9a0a9dd62ce651212df",
+            "RPGF3Id": "0x33135d1d7ea18427c5096af97f5d5bcac392b8bbe871a9a0a9dd62ce651212df",
+            "name": "Client Side Proofs",
+            "type": "project"
+          },
+          {
+            "id": "0x36653dde46bfe40b9aeb4ed20dfc4ccb0a40ba01ca4f0055e96870c9b28878f0",
+            "RPGF3Id": "0x36653dde46bfe40b9aeb4ed20dfc4ccb0a40ba01ca4f0055e96870c9b28878f0",
+            "name": "banterlytics",
+            "type": "project"
+          },
+          {
+            "id": "0x4afa3f3679237d1a52cfd87f258f57d8de01d64a69182591807c471accdc0f16",
+            "RPGF3Id": "0x4afa3f3679237d1a52cfd87f258f57d8de01d64a69182591807c471accdc0f16",
+            "name": "ERC4337 Smart Accounts Dune Dashboard",
+            "type": "project"
+          },
+          {
+            "id": "0x4cd6de3604ab5f5ac866ee555fd9a6b19b4590890870251417dbfcc7b6602281",
+            "RPGF3Id": "0x4cd6de3604ab5f5ac866ee555fd9a6b19b4590890870251417dbfcc7b6602281",
+            "name": "NumbaNERDs",
+            "type": "project"
+          },
+          {
+            "id": "0x553232d3bf4aedc322c984eb06f1e88447007f48f0fc2377eac10b213ce069f8",
+            "RPGF3Id": "0x553232d3bf4aedc322c984eb06f1e88447007f48f0fc2377eac10b213ce069f8",
+            "name": "OpTracker",
+            "type": "project"
+          },
+          {
+            "id": "0x577ede5b874e212884380a586d387d9a1ac81ebeb0a5dd780468f4c5b0a413f1",
+            "RPGF3Id": "0x577ede5b874e212884380a586d387d9a1ac81ebeb0a5dd780468f4c5b0a413f1",
+            "name": "DeepDAO",
+            "type": "project"
+          },
+          {
+            "id": "0x5c6601dfaab3603567d35888988d2588444d2f4d009ee16f1ba5ce1ad8036c9c",
+            "RPGF3Id": "0x5c6601dfaab3603567d35888988d2588444d2f4d009ee16f1ba5ce1ad8036c9c",
+            "name": "Crypto Fundraising",
+            "type": "project"
+          },
+          {
+            "id": "0x6093215024946600fa2f854f941d918ea3a7f11283cb4e430969c36937b39e66",
+            "RPGF3Id": "0x6093215024946600fa2f854f941d918ea3a7f11283cb4e430969c36937b39e66",
+            "name": "MetricsDAO",
+            "type": "project"
+          },
+          {
+            "id": "0x613f763a7000491408631468515429375f3240d42c542954693dff62b76df7b9",
+            "RPGF3Id": "0x613f763a7000491408631468515429375f3240d42c542954693dff62b76df7b9",
+            "name": "Artemis Analytics",
+            "type": "project"
+          },
+          {
+            "id": "0x66cce0997e32d388f4263a3ea305612cf1031e540c73f886e320337427c1bdab",
+            "RPGF3Id": "0x66cce0997e32d388f4263a3ea305612cf1031e540c73f886e320337427c1bdab",
+            "name": "Mrfti",
+            "type": "project"
+          },
+          {
+            "id": "0x7b0c961a1f892f654adce33bab1235bffacec1c02069b66490f91fc66765dcf9",
+            "RPGF3Id": "0x7b0c961a1f892f654adce33bab1235bffacec1c02069b66490f91fc66765dcf9",
+            "name": "CrossAngle (“Xangle”)",
+            "type": "project"
+          },
+          {
+            "id": "0x7eb64cd4bd3b28fd36029377d136948aa74a5ca126df2e165574c736182267ff",
+            "RPGF3Id": "0x7eb64cd4bd3b28fd36029377d136948aa74a5ca126df2e165574c736182267ff",
+            "name": "IntoTheBlock Optimism Analytics",
+            "type": "project"
+          },
+          {
+            "id": "0x7fc5dafacfa34c678f5e26cb5928406fc4f0466f6bef8ef0b267ecc942d13878",
+            "RPGF3Id": "0x7fc5dafacfa34c678f5e26cb5928406fc4f0466f6bef8ef0b267ecc942d13878",
+            "name": "MarcoV",
+            "type": "project"
+          },
+          {
+            "id": "0x80b576d7e0307515a72bfc390bebd2c3f7acd522a90575c0ce3387985c6eece5",
+            "RPGF3Id": "0x80b576d7e0307515a72bfc390bebd2c3f7acd522a90575c0ce3387985c6eece5",
+            "name": "Private Retrieval Fund",
+            "type": "project"
+          },
+          {
+            "id": "0x92b9a280afb2c683301bdbb5c065e0fdb0507656c4378caf1df8505327e21782",
+            "RPGF3Id": "0x92b9a280afb2c683301bdbb5c065e0fdb0507656c4378caf1df8505327e21782",
+            "name": "arabianhorses",
+            "type": "project"
+          },
+          {
+            "id": "0xb7fe6ccc4321cf93f9a1db80a1706b436d2b5551e123a76658ab469ceede727b",
+            "RPGF3Id": "0xb7fe6ccc4321cf93f9a1db80a1706b436d2b5551e123a76658ab469ceede727b",
+            "name": "0xKhmer",
+            "type": "project"
+          },
+          {
+            "id": "0xbe5c87794ca0822b4c390218f3d40f9ed33679285313a429b9027aa17760f6fe",
+            "RPGF3Id": "0xbe5c87794ca0822b4c390218f3d40f9ed33679285313a429b9027aa17760f6fe",
+            "name": "Token Terminal",
+            "type": "project"
+          },
+          {
+            "id": "0xab83d229faac28758e30acbbbcec653ce3dcc6f98b4b62ce20ee5e963e5ba606",
+            "RPGF3Id": "0xab83d229faac28758e30acbbbcec653ce3dcc6f98b4b62ce20ee5e963e5ba606",
+            "name": "CryptoStats & CryptoFees.info",
+            "type": "project"
+          },
+          {
+            "id": "0xda1670c62e098723eb2771411d114d39fb1da864f5fe3796f5ff9926565cfeda",
+            "RPGF3Id": "0xda1670c62e098723eb2771411d114d39fb1da864f5fe3796f5ff9926565cfeda",
+            "name": "indexed.xyz",
+            "type": "project"
+          },
+          {
+            "id": "0x9f5ccc80778dc01dbe8e31eace95372221028dbc18182da6262ee195cf98faca",
+            "RPGF3Id": "0x9f5ccc80778dc01dbe8e31eace95372221028dbc18182da6262ee195cf98faca",
+            "name": "OurNetwork",
+            "type": "project"
+          },
+          {
+            "id": "0xf9cbdc7fa9d0e03f65030f716d9a53a98bee7d06861d236484b88ce586988fb6",
+            "RPGF3Id": "0xf9cbdc7fa9d0e03f65030f716d9a53a98bee7d06861d236484b88ce586988fb6",
+            "name": "Ivan Molto",
+            "type": "project"
+          },
+          {
+            "id": "0xc7250199ce808d8825b8781a546c6944338ee82505570d0e33d7505d341a04bd",
+            "RPGF3Id": "0xc7250199ce808d8825b8781a546c6944338ee82505570d0e33d7505d341a04bd",
+            "name": "Spring Zhang",
+            "type": "project"
+          },
+          {
+            "id": "0xf46f276a1645c0b23162b3fc89965a022cb4dc20900c0f6bbeb3710ea4ddd7e8",
+            "RPGF3Id": "0xf46f276a1645c0b23162b3fc89965a022cb4dc20900c0f6bbeb3710ea4ddd7e8",
+            "name": "hildobby",
+            "type": "project"
+          },
+          {
+            "id": "0xccaf5bb802ca9e40522ef61eb345a4bd36e4a96375071d90990f45102a7386f6",
+            "RPGF3Id": "0xccaf5bb802ca9e40522ef61eb345a4bd36e4a96375071d90990f45102a7386f6",
+            "name": "Smart Onboarding SDK",
+            "type": "project"
+          },
+          {
+            "id": "0xd95dd72e655f1c98636d52fd36e2ec8f9dad3abbd978eb305de574e2532c46f8",
+            "RPGF3Id": "0xd95dd72e655f1c98636d52fd36e2ec8f9dad3abbd978eb305de574e2532c46f8",
+            "name": "Messari",
+            "type": "project"
+          },
+          {
+            "id": "0xe74ccd71062e114e4bbdbc6364d516b65b9003bdb3611de1bf8f774ae63b46f9",
+            "RPGF3Id": "0xe74ccd71062e114e4bbdbc6364d516b65b9003bdb3611de1bf8f774ae63b46f9",
+            "name": "EthereumETL",
+            "type": "project"
+          },
+          {
+            "id": "0xcef5619c73158a1b4dd128f918bad2bd2c8c5f6701bb6d2834e92289a9b5f145",
+            "RPGF3Id": "0xcef5619c73158a1b4dd128f918bad2bd2c8c5f6701bb6d2834e92289a9b5f145",
+            "name": "Bonding Curve Research Group",
+            "type": "project"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "collection",
     "name": "End User Experience & Adoption",
     "id": 10,
     "ranking": [
@@ -2093,1230 +3317,6 @@
             "id": "0xd8b0dc71191314a8a0a54b20e63a1a6d843ea350461c7300c13f2fd4fa2ddcad",
             "RPGF3Id": "0xd8b0dc71191314a8a0a54b20e63a1a6d843ea350461c7300c13f2fd4fa2ddcad",
             "name": "Rainbow Wallet",
-            "type": "project"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "collection",
-    "name": "Developer Ecosystem",
-    "id": 20,
-    "ranking": [
-      {
-        "type": "collection",
-        "id": 21,
-        "name": "Conferences, Events & Hackathons",
-        "ranking": [
-          {
-            "id": "0x04e06f777a3b41ba6db7f8f1c77b7439cbb5f5b8b8d3cabe4038a9ccbb924aeb",
-            "RPGF3Id": "0x04e06f777a3b41ba6db7f8f1c77b7439cbb5f5b8b8d3cabe4038a9ccbb924aeb",
-            "name": "Onboard en Perú Optimistas e Indexer ",
-            "type": "project"
-          },
-          {
-            "id": "0x083cc62e08ddd1cafe05d94c4694b684bc5cbb44513b02ac884d368dea7f9c24",
-            "RPGF3Id": "0x083cc62e08ddd1cafe05d94c4694b684bc5cbb44513b02ac884d368dea7f9c24",
-            "name": "Ethereum France",
-            "type": "project"
-          },
-          {
-            "id": "0x0b2ba3709c19f531dab7bb989f2d7086b4080561f6f49269dd1a3d469c7ef6b1",
-            "RPGF3Id": "0x0b2ba3709c19f531dab7bb989f2d7086b4080561f6f49269dd1a3d469c7ef6b1",
-            "name": "StreamETH",
-            "type": "project"
-          },
-          {
-            "id": "0x101871d3c582cd1a8322f911e6f9623d8c1a6f19108149d9c1a6ef4650080780",
-            "RPGF3Id": "0x101871d3c582cd1a8322f911e6f9623d8c1a6f19108149d9c1a6ef4650080780",
-            "name": "Funding the Commons",
-            "type": "project"
-          },
-          {
-            "id": "0x1335374f0d00c61bf195d9eaeb9c4c55ae4a1a0b883ee0d71b680a4783ad528f",
-            "RPGF3Id": "0x1335374f0d00c61bf195d9eaeb9c4c55ae4a1a0b883ee0d71b680a4783ad528f",
-            "name": "ETHSafari 2023",
-            "type": "project"
-          },
-          {
-            "id": "0x2113aa30f96029c1a9af0c1c15677fb80ecc169fb05b3d0c90e6eb77f5e758c1",
-            "RPGF3Id": "0x2113aa30f96029c1a9af0c1c15677fb80ecc169fb05b3d0c90e6eb77f5e758c1",
-            "name": "Ethereum Mexico",
-            "type": "project"
-          },
-          {
-            "id": "0x33fcfbefe71202245fd492bd9b161dfe49dc2119edc7a42a0b8a9e5936a416d5",
-            "RPGF3Id": "0x33fcfbefe71202245fd492bd9b161dfe49dc2119edc7a42a0b8a9e5936a416d5",
-            "name": "Jessy's Hacker House",
-            "type": "project"
-          },
-          {
-            "id": "0x3f414ca96d84352f4b9a9a5096bb750677a4328e1a9c56830cf3edea12cd4fcb",
-            "RPGF3Id": "0x3f414ca96d84352f4b9a9a5096bb750677a4328e1a9c56830cf3edea12cd4fcb",
-            "name": "First NFT Agency",
-            "type": "project"
-          },
-          {
-            "id": "0x4227de0db7d9388d6c08f297043098cb2de64c8ecc89d08b6bef8b71d4493e47",
-            "RPGF3Id": "0x4227de0db7d9388d6c08f297043098cb2de64c8ecc89d08b6bef8b71d4493e47",
-            "name": "Duct Tape ",
-            "type": "project"
-          },
-          {
-            "id": "0x54090220e92626ad3d3cee164a9cd14f808abc69257217691a8b1f0b65e5f551",
-            "RPGF3Id": "0x54090220e92626ad3d3cee164a9cd14f808abc69257217691a8b1f0b65e5f551",
-            "name": "Andino - Talent in technology",
-            "type": "project"
-          },
-          {
-            "id": "0x5c26992a23287833260d79c0d697129c168d5fbe366d3716484ffb6073e01db4",
-            "RPGF3Id": "0x5c26992a23287833260d79c0d697129c168d5fbe366d3716484ffb6073e01db4",
-            "name": "Giveth Web3 House",
-            "type": "project"
-          },
-          {
-            "id": "0x7768eb79db734845f9afaec4741e064eee319fd25fb35bd2956d10739e22d94a",
-            "RPGF3Id": "0x7768eb79db734845f9afaec4741e064eee319fd25fb35bd2956d10739e22d94a",
-            "name": "RADAR",
-            "type": "project"
-          },
-          {
-            "id": "0x83acb708e662400cbe8f8e9ec313f26d40e78e789577bce3e895d16eea8b5fbc",
-            "RPGF3Id": "0x83acb708e662400cbe8f8e9ec313f26d40e78e789577bce3e895d16eea8b5fbc",
-            "name": "AW House/Komorebi's Hacker House",
-            "type": "project"
-          },
-          {
-            "id": "0x8785599241f957b73e9e24576741bb3e02943bfbd38570135566a1cc61134168",
-            "RPGF3Id": "0x8785599241f957b73e9e24576741bb3e02943bfbd38570135566a1cc61134168",
-            "name": "SpaghettETH",
-            "type": "project"
-          },
-          {
-            "id": "0x8788f5efe99abf2a82ff0c27361baf9321c7601c06599551635aadfdd7980cf9",
-            "RPGF3Id": "0x8788f5efe99abf2a82ff0c27361baf9321c7601c06599551635aadfdd7980cf9",
-            "name": "Ethereum Lima",
-            "type": "project"
-          },
-          {
-            "id": "0x8f6fc027d996489f020e2b5591374f2c97833fe20cab3124e1c7377f5b7e583f",
-            "RPGF3Id": "0x8f6fc027d996489f020e2b5591374f2c97833fe20cab3124e1c7377f5b7e583f",
-            "name": "ETHBarcelona",
-            "type": "project"
-          },
-          {
-            "id": "0xf41f199697d23be53eb353e02947670e439498081fd2c733ff8befea0c974c37",
-            "RPGF3Id": "0xf41f199697d23be53eb353e02947670e439498081fd2c733ff8befea0c974c37",
-            "name": "ETHAccra",
-            "type": "project"
-          },
-          {
-            "id": "0xa4f5f97064e5ebdc97591521be056a911731925f81c694ed0bc84f6fc1b7ddea",
-            "RPGF3Id": "0xa4f5f97064e5ebdc97591521be056a911731925f81c694ed0bc84f6fc1b7ddea",
-            "name": "Cryptosquare",
-            "type": "project"
-          },
-          {
-            "id": "0xf3526ec21d5b1146008c629fe9837f2c5ab099b1590e28dfb7005c126234fb11",
-            "RPGF3Id": "0xf3526ec21d5b1146008c629fe9837f2c5ab099b1590e28dfb7005c126234fb11",
-            "name": "Eth-Volcano",
-            "type": "project"
-          },
-          {
-            "id": "0xe7d4cf0cda38c0f0b1ac0853ccaaa23d7c0569412604935edfa57cbb1ec7077b",
-            "RPGF3Id": "0xe7d4cf0cda38c0f0b1ac0853ccaaa23d7c0569412604935edfa57cbb1ec7077b",
-            "name": "Crypto Commons Association",
-            "type": "project"
-          },
-          {
-            "id": "0xa9f6de6ad7b1cb903f0063e588f0f729f13ddd76d77495e25a3860c27a721773",
-            "RPGF3Id": "0xa9f6de6ad7b1cb903f0063e588f0f729f13ddd76d77495e25a3860c27a721773",
-            "name": "ETHGlobal",
-            "type": "project"
-          },
-          {
-            "id": "0xf136f5a299e27269045ab60239a6c3897826e7019fb2c534344ad448a16cef8a",
-            "RPGF3Id": "0xf136f5a299e27269045ab60239a6c3897826e7019fb2c534344ad448a16cef8a",
-            "name": "Ethereum Colombia",
-            "type": "project"
-          }
-        ]
-      },
-      {
-        "type": "collection",
-        "id": 22,
-        "name": "Dev Services & Support",
-        "ranking": [
-          {
-            "id": "0x07fb115980ac6617d4b4b6f0cfcbc52bacfbb395b5c0d2d71fc735435627c555",
-            "RPGF3Id": "0x07fb115980ac6617d4b4b6f0cfcbc52bacfbb395b5c0d2d71fc735435627c555",
-            "name": "LXDAO",
-            "type": "project"
-          },
-          {
-            "id": "0x0c50a589d092ac078d4fecce888b1ec40a22cacd7d5d32b59ea277147113f173",
-            "RPGF3Id": "0x0c50a589d092ac078d4fecce888b1ec40a22cacd7d5d32b59ea277147113f173",
-            "name": "eth.limo",
-            "type": "project"
-          },
-          {
-            "id": "0x0cdf83271ae4293cc360b68edb92f4438ecf6d054ec1ec04a82fd7bd5b96c7ad",
-            "RPGF3Id": "0x0cdf83271ae4293cc360b68edb92f4438ecf6d054ec1ec04a82fd7bd5b96c7ad",
-            "name": "Sourcify",
-            "type": "project"
-          },
-          {
-            "id": "0x127bdc6d776fb958f986cd2059b43e917a2d74e912c0b360316f77a05b30087b",
-            "RPGF3Id": "0x127bdc6d776fb958f986cd2059b43e917a2d74e912c0b360316f77a05b30087b",
-            "name": "TechNERD Program",
-            "type": "project"
-          },
-          {
-            "id": "0x22440f20a9316a1d01cab2cfc8d8572560b026a538418f1416c3f5289869229f",
-            "RPGF3Id": "0x22440f20a9316a1d01cab2cfc8d8572560b026a538418f1416c3f5289869229f",
-            "name": "Pyth Network",
-            "type": "project"
-          },
-          {
-            "id": "0x32033fcd4dc814d1c0e903446719154dc1466ba27b1422a1e6c664ade1c8adbf",
-            "RPGF3Id": "0x32033fcd4dc814d1c0e903446719154dc1466ba27b1422a1e6c664ade1c8adbf",
-            "name": "ACryptoS",
-            "type": "project"
-          },
-          {
-            "id": "0x33fda246eee3e56ffd2ae97a87574bdd1278439dde91e33a235368913d6da48a",
-            "RPGF3Id": "0x33fda246eee3e56ffd2ae97a87574bdd1278439dde91e33a235368913d6da48a",
-            "name": "Clique",
-            "type": "project"
-          },
-          {
-            "id": "0x3bf8db795aafd69b9382756dfeeffa5a2f3353adb60158beb60665f4dd2a3f4d",
-            "RPGF3Id": "0x3bf8db795aafd69b9382756dfeeffa5a2f3353adb60158beb60665f4dd2a3f4d",
-            "name": "Buildooor",
-            "type": "project"
-          },
-          {
-            "id": "0x3c5bf96d1ae3c4e995b0892b515cb837d877a11f6f63878bded9b5020598fd3f",
-            "RPGF3Id": "0x3c5bf96d1ae3c4e995b0892b515cb837d877a11f6f63878bded9b5020598fd3f",
-            "name": "Bware Labs",
-            "type": "project"
-          },
-          {
-            "id": "0x490ad76a69ed6e4999c570bf5b7eb2336ff8e31906a3df6bf88b9144558acccf",
-            "RPGF3Id": "0x490ad76a69ed6e4999c570bf5b7eb2336ff8e31906a3df6bf88b9144558acccf",
-            "name": "Edge & Node / The Graph",
-            "type": "project"
-          },
-          {
-            "id": "0x4a9fce27c66e104b86ebb868d1811b3c4b3b66d4332eba4a83c50838ba231c99",
-            "RPGF3Id": "0x4a9fce27c66e104b86ebb868d1811b3c4b3b66d4332eba4a83c50838ba231c99",
-            "name": "Marko",
-            "type": "project"
-          },
-          {
-            "id": "0x52a5eb33b424f5d62f6cdac8943d4b180adb5cdd5d0dbd861c0d38f522386542",
-            "RPGF3Id": "0x52a5eb33b424f5d62f6cdac8943d4b180adb5cdd5d0dbd861c0d38f522386542",
-            "name": "Launchcaster",
-            "type": "project"
-          },
-          {
-            "id": "0x5effc6bf83d22623146bdd81e6bb55bc287b68aced8ad0d4be8cccbf5f408b19",
-            "RPGF3Id": "0x5effc6bf83d22623146bdd81e6bb55bc287b68aced8ad0d4be8cccbf5f408b19",
-            "name": "0xSalman",
-            "type": "project"
-          },
-          {
-            "id": "0x60da4d7694d025119a3c47f6fd67aa417718fe089f8c98d4f0ccda524cd777df",
-            "RPGF3Id": "0x60da4d7694d025119a3c47f6fd67aa417718fe089f8c98d4f0ccda524cd777df",
-            "name": "Synthetix IPFS Node",
-            "type": "project"
-          },
-          {
-            "id": "0x67fab3ded419221982f0e55f3f63dbf701f18e39f90aef73ac2379ccf7a4fcd6",
-            "RPGF3Id": "0x67fab3ded419221982f0e55f3f63dbf701f18e39f90aef73ac2379ccf7a4fcd6",
-            "name": "CompareNodes",
-            "type": "project"
-          },
-          {
-            "id": "0x686631456b8a61089497f6cb36abb0b9965c47464383603402a8688b8b69fa93",
-            "RPGF3Id": "0x686631456b8a61089497f6cb36abb0b9965c47464383603402a8688b8b69fa93",
-            "name": "ZORA",
-            "type": "project"
-          },
-          {
-            "id": "0x6a534fd1cab7d3770c6f747abf1f481807df4220f3c0464d510b35eed65498a6",
-            "RPGF3Id": "0x6a534fd1cab7d3770c6f747abf1f481807df4220f3c0464d510b35eed65498a6",
-            "name": "Blocktorch",
-            "type": "project"
-          },
-          {
-            "id": "0x71e4915fe3b20feeb949e572cfa4204ab8e0a62ae385a0cbb8474071fb86eb80",
-            "RPGF3Id": "0x71e4915fe3b20feeb949e572cfa4204ab8e0a62ae385a0cbb8474071fb86eb80",
-            "name": "Chronicle Labs",
-            "type": "project"
-          },
-          {
-            "id": "0x72f6d960a8d3b50bcc6723270fd211884b60dabece4f3b400014369f442810ed",
-            "RPGF3Id": "0x72f6d960a8d3b50bcc6723270fd211884b60dabece4f3b400014369f442810ed",
-            "name": "Pocket Network",
-            "type": "project"
-          },
-          {
-            "id": "0x8311ffccc08b78bf4c7c52e4cc6e2d002e2641f68360f71e3c65ac3727de4a9e",
-            "RPGF3Id": "0x8311ffccc08b78bf4c7c52e4cc6e2d002e2641f68360f71e3c65ac3727de4a9e",
-            "name": "JobStash",
-            "type": "project"
-          },
-          {
-            "id": "0x8b7c072535aef80e3f2c2020327fb7975aaaf3a9aa39d843b947e8fd7fc70e64",
-            "RPGF3Id": "0x8b7c072535aef80e3f2c2020327fb7975aaaf3a9aa39d843b947e8fd7fc70e64",
-            "name": "Ultra Sound Relay",
-            "type": "project"
-          },
-          {
-            "id": "0x8d15e0dc5ed8352869c7c684287b7a24637d584172261b40f19790bac0466f45",
-            "RPGF3Id": "0x8d15e0dc5ed8352869c7c684287b7a24637d584172261b40f19790bac0466f45",
-            "name": "Index Supply",
-            "type": "project"
-          },
-          {
-            "id": "0x8dc985486bea3e55a0bf61a1622319985802a6a446a34b23d1c819811c10fb0f",
-            "RPGF3Id": "0x8dc985486bea3e55a0bf61a1622319985802a6a446a34b23d1c819811c10fb0f",
-            "name": "Castle Capital",
-            "type": "project"
-          },
-          {
-            "id": "0x90a0df94274a3baadba6bad013350182cf13c31242fc318e25ff8e2ca84ae2a9",
-            "RPGF3Id": "0x90a0df94274a3baadba6bad013350182cf13c31242fc318e25ff8e2ca84ae2a9",
-            "name": "Covalent",
-            "type": "project"
-          },
-          {
-            "id": "0x90dec3f7f6a32d24f8f6efbeaf449851331630abb0df56eeb39a6499a5572331",
-            "RPGF3Id": "0x90dec3f7f6a32d24f8f6efbeaf449851331630abb0df56eeb39a6499a5572331",
-            "name": "MultiBaas blockchain middleware",
-            "type": "project"
-          },
-          {
-            "id": "0x932ab86dcbf750b9224665f7d9974c6e9e428470974ae59658b61cd7c3283728",
-            "RPGF3Id": "0x932ab86dcbf750b9224665f7d9974c6e9e428470974ae59658b61cd7c3283728",
-            "name": "Nodies DLB",
-            "type": "project"
-          },
-          {
-            "id": "0x9b8f75de8014815d9a2ad460848c70f56248f855ac568c8ff8b8dc322267b4f9",
-            "RPGF3Id": "0x9b8f75de8014815d9a2ad460848c70f56248f855ac568c8ff8b8dc322267b4f9",
-            "name": "WakeUp Labs",
-            "type": "project"
-          },
-          {
-            "id": "0xd73aaa3a4013be0da321660ed59523edbeb6654e773a2f852fb3828156c3d7bd",
-            "RPGF3Id": "0xd73aaa3a4013be0da321660ed59523edbeb6654e773a2f852fb3828156c3d7bd",
-            "name": "Airstack",
-            "type": "project"
-          },
-          {
-            "id": "0xeb5da95440608276fea071123fbd4d7c292c2a5bd5a3d32ccb8905e8bb92e9a7",
-            "RPGF3Id": "0xeb5da95440608276fea071123fbd4d7c292c2a5bd5a3d32ccb8905e8bb92e9a7",
-            "name": "IDriss",
-            "type": "project"
-          },
-          {
-            "id": "0xaf72f298c070d96e72345b7f99ee16da493018914aaac00a1db76fda08f5e9f9",
-            "RPGF3Id": "0xaf72f298c070d96e72345b7f99ee16da493018914aaac00a1db76fda08f5e9f9",
-            "name": "DAC on OP Stack",
-            "type": "project"
-          },
-          {
-            "id": "0xd34b4f953913284fa62737fcec2439fd6b192149023f6dbd6f3a91f5b716d295",
-            "RPGF3Id": "0xd34b4f953913284fa62737fcec2439fd6b192149023f6dbd6f3a91f5b716d295",
-            "name": "GoPlus Security",
-            "type": "project"
-          },
-          {
-            "id": "0xdc8392820875414ecc45232f76592a17a65865e1e95411911e2508a2d196a94e",
-            "RPGF3Id": "0xdc8392820875414ecc45232f76592a17a65865e1e95411911e2508a2d196a94e",
-            "name": "EIP Fun",
-            "type": "project"
-          },
-          {
-            "id": "0xc3ad567e82145d15987c82efccc1aee7803bb69750cf221f2c68165c688c1878",
-            "RPGF3Id": "0xc3ad567e82145d15987c82efccc1aee7803bb69750cf221f2c68165c688c1878",
-            "name": "SupraOracles",
-            "type": "project"
-          },
-          {
-            "id": "0xc5e329a9f4b232618fe38dc93b49c64bd3d34d99dff253dd64ffef7daf683b76",
-            "RPGF3Id": "0xc5e329a9f4b232618fe38dc93b49c64bd3d34d99dff253dd64ffef7daf683b76",
-            "name": "API3 DAO ",
-            "type": "project"
-          },
-          {
-            "id": "0xd4125ec1c05bcc71b24dd03b518681a9b5aef8ff46cfcabb951374bfae6ca855",
-            "RPGF3Id": "0xd4125ec1c05bcc71b24dd03b518681a9b5aef8ff46cfcabb951374bfae6ca855",
-            "name": "Crust Network",
-            "type": "project"
-          },
-          {
-            "id": "0xe2e2f6f6ca6631af544462d867d1fd09f56182c4963ffd6be35dc3651df5ce86",
-            "RPGF3Id": "0xe2e2f6f6ca6631af544462d867d1fd09f56182c4963ffd6be35dc3651df5ce86",
-            "name": "Gelato",
-            "type": "project"
-          },
-          {
-            "id": "0xfed9d3effec10a210a6c15f27f3d6c23ee6b4a1c305a1cfeab84207ccd85ce33",
-            "RPGF3Id": "0xfed9d3effec10a210a6c15f27f3d6c23ee6b4a1c305a1cfeab84207ccd85ce33",
-            "name": "simple8720",
-            "type": "project"
-          },
-          {
-            "id": "0xf66f24a1481b4245017738ab5b95581a4622f7606c054eb45ea0a4a971050873",
-            "RPGF3Id": "0xf66f24a1481b4245017738ab5b95581a4622f7606c054eb45ea0a4a971050873",
-            "name": "DexKit",
-            "type": "project"
-          },
-          {
-            "id": "0xd2591c94e8666a5f1cf11b49d6ce9e85a970f48606316300793b8fed927ca94b",
-            "RPGF3Id": "0xd2591c94e8666a5f1cf11b49d6ce9e85a970f48606316300793b8fed927ca94b",
-            "name": "Cryptotesters",
-            "type": "project"
-          },
-          {
-            "id": "0xbeacd91e385918f18b4feb083757e7a4258008f313ad2aaa60ec90238e8153c1",
-            "RPGF3Id": "0xbeacd91e385918f18b4feb083757e7a4258008f313ad2aaa60ec90238e8153c1",
-            "name": "Squirtle0x",
-            "type": "project"
-          },
-          {
-            "id": "0xdfb5069840802be3fb1358f3bdb2af465654784db3227bf59f25e82ac46fc3b3",
-            "RPGF3Id": "0xdfb5069840802be3fb1358f3bdb2af465654784db3227bf59f25e82ac46fc3b3",
-            "name": "r72.fi",
-            "type": "project"
-          },
-          {
-            "id": "0xd2de2774bd9ffe36fdcab675bd37e2193f18a087253b0859ddfd1966e103c52a",
-            "RPGF3Id": "0xd2de2774bd9ffe36fdcab675bd37e2193f18a087253b0859ddfd1966e103c52a",
-            "name": "Cielo",
-            "type": "project"
-          },
-          {
-            "id": "0xcb6ac0e12379465dc8d9c9ef5396ef4b8fbbfc17067e20b21c01b4cf56657636",
-            "RPGF3Id": "0xcb6ac0e12379465dc8d9c9ef5396ef4b8fbbfc17067e20b21c01b4cf56657636",
-            "name": "Tenderly",
-            "type": "project"
-          }
-        ]
-      },
-      {
-        "type": "collection",
-        "id": 23,
-        "name": "Dev Tooling",
-        "ranking": [
-          {
-            "id": "0x020a49814aed7362cc564a227d7f1bda9c86b95b7d003080785c97a925fbf2b7",
-            "RPGF3Id": "0x020a49814aed7362cc564a227d7f1bda9c86b95b7d003080785c97a925fbf2b7",
-            "name": "ERC-6551 Tooling",
-            "type": "project"
-          },
-          {
-            "id": "0x07a0323c1fc9072714b937056ec35d0c5acff5df41fb3e266b329ac2ed68d5f8",
-            "RPGF3Id": "0x07a0323c1fc9072714b937056ec35d0c5acff5df41fb3e266b329ac2ed68d5f8",
-            "name": "Wagmi / Viem",
-            "type": "project"
-          },
-          {
-            "id": "0x0e82e66b2949507a8858863d4c4d886d2e582341e6f5f8b33ddaa0082edae04d",
-            "RPGF3Id": "0x0e82e66b2949507a8858863d4c4d886d2e582341e6f5f8b33ddaa0082edae04d",
-            "name": "markg85",
-            "type": "project"
-          },
-          {
-            "id": "0x1402768b4e6481137978e3ecd853cb0e7eefff51f2b8838c382b5d4907931224",
-            "RPGF3Id": "0x1402768b4e6481137978e3ecd853cb0e7eefff51f2b8838c382b5d4907931224",
-            "name": "ChainList",
-            "type": "project"
-          },
-          {
-            "id": "0x1834066a554054c55b1d01f9084c0059c384ff959364dca73bd7d87c1589a9de",
-            "RPGF3Id": "0x1834066a554054c55b1d01f9084c0059c384ff959364dca73bd7d87c1589a9de",
-            "name": "🐍 snekmate",
-            "type": "project"
-          },
-          {
-            "id": "0x1c03fba4505bdb618483c9c2a197e09753e8bdbc03f784d312039dd623ec8046",
-            "RPGF3Id": "0x1c03fba4505bdb618483c9c2a197e09753e8bdbc03f784d312039dd623ec8046",
-            "name": "Hardhat Tracer",
-            "type": "project"
-          },
-          {
-            "id": "0x1ecdeab23aea56e92ee2161bc0af97565d6b6d666e46fc3c1db106708ed50d97",
-            "RPGF3Id": "0x1ecdeab23aea56e92ee2161bc0af97565d6b6d666e46fc3c1db106708ed50d97",
-            "name": "TrueBlocks / Unchained Index",
-            "type": "project"
-          },
-          {
-            "id": "0x23afbebc655637c91f6a42572b8af43c2ae6e61655c55ba52e5ace484eff8e72",
-            "RPGF3Id": "0x23afbebc655637c91f6a42572b8af43c2ae6e61655c55ba52e5ace484eff8e72",
-            "name": "Synpress",
-            "type": "project"
-          },
-          {
-            "id": "0x414f74b8f9da96b3f0c0abbb870ea2928dcdbc454319129df7151f43467aa5e7",
-            "RPGF3Id": "0x414f74b8f9da96b3f0c0abbb870ea2928dcdbc454319129df7151f43467aa5e7",
-            "name": "Dasy",
-            "type": "project"
-          },
-          {
-            "id": "0x48000bf0277f99726173a59b47d05aa6371ea320866e3e9a77e4241a083a4009",
-            "RPGF3Id": "0x48000bf0277f99726173a59b47d05aa6371ea320866e3e9a77e4241a083a4009",
-            "name": "ApeWorX LTD",
-            "type": "project"
-          },
-          {
-            "id": "0x4fa62d7e6f1c9e324e6faeb6589d100573bd57b709df68edbe00204200670e1a",
-            "RPGF3Id": "0x4fa62d7e6f1c9e324e6faeb6589d100573bd57b709df68edbe00204200670e1a",
-            "name": "Ankr",
-            "type": "project"
-          },
-          {
-            "id": "0x4fc411cc40e4a1fbfa73f5b1750d11271456dd6ada8234a6e37f44df4e5658d9",
-            "RPGF3Id": "0x4fc411cc40e4a1fbfa73f5b1750d11271456dd6ada8234a6e37f44df4e5658d9",
-            "name": "Raiden",
-            "type": "project"
-          },
-          {
-            "id": "0x50421bd9176952237de8ac2f8898c1cd6217b8295596773c656dee03ef5d7aa7",
-            "RPGF3Id": "0x50421bd9176952237de8ac2f8898c1cd6217b8295596773c656dee03ef5d7aa7",
-            "name": "Remix Project",
-            "type": "project"
-          },
-          {
-            "id": "0x54b5917ba3ae0b4afb71efd0369f4b65b43bf2453710edcb3340581972f99dea",
-            "RPGF3Id": "0x54b5917ba3ae0b4afb71efd0369f4b65b43bf2453710edcb3340581972f99dea",
-            "name": "Optimism Prices Contracts",
-            "type": "project"
-          },
-          {
-            "id": "0x5c7db781f9c4ea6eadf270bb2e1e64cc888b4c57d7df92649bf039d5f6910d0a",
-            "RPGF3Id": "0x5c7db781f9c4ea6eadf270bb2e1e64cc888b4c57d7df92649bf039d5f6910d0a",
-            "name": "Flipside Crypto",
-            "type": "project"
-          },
-          {
-            "id": "0x6446bdf27ac66fec76a45bf216f7b9229db151554bf1e7057e02213f9746e562",
-            "RPGF3Id": "0x6446bdf27ac66fec76a45bf216f7b9229db151554bf1e7057e02213f9746e562",
-            "name": "UseDApp",
-            "type": "project"
-          },
-          {
-            "id": "0x673d8e5392f524e26a6b99ed445c2b7569cdc67423c47a5e6f9ba9c950b2fe79",
-            "RPGF3Id": "0x673d8e5392f524e26a6b99ed445c2b7569cdc67423c47a5e6f9ba9c950b2fe79",
-            "name": "WhatsABI",
-            "type": "project"
-          },
-          {
-            "id": "0x6752ee31f5e09caedd68da815fc684456bca90ffa4336fd021180f91ef5ac85a",
-            "RPGF3Id": "0x6752ee31f5e09caedd68da815fc684456bca90ffa4336fd021180f91ef5ac85a",
-            "name": "P256Verifier",
-            "type": "project"
-          },
-          {
-            "id": "0x67dbd30fb3b694f21e011722e2cccacfa51550ba8da895f036dc8819f5c65e28",
-            "RPGF3Id": "0x67dbd30fb3b694f21e011722e2cccacfa51550ba8da895f036dc8819f5c65e28",
-            "name": "Iggy Social - Web3 Social for DAOs",
-            "type": "project"
-          },
-          {
-            "id": "0x6d102cab70b4d3bca1330ef5f2f582ad611d92c3b0d912c7629e1f7c918a1a85",
-            "RPGF3Id": "0x6d102cab70b4d3bca1330ef5f2f582ad611d92c3b0d912c7629e1f7c918a1a85",
-            "name": "Inverter Network",
-            "type": "project"
-          },
-          {
-            "id": "0x6daec4e672f3f2cb019340ad474b2859b4c91f50dfa1fa062943ea5b866df01d",
-            "RPGF3Id": "0x6daec4e672f3f2cb019340ad474b2859b4c91f50dfa1fa062943ea5b866df01d",
-            "name": "Vue Dapp",
-            "type": "project"
-          },
-          {
-            "id": "0x723da383185924834ea462c791d4e21dac5dedc94ba164bd37adc571ba5008ed",
-            "RPGF3Id": "0x723da383185924834ea462c791d4e21dac5dedc94ba164bd37adc571ba5008ed",
-            "name": "RainbowKit",
-            "type": "project"
-          },
-          {
-            "id": "0x7500c59003e12f46731f0e3bf33ef270085e700ce1d0ec0ae2ae42b4ea655ebe",
-            "RPGF3Id": "0x7500c59003e12f46731f0e3bf33ef270085e700ce1d0ec0ae2ae42b4ea655ebe",
-            "name": "foundry",
-            "type": "project"
-          },
-          {
-            "id": "0x7a09be22acae5e2d531965a619820b6b9d985f60051c524c2e2b5036aac7489b",
-            "RPGF3Id": "0x7a09be22acae5e2d531965a619820b6b9d985f60051c524c2e2b5036aac7489b",
-            "name": "Cannon",
-            "type": "project"
-          },
-          {
-            "id": "0x7d188db9e7369a77fe3680893b65d95fcac5d7c00f9387f74c323efce908306e",
-            "RPGF3Id": "0x7d188db9e7369a77fe3680893b65d95fcac5d7c00f9387f74c323efce908306e",
-            "name": "Prettier Solidity",
-            "type": "project"
-          },
-          {
-            "id": "0x7ed37715e33c6d078e2ec8423e7e336e353261047a507733d2a999c3449d636c",
-            "RPGF3Id": "0x7ed37715e33c6d078e2ec8423e7e336e353261047a507733d2a999c3449d636c",
-            "name": "Ronan Sandford",
-            "type": "project"
-          },
-          {
-            "id": "0x8e8fab198e1f1e986b4d0c24992f1a57d42722a835c8afd80c5150184727b433",
-            "RPGF3Id": "0x8e8fab198e1f1e986b4d0c24992f1a57d42722a835c8afd80c5150184727b433",
-            "name": "🏰 BuidlGuidl",
-            "type": "project"
-          },
-          {
-            "id": "0x90ef634fad04d6ac2882db44d4a84f31c7f0621f3abd00efb067416e4ff1641c",
-            "RPGF3Id": "0x90ef634fad04d6ac2882db44d4a84f31c7f0621f3abd00efb067416e4ff1641c",
-            "name": "Optimistic Indexer",
-            "type": "project"
-          },
-          {
-            "id": "0x9267f0bdc4b12ded65ff21fc51648f0e0d510f2b0c9fe8f77f84308453859a53",
-            "RPGF3Id": "0x9267f0bdc4b12ded65ff21fc51648f0e0d510f2b0c9fe8f77f84308453859a53",
-            "name": "ARPA Randcast",
-            "type": "project"
-          },
-          {
-            "id": "0x973dd17bfead72018dfe2cc33042db418c82f518229b3ca32a0798ef13d393f5",
-            "RPGF3Id": "0x973dd17bfead72018dfe2cc33042db418c82f518229b3ca32a0798ef13d393f5",
-            "name": "Candide",
-            "type": "project"
-          },
-          {
-            "id": "0x99684d69323305f8db8feeb8a34d5057b76eb99ec660a9cf339e068b99803e60",
-            "RPGF3Id": "0x99684d69323305f8db8feeb8a34d5057b76eb99ec660a9cf339e068b99803e60",
-            "name": "Vectorized",
-            "type": "project"
-          },
-          {
-            "id": "0x9c44ab1650391a658a0e1febe3bfd3f64b0e12e2bf407b1eeda6b45117519858",
-            "RPGF3Id": "0x9c44ab1650391a658a0e1febe3bfd3f64b0e12e2bf407b1eeda6b45117519858",
-            "name": "Gitcoin Passport",
-            "type": "project"
-          },
-          {
-            "id": "0xbdf3e582179cedbd19e3c14d94e1936b5855653242054c3c4170d0b340700f4d",
-            "RPGF3Id": "0xbdf3e582179cedbd19e3c14d94e1936b5855653242054c3c4170d0b340700f4d",
-            "name": "Blocknative | Web3 Onboard",
-            "type": "project"
-          },
-          {
-            "id": "0xe0031e9ff51d941d62bcb1545812bdd132151a24d8767f4cc0d552b82c8567ac",
-            "RPGF3Id": "0xe0031e9ff51d941d62bcb1545812bdd132151a24d8767f4cc0d552b82c8567ac",
-            "name": "Hardhat",
-            "type": "project"
-          },
-          {
-            "id": "0xfaf9206c9d5c4c2df0edd60d2abef094b823610341f042e359e1c871956ee084",
-            "RPGF3Id": "0xfaf9206c9d5c4c2df0edd60d2abef094b823610341f042e359e1c871956ee084",
-            "name": "Sphinx (formerly ChugSplash)",
-            "type": "project"
-          },
-          {
-            "id": "0xb396a17448c7a2eb8a22f2982ac8bd4e51acb1bca4b5e58bed38aa8df066db0f",
-            "RPGF3Id": "0xb396a17448c7a2eb8a22f2982ac8bd4e51acb1bca4b5e58bed38aa8df066db0f",
-            "name": "Slither",
-            "type": "project"
-          },
-          {
-            "id": "0xf751fd5e236ec136a340fa5d2080938512056728c9301ac7dc27d6ab78791e72",
-            "RPGF3Id": "0xf751fd5e236ec136a340fa5d2080938512056728c9301ac7dc27d6ab78791e72",
-            "name": "OpenZeppelin Contracts",
-            "type": "project"
-          },
-          {
-            "id": "0xbedcd5e59e87c88e2d5b3f135cef429d5cdefd7e99e6fd8b40569ec5191dc1a1",
-            "RPGF3Id": "0xbedcd5e59e87c88e2d5b3f135cef429d5cdefd7e99e6fd8b40569ec5191dc1a1",
-            "name": "bh2smith",
-            "type": "project"
-          },
-          {
-            "id": "0xd5ced576ab6921e32ee00c18d49c69149ba5ccbec76f1e9bbc3d5b008f23145f",
-            "RPGF3Id": "0xd5ced576ab6921e32ee00c18d49c69149ba5ccbec76f1e9bbc3d5b008f23145f",
-            "name": "Web3js",
-            "type": "project"
-          },
-          {
-            "id": "0xf69eeb202a8fa1c807292b1c0ab800337d7fb2a18f8d9354a5441c9bcc289338",
-            "RPGF3Id": "0xf69eeb202a8fa1c807292b1c0ab800337d7fb2a18f8d9354a5441c9bcc289338",
-            "name": "Alloy",
-            "type": "project"
-          },
-          {
-            "id": "0xfdb5d70b4aea2de7ccb8b892d57916cab4dbfa2457531636d12b16bca68b3d35",
-            "RPGF3Id": "0xfdb5d70b4aea2de7ccb8b892d57916cab4dbfa2457531636d12b16bca68b3d35",
-            "name": "Ether.actor",
-            "type": "project"
-          },
-          {
-            "id": "0xcbd7ce5a3a7a13d43a1b169828dc2356c46d818493a6e1165ee7d07fae103e43",
-            "RPGF3Id": "0xcbd7ce5a3a7a13d43a1b169828dc2356c46d818493a6e1165ee7d07fae103e43",
-            "name": "Rollup.codes",
-            "type": "project"
-          },
-          {
-            "id": "0xf3e6f4737869efd0967440e4f97ea91b3ce3611c801675319874ea02f4d7a668",
-            "RPGF3Id": "0xf3e6f4737869efd0967440e4f97ea91b3ce3611c801675319874ea02f4d7a668",
-            "name": "ethers.js",
-            "type": "project"
-          },
-          {
-            "id": "0xd5102da53903c150aeeb5d43a20c3c191fcfe2d43bf1b5eb6939d073ee4e1fa5",
-            "RPGF3Id": "0xd5102da53903c150aeeb5d43a20c3c191fcfe2d43bf1b5eb6939d073ee4e1fa5",
-            "name": "EZKL",
-            "type": "project"
-          },
-          {
-            "id": "0xde309e83b1ceb3e9597c33601142d0cffe1b7d632e7312cddb30e9faa79cd1e1",
-            "RPGF3Id": "0xde309e83b1ceb3e9597c33601142d0cffe1b7d632e7312cddb30e9faa79cd1e1",
-            "name": "Antoine",
-            "type": "project"
-          },
-          {
-            "id": "0xc457be3a57bddfe68c852f20202b06ecf07a41c510a44bdf41afb1f77e63f78d",
-            "RPGF3Id": "0xc457be3a57bddfe68c852f20202b06ecf07a41c510a44bdf41afb1f77e63f78d",
-            "name": "Titanoboa",
-            "type": "project"
-          },
-          {
-            "id": "0xbd9046f085bcd22857b23dd1bf3965db8a97db88e14598f28b649918a783f60f",
-            "RPGF3Id": "0xbd9046f085bcd22857b23dd1bf3965db8a97db88e14598f28b649918a783f60f",
-            "name": "Socket ",
-            "type": "project"
-          },
-          {
-            "id": "0xb050be8189ff0dee56ad57c86088d3240e2d3192d9f426053400833599465720",
-            "RPGF3Id": "0xb050be8189ff0dee56ad57c86088d3240e2d3192d9f426053400833599465720",
-            "name": "Attest Fest",
-            "type": "project"
-          },
-          {
-            "id": "0xb04af6a6a336124fbf621ac380b23add5b6c53dee09dc19f2ad9caea8cdb5cdf",
-            "RPGF3Id": "0xb04af6a6a336124fbf621ac380b23add5b6c53dee09dc19f2ad9caea8cdb5cdf",
-            "name": "solidity-analyzer",
-            "type": "project"
-          },
-          {
-            "id": "0xb35269ecc1f0a00cdbd12ba986f61174ae69bc6274aaabbb8ec13eff0ea1b461",
-            "RPGF3Id": "0xb35269ecc1f0a00cdbd12ba986f61174ae69bc6274aaabbb8ec13eff0ea1b461",
-            "name": "abi-to-sol",
-            "type": "project"
-          },
-          {
-            "id": "0xd28e879c019aacabe65c062601000f9925e2f9686c8a6485d92d753132ba723b",
-            "RPGF3Id": "0xd28e879c019aacabe65c062601000f9925e2f9686c8a6485d92d753132ba723b",
-            "name": "Picodes",
-            "type": "project"
-          },
-          {
-            "id": "0xf162490ee7fc0844a9f2033eb1107cf910df56889ce42a28ea4bf049ae75bf63",
-            "RPGF3Id": "0xf162490ee7fc0844a9f2033eb1107cf910df56889ce42a28ea4bf049ae75bf63",
-            "name": "Waffle",
-            "type": "project"
-          },
-          {
-            "id": "0xf3df23e97d2c4b6936cafe233e48416ed37708a2a0eecd959450a82ed3a5f730",
-            "RPGF3Id": "0xf3df23e97d2c4b6936cafe233e48416ed37708a2a0eecd959450a82ed3a5f730",
-            "name": "Alchemy",
-            "type": "project"
-          },
-          {
-            "id": "0xe47991998f9a1046c12670765dd02b82353d11341b8f4341665d34ed235c8d8c",
-            "RPGF3Id": "0xe47991998f9a1046c12670765dd02b82353d11341b8f4341665d34ed235c8d8c",
-            "name": "TypeChain / DethCode",
-            "type": "project"
-          },
-          {
-            "id": "0xf4afe5bc5e36f35bdef48817c59d4e35a52bbab17bfbb946f0df3ef819539202",
-            "RPGF3Id": "0xf4afe5bc5e36f35bdef48817c59d4e35a52bbab17bfbb946f0df3ef819539202",
-            "name": "⚡️ TurboETH",
-            "type": "project"
-          },
-          {
-            "id": "0xdb7760ac3918bd6aaba6aaf7a84900c313ff3f05093cd87e49738a73b95ad28f",
-            "RPGF3Id": "0xdb7760ac3918bd6aaba6aaf7a84900c313ff3f05093cd87e49738a73b95ad28f",
-            "name": "Venom & Fang",
-            "type": "project"
-          },
-          {
-            "id": "0xa56c22c8a230b721d39e7dd1615802db826a3c5dfb1ffa86967afa5db890b5ea",
-            "RPGF3Id": "0xa56c22c8a230b721d39e7dd1615802db826a3c5dfb1ffa86967afa5db890b5ea",
-            "name": "PR0",
-            "type": "project"
-          }
-        ]
-      },
-      {
-        "type": "collection",
-        "id": 24,
-        "name": "Developer Education",
-        "ranking": [
-          {
-            "id": "0x04227ff23823ec09a03a531c924e8bdf5a6d486f3e0e3006b2fbb1a8de58f0d1",
-            "RPGF3Id": "0x04227ff23823ec09a03a531c924e8bdf5a6d486f3e0e3006b2fbb1a8de58f0d1",
-            "name": "DeFi Africa",
-            "type": "project"
-          },
-          {
-            "id": "0x06b26b0ba3df69696ea47a30cd1f8114824ff994556f5331c8eefc96bac8cf9e",
-            "RPGF3Id": "0x06b26b0ba3df69696ea47a30cd1f8114824ff994556f5331c8eefc96bac8cf9e",
-            "name": "Secureum",
-            "type": "project"
-          },
-          {
-            "id": "0x07cdfb60650fd3060411253b3c91abdab2739c0b122047ab6d014436fe912282",
-            "RPGF3Id": "0x07cdfb60650fd3060411253b3c91abdab2739c0b122047ab6d014436fe912282",
-            "name": "Web3bridge",
-            "type": "project"
-          },
-          {
-            "id": "0x0a337cfd252f13746c53175e32881945f64ee405fa9abccfefdc10b195d205ef",
-            "RPGF3Id": "0x0a337cfd252f13746c53175e32881945f64ee405fa9abccfefdc10b195d205ef",
-            "name": "LexDAO",
-            "type": "project"
-          },
-          {
-            "id": "0x0ace9050e3c67022816825143db0a483647bc719202adffc555e04b4bfd4f522",
-            "RPGF3Id": "0x0ace9050e3c67022816825143db0a483647bc719202adffc555e04b4bfd4f522",
-            "name": "Token Engineering Academy",
-            "type": "project"
-          },
-          {
-            "id": "0x0fd702364b086485a727ee20c94abe75c1c916e9ad9c6dc17eff8c64487dfd8a",
-            "RPGF3Id": "0x0fd702364b086485a727ee20c94abe75c1c916e9ad9c6dc17eff8c64487dfd8a",
-            "name": "WTF Academy",
-            "type": "project"
-          },
-          {
-            "id": "0x1dfca7cffa9babbcc0b9646e2e620da444285f4dc7d6e7f3692446ffe4d6b66b",
-            "RPGF3Id": "0x1dfca7cffa9babbcc0b9646e2e620da444285f4dc7d6e7f3692446ffe4d6b66b",
-            "name": "The Ethernaut",
-            "type": "project"
-          },
-          {
-            "id": "0x20c4b71b16d2edc8d09cce39a7c46b5346591f4e17a7c8636416292915b508e9",
-            "RPGF3Id": "0x20c4b71b16d2edc8d09cce39a7c46b5346591f4e17a7c8636416292915b508e9",
-            "name": "Decentraclasses",
-            "type": "project"
-          },
-          {
-            "id": "0x2f2cd001b7d7594cb3410bac53730a210ef12bf04bef2ee5d90d0cf88d515fed",
-            "RPGF3Id": "0x2f2cd001b7d7594cb3410bac53730a210ef12bf04bef2ee5d90d0cf88d515fed",
-            "name": "Remix CC",
-            "type": "project"
-          },
-          {
-            "id": "0x2f75e5c1fce8a95703eff8dbecda9d426edcca1db1b69628e151b57b21bfa25c",
-            "RPGF3Id": "0x2f75e5c1fce8a95703eff8dbecda9d426edcca1db1b69628e151b57b21bfa25c",
-            "name": "MyFirstLayer2",
-            "type": "project"
-          },
-          {
-            "id": "0x2fc8e32b9a7418d88d21e45fddeef7d8f4c7460ba26a447cf7bfd298b58cab3c",
-            "RPGF3Id": "0x2fc8e32b9a7418d88d21e45fddeef7d8f4c7460ba26a447cf7bfd298b58cab3c",
-            "name": "APAC DAO",
-            "type": "project"
-          },
-          {
-            "id": "0x39b4a7a07052cd200b017579a2717911881ffd3ed4bd94c085ba08435373c855",
-            "RPGF3Id": "0x39b4a7a07052cd200b017579a2717911881ffd3ed4bd94c085ba08435373c855",
-            "name": "EthernautDAO",
-            "type": "project"
-          },
-          {
-            "id": "0x3cda55b2201bc6838291f6dc8d6325d321f4b011d91f4e6dcd14371751ee3a2b",
-            "RPGF3Id": "0x3cda55b2201bc6838291f6dc8d6325d321f4b011d91f4e6dcd14371751ee3a2b",
-            "name": "0xs34n",
-            "type": "project"
-          },
-          {
-            "id": "0x4334d7ad70ff3adfe4310ce1433b92c242e7110f29091a0fd3e768f1a148bf8c",
-            "RPGF3Id": "0x4334d7ad70ff3adfe4310ce1433b92c242e7110f29091a0fd3e768f1a148bf8c",
-            "name": "DeSchool",
-            "type": "project"
-          },
-          {
-            "id": "0x4aa2191cde4ef94ed2bab5b0964b9fb219e7b306563ed809a7ec6aa3191e0618",
-            "RPGF3Id": "0x4aa2191cde4ef94ed2bab5b0964b9fb219e7b306563ed809a7ec6aa3191e0618",
-            "name": "Dapp-Learning",
-            "type": "project"
-          },
-          {
-            "id": "0x4abf6854e35bbc14e85ec879c4545b98934e75a6d4a28bfc7b8b088240f64435",
-            "RPGF3Id": "0x4abf6854e35bbc14e85ec879c4545b98934e75a6d4a28bfc7b8b088240f64435",
-            "name": "L2 Planet",
-            "type": "project"
-          },
-          {
-            "id": "0x5720f540f36e2884b5346bd8755aba69c9c87ee7cd626647d1a74f086aded3cb",
-            "RPGF3Id": "0x5720f540f36e2884b5346bd8755aba69c9c87ee7cd626647d1a74f086aded3cb",
-            "name": "DecentrAgora",
-            "type": "project"
-          },
-          {
-            "id": "0x66c36ca6f9138b613a0b76f54beeb24c9653bc5140acb272d58f4709f68a8a1c",
-            "RPGF3Id": "0x66c36ca6f9138b613a0b76f54beeb24c9653bc5140acb272d58f4709f68a8a1c",
-            "name": "The Red Guild",
-            "type": "project"
-          },
-          {
-            "id": "0x697c316dc17ec7545ca91226e3e82d7fa3891c642ac5207d52dd46999a7b45b2",
-            "RPGF3Id": "0x697c316dc17ec7545ca91226e3e82d7fa3891c642ac5207d52dd46999a7b45b2",
-            "name": "yAcademy/yAudit",
-            "type": "project"
-          },
-          {
-            "id": "0x77546f9209cf30b9a081467e9b5f6da1e59fd326fadae829fb8c50e2a64ad3fe",
-            "RPGF3Id": "0x77546f9209cf30b9a081467e9b5f6da1e59fd326fadae829fb8c50e2a64ad3fe",
-            "name": "zerokn0wledge",
-            "type": "project"
-          },
-          {
-            "id": "0x79c3f88b4adb9b32ba1ba2c460097f7f2b43bc1a591e4a6a555f052087724197",
-            "RPGF3Id": "0x79c3f88b4adb9b32ba1ba2c460097f7f2b43bc1a591e4a6a555f052087724197",
-            "name": "Perelyn",
-            "type": "project"
-          },
-          {
-            "id": "0x7d2de8099d2435961b98eb1456efab1b02d74bf818149397f099f69719c81eb4",
-            "RPGF3Id": "0x7d2de8099d2435961b98eb1456efab1b02d74bf818149397f099f69719c81eb4",
-            "name": "wslyvh",
-            "type": "project"
-          },
-          {
-            "id": "0x8d74ea236742a773f21486e6d66a187f5398171a44c8cae6993d62b104709fd9",
-            "RPGF3Id": "0x8d74ea236742a773f21486e6d66a187f5398171a44c8cae6993d62b104709fd9",
-            "name": "FilosofiaCodigo",
-            "type": "project"
-          },
-          {
-            "id": "0x9314a90f51d8187f3d317091c9ef15a4c14a0eee1a8c1d97318187cc0e0cc63f",
-            "RPGF3Id": "0x9314a90f51d8187f3d317091c9ef15a4c14a0eee1a8c1d97318187cc0e0cc63f",
-            "name": "Kernel",
-            "type": "project"
-          },
-          {
-            "id": "0x987e3249c439bb522909400c838dd27fc0fa42d4a1b4728f303dcc16ee059482",
-            "RPGF3Id": "0x987e3249c439bb522909400c838dd27fc0fa42d4a1b4728f303dcc16ee059482",
-            "name": "Node Guardians",
-            "type": "project"
-          },
-          {
-            "id": "0x99d9058b2dc841fb614fa9351f3a93df1718e5f38b14e396ba764d53450924ab",
-            "RPGF3Id": "0x99d9058b2dc841fb614fa9351f3a93df1718e5f38b14e396ba764d53450924ab",
-            "name": "Golden Boys (GOLD)",
-            "type": "project"
-          },
-          {
-            "id": "0xba2e0392ddef461fea23821d7098b917bab9532d2d2cb297d0449d3a446c9bf7",
-            "RPGF3Id": "0xba2e0392ddef461fea23821d7098b917bab9532d2d2cb297d0449d3a446c9bf7",
-            "name": "jordanmmck",
-            "type": "project"
-          },
-          {
-            "id": "0xc72bc291e1063c2981475f586b6b62ba77eb05b8acca3501c80839659fbf3ad3",
-            "RPGF3Id": "0xc72bc291e1063c2981475f586b6b62ba77eb05b8acca3501c80839659fbf3ad3",
-            "name": "Kiwi News",
-            "type": "project"
-          },
-          {
-            "id": "0xe237f0d7617a275ce51d12a838ec720d6bb0ad6056de347698d43c30ceed579d",
-            "RPGF3Id": "0xe237f0d7617a275ce51d12a838ec720d6bb0ad6056de347698d43c30ceed579d",
-            "name": "zenbit.eth",
-            "type": "project"
-          },
-          {
-            "id": "0xcb3b30c752b2594f4fc4377496ab5c301dc299abd8701507f4b1674b99e2cf8a",
-            "RPGF3Id": "0xcb3b30c752b2594f4fc4377496ab5c301dc299abd8701507f4b1674b99e2cf8a",
-            "name": "Ryan Berckmans",
-            "type": "project"
-          },
-          {
-            "id": "0xa1dfddef3afe0156af5fd5870560d13423820a235ec8550e7f66a0e7d5c947c5",
-            "RPGF3Id": "0xa1dfddef3afe0156af5fd5870560d13423820a235ec8550e7f66a0e7d5c947c5",
-            "name": "AyaHQ",
-            "type": "project"
-          },
-          {
-            "id": "0xb013f320dfc52223d553455adbec3dad79691698c85b5ea8c27e81c46fd014b5",
-            "RPGF3Id": "0xb013f320dfc52223d553455adbec3dad79691698c85b5ea8c27e81c46fd014b5",
-            "name": "Cardo",
-            "type": "project"
-          },
-          {
-            "id": "0x9e5ea1680af47702c711090ece55c5ce8a73d1122196274c4ffcdd60a2004972",
-            "RPGF3Id": "0x9e5ea1680af47702c711090ece55c5ce8a73d1122196274c4ffcdd60a2004972",
-            "name": "Token Engineering Commons",
-            "type": "project"
-          },
-          {
-            "id": "0xd2ea00dba1cb56582c77344a4678996d72c35f39c853b3b6b5c6be49876e3018",
-            "RPGF3Id": "0xd2ea00dba1cb56582c77344a4678996d72c35f39c853b3b6b5c6be49876e3018",
-            "name": "BlockchainOAU",
-            "type": "project"
-          },
-          {
-            "id": "0xd0be450b707867d713e589deeeb24b3edc78e417cf673c0ea25f537b9e6f8bb3",
-            "RPGF3Id": "0xd0be450b707867d713e589deeeb24b3edc78e417cf673c0ea25f537b9e6f8bb3",
-            "name": "LearnWeb3",
-            "type": "project"
-          },
-          {
-            "id": "0xef2ca4e31c3116f3bc99105c6c10d5bfc7ecfd73b79dde360ea76340c893b105",
-            "RPGF3Id": "0xef2ca4e31c3116f3bc99105c6c10d5bfc7ecfd73b79dde360ea76340c893b105",
-            "name": "Taz",
-            "type": "project"
-          },
-          {
-            "id": "0xa4593794fec99c360105db59a4a337a2ce652f6259448462b75db63de702ba8f",
-            "RPGF3Id": "0xa4593794fec99c360105db59a4a337a2ce652f6259448462b75db63de702ba8f",
-            "name": "CryptoZombies",
-            "type": "project"
-          },
-          {
-            "id": "0xcc7d599bd163798695c68910ae40ea5da4f548b2c141525f461fab0d9c1f62dd",
-            "RPGF3Id": "0xcc7d599bd163798695c68910ae40ea5da4f548b2c141525f461fab0d9c1f62dd",
-            "name": "Protofire Blockchain Learning Path",
-            "type": "project"
-          },
-          {
-            "id": "0xe335a5fbf54f168e20655053d3d3da7d7a04bdbbfa9d0cb419e514087f314db6",
-            "RPGF3Id": "0xe335a5fbf54f168e20655053d3d3da7d7a04bdbbfa9d0cb419e514087f314db6",
-            "name": "RareSkills Book of Zero Knowledge Proofs",
-            "type": "project"
-          },
-          {
-            "id": "0xf5b0141c481f483b77750169a01a20df2661b9da668a019b640fd37d50be7b4f",
-            "RPGF3Id": "0xf5b0141c481f483b77750169a01a20df2661b9da668a019b640fd37d50be7b4f",
-            "name": "DevRel Uni",
-            "type": "project"
-          },
-          {
-            "id": "0xabf8a11afc616116d966b45900c77737cbe34dcdab0198c17c3376e1526d6403",
-            "RPGF3Id": "0xabf8a11afc616116d966b45900c77737cbe34dcdab0198c17c3376e1526d6403",
-            "name": "Zero Knowledge Podcast",
-            "type": "project"
-          }
-        ]
-      },
-      {
-        "type": "collection",
-        "id": 25,
-        "name": "Research & Analytics",
-        "ranking": [
-          {
-            "id": "0x007d41961338c04bb3a18e498d6d955072d4df3ea1fb43b16381269ea581049a",
-            "RPGF3Id": "0x007d41961338c04bb3a18e498d6d955072d4df3ea1fb43b16381269ea581049a",
-            "name": "Public Assembly ",
-            "type": "project"
-          },
-          {
-            "id": "0x013c4c5aa12146fb2c42a6864e3cc9afb7212a62145487b514bceab1f588ae79",
-            "RPGF3Id": "0x013c4c5aa12146fb2c42a6864e3cc9afb7212a62145487b514bceab1f588ae79",
-            "name": "growthepie",
-            "type": "project"
-          },
-          {
-            "id": "0x1440934dcf3ca194befd08b28e86eb6c2d68dd984070cf51f68fb3ad144b496c",
-            "RPGF3Id": "0x1440934dcf3ca194befd08b28e86eb6c2d68dd984070cf51f68fb3ad144b496c",
-            "name": "L2BEAT 💗",
-            "type": "project"
-          },
-          {
-            "id": "0x1d0fd9b7e22d5104b7581d43eca15536106894dc0800877f624b2acac306f234",
-            "RPGF3Id": "0x1d0fd9b7e22d5104b7581d43eca15536106894dc0800877f624b2acac306f234",
-            "name": "Andrew Hong (ilemi)",
-            "type": "project"
-          },
-          {
-            "id": "0x319e92614fd4d193ae32199f9459862ba5def14978cf005b19343843ca2e0693",
-            "RPGF3Id": "0x319e92614fd4d193ae32199f9459862ba5def14978cf005b19343843ca2e0693",
-            "name": "Rollup Economics Dune Spell",
-            "type": "project"
-          },
-          {
-            "id": "0x3291020a053ac45717fc2eed0e44a5fe7156889a4d9e015b0e50fff081caea77",
-            "RPGF3Id": "0x3291020a053ac45717fc2eed0e44a5fe7156889a4d9e015b0e50fff081caea77",
-            "name": "Redacted Research",
-            "type": "project"
-          },
-          {
-            "id": "0x32a2e7a1ffaeb5a4259aacf2263474f9a93d7759bb672e13102a9851f94fb05b",
-            "RPGF3Id": "0x32a2e7a1ffaeb5a4259aacf2263474f9a93d7759bb672e13102a9851f94fb05b",
-            "name": "Parsec Finance",
-            "type": "project"
-          },
-          {
-            "id": "0x33135d1d7ea18427c5096af97f5d5bcac392b8bbe871a9a0a9dd62ce651212df",
-            "RPGF3Id": "0x33135d1d7ea18427c5096af97f5d5bcac392b8bbe871a9a0a9dd62ce651212df",
-            "name": "Client Side Proofs",
-            "type": "project"
-          },
-          {
-            "id": "0x36653dde46bfe40b9aeb4ed20dfc4ccb0a40ba01ca4f0055e96870c9b28878f0",
-            "RPGF3Id": "0x36653dde46bfe40b9aeb4ed20dfc4ccb0a40ba01ca4f0055e96870c9b28878f0",
-            "name": "banterlytics",
-            "type": "project"
-          },
-          {
-            "id": "0x4afa3f3679237d1a52cfd87f258f57d8de01d64a69182591807c471accdc0f16",
-            "RPGF3Id": "0x4afa3f3679237d1a52cfd87f258f57d8de01d64a69182591807c471accdc0f16",
-            "name": "ERC4337 Smart Accounts Dune Dashboard",
-            "type": "project"
-          },
-          {
-            "id": "0x4cd6de3604ab5f5ac866ee555fd9a6b19b4590890870251417dbfcc7b6602281",
-            "RPGF3Id": "0x4cd6de3604ab5f5ac866ee555fd9a6b19b4590890870251417dbfcc7b6602281",
-            "name": "NumbaNERDs",
-            "type": "project"
-          },
-          {
-            "id": "0x553232d3bf4aedc322c984eb06f1e88447007f48f0fc2377eac10b213ce069f8",
-            "RPGF3Id": "0x553232d3bf4aedc322c984eb06f1e88447007f48f0fc2377eac10b213ce069f8",
-            "name": "OpTracker",
-            "type": "project"
-          },
-          {
-            "id": "0x577ede5b874e212884380a586d387d9a1ac81ebeb0a5dd780468f4c5b0a413f1",
-            "RPGF3Id": "0x577ede5b874e212884380a586d387d9a1ac81ebeb0a5dd780468f4c5b0a413f1",
-            "name": "DeepDAO",
-            "type": "project"
-          },
-          {
-            "id": "0x5c6601dfaab3603567d35888988d2588444d2f4d009ee16f1ba5ce1ad8036c9c",
-            "RPGF3Id": "0x5c6601dfaab3603567d35888988d2588444d2f4d009ee16f1ba5ce1ad8036c9c",
-            "name": "Crypto Fundraising",
-            "type": "project"
-          },
-          {
-            "id": "0x6093215024946600fa2f854f941d918ea3a7f11283cb4e430969c36937b39e66",
-            "RPGF3Id": "0x6093215024946600fa2f854f941d918ea3a7f11283cb4e430969c36937b39e66",
-            "name": "MetricsDAO",
-            "type": "project"
-          },
-          {
-            "id": "0x613f763a7000491408631468515429375f3240d42c542954693dff62b76df7b9",
-            "RPGF3Id": "0x613f763a7000491408631468515429375f3240d42c542954693dff62b76df7b9",
-            "name": "Artemis Analytics",
-            "type": "project"
-          },
-          {
-            "id": "0x66cce0997e32d388f4263a3ea305612cf1031e540c73f886e320337427c1bdab",
-            "RPGF3Id": "0x66cce0997e32d388f4263a3ea305612cf1031e540c73f886e320337427c1bdab",
-            "name": "Mrfti",
-            "type": "project"
-          },
-          {
-            "id": "0x7b0c961a1f892f654adce33bab1235bffacec1c02069b66490f91fc66765dcf9",
-            "RPGF3Id": "0x7b0c961a1f892f654adce33bab1235bffacec1c02069b66490f91fc66765dcf9",
-            "name": "CrossAngle (“Xangle”)",
-            "type": "project"
-          },
-          {
-            "id": "0x7eb64cd4bd3b28fd36029377d136948aa74a5ca126df2e165574c736182267ff",
-            "RPGF3Id": "0x7eb64cd4bd3b28fd36029377d136948aa74a5ca126df2e165574c736182267ff",
-            "name": "IntoTheBlock Optimism Analytics",
-            "type": "project"
-          },
-          {
-            "id": "0x7fc5dafacfa34c678f5e26cb5928406fc4f0466f6bef8ef0b267ecc942d13878",
-            "RPGF3Id": "0x7fc5dafacfa34c678f5e26cb5928406fc4f0466f6bef8ef0b267ecc942d13878",
-            "name": "MarcoV",
-            "type": "project"
-          },
-          {
-            "id": "0x80b576d7e0307515a72bfc390bebd2c3f7acd522a90575c0ce3387985c6eece5",
-            "RPGF3Id": "0x80b576d7e0307515a72bfc390bebd2c3f7acd522a90575c0ce3387985c6eece5",
-            "name": "Private Retrieval Fund",
-            "type": "project"
-          },
-          {
-            "id": "0x92b9a280afb2c683301bdbb5c065e0fdb0507656c4378caf1df8505327e21782",
-            "RPGF3Id": "0x92b9a280afb2c683301bdbb5c065e0fdb0507656c4378caf1df8505327e21782",
-            "name": "arabianhorses",
-            "type": "project"
-          },
-          {
-            "id": "0xb7fe6ccc4321cf93f9a1db80a1706b436d2b5551e123a76658ab469ceede727b",
-            "RPGF3Id": "0xb7fe6ccc4321cf93f9a1db80a1706b436d2b5551e123a76658ab469ceede727b",
-            "name": "0xKhmer",
-            "type": "project"
-          },
-          {
-            "id": "0xbe5c87794ca0822b4c390218f3d40f9ed33679285313a429b9027aa17760f6fe",
-            "RPGF3Id": "0xbe5c87794ca0822b4c390218f3d40f9ed33679285313a429b9027aa17760f6fe",
-            "name": "Token Terminal",
-            "type": "project"
-          },
-          {
-            "id": "0xab83d229faac28758e30acbbbcec653ce3dcc6f98b4b62ce20ee5e963e5ba606",
-            "RPGF3Id": "0xab83d229faac28758e30acbbbcec653ce3dcc6f98b4b62ce20ee5e963e5ba606",
-            "name": "CryptoStats & CryptoFees.info",
-            "type": "project"
-          },
-          {
-            "id": "0xda1670c62e098723eb2771411d114d39fb1da864f5fe3796f5ff9926565cfeda",
-            "RPGF3Id": "0xda1670c62e098723eb2771411d114d39fb1da864f5fe3796f5ff9926565cfeda",
-            "name": "indexed.xyz",
-            "type": "project"
-          },
-          {
-            "id": "0x9f5ccc80778dc01dbe8e31eace95372221028dbc18182da6262ee195cf98faca",
-            "RPGF3Id": "0x9f5ccc80778dc01dbe8e31eace95372221028dbc18182da6262ee195cf98faca",
-            "name": "OurNetwork",
-            "type": "project"
-          },
-          {
-            "id": "0xf9cbdc7fa9d0e03f65030f716d9a53a98bee7d06861d236484b88ce586988fb6",
-            "RPGF3Id": "0xf9cbdc7fa9d0e03f65030f716d9a53a98bee7d06861d236484b88ce586988fb6",
-            "name": "Ivan Molto",
-            "type": "project"
-          },
-          {
-            "id": "0xc7250199ce808d8825b8781a546c6944338ee82505570d0e33d7505d341a04bd",
-            "RPGF3Id": "0xc7250199ce808d8825b8781a546c6944338ee82505570d0e33d7505d341a04bd",
-            "name": "Spring Zhang",
-            "type": "project"
-          },
-          {
-            "id": "0xf46f276a1645c0b23162b3fc89965a022cb4dc20900c0f6bbeb3710ea4ddd7e8",
-            "RPGF3Id": "0xf46f276a1645c0b23162b3fc89965a022cb4dc20900c0f6bbeb3710ea4ddd7e8",
-            "name": "hildobby",
-            "type": "project"
-          },
-          {
-            "id": "0xccaf5bb802ca9e40522ef61eb345a4bd36e4a96375071d90990f45102a7386f6",
-            "RPGF3Id": "0xccaf5bb802ca9e40522ef61eb345a4bd36e4a96375071d90990f45102a7386f6",
-            "name": "Smart Onboarding SDK",
-            "type": "project"
-          },
-          {
-            "id": "0xd95dd72e655f1c98636d52fd36e2ec8f9dad3abbd978eb305de574e2532c46f8",
-            "RPGF3Id": "0xd95dd72e655f1c98636d52fd36e2ec8f9dad3abbd978eb305de574e2532c46f8",
-            "name": "Messari",
-            "type": "project"
-          },
-          {
-            "id": "0xe74ccd71062e114e4bbdbc6364d516b65b9003bdb3611de1bf8f774ae63b46f9",
-            "RPGF3Id": "0xe74ccd71062e114e4bbdbc6364d516b65b9003bdb3611de1bf8f774ae63b46f9",
-            "name": "EthereumETL",
-            "type": "project"
-          },
-          {
-            "id": "0xcef5619c73158a1b4dd128f918bad2bd2c8c5f6701bb6d2834e92289a9b5f145",
-            "RPGF3Id": "0xcef5619c73158a1b4dd128f918bad2bd2c8c5f6701bb6d2834e92289a9b5f145",
-            "name": "Bonding Curve Research Group",
             "type": "project"
           }
         ]
