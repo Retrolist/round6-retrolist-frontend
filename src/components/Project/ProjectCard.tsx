@@ -15,7 +15,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
             marginLeft: -16,
             marginRight: -16,
             marginBottom: 16,
-            background: project.bannerImageUrl ? `url(${project.bannerImageUrl})` : `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
+            backgroundImage: project.bannerImageUrl ? `url(${project.bannerImageUrl})` : `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             paddingTop: "28%",
