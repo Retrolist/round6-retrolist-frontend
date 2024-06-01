@@ -20,7 +20,7 @@ export const ProjectFundingCard = ({ fundingSource }: { fundingSource: ProjectFu
           <div className="text-base text-[#101828]">{ fundingSource.type }</div>
         </div>
         <div className="flex gap-2">
-          <div>{ parseFloat(fundingSource.amount) ? parseFloat(fundingSource.amount).toLocaleString("en-US") : fundingSource.amount }</div>
+          <div>{ isNaN(fundingSource.amount as any) ? fundingSource.amount : parseFloat(fundingSource.amount).toLocaleString("en-US") }</div>
           <img width={24} height={24} src={fundingSourceIcon(fundingSource.currency)} alt="" />
         </div>
       </div>
