@@ -11,6 +11,7 @@ import { categoryLabel } from "../../../utils/project";
 import { Alert } from "antd";
 import PrimaryButton from "../../../components/buttons/PrimaryButton";
 import axios, { AxiosError } from "axios";
+import ChainIcon from "../../../components/common/ChainIcon";
 
 export function ProjectView({ project }: { project: Project }) {
   return (
@@ -72,7 +73,7 @@ export function ProjectView({ project }: { project: Project }) {
       </div>
       <div className="my-5">
         <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
-          <div className="text-2xl font-medium">Contract Addresses</div>
+          <div className="text-2xl">Contract Addresses</div>
           {/* <div className="mt-3 text-[#4C4E64AD] text-sm flex flex-col gap-6 whitespace-pre-line">
             {project?.contributionDescription}
           </div> */}
@@ -82,13 +83,11 @@ export function ProjectView({ project }: { project: Project }) {
             {project?.contributionLinks.map((contribution) => (
               <a href={contribution.url} target="_blank">
                 <div className="flex gap-2 items-center text-[#858796]">
-                  <div className="p-1.5 bg-[#F5F5F5] rounded-full">
-                    <Icon
-                      icon="lucide:file-text"
-                      width={16}
-                      height={16}
-                      color="#757575"
-                    />
+                  <div className="p-1 bg-[#F5F5F5] rounded-full">
+                    <ChainIcon
+                      chainId={contribution.type}
+                      className='w-5 h-5'
+                    ></ChainIcon>
                   </div>
                   <div className="text-sm truncate">{contribution.description}</div>
                   <Icon icon="lucide:external-link" />
