@@ -10,7 +10,7 @@ import { api } from "../../../utils/api";
 import { categoryLabel } from "../../../utils/project";
 import { Alert } from "antd";
 import PrimaryButton from "../../../components/buttons/PrimaryButton";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 export function ProjectView({ project }: { project: Project }) {
   return (
@@ -27,10 +27,10 @@ export function ProjectView({ project }: { project: Project }) {
       )}
 
       <div className="text-[#272930DE] text-2xl">About</div>
-      <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5 border-b border-[#EAECF0]">
+      <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5">
         {project.bio}
       </div>
-      <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+      <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5 hidden">
         <div className="flex gap-3">
           <img src="/img/impact-logo.png" alt="" className="w-10 h-10" />
           <div>
@@ -72,12 +72,12 @@ export function ProjectView({ project }: { project: Project }) {
       </div>
       <div className="my-5">
         <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
-          <div className="text-2xl font-medium">Contribution</div>
-          <div className="mt-3 text-[#4C4E64AD] text-sm flex flex-col gap-6 whitespace-pre-line">
+          <div className="text-2xl font-medium">Contract Addresses</div>
+          {/* <div className="mt-3 text-[#4C4E64AD] text-sm flex flex-col gap-6 whitespace-pre-line">
             {project?.contributionDescription}
-          </div>
+          </div> */}
           <div className="mt-5">
-            <div className="mb-2">Contribution Links</div>
+            {/* <div className="mb-2">Contribution Links</div> */}
 
             {project?.contributionLinks.map((contribution) => (
               <a href={contribution.url} target="_blank">
@@ -122,10 +122,22 @@ export default function ProjectPage() {
   const [project, setProject] = useState<Project | undefined>();
 
   const fetchProject = useCallback(async () => {
-    const response = await axios.get("/dataset/rpgf3/projects/" + projectId + ".json");
-    setProject(response.data);
-
-    console.log(response.data);
+    // const response = await axios.get("/dataset/rpgf3/projects/" + projectId + ".json");
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_HOST}/projects/${projectId}`);
+      setProject(response.data);
+  
+      console.log(response.data);
+    } catch (err) {
+      if (err instanceof AxiosError) {
+        if (err.response?.status == 404) {
+          window.location.href = `https://round3.retrolist.app/project/${projectId}`
+        }
+      } else {
+        console.error(err)
+        window.alert('Fetching project failed! Please try again')
+      }
+    }
   }, [projectId]);
 
   useEffect(() => {
@@ -162,7 +174,7 @@ export default function ProjectPage() {
 
             <div className="w-full md:w-1/4">
               <div className="text-base text-[#858796]">
-                Included in lists ({project.lists.length})
+                Metrics
               </div>
 
               {project.lists.length > 0 ? (
@@ -172,17 +184,7 @@ export default function ProjectPage() {
               ) : (
                 <div className="mt-4">
                   <Alert
-                    message="Not included in any list"
-                    description={
-                      <div>
-                        <Link to="/lists/create/choose-projects">
-                          <PrimaryButton>
-                            <Icon icon="lucide:plus" color="white" />&nbsp;
-                            Create List
-                          </PrimaryButton>
-                        </Link>
-                      </div>
-                    }
+                    message="Coming Soon!"
                   />
                 </div>
               )}

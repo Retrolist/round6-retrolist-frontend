@@ -17,12 +17,13 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
             marginBottom: 16,
             background: project.bannerImageUrl ? `url(${project.bannerImageUrl})` : `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
             backgroundSize: "cover",
-            paddingTop: "37.5%",
+            backgroundPosition: "center",
+            paddingTop: "28%",
           }}
           className="rounded-t-2xl relative"
         >
           <div className="absolute top-2 left-2">
-            <ProjectEligibilityBadge status={project.prelimResult} ballots={project.includedInBallots} />
+            {/* <ProjectEligibilityBadge status={project.prelimResult} ballots={project.includedInBallots} /> */}
           </div>
         </div>
 
@@ -47,12 +48,12 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
             <span className="text-red-600">{project.reportReason}</span>
           )}
         </div>
-        <div className="my-3">
+        {/* <div className="my-3">
           <UserImageAddress
             img="/img/test-avatar.png"
             address={addrParse(project.address)}
           />
-        </div>
+        </div> */}
         <div className="flex flex-wrap">
           {project.impactCategory.map((category) => (
             <div className="rounded bg-gray-200 text-gray-600 px-2 py-1 text-xs mr-2 mb-2">

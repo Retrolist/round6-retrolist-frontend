@@ -15,13 +15,14 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
           marginBottom: 16,
           background: project?.profile.bannerImageUrl ? `url(${project?.profile.bannerImageUrl})` : `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
           backgroundSize: "cover",
-          paddingTop: "37.5%",
+          backgroundPosition: "center",
+          paddingTop: "26%",
         }}
         className="rounded-2xl relative"
       >
-        <div className="absolute top-3 left-3">
+        {/* <div className="absolute top-3 left-3">
           <ProjectEligibilityBadge status={project.prelimResult} ballots={project.includedInBallots} size={"sm"} />
-        </div>
+        </div> */}
       </div>
 
       <div className="flex md:px-8 relative -top-12">
@@ -76,16 +77,16 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
             </div>
             <div className="flex gap-2 items-center">
               <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
-                {project?.applicantType == "PROJECT" ? "Project" : "Individual"}
+                {project?.impactCategory[0] || "No Category"}
               </div>
-              <div className="border-l-[0.5px] border border-[#CBD5E0] h-6" />
+              {/* <div className="border-l-[0.5px] border border-[#CBD5E0] h-6" />
               <UserImageAddress
                 img="/img/test-avatar.png"
                 address={
                   project?.applicant.address.resolvedName?.name ||
                   addrParse(project?.applicant.address.address)
                 }
-              />
+              /> */}
             </div>
             {project?.websiteUrl && (
               <a href={project?.websiteUrl} target="_blank">

@@ -19,7 +19,7 @@ export default function ProjectsPage() {
   const [seed, setSeed] = useState(
     Math.floor(Math.random() * 1000000000).toString()
   );
-  const [listView, setListView] = useState(true);
+  const [listView, setListView] = useState(false);
 
   const setCategory = useCallback(
     (category?: string) => {
@@ -62,7 +62,7 @@ export default function ProjectsPage() {
             />
           </div> */}
 
-          <Analytics />
+          {/* <Analytics /> */}
 
           <div className="mb-5">
             <div className="text-2xl font-bold mb-1">All Projects</div>

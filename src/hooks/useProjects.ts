@@ -22,11 +22,12 @@ export function useProjects(options: ProjectQueryOptions) {
       setIsError(false)
 
       if (PROJECTS.length == 0) {
-        const response = await axios.get("/dataset/rpgf3/projects.json")
+        // const response = await axios.get("/dataset/rpgf3/projects.json")
+        const response = await axios.get(`${import.meta.env.VITE_API_HOST}/projects`)
         PROJECTS = response.data
 
         // Force order by rank
-        PROJECTS = PROJECTS.sort((a, b) => a.rank! - a.rank!)
+        // PROJECTS = PROJECTS.sort((a, b) => a.rank! - a.rank!)
 
         PROJECT_FUSE = new Fuse(PROJECTS, {
           keys: [

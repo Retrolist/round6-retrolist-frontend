@@ -10,11 +10,10 @@ export default function LayoutSideInfo({
       <div className="relative hero-section-gradient-bg rounded-2xl flex items-center px-20 h-60 pb-8">
         <div className="hidden sm:block" style={{ maxWidth: 'calc(100% - 260px)' }}>
           <div className="text-3xl lg:text-4xl font-bold">
-            Voting for RetroPGF 3 is <span className="text-red-600">Ended!</span>
+            Retro Funding 4: <span className="text-red-600">Onchain Builders</span>
           </div>
           <p className="pt-3 w-full hidden md:block">
-            View projects that are eligible
-            to receive retroactive public goods funding.
+            Rewarding projects that have an on-chain impact on the Superchain
           </p>
         </div>
         <img
@@ -25,18 +24,18 @@ export default function LayoutSideInfo({
       </div>
       <div className="flex flex-col lg:flex-row gap-6 justify-center relative -top-10 px-8">
         <StatCard
-          title="Eligible for RetroPGF 3"
+          title="Projects"
           description="643"
           icon="lucide:users-2"
         />
         <StatCard
-          title="Voting period"
-          description="Nov 6 - Dec 7, 2023"
+          title="Application period"
+          description="May 23 - June 6"
           icon="lucide:calendar"
         />
         <StatCard
           title="Total rewards"
-          description="30M OP"
+          description="10M OP"
           icon="lucide:award"
         />
       </div>
