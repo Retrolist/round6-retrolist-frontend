@@ -28,7 +28,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
         </div>
 
         <div className="flex items-center justify-between">
-          <div className="flex gap-2 items-center mb-2">
+          <div className="flex gap-2 items-center mb-2 w-full">
             <img
               className="rounded-full w-[34px] h-[34px]"
               src={project.profileImageUrl || "/img/project-placeholder.svg"}
