@@ -23,6 +23,7 @@ import "./polyfills.ts"
 import { AnalyticsPageRoute } from "./pages/analytics/AnalyticsPage.tsx";
 import { IncludedInBallotsProvider } from "./hooks/useIncludedInBallots.tsx";
 import { OPDistributionProvider } from "./hooks/useOPDistribution.tsx";
+import { ProjectCountProvider } from "./hooks/useProjectCount.tsx";
 
 const router = createBrowserRouter([
   ProjectsPageRoute,
@@ -77,7 +78,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <AntdAlertProvider>
       <IncludedInBallotsProvider>
         <OPDistributionProvider>
-          <RouterProvider router={router} />
+          <ProjectCountProvider>
+            <RouterProvider router={router} />
+          </ProjectCountProvider>
         </OPDistributionProvider>
       </IncludedInBallotsProvider>
     </AntdAlertProvider>

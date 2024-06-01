@@ -90,7 +90,7 @@ export function ProjectView({ project }: { project: Project }) {
                       color="#757575"
                     />
                   </div>
-                  <div className="text-sm">{contribution.description}</div>
+                  <div className="text-sm truncate">{contribution.description}</div>
                   <Icon icon="lucide:external-link" />
                 </div>
               </a>

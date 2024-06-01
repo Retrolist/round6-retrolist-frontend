@@ -33,7 +33,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
               className="rounded-full w-[34px] h-[34px]"
               src={project.profileImageUrl || "/img/project-placeholder.svg"}
             />
-            <div className="text-lg">{project.displayName}</div>
+            <div className="text-lg truncate">{project.displayName}</div>
           </div>
           {/* <div className="flex items-center gap-2 text-[#4C4E64AD]">
             <div>12</div>
@@ -41,7 +41,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
           </div> */}
         </div>
 
-        <div className="text-[#4C4E64AD] line-clamp-2 text-sm mb-3">
+        <div className="text-[#4C4E64AD] line-clamp-3 text-sm mb-3">
           {project.prelimResult.toLowerCase() == "keep" ? (
             project.bio
           ) : (

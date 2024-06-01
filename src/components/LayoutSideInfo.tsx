@@ -1,10 +1,13 @@
 import React from "react";
 import { StatCard } from "./StatCard";
+import { useProjectCount } from "../hooks/useProjectCount";
 export default function LayoutSideInfo({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const projectCount = useProjectCount()
+
   return (
     <div className="container 2xl:max-w-[1440px] mt-11">
       <div className="relative hero-section-gradient-bg rounded-2xl flex items-center px-20 h-60 pb-8">
@@ -25,7 +28,7 @@ export default function LayoutSideInfo({
       <div className="flex flex-col lg:flex-row gap-6 justify-center relative -top-10 px-8">
         <StatCard
           title="Projects"
-          description="643"
+          description={`${projectCount.total || '...'}`}
           icon="lucide:users-2"
         />
         <StatCard

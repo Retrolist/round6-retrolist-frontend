@@ -9,6 +9,7 @@ import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryB
 import { ProjectList } from "../../components/Project/ProjectList";
 import { useProjects } from "../../hooks/useProjects";
 import { Analytics } from "../analytics/AnalyticsPage";
+import { useProjectCount } from "../../hooks/useProjectCount";
 
 const { Search } = Input;
 
@@ -41,6 +42,8 @@ export default function ProjectsPage() {
       approved: true,
     });
 
+  const projectCount = useProjectCount()
+
   // console.log(projects)
 
   // console.log(search)
@@ -71,9 +74,10 @@ export default function ProjectsPage() {
               the builder.
             </div>
           </div>
-          <div className="flex flex-col md:flex-row gap-2 items-center mb-8 hidden">
+          <div className="flex flex-wrap flex-row gap-2 items-center mb-8">
             <ProjectCategoryButton
-              text="All Projects"
+              text="All"
+              amount={projectCount.total}
               categories={categories}
               category=""
               setCategory={setCategory}
@@ -81,40 +85,19 @@ export default function ProjectsPage() {
 
             <div className="border-l-[1px] border border-[#CBD5E0] h-4"></div>
 
-            <ProjectCategoryButton
-              text="Collective Governance"
-              // amount={609}
-              categories={categories}
-              category="COLLECTIVE_GOVERNANCE"
-              setCategory={setCategory}
-            />
-
-            <ProjectCategoryButton
-              text="OP Stack"
-              // amount={603}
-              categories={categories}
-              category="OP_STACK"
-              setCategory={setCategory}
-            />
-
-            <ProjectCategoryButton
-              text="Developer Ecosystem"
-              // amount={665}
-              categories={categories}
-              category="DEVELOPER_ECOSYSTEM"
-              setCategory={setCategory}
-            />
-
-            <ProjectCategoryButton
-              text="End user UX"
-              // amount={1240}
-              categories={categories}
-              category="END_USER_EXPERIENCE_AND_ADOPTION"
-              setCategory={setCategory}
-            />
+            {projectCount.categories.map(category => (
+              <ProjectCategoryButton
+                text={category.name}
+                amount={category.count}
+                categories={categories}
+                category={category.name}
+                setCategory={setCategory}
+                key={category.name}
+              />
+            ))}
           </div>
 
-          <div className="flex flex-col md:flex-row gap-2 items-center mb-8 hidden">
+          <div className="flex flex-col flex-wrap md:flex-row gap-2 items-center mb-8 hidden">
             <ProjectCategoryButton
               text="All Status"
               categories={eligibleFilter ? [eligibleFilter] : []}

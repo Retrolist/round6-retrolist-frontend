@@ -38,7 +38,7 @@ export const ProjectCategoryButton = ({
       onClick={() => setCategory(category)}
     >
       <div>{text}</div>
-      {amount && (
+      {Boolean(amount) && (
         <div className="bg-white rounded-xl ml-2 px-2 py-1 text-xs text-[#202327]">
           {amount}
         </div>

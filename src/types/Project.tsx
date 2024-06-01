@@ -91,3 +91,11 @@ export interface ProjectFundingSource {
   description: string
   url?: string
 }
+
+export interface ProjectCount {
+  total: number
+  categories: {
+    name: string
+    count: number
+  }[]
+}
