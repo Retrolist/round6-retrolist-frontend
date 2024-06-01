@@ -87,6 +87,7 @@ export interface ProjectImpactMetric {
 export interface ProjectFundingSource {
   type: string
   currency: string
-  amount: number
+  amount: string
   description: string
+  url?: string
 }
