@@ -27,7 +27,7 @@ export function ProjectView({ project }: { project: Project }) {
         </>
       )}
 
-      <div className="text-[#272930DE] text-2xl">About</div>
+      <div className="text-[#272930DE] text-2xl whitespace-pre-line">About</div>
       <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5">
         {project.bio}
       </div>
