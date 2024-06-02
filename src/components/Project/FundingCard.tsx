@@ -21,7 +21,7 @@ export const ProjectFundingCard = ({ fundingSource }: { fundingSource: ProjectFu
         </div>
         <div className="flex gap-2">
           <div>{ isNaN(fundingSource.amount as any) ? fundingSource.amount : parseFloat(fundingSource.amount).toLocaleString("en-US") }</div>
-          <img width={24} height={24} src={fundingSourceIcon(fundingSource.currency)} alt="" />
+          <img width={24} height={24} src={fundingSourceIcon(fundingSource.currency)} alt="" className="shrink-0" />
         </div>
       </div>
       <hr className="border-dashed my-2" />

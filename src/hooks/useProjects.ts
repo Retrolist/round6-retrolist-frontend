@@ -49,18 +49,18 @@ export function useProjects(options: ProjectQueryOptions) {
 
       let filteredProjects: ProjectMetadata[] = PROJECTS
 
-      if (options.categories && options.categories.length > 0) {
-        filteredProjects = filteredProjects.filter(project => (
-          options.categories.indexOf(project.recategorization || '') != -1 ||
-          options.categories.indexOf(project.primaryCategory || '') != -1
-        ))
-      }
-
       if (!options.search) {}
       else if (options.search.length < 3) {
         filteredProjects = PROJECTS.filter(x => x.displayName.startsWith(options.search))
       } else {
         filteredProjects = PROJECT_FUSE.search(options.search).map(x => x.item)
+      }
+
+      if (options.categories && options.categories.length > 0) {
+        filteredProjects = filteredProjects.filter(project => (
+          options.categories.indexOf(project.recategorization || '') != -1 ||
+          options.categories.indexOf(project.primaryCategory || '') != -1
+        ))
       }
 
       let filteredLength = filteredProjects.length
