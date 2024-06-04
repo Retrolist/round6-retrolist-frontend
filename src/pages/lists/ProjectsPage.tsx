@@ -146,40 +146,44 @@ export default function ProjectsPage() {
             />
           </div>
 
-          <InfiniteScroll
-            pageStart={0}
-            loadMore={paginate}
-            hasMore={hasNext}
-            loader={<div>Loading...</div>}
-          >
-            {listView ? (
-              <div className="grid grid-cols-1 gap-3">
-                {projects
-                  .filter(
-                    (project) =>
-                      project.prelimResult
-                        .toLowerCase()
-                        .indexOf(eligibleFilter) != -1
-                  )
-                  .map((project) => (
-                    <ProjectList project={project} />
-                  ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {projects
-                  .filter(
-                    (project) =>
-                      project.prelimResult
-                        .toLowerCase()
-                        .indexOf(eligibleFilter) != -1
-                  )
-                  .map((project) => (
-                    <ProjectCard project={project} />
-                  ))}
-              </div>
-            )}
-          </InfiniteScroll>
+          {projects.length == 0 ? (
+            <div>Loading...</div>
+          ) : (
+            <InfiniteScroll
+              pageStart={0}
+              loadMore={paginate}
+              hasMore={hasNext}
+              loader={<div>Loading...</div>}
+            >
+              {listView ? (
+                <div className="grid grid-cols-1 gap-3">
+                  {projects
+                    .filter(
+                      (project) =>
+                        project.prelimResult
+                          .toLowerCase()
+                          .indexOf(eligibleFilter) != -1
+                    )
+                    .map((project) => (
+                      <ProjectList project={project} />
+                    ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {projects
+                    .filter(
+                      (project) =>
+                        project.prelimResult
+                          .toLowerCase()
+                          .indexOf(eligibleFilter) != -1
+                    )
+                    .map((project) => (
+                      <ProjectCard project={project} />
+                    ))}
+                </div>
+              )}
+            </InfiniteScroll>
+          )}
         </div>
       </LayoutSideInfo>
     </Layout>

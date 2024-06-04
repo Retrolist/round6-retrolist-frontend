@@ -71,6 +71,59 @@ export function ProjectView({ project }: { project: Project }) {
           ))}
         </div>
       </div>
+
+      <div className="my-5">
+        <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+          <div className="text-2xl">GitHub</div>
+
+          <div className="mt-5">
+            {project?.github.map((github, i) => (
+              <a href={github} target="_blank" key={i}>
+                <div className="flex gap-2 items-center text-[#858796]">
+                  <div className="p-1 bg-[#F5F5F5] rounded-full">
+                    {github.startsWith("https://github.com/") ? (
+                      <img className='w-5 h-5' src={"/img/social/github.png"}></img>
+                    ) : (
+                      <Icon
+                        icon="lucide:file-text"
+                        color="#757575"
+                      />
+                    )}
+                  </div>
+                  <div className="text-sm truncate">{github.replace("https://github.com/", "")}</div>
+                  <Icon icon="lucide:external-link" />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+          <div className="text-2xl">Packages</div>
+
+          <div className="mt-5">
+            {project?.packages.map((p, i) => (
+              <a href={p} target="_blank" key={i}>
+                <div className="flex gap-2 items-center text-[#858796]">
+                  <div className="p-1 bg-[#F5F5F5] rounded-full">
+                    {p.startsWith("https://www.npmjs.com/package/") ? (
+                      <img className='w-5 h-5' src={"/img/social/npm.png"}></img>
+                    ) : (
+                      <Icon
+                        icon="lucide:file-text"
+                        color="#757575"
+                      />
+                    )}
+                  </div>
+                  <div className="text-sm truncate">{p.replace("https://www.npmjs.com/package/", "")}</div>
+                  <Icon icon="lucide:external-link" />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="my-5">
         <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
           <div className="text-2xl">Contract Addresses</div>
@@ -80,8 +133,8 @@ export function ProjectView({ project }: { project: Project }) {
           <div className="mt-5">
             {/* <div className="mb-2">Contribution Links</div> */}
 
-            {project?.contributionLinks.map((contribution) => (
-              <a href={contribution.url} target="_blank">
+            {project?.contributionLinks.map((contribution, i) => (
+              <a href={contribution.url} target="_blank" key={i}>
                 <div className="flex gap-2 items-center text-[#858796]">
                   <div className="p-1 bg-[#F5F5F5] rounded-full">
                     <ChainIcon
@@ -97,6 +150,7 @@ export function ProjectView({ project }: { project: Project }) {
           </div>
         </div>
       </div>
+
       <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
         <div className="text-2xl">Funding sources</div>
 
