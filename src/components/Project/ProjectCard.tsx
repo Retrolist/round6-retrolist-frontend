@@ -23,7 +23,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
           className="rounded-t-2xl relative"
         >
           <div className="absolute top-2 left-2">
-            {/* <ProjectEligibilityBadge status={project.prelimResult} ballots={project.includedInBallots} /> */}
+            <ProjectEligibilityBadge status={project.prelimResult} ballots={project.includedInBallots} />
           </div>
         </div>
 
@@ -42,7 +42,7 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
         </div>
 
         <div className="text-[#4C4E64AD] line-clamp-3 text-sm mb-3">
-          {project.prelimResult.toLowerCase() == "keep" ? (
+          {true || project.prelimResult.toLowerCase() == "keep" ? (
             project.bio
           ) : (
             <span className="text-red-600">{project.reportReason}</span>

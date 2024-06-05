@@ -1,11 +1,20 @@
 import React from "react"
 import ClockCircleOutlined from "@ant-design/icons/ClockCircleOutlined"
 import CloseCircleOutlined from "@ant-design/icons/CloseCircleOutlined"
+import ExclamationCircleOutlined from "@ant-design/icons/ExclamationCircleOutlined"
 import CheckOutlined from "@ant-design/icons/CheckOutlined"
 import { ballotsColor } from "../../utils/project"
 
 export default function ProjectEligibilityBadge({ status, ballots = 0, size = 'xs' }: { status: string, ballots?: number, size?: string }) {
   // console.log(status)
+
+  if (status.toLowerCase() == 'keep') {
+    return (
+      <div className={`rounded-2xl px-3 py-1 border-2 border-green-600 text-green-800 bg-green-100 text-${size}`}>
+        <CheckOutlined />
+      </div>
+    )
+  }
 
   if (status.toLowerCase() == 'keep') {
     const [ fgColor, bgColor ] = ballotsColor(ballots)
@@ -27,6 +36,15 @@ export default function ProjectEligibilityBadge({ status, ballots = 0, size = 'x
         <CloseCircleOutlined /> Removed
       </div>
     )
+  }
+
+  if (status.toLowerCase() == 'missing') {
+    return (
+      <div className={`rounded-2xl px-3 py-1 border-2 border-red-600 text-red-800 bg-red-100 text-${size}`}>
+        <ExclamationCircleOutlined />
+      </div>
+    )
+    
   }
 
   if (status.toLowerCase() == '#n/a') {

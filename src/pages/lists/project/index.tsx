@@ -19,7 +19,8 @@ export function ProjectView({ project }: { project: Project }) {
       {project.prelimResult.toLowerCase() != "keep" && (
         <>
           <div className="text-[#272930DE] text-2xl text-red-600">
-            Reject Reason
+            {/* Reject Reason */}
+            Not Submitted on Round 4
           </div>
           <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5 border-b border-[#EAECF0] text-red-600">
             {project.reportReason}
