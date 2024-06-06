@@ -33,7 +33,7 @@ export default function LayoutSideInfo({
         />
         <StatCard
           title="Application period"
-          description="May 23 - June 6"
+          description="May 23 - June 7"
           icon="lucide:calendar"
         />
         <StatCard
