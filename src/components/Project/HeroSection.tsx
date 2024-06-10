@@ -3,8 +3,29 @@ import { Project } from "../../types/Project";
 import { addrParse } from "../../utils/common";
 import { UserImageAddress } from "../common/UserImageAddress";
 import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
+import { Modal, message } from "antd";
+import TextArea from "antd/es/input/TextArea";
+import { useCallback, useState } from "react";
+import axios from "axios";
 
 export const ProjectHeroSection = ({ project, noMargin = false }: { project: Project, noMargin?: boolean }) => {
+  const [ showReportModal, setShowReportModal ] = useState(false)
+  const [ reportReason, setReportReason ] = useState("")
+
+  const submitReport = useCallback(async () => {
+    try {
+      await axios.post(import.meta.env.VITE_API_HOST + "/report", {
+        projectId: project.id,
+        reason: reportReason,
+      })
+  
+      message.success("Reported Successfully")
+    } catch (err) {
+      console.error(err)
+      message.error('Report failed, Please try again!')
+    }
+  }, [reportReason])
+  
   return (
     <div className="mt-8">
       <div
@@ -27,7 +48,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
 
       <div className="flex md:px-8 relative -top-12">
         <div className="flex flex-wrap md:flex-nowrap w-full items-end gap-8">
-          <div>
+          <div className="flex justify-between w-full md:w-auto">
             <img
               src={
                 project?.profile.profileImageUrl ||
@@ -36,6 +57,13 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
               alt="project logo"
               className="w-[154px] rounded-full h-[154px] object-cover border-2 border-[#E2E8F0]"
             />
+
+            <button
+              className="flex gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420] mt-12 md:hidden"
+              onClick={() => setShowReportModal(true)}
+            >
+              Report
+            </button>
           </div>
           <div className="flex w-10/12 flex-col gap-2">
             <div className="flex justify-between">
@@ -48,11 +76,11 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                   <Icon icon="mdi:heart" width={24} height={24} color="red" />
                 </div> */}
               </div>
-              {/* <div className="flex gap-3 hidden md:block">
-                <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5 hidden">
+              <div className="flex gap-3 hidden md:block">
+                {/* <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5 hidden">
                   <Icon icon="mdi:dots-horizontal" />
-                </button>
-                <button
+                </button> */}
+                {/* <button
                   className="flex gap-1 h-10 items-center  border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
                   onClick={() => {
                     if (project.prelimResult.toLowerCase() == 'keep') {
@@ -72,8 +100,15 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                       ? "Add to List"
                       : "Appeal"}
                   </div>
+                </button> */}
+
+                <button
+                  className="flex gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
+                  onClick={() => setShowReportModal(true)}
+                >
+                  Report
                 </button>
-              </div> */}
+              </div>
             </div>
             <div className="flex gap-2 items-center">
               <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
@@ -99,6 +134,29 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
           </div>
         </div>
       </div>
+
+      <Modal
+        title="Report"
+        open={showReportModal}
+        onOk={() => submitReport()}
+        onCancel={() => setShowReportModal(false)}
+        okButtonProps={{
+          className: "bg-[#FF0420] !text-white !hover:text-white",
+          type: "default",
+          danger: true,
+        }}
+      >
+        <div>
+          <TextArea
+            rows={4}
+            placeholder="Report Reason"
+            value={reportReason}
+            onChange={e => setReportReason(e.target.value)}
+          ></TextArea>
+
+          <div className="text-sm text-gray-400 mt-1">Note: Your report will be submitted anonymously</div>
+        </div>
+      </Modal>
     </div>
   );
 };
