@@ -3,6 +3,7 @@ import { ProjectCount } from '../types/Project';
 
 const DEFAULT_PROJECT_COUNT = {
   total: 0,
+  eligible: 0,
   categories: [],
 }
 

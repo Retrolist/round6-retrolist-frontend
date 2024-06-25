@@ -16,18 +16,6 @@ import ChainIcon from "../../../components/common/ChainIcon";
 export function ProjectView({ project }: { project: Project }) {
   return (
     <div>
-      {project.prelimResult.toLowerCase() != "keep" && (
-        <>
-          <div className="text-[#272930DE] text-2xl text-red-600">
-            {/* Reject Reason */}
-            Not Submitted on Round 4
-          </div>
-          <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5 border-b border-[#EAECF0] text-red-600">
-            {project.reportReason}
-          </div>
-        </>
-      )}
-
       <div className="text-[#272930DE] text-2xl">About</div>
       <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5 whitespace-pre-line">
         {project.bio}
@@ -74,6 +62,27 @@ export function ProjectView({ project }: { project: Project }) {
       </div>
 
       <div className="my-5">
+        {project.osoSlug &&
+          <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+            <div className="text-2xl">OSO Slug</div>
+
+            <div className="mt-5">
+              <a href={`https://github.com/opensource-observer/oss-directory/blob/main/data/projects/${project.osoSlug[0]}/${project.osoSlug}.yaml`} target="_blank">
+                <div className="flex gap-2 items-center text-[#858796]">
+                  <div className="p-1 bg-[#F5F5F5] rounded-full">
+                    <Icon
+                      icon="lucide:file-text"
+                      color="#757575"
+                    />
+                  </div>
+                  <div className="text-sm truncate">{project.osoSlug}</div>
+                  <Icon icon="lucide:external-link" />
+                </div>
+              </a>
+            </div>
+          </div>
+        }
+
         <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
           <div className="text-2xl">GitHub</div>
 

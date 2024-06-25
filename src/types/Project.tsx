@@ -52,6 +52,8 @@ export interface Project {
 
   github: string[]
   packages: string[]
+
+  osoSlug?: string
 }
 
 export interface ProjectApplicant {
@@ -97,6 +99,7 @@ export interface ProjectFundingSource {
 
 export interface ProjectCount {
   total: number
+  eligible: number
   categories: {
     name: string
     count: number

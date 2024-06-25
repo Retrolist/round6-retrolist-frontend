@@ -33,7 +33,7 @@ export default function ProjectEligibilityBadge({ status, ballots = 0, size = 'x
   if (status.toLowerCase() == 'remove') {
     return (
       <div className={`rounded-2xl px-3 py-1 border-2 border-red-600 text-red-800 bg-red-100 text-${size}`}>
-        <CloseCircleOutlined /> Removed
+        <CloseCircleOutlined /> Rejected
       </div>
     )
   }
@@ -41,7 +41,7 @@ export default function ProjectEligibilityBadge({ status, ballots = 0, size = 'x
   if (status.toLowerCase() == 'missing') {
     return (
       <div className={`rounded-2xl px-3 py-1 border-2 border-red-600 text-red-800 bg-red-100 text-${size}`}>
-        <ExclamationCircleOutlined />
+        <ExclamationCircleOutlined /> Missing
       </div>
     )
     
@@ -50,7 +50,7 @@ export default function ProjectEligibilityBadge({ status, ballots = 0, size = 'x
   if (status.toLowerCase() == '#n/a') {
     return (
       <div className={`rounded-2xl px-3 py-1 border-2 border-cyan-600 text-cyan-800 bg-cyan-100 text-${size}`}>
-        <ClockCircleOutlined /> Pending Approval
+        <ClockCircleOutlined /> Reviewing
       </div>
     )
   }

@@ -41,9 +41,9 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
         }}
         className="rounded-2xl relative"
       >
-        {/* <div className="absolute top-3 left-3">
+        <div className="absolute top-3 left-3">
           <ProjectEligibilityBadge status={project.prelimResult} ballots={project.includedInBallots} size={"sm"} />
-        </div> */}
+        </div>
       </div>
 
       <div className="flex md:px-8 relative -top-12">
