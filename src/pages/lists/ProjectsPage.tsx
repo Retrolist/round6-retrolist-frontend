@@ -97,7 +97,7 @@ export default function ProjectsPage() {
             ))}
           </div>
 
-          <div className="flex flex-col flex-wrap md:flex-row gap-2 items-center mb-8 hidden">
+          <div className="flex flex-col flex-wrap md:flex-row gap-2 items-center mb-8">
             <ProjectCategoryButton
               text="All Status"
               categories={eligibleFilter ? [eligibleFilter] : []}
@@ -122,16 +122,23 @@ export default function ProjectsPage() {
             /> */}
 
             <ProjectCategoryButton
-              text="Eligible"
+              text="Approved"
               categories={[eligibleFilter]}
               category="keep"
               setCategory={setEligibleFilter}
             />
 
             <ProjectCategoryButton
-              text="Removed"
+              text="Rejected"
               categories={[eligibleFilter]}
               category="remove"
+              setCategory={setEligibleFilter}
+            />
+
+            <ProjectCategoryButton
+              text="Missing"
+              categories={[eligibleFilter]}
+              category="missing"
               setCategory={setEligibleFilter}
             />
           </div>
