@@ -32,8 +32,8 @@ export default function LayoutSideInfo({
           icon="lucide:users-2"
         />
         <StatCard
-          title="Application period"
-          description="May 23 - June 7"
+          title="Voting period"
+          description="June 27 - July 11"
           icon="lucide:calendar"
         />
         <StatCard

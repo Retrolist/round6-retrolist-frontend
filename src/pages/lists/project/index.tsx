@@ -12,6 +12,7 @@ import { Alert } from "antd";
 import PrimaryButton from "../../../components/buttons/PrimaryButton";
 import axios, { AxiosError } from "axios";
 import ChainIcon from "../../../components/common/ChainIcon";
+import ProjectComments from "../../../components/Project/ProjectComments";
 
 export function ProjectView({ project }: { project: Project }) {
   return (
@@ -176,6 +177,8 @@ export function ProjectView({ project }: { project: Project }) {
           </div>
         )}
       </div>
+
+      <ProjectComments projectId={project.id}></ProjectComments>
     </div>
   );
 }

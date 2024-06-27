@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "@rainbow-me/rainbowkit/styles.css";
+import "react-farcaster-embed/dist/styles.css";
 import "./index.css";
 
 import { RubricBaseScoreFormRoute } from "./pages/lists/create/Form/RubicBaseScoreForm";
