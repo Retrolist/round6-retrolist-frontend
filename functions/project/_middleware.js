@@ -3,26 +3,40 @@ class ElementHandler {
     this.ogtag = ogtag
   }
   element(element) {
-    element.append(this.ogtag, { html: true })
+    element.replace(this.ogtag, { html: true })
   }
 }
 
 export async function onRequest(context) {
   const { request, next } = context
-  const res = await next()
   const { pathname } = new URL(request.url)
 
   const pathParts = pathname.split('/')
   const projectId = pathParts[pathParts.length - 1]
 
+  let res = await next()
+  let project;
+
+  // Load project data
+  try {
+    const response = await fetch(`https://round4-api-eas.retrolist.app/projects/${projectId}`);
+    project = response.data
+  } catch (err) {}
+
+  if (!project) return res
+
   let ogtag
 
   // these are the metatags we want to inject into the site
   ogtag = `
-    <meta property="og:title" content="my title" />
-    <meta property="og:description" content="my awesome project description" />
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${project.displayName} - RetroList</title>
+
+    <meta property="og:title" content="${project.displayName} - RetroList" />
+    <meta property="og:description" content="RetroList | Retro Funding 4 Project Discovery and Community Voting UI" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:locale:alternate" content="de_DE" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${request.url}" />
     <meta property="og:image" content="https://retrolist.app/og/${projectId}.png" />
@@ -31,10 +45,10 @@ export async function onRequest(context) {
     <meta property="og:image:width" content="1200" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="my twitter title" />
-    <meta name="twitter:description" content="my awesome description for twitter" />
+    <meta name="twitter:title" content="${project.displayName} - RetroList" />
+    <meta name="twitter:description" content="RetroList | Retro Funding 4 Project Discovery and Community Voting UI" />
 
-    <meta name="description" content="and even more stuff about my page" />
+    <meta name="description" content="RetroList | Retro Funding 4 Project Discovery and Community Voting UI" />
   `
 
   return new HTMLRewriter().on('head', new ElementHandler(ogtag)).transform(res)
