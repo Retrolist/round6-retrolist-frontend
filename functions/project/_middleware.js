@@ -20,7 +20,7 @@ export async function onRequest(context) {
   // Load project data
   try {
     const response = await fetch(`https://round4-api-eas.retrolist.app/projects/${projectId}`);
-    project = response.data
+    project = await response.json()
   } catch (err) {}
 
   if (!project) return res
