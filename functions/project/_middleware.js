@@ -56,6 +56,15 @@ export async function onRequest(context) {
     <meta name="twitter:description" content="RetroList | Retro Funding 4 Project Discovery and Community Voting UI" />
 
     <meta name="description" content="RetroList | Retro Funding 4 Project Discovery and Community Voting UI" />
+  
+    <meta property="fc:frame" content="vNext" />
+    <meta property="fc:frame:image" content="https://retrolist.app/og/${projectId}.png" />
+    <meta name="fc:frame:button:1" content="View Project" />
+    <meta name="fc:frame:button:1:action" content="link" />
+    <meta name="fc:frame:button:1:target" content="https://retrolist.app/project/${projectId}" />
+    <meta name="fc:frame:button:2" content="Follow RetroList" />
+    <meta name="fc:frame:button:2:action" content="link" />
+    <meta name="fc:frame:button:2:target" content="https://warpcast.com/retrolist" />
   `;
 
   return new HTMLRewriter()
