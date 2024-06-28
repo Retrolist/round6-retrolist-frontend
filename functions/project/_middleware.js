@@ -1,36 +1,43 @@
 class ElementHandler {
   constructor(ogtag) {
-    this.ogtag = ogtag
+    this.ogtag = ogtag;
   }
   element(element) {
-    element.replace(this.ogtag, { html: true })
+    element.append(this.ogtag, { html: true });
+  }
+}
+
+class RemoveHandler {
+  element(element) {
+    element.remove();
   }
 }
 
 export async function onRequest(context) {
-  const { request, next } = context
-  const { pathname } = new URL(request.url)
+  const { request, next } = context;
+  const { pathname } = new URL(request.url);
 
-  const pathParts = pathname.split('/')
-  const projectId = pathParts[pathParts.length - 1]
+  const pathParts = pathname.split("/");
+  const projectId = pathParts[pathParts.length - 1];
 
-  let res = await next()
+  let res = await next();
   let project;
 
   // Load project data
   try {
-    const response = await fetch(`https://round4-api-eas.retrolist.app/projects/${projectId}`);
-    project = await response.json()
+    const response = await fetch(
+      `https://round4-api-eas.retrolist.app/projects/${projectId}`
+    );
+    project = await response.json();
   } catch (err) {}
 
-  if (!project) return res
+  if (!project) return res;
 
-  let ogtag
+  let ogtag;
 
   // these are the metatags we want to inject into the site
   ogtag = `
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/img/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${project.displayName} - RetroList</title>
 
@@ -49,7 +56,11 @@ export async function onRequest(context) {
     <meta name="twitter:description" content="RetroList | Retro Funding 4 Project Discovery and Community Voting UI" />
 
     <meta name="description" content="RetroList | Retro Funding 4 Project Discovery and Community Voting UI" />
-  `
+  `;
 
-  return new HTMLRewriter().on('head', new ElementHandler(ogtag)).transform(res)
+  return new HTMLRewriter()
+    .on("meta", new RemoveHandler())
+    .on("title", new RemoveHandler())
+    .on("head", new ElementHandler(ogtag))
+    .transform(res);
 }
