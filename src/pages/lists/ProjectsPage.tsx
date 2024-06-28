@@ -4,12 +4,12 @@ import { useCallback, useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import Layout from "../../components/Layout";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
+import { LoadingAnimation } from "../../components/LoadingAnimation";
 import { ProjectCard } from "../../components/Project/ProjectCard";
 import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryButton";
 import { ProjectList } from "../../components/Project/ProjectList";
-import { useProjects } from "../../hooks/useProjects";
-import { Analytics } from "../analytics/AnalyticsPage";
 import { useProjectCount } from "../../hooks/useProjectCount";
+import { useProjects } from "../../hooks/useProjects";
 
 const { Search } = Input;
 
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
       approved: true,
     });
 
-  const projectCount = useProjectCount()
+  const projectCount = useProjectCount();
 
   // console.log(projects)
 
@@ -85,7 +85,7 @@ export default function ProjectsPage() {
 
             <div className="border-l-[1px] border border-[#CBD5E0] h-4"></div>
 
-            {projectCount.categories.map(category => (
+            {projectCount.categories.map((category) => (
               <ProjectCategoryButton
                 text={category.name}
                 amount={category.count}
@@ -154,13 +154,13 @@ export default function ProjectsPage() {
           </div>
 
           {projects.length == 0 ? (
-            <div>Loading...</div>
+            <LoadingAnimation />
           ) : (
             <InfiniteScroll
               pageStart={0}
               loadMore={paginate}
               hasMore={hasNext}
-              loader={<div>Loading...</div>}
+              loader={<LoadingAnimation />}
             >
               {listView ? (
                 <div className="grid grid-cols-1 gap-3">

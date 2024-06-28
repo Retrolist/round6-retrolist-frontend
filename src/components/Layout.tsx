@@ -9,30 +9,30 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="">
       {/* Navbar */}
       <div className="border-b border-[#EAECF0]">
-        <div className="flex justify-between items-center p-4 container 2xl:max-w-[1440px] mx-auto">
+        <div className="flex justify-between items-center p-4 container 2xl:max-w-[1440px] mx-auto relative">
+          <div className="hidden sm:flex gap-5 text-base font-semibold absolute left-1/2 -translate-x-1/2">
+            <Link to="/" className="py-2 px-3">
+              <div>Projects</div>
+            </Link>
+            <Link to="https://round3.retrolist.app" className="py-2 px-3">
+              <div>Round 3</div>
+            </Link>
+            {/* <Link to="/list" className="py-2 px-3">
+                <div>Lists</div>
+              </Link> */}
+            {/* <Link to="/analytics" className="py-2 px-3">
+                <div>Analytics</div>
+              </Link> */}
+            {/* <Link to="/" className="py-2 px-3">
+                <div>My Lists</div>
+              </Link> */}
+          </div>
           <div className="flex w-full justify-center sm:w-auto sm:justify-start">
             <Link to="/">
-              <div className="text-xl">
+              <div>
                 <OptimismLogo />
               </div>
             </Link>
-            <div className="ml-11 hidden sm:flex gap-5 text-base font-semibold">
-              <Link to="/" className="py-2 px-3">
-                <div>Projects</div>
-              </Link>
-              <Link to="https://round3.retrolist.app" className="py-2 px-3">
-                <div>Round 3</div>
-              </Link>
-              {/* <Link to="/list" className="py-2 px-3">
-                <div>Lists</div>
-              </Link> */}
-              {/* <Link to="/analytics" className="py-2 px-3">
-                <div>Analytics</div>
-              </Link> */}
-              {/* <Link to="/" className="py-2 px-3">
-                <div>My Lists</div>
-              </Link> */}
-            </div>
           </div>
           <div className="flex gap-4 hidden">
             <div className="hidden sm:block">
