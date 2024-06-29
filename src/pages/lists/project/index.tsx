@@ -1,18 +1,17 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { Alert } from "antd";
+import axios, { AxiosError } from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Layout from "../../../components/Layout";
+import { LoadingAnimation } from "../../../components/LoadingAnimation";
 import { ProjectFundingCard } from "../../../components/Project/FundingCard";
 import { ProjectHeroSection } from "../../../components/Project/HeroSection";
 import { ProjectListCard } from "../../../components/Project/ListsCard";
-import { Project } from "../../../types/Project";
-import { api } from "../../../utils/api";
-import { categoryLabel } from "../../../utils/project";
-import { Alert } from "antd";
-import PrimaryButton from "../../../components/buttons/PrimaryButton";
-import axios, { AxiosError } from "axios";
-import ChainIcon from "../../../components/common/ChainIcon";
 import ProjectComments from "../../../components/Project/ProjectComments";
+import ChainIcon from "../../../components/common/ChainIcon";
+import { Project } from "../../../types/Project";
+import { categoryLabel } from "../../../utils/project";
 
 export function ProjectView({ project }: { project: Project }) {
   return (
@@ -63,18 +62,18 @@ export function ProjectView({ project }: { project: Project }) {
       </div>
 
       <div className="my-5">
-        {project.osoSlug &&
+        {project.osoSlug && (
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
             <div className="text-2xl">OSO Slug</div>
 
             <div className="mt-5">
-              <a href={`https://github.com/opensource-observer/oss-directory/blob/main/data/projects/${project.osoSlug[0]}/${project.osoSlug}.yaml`} target="_blank">
+              <a
+                href={`https://github.com/opensource-observer/oss-directory/blob/main/data/projects/${project.osoSlug[0]}/${project.osoSlug}.yaml`}
+                target="_blank"
+              >
                 <div className="flex gap-2 items-center text-[#858796]">
                   <div className="p-1 bg-[#F5F5F5] rounded-full">
-                    <Icon
-                      icon="lucide:file-text"
-                      color="#757575"
-                    />
+                    <Icon icon="lucide:file-text" color="#757575" />
                   </div>
                   <div className="text-sm truncate">{project.osoSlug}</div>
                   <Icon icon="lucide:external-link" />
@@ -82,7 +81,7 @@ export function ProjectView({ project }: { project: Project }) {
               </a>
             </div>
           </div>
-        }
+        )}
 
         <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
           <div className="text-2xl">GitHub</div>
@@ -93,15 +92,17 @@ export function ProjectView({ project }: { project: Project }) {
                 <div className="flex gap-2 items-center text-[#858796]">
                   <div className="p-1 bg-[#F5F5F5] rounded-full">
                     {github.startsWith("https://github.com/") ? (
-                      <img className='w-5 h-5' src={"/img/social/github.png"}></img>
+                      <img
+                        className="w-5 h-5"
+                        src={"/img/social/github.png"}
+                      ></img>
                     ) : (
-                      <Icon
-                        icon="lucide:file-text"
-                        color="#757575"
-                      />
+                      <Icon icon="lucide:file-text" color="#757575" />
                     )}
                   </div>
-                  <div className="text-sm truncate">{github.replace("https://github.com/", "")}</div>
+                  <div className="text-sm truncate">
+                    {github.replace("https://github.com/", "")}
+                  </div>
                   <Icon icon="lucide:external-link" />
                 </div>
               </a>
@@ -118,15 +119,17 @@ export function ProjectView({ project }: { project: Project }) {
                 <div className="flex gap-2 items-center text-[#858796]">
                   <div className="p-1 bg-[#F5F5F5] rounded-full">
                     {p.startsWith("https://www.npmjs.com/package/") ? (
-                      <img className='w-5 h-5' src={"/img/social/npm.png"}></img>
+                      <img
+                        className="w-5 h-5"
+                        src={"/img/social/npm.png"}
+                      ></img>
                     ) : (
-                      <Icon
-                        icon="lucide:file-text"
-                        color="#757575"
-                      />
+                      <Icon icon="lucide:file-text" color="#757575" />
                     )}
                   </div>
-                  <div className="text-sm truncate">{p.replace("https://www.npmjs.com/package/", "")}</div>
+                  <div className="text-sm truncate">
+                    {p.replace("https://www.npmjs.com/package/", "")}
+                  </div>
                   <Icon icon="lucide:external-link" />
                 </div>
               </a>
@@ -150,10 +153,12 @@ export function ProjectView({ project }: { project: Project }) {
                   <div className="p-1 bg-[#F5F5F5] rounded-full">
                     <ChainIcon
                       chainId={contribution.type}
-                      className='w-5 h-5'
+                      className="w-5 h-5"
                     ></ChainIcon>
                   </div>
-                  <div className="text-sm truncate">{contribution.description}</div>
+                  <div className="text-sm truncate">
+                    {contribution.description}
+                  </div>
                   <Icon icon="lucide:external-link" />
                 </div>
               </a>
@@ -190,18 +195,20 @@ export default function ProjectPage() {
   const fetchProject = useCallback(async () => {
     // const response = await axios.get("/dataset/rpgf3/projects/" + projectId + ".json");
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_HOST}/projects/${projectId}`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_HOST}/projects/${projectId}`
+      );
       setProject(response.data);
-  
+
       console.log(response.data);
     } catch (err) {
       if (err instanceof AxiosError) {
         if (err.response?.status == 404) {
-          window.location.href = `https://round3.retrolist.app/project/${projectId}`
+          window.location.href = `https://round3.retrolist.app/project/${projectId}`;
         }
       } else {
-        console.error(err)
-        window.alert('Fetching project failed! Please try again')
+        console.error(err);
+        window.alert("Fetching project failed! Please try again");
       }
     }
   }, [projectId]);
@@ -216,7 +223,7 @@ export default function ProjectPage() {
     return (
       <div>
         <Layout>
-          <div className="mt-11">Loading...</div>
+          <LoadingAnimation />
         </Layout>
       </div>
     );
@@ -239,19 +246,17 @@ export default function ProjectPage() {
             </div>
 
             <div className="w-full md:w-1/4">
-              <div className="text-base text-[#858796]">
-                Metrics
-              </div>
+              <div className="text-base text-[#858796]">Metrics</div>
 
               {project.lists.length > 0 ? (
                 <div className="mt-4">
-                  {project.lists.map(list => <ProjectListCard list={list} key={list._id} />)}
+                  {project.lists.map((list) => (
+                    <ProjectListCard list={list} key={list._id} />
+                  ))}
                 </div>
               ) : (
                 <div className="mt-4">
-                  <Alert
-                    message="Coming Soon!"
-                  />
+                  <Alert message="Coming Soon!" />
                 </div>
               )}
             </div>
