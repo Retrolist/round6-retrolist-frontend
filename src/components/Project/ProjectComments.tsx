@@ -45,7 +45,7 @@ export default function ProjectComments({ projectId }: { projectId: string }) {
 
       {hash && (
         <a
-          href={`https://warpcast.com/retrolist/${hash.substring(0, 10)}`}
+          href={`https://warpcast.com/retrolist/${hash}`}
           target="_blank"
           className="flex my-3"
         >
