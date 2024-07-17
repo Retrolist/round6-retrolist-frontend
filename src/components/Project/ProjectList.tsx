@@ -100,13 +100,15 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
         <div className="flex gap-4 md:hidden mt-3">
           {project.rank && project.rank < 10 && (
             <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-              <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+              <Crown />
+              <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
             </div>
           )}
 
           {project.rank && project.rank >= 10 && project.rank <= 99 && (
             <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-              <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+              <Crown />
+              <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
             </div>
           )}
 
