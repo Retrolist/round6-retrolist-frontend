@@ -1,6 +1,6 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Input } from "antd";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import Layout from "../../components/Layout";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
@@ -16,11 +16,12 @@ const { Search } = Input;
 export default function ProjectsPage() {
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState<string[]>([]);
-  const [eligibleFilter, setEligibleFilter] = useState("");
+  const [eligibleFilter, setEligibleFilter] = useState("keep");
   const [seed, setSeed] = useState(
     Math.floor(Math.random() * 1000000000).toString()
   );
-  const [listView, setListView] = useState(false);
+  // const [listView, setListView] = useState(true);
+  const listView = useMemo(() => eligibleFilter == 'keep', [eligibleFilter])
 
   const setCategory = useCallback(
     (category?: string) => {
@@ -98,14 +99,14 @@ export default function ProjectsPage() {
           </div>
 
           <div className="flex flex-col flex-wrap md:flex-row gap-2 items-center mb-8">
-            <ProjectCategoryButton
+            {/* <ProjectCategoryButton
               text="All Status"
               categories={eligibleFilter ? [eligibleFilter] : []}
               category=""
               setCategory={setEligibleFilter}
             />
 
-            <div className="border-l-[1px] border border-[#CBD5E0] h-4"></div>
+            <div className="border-l-[1px] border border-[#CBD5E0] h-4"></div> */}
 
             {/* <ProjectCategoryButton
               text="Reviewing"
@@ -135,12 +136,12 @@ export default function ProjectsPage() {
               setCategory={setEligibleFilter}
             />
 
-            {/* <ProjectCategoryButton
+            <ProjectCategoryButton
               text="Missing"
               categories={[eligibleFilter]}
               category="missing"
               setCategory={setEligibleFilter}
-            /> */}
+            />
           </div>
 
           <div className="mb-8">
@@ -170,7 +171,6 @@ export default function ProjectsPage() {
                         project.prelimResult
                           .toLowerCase()
                           .indexOf(eligibleFilter) != -1
-                        && project.prelimResult.toLowerCase() != 'missing'
                     )
                     .map((project) => (
                       <ProjectList project={project} />
@@ -184,7 +184,6 @@ export default function ProjectsPage() {
                         project.prelimResult
                           .toLowerCase()
                           .indexOf(eligibleFilter) != -1
-                        && project.prelimResult.toLowerCase() != 'missing'
                     )
                     .map((project) => (
                       <ProjectCard project={project} />
