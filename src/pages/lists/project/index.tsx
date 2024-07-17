@@ -68,7 +68,7 @@ export function ProjectView({ project }: { project: Project }) {
 
             <div className="mt-5">
               <a
-                href={`https://github.com/opensource-observer/oss-directory/blob/main/data/projects/${project.osoSlug[0]}/${project.osoSlug}.yaml`}
+                href={`https://github.com/opensource-observer/oss-directory/blob/main/data/projects/${project.osoSlug[0].toLowerCase()}/${project.osoSlug.toLowerCase()}.yaml`}
                 target="_blank"
               >
                 <div className="flex gap-2 items-center text-[#858796]">
@@ -188,6 +188,28 @@ export function ProjectView({ project }: { project: Project }) {
   );
 }
 
+interface MetricItemProps {
+  title: string
+  value: string
+}
+
+function MetricItem({ title, value }: MetricItemProps) {
+  return (
+    <div className="rounded-lg bg-[#F2F4F7] p-4 mb-4">
+      <div className="text-lg text-[#344054] flex justify-between">
+        <div>{value}</div>
+        <div className="flex items-center">
+          <div className="font-bold mx-2">???</div>
+          <div>
+            <img className="w-6 h-6" src="/img/platform/op.png"></img>
+          </div>
+        </div>
+      </div>
+      <div className="text-sm text-[#667085]">{title}</div>
+    </div>
+  )
+}
+
 export default function ProjectPage() {
   const { projectId } = useParams();
   const [project, setProject] = useState<Project | undefined>();
@@ -229,6 +251,81 @@ export default function ProjectPage() {
     );
   }
 
+  // const metricKeys = [
+  //   "is_oss",
+  //   "gas_fees",
+  //   "transaction_count",
+  //   "trusted_transaction_count",
+  //   "trusted_transaction_share",
+  //   "trusted_users_onboarded",
+  //   "daily_active_addresses",
+  //   "trusted_daily_active_users",
+  //   "monthly_active_addresses",
+  //   "trusted_monthly_active_users",
+  //   "recurring_addresses",
+  //   "trusted_recurring_users",
+  //   "power_user_addresses",
+  //   "openrank_trusted_users_count",
+  //   "log_gas_fees",
+  //   "log_transaction_count",
+  //   "log_trusted_transaction_count",
+  // ]
+
+  const metrics: MetricItemProps[] = project.metrics ? [
+    {
+      title: "Gas Fees",
+      value: project.metrics.gas_fees.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ' ETH',
+    },
+    {
+      title: "Transactions",
+      value: project.metrics.transaction_count.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+    },
+    {
+      title: "Transactions from Trusted Users",
+      value: project.metrics.trusted_transaction_count.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+    },
+    {
+      title: "Trusted Users Share of Transactions",
+      value: (project.metrics.trusted_transaction_share * 100).toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%',
+    },
+    {
+      title: "Trusted Users",
+      value: project.metrics.openrank_trusted_users_count.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+    },
+    {
+      title: "Trusted Users Onboarded",
+      value: project.metrics.trusted_users_onboarded.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+    },
+    {
+      title: "Average Daily Active Addresses",
+      value: project.metrics.daily_active_addresses.toLocaleString('en-US', { maximumFractionDigits: 2 }),
+    },
+    {
+      title: "Average Trusted Daily Active Users",
+      value: project.metrics.trusted_daily_active_users.toLocaleString('en-US', { maximumFractionDigits: 2 }),
+    },
+    {
+      title: "Average Monthly Active Addresses",
+      value: project.metrics.monthly_active_addresses.toLocaleString('en-US', { maximumFractionDigits: 2 }),
+    },
+    {
+      title: "Average Trusted Monthly Active Users",
+      value: project.metrics.trusted_monthly_active_users.toLocaleString('en-US', { maximumFractionDigits: 2 }),
+    },
+    {
+      title: "Recurring Addresses",
+      value: project.metrics.recurring_addresses.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+    },
+    {
+      title: "Trusted Recurring Users",
+      value: project.metrics.trusted_recurring_users.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+    },
+    {
+      title: "Power User Addresses",
+      value: project.metrics.power_user_addresses.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+    },
+  ] : []
+
   return (
     <div>
       <Layout>
@@ -241,25 +338,41 @@ export default function ProjectPage() {
           <ProjectHeroSection project={project} />
 
           <div className="mt-6 flex flex-col md:flex-row gap-6">
-            <div className="w-full md:w-3/4 mb-6">
+            <div className="flex-grow mb-6">
               <ProjectView project={project} />
             </div>
 
-            <div className="w-full md:w-1/4">
-              <div className="text-base text-[#858796]">Metrics</div>
+            {project.metrics && (
+              <div className="w-full md:w-auto" style={{ minWidth: 320 }}>
+                {/* <div className="text-base text-[#858796]">Metrics</div> */}
 
-              {project.lists.length > 0 ? (
-                <div className="mt-4">
-                  {project.lists.map((list) => (
-                    <ProjectListCard list={list} key={list._id} />
-                  ))}
-                </div>
-              ) : (
-                <div className="mt-4">
-                  <Alert message="Coming Soon!" />
-                </div>
-              )}
-            </div>
+                {project.lists.length > 0 ? (
+                  <div className="mt-4">
+                    {project.lists.map((list) => (
+                      <ProjectListCard list={list} key={list._id} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+                    <div className="text-2xl mt-2">Total OP Received</div>
+                    <div className="text-[#667085] mb-4">Retro Funding 4: Onchain Builders</div>
+
+                    <div className="flex items-center mb-6">
+                      <div className="text-4xl text-[#272930DE] font-bold mr-2">???</div>
+                      <img className="w-8 h-8" src="/img/platform/op.png"></img>
+                    </div>
+
+                    <hr className="border my-2" />
+
+                    <div className="text-2xl mb-4">Impact Metrics</div>
+
+                    {metrics.map(m => (
+                      <MetricItem {...m}></MetricItem>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </Layout>

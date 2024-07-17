@@ -135,12 +135,12 @@ export default function ProjectsPage() {
               setCategory={setEligibleFilter}
             />
 
-            <ProjectCategoryButton
+            {/* <ProjectCategoryButton
               text="Missing"
               categories={[eligibleFilter]}
               category="missing"
               setCategory={setEligibleFilter}
-            />
+            /> */}
           </div>
 
           <div className="mb-8">
@@ -170,6 +170,7 @@ export default function ProjectsPage() {
                         project.prelimResult
                           .toLowerCase()
                           .indexOf(eligibleFilter) != -1
+                        && project.prelimResult.toLowerCase() != 'missing'
                     )
                     .map((project) => (
                       <ProjectList project={project} />
@@ -183,6 +184,7 @@ export default function ProjectsPage() {
                         project.prelimResult
                           .toLowerCase()
                           .indexOf(eligibleFilter) != -1
+                        && project.prelimResult.toLowerCase() != 'missing'
                     )
                     .map((project) => (
                       <ProjectCard project={project} />
