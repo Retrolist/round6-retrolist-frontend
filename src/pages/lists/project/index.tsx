@@ -358,7 +358,7 @@ export default function ProjectPage() {
                     <div className="text-[#667085] mb-4">Retro Funding 4: Onchain Builders</div>
 
                     <div className="flex items-center mb-6">
-                      <div className="text-4xl text-[#272930DE] font-bold mr-2">???</div>
+                      <div className="text-4xl text-[#272930DE] font-bold mr-2">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
                       <img className="w-8 h-8" src="/img/platform/op.png"></img>
                     </div>
 

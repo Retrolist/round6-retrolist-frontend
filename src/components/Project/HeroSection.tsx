@@ -7,6 +7,8 @@ import { Modal, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { useCallback, useState } from "react";
 import axios from "axios";
+import { OpCoin } from "../../assets/OpCoin";
+import { Crown } from "../../assets/Crown";
 
 export const ProjectHeroSection = ({ project, noMargin = false }: { project: Project, noMargin?: boolean }) => {
   const [ showReportModal, setShowReportModal ] = useState(false)
@@ -58,12 +60,12 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
               className="w-[154px] rounded-full h-[154px] object-cover border-2 border-[#E2E8F0]"
             />
 
-            <button
+            {/* <button
               className="flex gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420] mt-12 md:hidden"
               onClick={() => setShowReportModal(true)}
             >
               Report
-            </button>
+            </button> */}
           </div>
           <div className="flex w-10/12 flex-col gap-2">
             <div className="flex justify-between">
@@ -102,12 +104,39 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                   </div>
                 </button> */}
 
-                <button
+                {/* <button
                   className="flex gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
                   onClick={() => setShowReportModal(true)}
                 >
                   Report
-                </button>
+                </button> */}
+
+                <div className="flex gap-4 mt-3">
+                  {project.rank && project.rank < 10 && (
+                    <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                      <Crown />
+                      <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+                    </div>
+                  )}
+
+                  {project.rank && project.rank >= 10 && project.rank <= 99 && (
+                    <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                      <Crown />
+                      <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
+                    </div>
+                  )}
+
+                  {project.rank && project.rank >= 100 && (
+                    <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                      <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+                    </div>
+                  )}
+
+                  <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
+                    <OpCoin />
+                    <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="flex gap-2 items-center">
@@ -131,6 +160,33 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                 </div>
               </a>
             )}
+
+            <div className="flex gap-4 mt-3 md:hidden">
+              {project.rank && project.rank < 10 && (
+                <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                  <Crown />
+                  <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+                </div>
+              )}
+
+              {project.rank && project.rank >= 10 && project.rank <= 99 && (
+                <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                  <Crown />
+                  <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
+                </div>
+              )}
+
+              {project.rank && project.rank >= 100 && (
+                <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                  <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+                </div>
+              )}
+
+              <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
+                <OpCoin />
+                <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

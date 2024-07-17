@@ -57,6 +57,9 @@ export interface Project {
 
   metrics: ProjectMetrics | null
   metricsPercent: ProjectMetrics | null
+
+  totalOP?: number
+  rank?: number
 }
 
 export interface ProjectApplicant {

@@ -77,7 +77,7 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
             </div> */}
             <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
               <OpCoin />
-              <div className="text-2xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : '???'}</div>
+              <div className="text-2xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
             </div>
           </div>
           {/* <div className="truncate mt-1">
@@ -122,7 +122,7 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
           </div> */}
           <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
             <OpCoin />
-            <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : '???'}</div>
+            <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
           </div>
         </div>
 
