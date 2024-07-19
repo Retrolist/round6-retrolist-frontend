@@ -57,6 +57,7 @@ export interface Project {
 
   metrics: ProjectMetrics | null
   metricsPercent: ProjectMetrics | null
+  metricsPercentOss: ProjectMetrics | null
 
   totalOP?: number
   rank?: number

@@ -10,7 +10,7 @@ import { ProjectHeroSection } from "../../../components/Project/HeroSection";
 import { ProjectListCard } from "../../../components/Project/ListsCard";
 import ProjectComments from "../../../components/Project/ProjectComments";
 import ChainIcon from "../../../components/common/ChainIcon";
-import { Project } from "../../../types/Project";
+import { Project, ProjectMetadata, ProjectMetrics } from "../../../types/Project";
 import { categoryLabel } from "../../../utils/project";
 
 export function ProjectView({ project }: { project: Project }) {
@@ -191,15 +191,23 @@ export function ProjectView({ project }: { project: Project }) {
 interface MetricItemProps {
   title: string
   value: string
+  op: number
 }
 
-function MetricItem({ title, value }: MetricItemProps) {
+function metricOp(project: Project, key: keyof ProjectMetrics) {
+  if (!project.totalOP) return 0
+  if (!project.metricsPercent) return 0
+  if (!project.metricsPercentOss) return 0
+  return ((project.metricsPercent[key] as number || 0) - (project.metricsPercentOss[key] as number || 0)) * project.totalOP
+}
+
+function MetricItem({ title, value, op }: MetricItemProps) {
   return (
     <div className="rounded-lg bg-[#F2F4F7] p-4 mb-4">
       <div className="text-lg text-[#344054] flex justify-between">
         <div>{value}</div>
         <div className="flex items-center">
-          <div className="font-bold mx-2">???</div>
+          <div className="font-bold mx-2">{op.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</div>
           <div>
             <img className="w-6 h-6" src="/img/platform/op.png"></img>
           </div>
@@ -271,60 +279,101 @@ export default function ProjectPage() {
   //   "log_trusted_transaction_count",
   // ]
 
-  const metrics: MetricItemProps[] = project.metrics ? [
+  const oss_reward = project.metricsPercentOss && project.totalOP ? (
+    project.metricsPercentOss.gas_fees +
+    project.metricsPercentOss.daily_active_addresses +
+    project.metricsPercentOss.log_gas_fees +
+    project.metricsPercentOss.log_transaction_count +
+    project.metricsPercentOss.log_trusted_transaction_count +
+    project.metricsPercentOss.monthly_active_addresses +
+    project.metricsPercentOss.openrank_trusted_users_count +
+    project.metricsPercentOss.power_user_addresses +
+    project.metricsPercentOss.recurring_addresses +
+    project.metricsPercentOss.transaction_count +
+    project.metricsPercentOss.trusted_daily_active_users +
+    project.metricsPercentOss.trusted_monthly_active_users +
+    project.metricsPercentOss.trusted_recurring_users +
+    project.metricsPercentOss.trusted_transaction_count +
+    project.metricsPercentOss.trusted_transaction_share +
+    project.metricsPercentOss.trusted_users_onboarded
+  ) * project.totalOP : 0
+
+  let metrics: MetricItemProps[] = project.metrics ? [
+    {
+      title: "Open Source",
+      value: oss_reward && project.totalOP ? (project.totalOP / (project.totalOP - oss_reward)).toFixed(2) + 'X' : "No",
+      op: oss_reward,
+    },
     {
       title: "Gas Fees",
       value: project.metrics.gas_fees.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ' ETH',
+      op: metricOp(project, 'gas_fees') + metricOp(project, 'log_gas_fees'),
     },
     {
       title: "Transactions",
       value: project.metrics.transaction_count.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+      op: metricOp(project, 'transaction_count') + metricOp(project, 'log_transaction_count'),
     },
     {
       title: "Transactions from Trusted Users",
       value: project.metrics.trusted_transaction_count.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+      op: metricOp(project, 'trusted_transaction_count') + metricOp(project, 'log_trusted_transaction_count'),
     },
     {
       title: "Trusted Users Share of Transactions",
       value: (project.metrics.trusted_transaction_share * 100).toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%',
+      op: metricOp(project, 'trusted_transaction_share'),
     },
     {
       title: "Trusted Users",
       value: project.metrics.openrank_trusted_users_count.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+      op: metricOp(project, 'openrank_trusted_users_count'),
     },
     {
       title: "Trusted Users Onboarded",
       value: project.metrics.trusted_users_onboarded.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+      op: metricOp(project, 'trusted_users_onboarded'),
     },
     {
       title: "Average Daily Active Addresses",
       value: project.metrics.daily_active_addresses.toLocaleString('en-US', { maximumFractionDigits: 2 }),
+      op: metricOp(project, 'daily_active_addresses'),
     },
     {
       title: "Average Trusted Daily Active Users",
       value: project.metrics.trusted_daily_active_users.toLocaleString('en-US', { maximumFractionDigits: 2 }),
+      op: metricOp(project, 'trusted_daily_active_users'),
     },
     {
       title: "Average Monthly Active Addresses",
       value: project.metrics.monthly_active_addresses.toLocaleString('en-US', { maximumFractionDigits: 2 }),
+      op: metricOp(project, 'monthly_active_addresses'),
     },
     {
       title: "Average Trusted Monthly Active Users",
       value: project.metrics.trusted_monthly_active_users.toLocaleString('en-US', { maximumFractionDigits: 2 }),
+      op: metricOp(project, 'trusted_monthly_active_users'),
     },
     {
       title: "Recurring Addresses",
       value: project.metrics.recurring_addresses.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+      op: metricOp(project, 'recurring_addresses'),
     },
     {
       title: "Trusted Recurring Users",
       value: project.metrics.trusted_recurring_users.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+      op: metricOp(project, 'trusted_recurring_users'),
     },
     {
       title: "Power User Addresses",
       value: project.metrics.power_user_addresses.toLocaleString('en-US', { maximumFractionDigits: 0 }),
+      op: metricOp(project, 'power_user_addresses'),
     },
   ] : []
+
+  if (project.totalOP) {
+    metrics = metrics.sort((a, b) => b.op - a.op)
+  }
 
   return (
     <div>
