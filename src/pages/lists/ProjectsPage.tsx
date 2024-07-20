@@ -99,7 +99,7 @@ export default function ProjectsPage() {
             ))}
           </div>
 
-          <div className="flex flex-col flex-wrap md:flex-row gap-2 items-center mb-8">
+          <div className="flex flex-wrap gap-2 items-center mb-8">
             {/* <ProjectCategoryButton
               text="All Status"
               categories={eligibleFilter ? [eligibleFilter] : []}

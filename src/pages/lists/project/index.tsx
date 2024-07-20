@@ -416,7 +416,7 @@ export default function ProjectPage() {
 
                     <hr className="border my-2" />
 
-                    <div className="text-2xl mb-4">Impact Metrics</div>
+                    <div className="text-2xl my-4">Impact Metrics</div>
 
                     {metrics.map(m => (
                       <MetricItem {...m}></MetricItem>
