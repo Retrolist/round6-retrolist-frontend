@@ -23,15 +23,15 @@ export default function TotalOPProgress({ ballots, showLegend = true }: { ballot
   let totalCount = 0;
 
   for (const projectId in ballots) {
-    if (ballots[projectId] < 1500) {
+    if (ballots[projectId] < 1000) {
       count2++;
-    } else if (ballots[projectId] < 10000) {
+    } else if (ballots[projectId] < 5000) {
       count6++;
-    } else if (ballots[projectId] < 24000) {
+    } else if (ballots[projectId] < 20000) {
       count10++;
-    } else if (ballots[projectId] < 49000) {
+    } else if (ballots[projectId] < 50000) {
       count14++;
-    } else if (ballots[projectId] < 99000) {
+    } else if (ballots[projectId] < 100000) {
       count17++;
     } else {
       countActive++;
@@ -48,28 +48,28 @@ export default function TotalOPProgress({ ballots, showLegend = true }: { ballot
 
   return (
     <div>
-      <div className="flex rounded-xl overflow-hidden">
-        <Tooltip title={`>99k OP: ${countActive}`}>
+      <div className="flex rounded-xl">
+        <Tooltip title={`>100k OP: ${countActive}`}>
           <div style={{ width: (countActive / totalCount * 100) + '%', background: colorActive, height: PROGRESS_HEIGHT }}></div>
         </Tooltip>
         
-        <Tooltip title={`49k - 99k OP: ${count17}`}>
+        <Tooltip title={`50k - 100k OP: ${count17}`}>
           <div style={{ width: (count17 / totalCount * 100) + '%', background: color17, height: PROGRESS_HEIGHT }}></div>
         </Tooltip>
         
-        <Tooltip title={`24k - 49k OP: ${count14}`}>
+        <Tooltip title={`20k - 50k OP: ${count14}`}>
           <div style={{ width: (count14 / totalCount * 100) + '%', background: color14, height: PROGRESS_HEIGHT }}></div>
         </Tooltip>
         
-        <Tooltip title={`10k - 24k OP: ${count10}`}>
+        <Tooltip title={`5k - 20k OP: ${count10}`}>
           <div style={{ width: (count10 / totalCount * 100) + '%', background: color10, height: PROGRESS_HEIGHT }}></div>
         </Tooltip>
         
-        <Tooltip title={`<10k OP: ${count6}`}>
+        <Tooltip title={`<5k OP: ${count6}`}>
           <div style={{ width: (count6 / totalCount * 100) + '%', background: color6, height: PROGRESS_HEIGHT }}></div>
         </Tooltip>
 
-        <Tooltip title={`Not Passed: ${count2}`}>
+        <Tooltip title={`Ineligible: ${count2}`}>
           <div style={{ width: (count2 / totalCount * 100) + '%', background: color2, height: PROGRESS_HEIGHT }}></div>
         </Tooltip>
 
@@ -77,12 +77,12 @@ export default function TotalOPProgress({ ballots, showLegend = true }: { ballot
 
       {showLegend && (
         <div className="grid grid-cols-2 sm:flex sm:flex-row justify-center gap-1 sm:gap-x-12 flex-wrap mt-2">
-          <TotalOPLegend label=">99k OP" color={colorActive} count={countActive}></TotalOPLegend>
-          <TotalOPLegend label="49k - 99k OP" color={color17} count={count17}></TotalOPLegend>
-          <TotalOPLegend label="24k - 49k OP" color={color14} count={count14}></TotalOPLegend>
-          <TotalOPLegend label="10k - 24k OP" color={color10} count={count10}></TotalOPLegend>
-          <TotalOPLegend label="<10k OP" color={color6} count={count6}></TotalOPLegend>
-          <TotalOPLegend label="Not Passed" color={color2} count={count2}></TotalOPLegend>
+          <TotalOPLegend label=">100k OP" color={colorActive} count={countActive}></TotalOPLegend>
+          <TotalOPLegend label="50k - 100k OP" color={color17} count={count17}></TotalOPLegend>
+          <TotalOPLegend label="20k - 50k OP" color={color14} count={count14}></TotalOPLegend>
+          <TotalOPLegend label="5k - 20k OP" color={color10} count={count10}></TotalOPLegend>
+          <TotalOPLegend label="<5k OP" color={color6} count={count6}></TotalOPLegend>
+          <TotalOPLegend label="Ineligible" color={color2} count={count2}></TotalOPLegend>
         </div>
       )}
     </div>

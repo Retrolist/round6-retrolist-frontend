@@ -206,12 +206,15 @@ function MetricItem({ title, value, op }: MetricItemProps) {
     <div className="rounded-lg bg-[#F2F4F7] p-4 mb-4">
       <div className="text-lg text-[#344054] flex justify-between">
         <div>{value}</div>
-        <div className="flex items-center">
-          <div className="font-bold mx-2">{op.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</div>
-          <div>
-            <img className="w-6 h-6" src="/img/platform/op.png"></img>
+
+        {Boolean(op) &&
+          <div className="flex items-center">
+            <div className="font-bold mx-2">{op.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</div>
+            <div>
+              <img className="w-6 h-6" src="/img/platform/op.png"></img>
+            </div>
           </div>
-        </div>
+        }
       </div>
       <div className="text-sm text-[#667085]">{title}</div>
     </div>
@@ -300,11 +303,6 @@ export default function ProjectPage() {
 
   let metrics: MetricItemProps[] = project.metrics ? [
     {
-      title: "Open Source",
-      value: oss_reward && project.totalOP ? (project.totalOP / (project.totalOP - oss_reward)).toFixed(2) + 'X' : "No",
-      op: oss_reward,
-    },
-    {
       title: "Gas Fees",
       value: project.metrics.gas_fees.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ' ETH',
       op: metricOp(project, 'gas_fees') + metricOp(project, 'log_gas_fees'),
@@ -368,6 +366,11 @@ export default function ProjectPage() {
       title: "Power User Addresses",
       value: project.metrics.power_user_addresses.toLocaleString('en-US', { maximumFractionDigits: 0 }),
       op: metricOp(project, 'power_user_addresses'),
+    },
+    {
+      title: "Open Source",
+      value: oss_reward && project.totalOP ? (project.totalOP / (project.totalOP - oss_reward)).toFixed(2) + 'X' : "No",
+      op: oss_reward,
     },
   ] : []
 

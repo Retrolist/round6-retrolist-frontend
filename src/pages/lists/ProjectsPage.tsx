@@ -10,6 +10,7 @@ import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryB
 import { ProjectList } from "../../components/Project/ProjectList";
 import { useProjectCount } from "../../hooks/useProjectCount";
 import { useProjects } from "../../hooks/useProjects";
+import { Analytics } from "../analytics/AnalyticsPage";
 
 const { Search } = Input;
 
@@ -66,7 +67,7 @@ export default function ProjectsPage() {
             />
           </div> */}
 
-          {/* <Analytics /> */}
+          <Analytics />
 
           <div className="mb-5">
             <div className="text-2xl font-bold mb-1">All Projects</div>

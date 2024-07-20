@@ -9,6 +9,7 @@ import { useCallback, useState } from "react";
 import axios from "axios";
 import { OpCoin } from "../../assets/OpCoin";
 import { Crown } from "../../assets/Crown";
+import { OpenSourceBadge } from "./OpenSourceBadge";
 
 export const ProjectHeroSection = ({ project, noMargin = false }: { project: Project, noMargin?: boolean }) => {
   const [ showReportModal, setShowReportModal ] = useState(false)
@@ -143,6 +144,9 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
               <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
                 {project?.impactCategory[0] || "No Category"}
               </div>
+
+              <OpenSourceBadge isOss={project.metrics?.is_oss}></OpenSourceBadge>
+
               {/* <div className="border-l-[0.5px] border border-[#CBD5E0] h-6" />
               <UserImageAddress
                 img="/img/test-avatar.png"

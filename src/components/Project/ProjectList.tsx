@@ -3,6 +3,7 @@ import { Crown } from "../../assets/Crown";
 import { OpCoin } from "../../assets/OpCoin";
 import { VoteSvg } from "../../assets/VoteSvg";
 import { ProjectMetadata } from "../../types/Project";
+import { OpenSourceBadge } from "./OpenSourceBadge";
 
 export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
   return (
@@ -48,6 +49,8 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
               <div className="rounded bg-gray-200 text-gray-600 px-2 py-1 text-xs mr-2">
                 {project.recategorization}
               </div>
+
+              <OpenSourceBadge isOss={project.isOss}></OpenSourceBadge>
             </div>
           </div>
           <div className="hidden gap-10 md:flex">
