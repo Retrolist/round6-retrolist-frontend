@@ -170,7 +170,7 @@ export function Analytics() {
           </div>
         </div>
 
-        <div className="mb-6" style={{ minWidth: 310 }}>
+        <div className="mb-6" style={{ minWidth: 320 }}>
           <div className="font-bold mb-2">Metrics Distribution</div>
 
           {metricsSummary.map(metric => (
