@@ -127,7 +127,14 @@ export function ProjectView({ project }: { project: Project }) {
                           src={"/img/social/npm.png"}
                         ></img>
                       ) : (
-                        <Icon icon="lucide:file-text" color="#757575" />
+                        p.startsWith("https://github.com") ? (
+                          <img
+                            className="w-5 h-5"
+                            src={"/img/social/github.png"}
+                          ></img>
+                        ) : (
+                          <Icon icon="lucide:file-text" color="#757575" />
+                        )
                       )}
                     </div>
                     <div className="text-sm truncate">
@@ -413,7 +420,7 @@ export default function ProjectPage() {
                 ) : (
                   <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
                     <div className="text-2xl mt-2">Total OP Received</div>
-                    <div className="text-[#667085] mb-4">Retro Funding 4: Onchain Builders</div>
+                    <div className="text-[#667085] mb-4">Retro Funding 5: Onchain Builders</div>
 
                     <div className="flex items-center mb-6">
                       <div className="text-4xl text-[#272930DE] font-bold mr-2">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
