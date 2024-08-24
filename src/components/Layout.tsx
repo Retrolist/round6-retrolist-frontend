@@ -14,6 +14,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Link to="/" className="py-2 px-3">
               <div>Projects</div>
             </Link>
+            <Link to="https://round4.retrolist.app" className="py-2 px-3">
+              <div>Round 4</div>
+            </Link>
             <Link to="https://round3.retrolist.app" className="py-2 px-3">
               <div>Round 3</div>
             </Link>
@@ -54,6 +57,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <div className="flex w-full justify-around gap-5 text-base font-semibold text-gray-800">
             <Link to="/" className="py-2 px-3">
               <div>Projects</div>
+            </Link>
+            <Link to="https://round4.retrolist.app" className="py-2 px-3">
+              <div>Round 4</div>
             </Link>
             <Link to="https://round3.retrolist.app" className="py-2 px-3">
               <div>Round 3</div>

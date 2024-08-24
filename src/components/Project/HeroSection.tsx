@@ -112,7 +112,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                   Report
                 </button> */}
 
-                <div className="flex gap-4 mt-3">
+                <div className="flex gap-4 mt-3 hidden">
                   {project.rank && project.rank < 10 && (
                     <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
                       <Crown />
@@ -165,7 +165,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
               </a>
             )}
 
-            <div className="flex gap-4 mt-3 md:hidden">
+            <div className="flex gap-4 mt-3 md:hidden hidden">
               {project.rank && project.rank < 10 && (
                 <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
                   <Crown />

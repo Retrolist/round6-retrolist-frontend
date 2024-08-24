@@ -21,8 +21,8 @@ export default function ProjectsPage() {
   const [seed, setSeed] = useState(
     Math.floor(Math.random() * 1000000000).toString()
   );
-  // const [listView, setListView] = useState(true);
-  const listView = useMemo(() => eligibleFilter == 'keep', [eligibleFilter])
+  const [listView, setListView] = useState(false);
+  // const listView = useMemo(() => eligibleFilter == 'keep', [eligibleFilter])
 
   const setCategory = useCallback(
     (category?: string) => {
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
             />
           </div> */}
 
-          <Analytics />
+          {/* <Analytics /> */}
 
           <div className="mb-5">
             <div className="text-2xl font-bold mb-1">All Projects</div>
@@ -123,7 +123,7 @@ export default function ProjectsPage() {
               setCategory={setEligibleFilter}
             /> */}
 
-            <ProjectCategoryButton
+            {/* <ProjectCategoryButton
               text="Approved"
               categories={[eligibleFilter]}
               category="keep"
@@ -142,7 +142,7 @@ export default function ProjectsPage() {
               categories={[eligibleFilter]}
               category="missing"
               setCategory={setEligibleFilter}
-            />
+            /> */}
           </div>
 
           <div className="mb-8">

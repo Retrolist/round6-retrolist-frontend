@@ -13,10 +13,10 @@ export default function LayoutSideInfo({
       <div className="relative hero-section-gradient-bg rounded-2xl flex items-center px-20 h-60 pb-8">
         <div className="hidden sm:block" style={{ maxWidth: 'calc(100% - 260px)' }}>
           <div className="text-3xl lg:text-4xl font-bold">
-            Retro Funding 4: <span className="text-red-600">Onchain Builders</span>
+            Retro Funding 5: <span className="text-red-600">OP Stack</span>
           </div>
           <p className="pt-3 w-full hidden md:block">
-            Rewarding projects that have an on-chain impact on the Superchain
+            Rewarding projects and contributors that contribute to the OP Stack
           </p>
         </div>
         <img
@@ -32,13 +32,13 @@ export default function LayoutSideInfo({
           icon="lucide:users-2"
         />
         <StatCard
-          title="Voting period"
-          description="June 27 - July 11"
+          title="Sign up period"
+          description="Aug 22 - Sep 5"
           icon="lucide:calendar"
         />
         <StatCard
           title="Total rewards"
-          description="10M OP"
+          description="8M OP"
           icon="lucide:award"
         />
       </div>

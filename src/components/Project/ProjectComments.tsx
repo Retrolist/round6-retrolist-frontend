@@ -18,7 +18,7 @@ export default function ProjectComments({ projectId }: { projectId: string }) {
       setHash(response.data.hash);
     } catch (err) {
       console.error(err);
-      window.alert("Load failed");
+      // window.alert("Load failed");
     }
   }, [projectId]);
 
@@ -27,7 +27,7 @@ export default function ProjectComments({ projectId }: { projectId: string }) {
   }, [projectId]);
 
   return (
-    <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+    <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5 hidden">
       <div className="text-2xl">Comments</div>
 
       <div className="mt-3 hidden">
