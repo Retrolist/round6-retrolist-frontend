@@ -17,7 +17,7 @@ export const ProjectCountProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_HOST}/projects/count`);
+        const response = await fetch(`${import.meta.env.VITE_API_HOST}/5/projects/count`);
         if (!response.ok) {
           throw new Error('Failed to fetch project count');
         }

@@ -46,7 +46,7 @@ export async function onRequest(context) {
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${request.url}" />
-    <meta property="og:image" content="https://retrolist.app/og/${projectId}.png" />
+    <meta property="og:image" content="https://retrolist.app/img/cover-r5-discovery.png" />
 
     <meta property="og:image:height" content="630" />
     <meta property="og:image:width" content="1200" />
@@ -58,7 +58,7 @@ export async function onRequest(context) {
     <meta name="description" content="RetroList | Retro Funding 5 Project Discovery and Community Voting UI" />
   
     <meta property="fc:frame" content="vNext" />
-    <meta property="fc:frame:image" content="https://retrolist.app/og/${projectId}.png" />
+    <meta property="fc:frame:image" content="https://retrolist.app/img/cover-r5-discovery.png" />
     <meta name="fc:frame:button:1" content="View Project" />
     <meta name="fc:frame:button:1:action" content="link" />
     <meta name="fc:frame:button:1:target" content="https://retrolist.app/project/${projectId}" />

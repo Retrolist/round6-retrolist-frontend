@@ -17,7 +17,7 @@ const { Search } = Input;
 export default function ProjectsPage() {
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState<string[]>([]);
-  const [eligibleFilter, setEligibleFilter] = useState("keep");
+  const [eligibleFilter, setEligibleFilter] = useState("");
   const [seed, setSeed] = useState(
     Math.floor(Math.random() * 1000000000).toString()
   );

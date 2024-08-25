@@ -23,7 +23,7 @@ export function useProjects(options: ProjectQueryOptions) {
 
       if (PROJECTS.length == 0) {
         // const response = await axios.get("/dataset/rpgf3/projects.json")
-        const response = await axios.get(`${import.meta.env.VITE_API_HOST}/projects`)
+        const response = await axios.get(`${import.meta.env.VITE_API_HOST}/5/projects`)
         PROJECTS = response.data
 
         // Force order by rank

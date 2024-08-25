@@ -28,7 +28,7 @@ export default function LayoutSideInfo({
       <div className="flex flex-col lg:flex-row gap-6 justify-center relative -top-10 px-8">
         <StatCard
           title="Projects"
-          description={`${projectCount.eligible || '...'}`}
+          description={`${projectCount.total || '...'}`}
           icon="lucide:users-2"
         />
         <StatCard

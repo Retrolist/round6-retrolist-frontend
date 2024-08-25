@@ -112,32 +112,34 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                   Report
                 </button> */}
 
-                <div className="flex gap-4 mt-3 hidden">
-                  {project.rank && project.rank < 10 && (
-                    <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                      <Crown />
-                      <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
-                    </div>
-                  )}
+                {project.rank &&
+                  <div className="flex gap-4 mt-3">
+                    {project.rank && project.rank < 10 && (
+                      <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                        <Crown />
+                        <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+                      </div>
+                    )}
 
-                  {project.rank && project.rank >= 10 && project.rank <= 99 && (
-                    <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                      <Crown />
-                      <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
-                    </div>
-                  )}
+                    {project.rank && project.rank >= 10 && project.rank <= 99 && (
+                      <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                        <Crown />
+                        <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
+                      </div>
+                    )}
 
-                  {project.rank && project.rank >= 100 && (
-                    <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                      <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
-                    </div>
-                  )}
+                    {project.rank && project.rank >= 100 && (
+                      <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                        <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+                      </div>
+                    )}
 
-                  <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
-                    <OpCoin />
-                    <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
+                    <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
+                      <OpCoin />
+                      <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
+                    </div>
                   </div>
-                </div>
+                }
               </div>
             </div>
             <div className="flex gap-2 items-center">
@@ -165,32 +167,34 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
               </a>
             )}
 
-            <div className="flex gap-4 mt-3 md:hidden hidden">
-              {project.rank && project.rank < 10 && (
-                <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                  <Crown />
-                  <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
-                </div>
-              )}
+            {project.rank &&
+              <div className="flex gap-4 mt-3 md:hidden">
+                {project.rank && project.rank < 10 && (
+                  <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                    <Crown />
+                    <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+                  </div>
+                )}
 
-              {project.rank && project.rank >= 10 && project.rank <= 99 && (
-                <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                  <Crown />
-                  <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
-                </div>
-              )}
+                {project.rank && project.rank >= 10 && project.rank <= 99 && (
+                  <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                    <Crown />
+                    <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
+                  </div>
+                )}
 
-              {project.rank && project.rank >= 100 && (
-                <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                  <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
-                </div>
-              )}
+                {project.rank && project.rank >= 100 && (
+                  <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                    <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+                  </div>
+                )}
 
-              <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
-                <OpCoin />
-                <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
+                <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
+                  <OpCoin />
+                  <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
+                </div>
               </div>
-            </div>
+            }
           </div>
         </div>
       </div>
