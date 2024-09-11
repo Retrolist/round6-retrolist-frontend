@@ -1,6 +1,6 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Input } from "antd";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import Layout from "../../components/Layout";
 import LayoutSideInfo from "../../components/LayoutSideInfo";
@@ -8,9 +8,9 @@ import { LoadingAnimation } from "../../components/LoadingAnimation";
 import { ProjectCard } from "../../components/Project/ProjectCard";
 import { ProjectCategoryButton } from "../../components/Project/ProjectCategoryButton";
 import { ProjectList } from "../../components/Project/ProjectList";
+import { ProjectNotFound } from "../../components/ProjectNotFound";
 import { useProjectCount } from "../../hooks/useProjectCount";
 import { useProjects } from "../../hooks/useProjects";
-import { Analytics } from "../analytics/AnalyticsPage";
 
 const { Search } = Input;
 
@@ -155,8 +155,10 @@ export default function ProjectsPage() {
             />
           </div>
 
-          {projects.length == 0 ? (
+          {loading ? (
             <LoadingAnimation />
+          ) : projects.length == 0 ? (
+            <ProjectNotFound />
           ) : (
             <InfiniteScroll
               pageStart={0}
