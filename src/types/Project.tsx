@@ -47,6 +47,8 @@ export interface Project {
   fundingSources: ProjectFundingSource[]
   lists: any[]
   id: string
+  applicationId: string
+  round: number
   prelimResult: string
   reportReason: string
   includedInBallots?: number
@@ -62,6 +64,8 @@ export interface Project {
 
   totalOP?: number
   rank?: number
+
+  agoraBody?: any
 }
 
 export interface ProjectApplicant {
@@ -134,4 +138,10 @@ export interface ProjectMetrics {
   log_gas_fees: number;
   log_transaction_count: number;
   log_trusted_transaction_count: number;
+}
+
+export interface UrlNameDescription {
+  url: string
+  name: string
+  description: string
 }

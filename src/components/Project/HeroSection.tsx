@@ -51,7 +51,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
 
       <div className="flex md:px-8 relative -top-12">
         <div className="flex flex-wrap md:flex-nowrap w-full items-end gap-8">
-          <div className="flex justify-between w-full md:w-auto">
+          <div className="flex justify-between w-full md:w-auto self-start">
             <img
               src={
                 project?.profile.profileImageUrl ||
@@ -68,7 +68,8 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
               Report
             </button> */}
           </div>
-          <div className="flex w-10/12 flex-col gap-2">
+
+          <div className="flex w-10/12 flex-col gap-2 md:mt-12">
             <div className="flex justify-between">
               <div className="flex gap-5">
                 <div className="text-[28px] flex items-end">
@@ -158,14 +159,60 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                 }
               /> */}
             </div>
-            {project?.websiteUrl && (
-              <a href={project?.websiteUrl} target="_blank">
-                <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                  <div className="text-xs">{project?.websiteUrl}</div>
-                  <Icon icon="lucide:external-link" width={14} height={14} />
-                </div>
-              </a>
-            )}
+
+            <div>
+              <div>
+                {project?.websiteUrl && (
+                  <a href={project?.websiteUrl} target="_blank">
+                    <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                      <div className="text-xs">{project?.websiteUrl}</div>
+                      <Icon icon="lucide:external-link" width={14} height={14} />
+                    </div>
+                  </a>
+                )}
+              </div>
+
+              {project?.agoraBody?.socialLinks?.website?.length > 1 && project?.agoraBody?.socialLinks?.website?.map((website: string, i: number) => (
+                <a href={website} target="_blank" key={i}>
+                  <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                    <div className="text-xs">{website}</div>
+                    <Icon icon="lucide:external-link" width={14} height={14} />
+                  </div>
+                </a>
+              ))}
+
+              {project?.agoraBody?.socialLinks?.farcaster?.length > 1 && project?.agoraBody?.socialLinks?.farcaster?.map((website: string, i: number) => (
+                <a href={website} target="_blank" key={i}>
+                  <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                    <div className="text-xs">{website}</div>
+                    <Icon icon="lucide:external-link" width={14} height={14} />
+                  </div>
+                </a>
+              ))}
+
+              <div>
+                {project?.agoraBody?.socialLinks?.twitter && (
+                  <a href={project?.agoraBody?.socialLinks?.twitter} target="_blank">
+                    <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                      <div className="text-xs">{project?.agoraBody?.socialLinks?.twitter}</div>
+                      <Icon icon="lucide:external-link" width={14} height={14} />
+                    </div>
+                  </a>
+                )}
+              </div>
+
+              <div>
+                {project?.agoraBody?.socialLinks?.mirror && (
+                  <a href={project?.agoraBody?.socialLinks?.mirror} target="_blank">
+                    <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                      <div className="text-xs">{project?.agoraBody?.socialLinks?.mirror}</div>
+                      <Icon icon="lucide:external-link" width={14} height={14} />
+                    </div>
+                  </a>
+                )}
+              </div>
+            </div>
+
 
             {project.rank &&
               <div className="flex gap-4 mt-3 md:hidden">

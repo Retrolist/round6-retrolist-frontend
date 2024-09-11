@@ -9,7 +9,15 @@ function fundingSourceIcon(currency: string) {
   }
 }
 
-export const ProjectFundingCard = ({ fundingSource }: { fundingSource: ProjectFundingSource }) => {
+export const ProjectFundingCard = ({ fundingSource: fundingSourceRaw }: { fundingSource: ProjectFundingSource }) => {
+  // Hot fix for Retro 5 grant null case
+  const fundingSource = {...fundingSourceRaw}
+
+  if (fundingSource.type === null && !isNaN(fundingSource.amount as any)) {
+    fundingSource.type = 'Retro Funding'
+    fundingSource.currency = 'OP'
+  }
+
   return (
     <div className="border bg-white border-[#EAECF0] rounded-lg p-4 my-5">
       <div className="flex justify-between items-center">

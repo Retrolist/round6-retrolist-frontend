@@ -10,7 +10,7 @@ import { ProjectHeroSection } from "../../../components/Project/HeroSection";
 import { ProjectListCard } from "../../../components/Project/ListsCard";
 import ProjectComments from "../../../components/Project/ProjectComments";
 import ChainIcon from "../../../components/common/ChainIcon";
-import { Project, ProjectMetadata, ProjectMetrics } from "../../../types/Project";
+import { Project, ProjectMetadata, ProjectMetrics, UrlNameDescription } from "../../../types/Project";
 import { categoryLabel } from "../../../utils/project";
 
 export function ProjectView({ project }: { project: Project }) {
@@ -60,6 +60,37 @@ export function ProjectView({ project }: { project: Project }) {
           ))}
         </div>
       </div>
+
+      {project?.agoraBody?.impactStatement &&
+        <div className="my-5">
+          <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+            <div className="flex gap-3">
+              <img src="/img/impact-logo.png" alt="" className="w-10 h-10" />
+              <div className="text-2xl">Impact Statement</div>
+            </div>
+
+            <div className="mt-3">
+              <div className="text-[#272930DE] font-bold">Category: {project?.agoraBody?.impactStatement.category}</div>
+            </div>
+
+            <div className="mt-3">
+              <div className="text-[#272930DE] font-bold">Subcategory</div>
+              <div className="text-[#4C4E64AD] text-sm whitespace-pre-line mt-1">
+                {project?.agoraBody?.impactStatement.subcategory.join('\n\n')}
+              </div>
+            </div>
+
+            <div>
+              {project?.agoraBody?.impactStatement.statement.map(({ answer, question }: { answer: string, question: string}, i: number) => (
+                <div className="mt-5" key={i}>
+                  <div className="text-[#272930DE] font-bold">{question}</div>
+                  <div className="text-[#4C4E64AD] text-sm whitespace-pre-line mt-1">{answer}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      }
 
       <div className="my-5">
         {project.osoSlug && (
@@ -170,6 +201,34 @@ export function ProjectView({ project }: { project: Project }) {
                     </div>
                     <div className="text-sm truncate">
                       {contribution.description}
+                    </div>
+                    <Icon icon="lucide:external-link" />
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      }
+
+      {project?.agoraBody?.links?.length > 0 &&
+        <div className="my-5">
+          <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+            <div className="text-2xl">Links</div>
+            {/* <div className="mt-3 text-[#4C4E64AD] text-sm flex flex-col gap-6 whitespace-pre-line">
+              {project?.contributionDescription}
+            </div> */}
+            <div className="mt-5">
+              {/* <div className="mb-2">Contribution Links</div> */}
+
+              {project?.agoraBody?.links?.map((contribution: UrlNameDescription, i: number) => (
+                <a href={contribution.url} target="_blank" key={i}>
+                  <div className="flex gap-2 items-center text-[#858796]">
+                    <div className="p-1 bg-[#F5F5F5] rounded-full">
+                      <Icon icon="lucide:globe" />
+                    </div>
+                    <div className="text-sm truncate">
+                      {contribution.url}
                     </div>
                     <Icon icon="lucide:external-link" />
                   </div>
