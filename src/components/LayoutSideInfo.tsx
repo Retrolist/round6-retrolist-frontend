@@ -33,12 +33,12 @@ export default function LayoutSideInfo({
         />
         <StatCard
           title="Voting Period"
-          description="Sep 21 - Oct 4"
+          description="Sep 30 - Oct 14"
           icon="lucide:calendar"
         />
         <StatCard
           title="Total Rewards"
-          description="8M OP"
+          description="2M - 8M OP"
           icon="lucide:award"
         />
       </div>
