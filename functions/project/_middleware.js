@@ -13,19 +13,6 @@ class RemoveHandler {
   }
 }
 
-const escapeHTML = str =>
-  str.replace(
-    /[&<>'"]/g,
-    tag =>
-      ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        "'": '&#39;',
-        '"': '&quot;'
-      }[tag] || tag)
-  );
-
 export async function onRequest(context) {
   const { request, next } = context;
   const { pathname } = new URL(request.url);
@@ -55,7 +42,7 @@ export async function onRequest(context) {
     <title>${project.displayName} - RetroList</title>
 
     <meta property="og:title" content="${project.displayName} - RetroList" />
-    <meta property="og:description" content="${escapeHTML(project.description)}" />
+    <meta property="og:description" content="RetroList | Retro Funding 5 Project Discovery and Community Voting UI" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${request.url}" />
@@ -66,9 +53,9 @@ export async function onRequest(context) {
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${project.displayName} - RetroList" />
-    <meta name="twitter:description" content="${escapeHTML(project.description)}" />
+    <meta name="twitter:description" content="RetroList | Retro Funding 5 Project Discovery and Community Voting UI" />
 
-    <meta name="description" content="${escapeHTML(project.description)}" />
+    <meta name="description" content="RetroList | Retro Funding 5 Project Discovery and Community Voting UI" />
   
     <meta property="fc:frame" content="vNext" />
     <meta property="fc:frame:image" content="https://retrolist.app/og/${projectId}.png" />
