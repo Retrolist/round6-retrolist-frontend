@@ -11,6 +11,7 @@ import { ProjectList } from "../../components/Project/ProjectList";
 import { ProjectNotFound } from "../../components/ProjectNotFound";
 import { useProjectCount } from "../../hooks/useProjectCount";
 import { useProjects } from "../../hooks/useProjects";
+import { categoryLabel } from "../../utils/project";
 
 const { Search } = Input;
 
@@ -89,7 +90,7 @@ export default function ProjectsPage() {
 
             {projectCount.categories.map((category) => (
               <ProjectCategoryButton
-                text={category.name}
+                text={categoryLabel(category.name)}
                 amount={category.count}
                 categories={categories}
                 category={category.name}

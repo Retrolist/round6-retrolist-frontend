@@ -27,17 +27,17 @@ export default function LayoutSideInfo({
       </div>
       <div className="flex flex-col lg:flex-row gap-6 justify-center relative -top-10 px-8">
         <StatCard
-          title="Projects"
-          description={`${projectCount.total || '...'}`}
+          title="Eligible Projects"
+          description={`${projectCount.eligible || '...'}`}
           icon="lucide:users-2"
         />
         <StatCard
-          title="Sign up period"
+          title="Sign Up Period"
           description="Aug 22 - Sep 5"
           icon="lucide:calendar"
         />
         <StatCard
-          title="Total rewards"
+          title="Total Rewards"
           description="8M OP"
           icon="lucide:award"
         />

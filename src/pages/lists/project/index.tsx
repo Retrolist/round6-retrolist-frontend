@@ -70,7 +70,7 @@ export function ProjectView({ project }: { project: Project }) {
             </div>
 
             <div className="mt-3">
-              <div className="text-[#272930DE] font-bold">Category: {project?.agoraBody?.impactStatement.category}</div>
+              <div className="text-[#272930DE] font-bold">Category: {categoryLabel(project?.agoraBody?.impactStatement.category)}</div>
             </div>
 
             <div className="mt-3">

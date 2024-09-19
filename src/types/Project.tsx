@@ -57,6 +57,7 @@ export interface Project {
   packages: string[]
 
   osoSlug?: string
+  charmverseLink?: string
 
   metrics: ProjectMetrics | null
   metricsPercent: ProjectMetrics | null

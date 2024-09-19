@@ -10,6 +10,7 @@ import axios from "axios";
 import { OpCoin } from "../../assets/OpCoin";
 import { Crown } from "../../assets/Crown";
 import { OpenSourceBadge } from "./OpenSourceBadge";
+import { categoryLabel } from "../../utils/project";
 
 export const ProjectHeroSection = ({ project, noMargin = false }: { project: Project, noMargin?: boolean }) => {
   const [ showReportModal, setShowReportModal ] = useState(false)
@@ -113,40 +114,53 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                   Report
                 </button> */}
 
-                {project.rank &&
-                  <div className="flex gap-4 mt-3">
-                    {project.rank && project.rank < 10 && (
-                      <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                        <Crown />
-                        <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+                <div>
+                  {project.rank &&
+                    <div className="flex gap-4 mt-3">
+                      {project.rank && project.rank < 10 && (
+                        <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                          <Crown />
+                          <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+                        </div>
+                      )}
+                      {project.rank && project.rank >= 10 && project.rank <= 99 && (
+                        <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                          <Crown />
+                          <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
+                        </div>
+                      )}
+                      {project.rank && project.rank >= 100 && (
+                        <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                          <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+                        </div>
+                      )}
+                      <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
+                        <OpCoin />
+                        <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
                       </div>
-                    )}
-
-                    {project.rank && project.rank >= 10 && project.rank <= 99 && (
-                      <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                        <Crown />
-                        <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
-                      </div>
-                    )}
-
-                    {project.rank && project.rank >= 100 && (
-                      <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                        <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
-                      </div>
-                    )}
-
-                    <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
-                      <OpCoin />
-                      <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
                     </div>
+                  }
+                </div>
+
+                {project.charmverseLink &&
+                  <div>
+                    <a
+                      className="flex gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
+                      href={project.charmverseLink}
+                      target="_blank"
+                    >
+                      Badgeholder Review
+                    </a>
                   </div>
                 }
               </div>
             </div>
             <div className="flex gap-2 items-center">
-              <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
-                {project?.impactCategory[0] || "No Category"}
-              </div>
+              {project.impactCategory.map(category => (
+                <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
+                  {categoryLabel(category)}
+                </div>
+              ))}
 
               <OpenSourceBadge isOss={project.metrics?.is_oss}></OpenSourceBadge>
 
