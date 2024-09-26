@@ -59,7 +59,8 @@ export function useProjects(options: ProjectQueryOptions) {
       if (options.categories && options.categories.length > 0) {
         filteredProjects = filteredProjects.filter(project => (
           options.categories.indexOf(project.recategorization || '') != -1 ||
-          options.categories.indexOf(project.primaryCategory || '') != -1
+          options.categories.indexOf(project.primaryCategory || '') != -1 ||
+          project.impactCategory.some(projectCategory => options.categories.includes(projectCategory))
         ))
       }
 
