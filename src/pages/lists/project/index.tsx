@@ -76,12 +76,12 @@ export function ProjectView({ project }: { project: Project }) {
             <div className="mt-3">
               <div className="text-[#272930DE] font-bold">Subcategory</div>
               <div className="text-[#4C4E64AD] text-sm whitespace-pre-line mt-1">
-                {project?.agoraBody?.impactStatement.subcategory.join('\n\n')}
+                {project?.agoraBody?.impactStatement?.subcategory?.join('\n\n')}
               </div>
             </div>
 
             <div>
-              {project?.agoraBody?.impactStatement.statement.map(({ answer, question }: { answer: string, question: string}, i: number) => (
+              {project?.agoraBody?.impactStatement?.statement?.create?.map(({ answer, question }: { answer: string, question: string}, i: number) => (
                 <div className="mt-5" key={i}>
                   <div className="text-[#272930DE] font-bold">{question}</div>
                   <div className="text-[#4C4E64AD] text-sm whitespace-pre-line mt-1">{answer}</div>
