@@ -11,6 +11,7 @@ import { OpCoin } from "../../assets/OpCoin";
 import { Crown } from "../../assets/Crown";
 import { OpenSourceBadge } from "./OpenSourceBadge";
 import { categoryLabel } from "../../utils/project";
+import { apiHost } from "../../utils/api";
 
 export const ProjectHeroSection = ({ project, noMargin = false }: { project: Project, noMargin?: boolean }) => {
   const [ showReportModal, setShowReportModal ] = useState(false)
@@ -18,7 +19,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
 
   const submitReport = useCallback(async () => {
     try {
-      await axios.post(import.meta.env.VITE_API_HOST + "/report", {
+      await axios.post(apiHost() + "/report", {
         projectId: project.id,
         reason: reportReason,
       })

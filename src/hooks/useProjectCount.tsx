@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, ReactNode, useContext } from 'react';
 import { ProjectCount } from '../types/Project';
+import { apiHost, apiRound } from '../utils/api';
 
 const DEFAULT_PROJECT_COUNT = {
   total: 0,
@@ -17,7 +18,7 @@ export const ProjectCountProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_HOST}/5/projects/count`);
+        const response = await fetch(`${apiHost()}/${apiRound()}/projects/count`);
         if (!response.ok) {
           throw new Error('Failed to fetch project count');
         }

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { FarcasterEmbed } from "react-farcaster-embed/dist/client";
 import { FarcasterComment } from "../../types/Farcaster";
 import { LoadingAnimation } from "../LoadingAnimation";
+import { apiHost } from "../../utils/api";
 
 export default function ProjectComments({ projectId }: { projectId: string }) {
   const [comments, setComments] = useState<FarcasterComment[]>([]);
@@ -12,7 +13,7 @@ export default function ProjectComments({ projectId }: { projectId: string }) {
   const fetchComments = useCallback(async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_HOST}/projects/${projectId}/comments`
+        `${apiHost()}/projects/${projectId}/comments`
       );
       setComments(response.data.comments);
       setHash(response.data.hash);

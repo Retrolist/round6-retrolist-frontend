@@ -12,6 +12,7 @@ import ProjectComments from "../../../components/Project/ProjectComments";
 import ChainIcon from "../../../components/common/ChainIcon";
 import { Project, ProjectMetadata, ProjectMetrics, UrlNameDescription } from "../../../types/Project";
 import { categoryLabel } from "../../../utils/project";
+import { apiHost } from "../../../utils/api";
 
 export function ProjectView({ project }: { project: Project }) {
   return (
@@ -301,7 +302,7 @@ export default function ProjectPage() {
     // const response = await axios.get("/dataset/rpgf3/projects/" + projectId + ".json");
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_HOST}/projects/${projectId}`
+        `${apiHost()}/projects/${projectId}`
       );
       setProject(response.data);
 
