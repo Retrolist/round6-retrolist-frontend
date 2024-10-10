@@ -52,15 +52,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </div>
               )}
             </div>
-            {/* <Link to="/list" className="py-2 px-3">
-                <div>Lists</div>
-              </Link> */}
-            {/* <Link to="/analytics" className="py-2 px-3">
-                <div>Analytics</div>
-              </Link> */}
-            {/* <Link to="/" className="py-2 px-3">
-                <div>My Lists</div>
-              </Link> */}
           </div>
           <div className="flex w-full justify-center sm:w-auto sm:justify-start">
             <Link to="/">
@@ -88,14 +79,36 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="sm:hidden -mt-1 flex justify-between px-4 pb-3">
           <div className="flex w-full justify-around gap-5 text-base font-semibold text-gray-800">
             <Link to="/" className="py-2 px-3">
-              <div>Projects</div>
+              <div>Home</div>
             </Link>
-            <Link to="https://round4.retrolist.app" className="py-2 px-3">
-              <div>Round 4</div>
-            </Link>
-            <Link to="https://round3.retrolist.app" className="py-2 px-3">
-              <div>Round 3</div>
-            </Link>
+            <div
+              className="py-2 px-3 flex gap-2 items-center relative cursor-pointer z-50"
+              onMouseEnter={() => setIsOpen(true)}
+              onMouseLeave={() => setIsOpen(false)}
+            >
+              <div>Rounds</div>
+              <img src="/chevron-down.svg" alt="" />
+              {isOpen && (
+                <div
+                  onMouseEnter={() => setIsOpen(true)}
+                  onMouseLeave={() => setIsOpen(false)}
+                  className="absolute left-0 w-48 mt-2 top-8 bg-white border border-gray-300 rounded-md shadow-lg cursor-pointer z-50"
+                >
+                  <div className="py-1">
+                    {link.map((ele, index) => {
+                      return (
+                        <a
+                          href={ele}
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                        >
+                          Rounds {index + 3}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
             {/* <Link to="/list" className="py-2 px-3">
               <div>Lists</div>
             </Link> */}
