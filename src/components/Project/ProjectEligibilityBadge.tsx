@@ -6,9 +6,6 @@ import CheckOutlined from "@ant-design/icons/CheckOutlined"
 import { ballotsColor } from "../../utils/project"
 
 export default function ProjectEligibilityBadge({ status, ballots = 0, size = 'xs' }: { status: string, ballots?: number, size?: string }) {
-  // For sign up period
-  return <div></div>
-
   // console.log(status)
 
   if (status.toLowerCase() == 'keep') {

@@ -5,6 +5,11 @@ export function categoryLabel(category: string) {
     case 'DEVELOPER_ECOSYSTEM': return 'Developer Ecosystem'
     case 'END_USER_EXPERIENCE_AND_ADOPTION': return 'End User Experience & Adoption'
     case 'OP_STACK': return 'OP Stack'
+
+    case 'OP_STACK_TOOLING': return 'OP Stack Tooling'
+    case 'OP_STACK_RESEARCH_AND_DEVELOPMENT': return 'OP Stack Research & Development'
+    case 'ETHEREUM_CORE_CONTRIBUTIONS': return 'Ethereum Core Contribution'
+
     default: return category
   }
 }

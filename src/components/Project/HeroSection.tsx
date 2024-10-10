@@ -10,6 +10,8 @@ import axios from "axios";
 import { OpCoin } from "../../assets/OpCoin";
 import { Crown } from "../../assets/Crown";
 import { OpenSourceBadge } from "./OpenSourceBadge";
+import { categoryLabel } from "../../utils/project";
+import { apiHost } from "../../utils/api";
 
 export const ProjectHeroSection = ({ project, noMargin = false }: { project: Project, noMargin?: boolean }) => {
   const [ showReportModal, setShowReportModal ] = useState(false)
@@ -17,7 +19,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
 
   const submitReport = useCallback(async () => {
     try {
-      await axios.post(import.meta.env.VITE_API_HOST + "/report", {
+      await axios.post(apiHost() + "/report", {
         projectId: project.id,
         reason: reportReason,
       })
@@ -51,7 +53,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
 
       <div className="flex md:px-8 relative -top-12">
         <div className="flex flex-wrap md:flex-nowrap w-full items-end gap-8">
-          <div className="flex justify-between w-full md:w-auto">
+          <div className="flex justify-between w-full md:w-auto self-start">
             <img
               src={
                 project?.profile.profileImageUrl ||
@@ -68,7 +70,8 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
               Report
             </button> */}
           </div>
-          <div className="flex w-10/12 flex-col gap-2">
+
+          <div className="flex w-10/12 flex-col gap-2 md:mt-12">
             <div className="flex justify-between">
               <div className="flex gap-5">
                 <div className="text-[28px] flex items-end">
@@ -112,40 +115,53 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                   Report
                 </button> */}
 
-                {project.rank &&
-                  <div className="flex gap-4 mt-3">
-                    {project.rank && project.rank < 10 && (
-                      <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                        <Crown />
-                        <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+                <div>
+                  {project.rank &&
+                    <div className="flex gap-4 mt-3">
+                      {project.rank && project.rank < 10 && (
+                        <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                          <Crown />
+                          <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+                        </div>
+                      )}
+                      {project.rank && project.rank >= 10 && project.rank <= 99 && (
+                        <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                          <Crown />
+                          <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
+                        </div>
+                      )}
+                      {project.rank && project.rank >= 100 && (
+                        <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                          <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+                        </div>
+                      )}
+                      <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
+                        <OpCoin />
+                        <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
                       </div>
-                    )}
-
-                    {project.rank && project.rank >= 10 && project.rank <= 99 && (
-                      <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                        <Crown />
-                        <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
-                      </div>
-                    )}
-
-                    {project.rank && project.rank >= 100 && (
-                      <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                        <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
-                      </div>
-                    )}
-
-                    <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
-                      <OpCoin />
-                      <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
                     </div>
+                  }
+                </div>
+
+                {project.charmverseLink &&
+                  <div>
+                    <a
+                      className="flex gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
+                      href={project.charmverseLink}
+                      target="_blank"
+                    >
+                      Badgeholder Review
+                    </a>
                   </div>
                 }
               </div>
             </div>
             <div className="flex gap-2 items-center">
-              <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
-                {project?.impactCategory[0] || "No Category"}
-              </div>
+              {project.impactCategory.map(category => (
+                <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
+                  {categoryLabel(category)}
+                </div>
+              ))}
 
               <OpenSourceBadge isOss={project.metrics?.is_oss}></OpenSourceBadge>
 
@@ -158,14 +174,60 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                 }
               /> */}
             </div>
-            {project?.websiteUrl && (
-              <a href={project?.websiteUrl} target="_blank">
-                <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                  <div className="text-xs">{project?.websiteUrl}</div>
-                  <Icon icon="lucide:external-link" width={14} height={14} />
-                </div>
-              </a>
-            )}
+
+            <div>
+              <div>
+                {project?.websiteUrl && (
+                  <a href={project?.websiteUrl} target="_blank">
+                    <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                      <div className="text-xs">{project?.websiteUrl}</div>
+                      <Icon icon="lucide:external-link" width={14} height={14} />
+                    </div>
+                  </a>
+                )}
+              </div>
+
+              {project?.agoraBody?.socialLinks?.website?.length > 1 && project?.agoraBody?.socialLinks?.website?.map((website: string, i: number) => (
+                <a href={website} target="_blank" key={i}>
+                  <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                    <div className="text-xs">{website}</div>
+                    <Icon icon="lucide:external-link" width={14} height={14} />
+                  </div>
+                </a>
+              ))}
+
+              {project?.agoraBody?.socialLinks?.farcaster?.length > 1 && project?.agoraBody?.socialLinks?.farcaster?.map((website: string, i: number) => (
+                <a href={website} target="_blank" key={i}>
+                  <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                    <div className="text-xs">{website}</div>
+                    <Icon icon="lucide:external-link" width={14} height={14} />
+                  </div>
+                </a>
+              ))}
+
+              <div>
+                {project?.agoraBody?.socialLinks?.twitter && (
+                  <a href={project?.agoraBody?.socialLinks?.twitter} target="_blank">
+                    <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                      <div className="text-xs">{project?.agoraBody?.socialLinks?.twitter}</div>
+                      <Icon icon="lucide:external-link" width={14} height={14} />
+                    </div>
+                  </a>
+                )}
+              </div>
+
+              <div>
+                {project?.agoraBody?.socialLinks?.mirror && (
+                  <a href={project?.agoraBody?.socialLinks?.mirror} target="_blank">
+                    <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                      <div className="text-xs">{project?.agoraBody?.socialLinks?.mirror}</div>
+                      <Icon icon="lucide:external-link" width={14} height={14} />
+                    </div>
+                  </a>
+                )}
+              </div>
+            </div>
+
 
             {project.rank &&
               <div className="flex gap-4 mt-3 md:hidden">

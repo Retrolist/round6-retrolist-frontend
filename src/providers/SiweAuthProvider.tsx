@@ -4,6 +4,7 @@ import { createContext, useCallback, useEffect, useState } from 'react';
 import { useChainId } from 'wagmi';
 import { useAccount } from 'wagmi';
 import { SiweMessage } from '../types/SiweMessage';
+import { apiHost } from '../utils/api';
 
 export const SiweAuthContext = createContext("unauthenticated")
 
@@ -44,7 +45,7 @@ export function SiweAuthProvider({
     verify: async ({ message, signature }) => {
       const authEndpoints = [
         import.meta.env.VITE_SOCIAL_ORACLE_ENDPOINT + '/siwe/verify?testnet=' + import.meta.env.VITE_DEV_MODE,
-        import.meta.env.VITE_API_HOST + '/siwe/verify?testnet=' + import.meta.env.VITE_DEV_MODE,
+        apiHost() + '/siwe/verify?testnet=' + import.meta.env.VITE_DEV_MODE,
       ]
 
       for (const endpoint of authEndpoints) {
@@ -99,7 +100,7 @@ export function SiweAuthProvider({
         const soData = await response.json()
 
         {
-          const response = await fetch(import.meta.env.VITE_API_HOST + '/siwe/me', {
+          const response = await fetch(apiHost() + '/siwe/me', {
             credentials: 'include',
           });
   

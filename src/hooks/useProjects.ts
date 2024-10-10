@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { api } from "../utils/api";
+import { api, apiHost, apiRound } from "../utils/api";
 import { useDebounce } from "usehooks-ts";
 import { ProjectQueryOptions, ProjectMetadata } from "../types/Project";
 import Fuse from 'fuse.js'
@@ -23,7 +23,7 @@ export function useProjects(options: ProjectQueryOptions) {
 
       if (PROJECTS.length == 0) {
         // const response = await axios.get("/dataset/rpgf3/projects.json")
-        const response = await axios.get(`${import.meta.env.VITE_API_HOST}/5/projects`)
+        const response = await axios.get(`${apiHost()}/${apiRound()}/projects`)
         PROJECTS = response.data
 
         // Force order by rank
@@ -59,7 +59,8 @@ export function useProjects(options: ProjectQueryOptions) {
       if (options.categories && options.categories.length > 0) {
         filteredProjects = filteredProjects.filter(project => (
           options.categories.indexOf(project.recategorization || '') != -1 ||
-          options.categories.indexOf(project.primaryCategory || '') != -1
+          options.categories.indexOf(project.primaryCategory || '') != -1 ||
+          project.impactCategory.some(projectCategory => options.categories.includes(projectCategory))
         ))
       }
 
