@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className="flex justify-between items-center p-4 container 2xl:max-w-[1440px] mx-auto relative z-50">
           <div className="hidden sm:flex gap-5 text-base font-semibold absolute left-1/2 -translate-x-1/2">
             <Link to="/" className="py-2 px-3">
-              <div>Projects</div>
+              <div>Home</div>
             </Link>
             <div
               className="py-2 px-3 flex gap-2 items-center relative cursor-pointer z-50"
