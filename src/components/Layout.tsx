@@ -35,7 +35,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div
                   onMouseEnter={() => setIsOpen(true)}
                   onMouseLeave={() => setIsOpen(false)}
-                  className="absolute left-0 w-48 mt-2 top-10 bg-white border border-gray-300 rounded-md shadow-lg cursor-pointer z-50"
+                  className="absolute left-0 w-48 mt-2 top-8 bg-white border border-gray-300 rounded-md shadow-lg cursor-pointer z-50"
                 >
                   <div className="py-1">
                     {link.map((ele, index) => {
