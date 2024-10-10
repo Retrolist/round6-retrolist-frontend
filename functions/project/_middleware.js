@@ -83,6 +83,24 @@ export async function onRequest(context) {
     <meta name="fc:frame:button:2" content="Follow RetroList" />
     <meta name="fc:frame:button:2:action" content="link" />
     <meta name="fc:frame:button:2:target" content="https://warpcast.com/retrolist" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVPR1DXK6R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZVPR1DXK6R');
+    </script>
+
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "nsr8gxo6ae");
+    </script>
   `;
 
   return new HTMLRewriter()

@@ -63,6 +63,8 @@ export interface Project {
   metricsPercent: ProjectMetrics | null
   metricsPercentOss: ProjectMetrics | null
 
+  application: ProjectApplication | null
+
   totalOP?: number
   rank?: number
 
@@ -145,4 +147,16 @@ export interface UrlNameDescription {
   url: string
   name: string
   description: string
+}
+
+export interface ImpactStatement {
+  question: string;
+  answer: string;
+}
+
+export interface ProjectApplication {
+  round: number;
+  category: string;
+  subcategory: string[];
+  impactStatement: ImpactStatement[];
 }
