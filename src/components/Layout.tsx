@@ -20,7 +20,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="border-b border-[#EAECF0]">
         <div className="flex justify-between items-center p-4 container 2xl:max-w-[1440px] mx-auto relative z-50">
           <div className="hidden sm:flex gap-5 text-base font-semibold absolute left-1/2 -translate-x-1/2">
-            <Link to="/" className="py-2 px-3">
+            <Link to="https://retrolist.app/" className="py-2 px-3">
               <div>Home</div>
             </Link>
             <div
@@ -77,7 +77,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         <div className="sm:hidden -mt-1 flex justify-between px-4 pb-3">
           <div className="flex w-full justify-around gap-5 text-base font-semibold text-gray-800">
-            <Link to="/" className="py-2 px-3">
+            <Link to="https://retrolist.app/" className="py-2 px-3">
               <div>Home</div>
             </Link>
             <div
