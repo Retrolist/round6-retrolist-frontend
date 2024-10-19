@@ -10,7 +10,12 @@ import { ProjectHeroSection } from "../../../components/Project/HeroSection";
 import { ProjectListCard } from "../../../components/Project/ListsCard";
 import ProjectComments from "../../../components/Project/ProjectComments";
 import ChainIcon from "../../../components/common/ChainIcon";
-import { Project, ProjectMetadata, ProjectMetrics, UrlNameDescription } from "../../../types/Project";
+import {
+  Project,
+  ProjectMetadata,
+  ProjectMetrics,
+  UrlNameDescription,
+} from "../../../types/Project";
 import { categoryLabel } from "../../../utils/project";
 import { apiHost } from "../../../utils/api";
 
@@ -62,7 +67,7 @@ export function ProjectView({ project }: { project: Project }) {
         </div>
       </div>
 
-      {project?.application &&
+      {project?.application && (
         <div className="my-5">
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
             <div className="flex gap-3">
@@ -71,27 +76,36 @@ export function ProjectView({ project }: { project: Project }) {
             </div>
 
             <div className="mt-3">
-              <div className="text-[#272930DE] font-bold">Category: {categoryLabel(project?.application.category)}</div>
+              <div className="text-[#272930DE] font-bold">
+                Category: {categoryLabel(project?.application.category)}
+              </div>
             </div>
 
             <div className="mt-3">
               <div className="text-[#272930DE] font-bold">Subcategory</div>
               <div className="text-[#4C4E64AD] text-sm whitespace-pre-line mt-1">
-                {project?.application.subcategory?.join('\n\n')}
+                {project?.application.subcategory?.join("\n\n")}
               </div>
             </div>
 
             <div>
-              {project?.application.impactStatement.map(({ answer, question }: { answer: string, question: string}, i: number) => (
-                <div className="mt-5" key={i}>
-                  <div className="text-[#272930DE] font-bold">{question}</div>
-                  <div className="text-[#4C4E64AD] text-sm whitespace-pre-line mt-1">{answer}</div>
-                </div>
-              ))}
+              {project?.application.impactStatement.map(
+                (
+                  { answer, question }: { answer: string; question: string },
+                  i: number
+                ) => (
+                  <div className="mt-5" key={i}>
+                    <div className="text-[#272930DE] font-bold">{question}</div>
+                    <div className="text-[#4C4E64AD] text-sm whitespace-pre-line mt-1">
+                      {answer}
+                    </div>
+                  </div>
+                )
+              )}
             </div>
           </div>
         </div>
-      }
+      )}
 
       <div className="my-5">
         {project.osoSlug && (
@@ -115,36 +129,90 @@ export function ProjectView({ project }: { project: Project }) {
           </div>
         )}
 
-        {project?.github.length > 0 &&
+        {project?.attestationBody?.github?.length && (
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
             <div className="text-2xl">GitHub</div>
 
             <div className="mt-5">
-              {project?.github.map((github, i) => (
-                <a href={github} target="_blank" key={i}>
-                  <div className="flex gap-2 items-center text-[#858796]">
-                    <div className="p-1 bg-[#F5F5F5] rounded-full">
-                      {github.startsWith("https://github.com/") ? (
-                        <img
-                          className="w-5 h-5"
-                          src={"/img/social/github.png"}
-                        ></img>
-                      ) : (
-                        <Icon icon="lucide:file-text" color="#757575" />
-                      )}
-                    </div>
-                    <div className="text-sm truncate">
-                      {github.replace("https://github.com/", "")}
-                    </div>
-                    <Icon icon="lucide:external-link" />
+              {project?.attestationBody?.github.map((github_, i) => {
+                const github = typeof github_ === 'string' ? {
+                  url: github_,
+                  name: null,
+                  description: null,
+                } : github_
+
+                return (
+                  <div className={`${github.name || github.description ? 'mb-4' : ''}`}>
+                    <a href={github.url} target="_blank" key={i}>
+                      <div className={`flex gap-2 items-center text-[#858796] ${github.name || github.description ? 'mb-1' : ''}`}>
+                        <div className="p-1 bg-[#F5F5F5] rounded-full">
+                          {github.url.startsWith("https://github.com/") ? (
+                            <img
+                              className="w-5 h-5"
+                              src={"/img/social/github.png"}
+                            ></img>
+                          ) : (
+                            <Icon icon="lucide:file-text" color="#757575" />
+                          )}
+                        </div>
+                        <div className="text-sm truncate">
+                          {github.url.replace("https://github.com/", "")}
+                        </div>
+                        <Icon icon="lucide:external-link" />
+                      </div>
+                    </a>
+
+                    <div className="font-bold text-sm text-[#858796]">{github.name}</div>
+                    <div className="text-sm text-[#858796]">{github.description}</div>
                   </div>
-                </a>
-              ))}
+                );
+              })}
             </div>
           </div>
-        }
+        )}
 
-        {project?.packages.length > 0 &&
+        {project?.attestationBody?.links?.length && (
+          <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+            <div className="text-2xl">Links</div>
+
+            <div className="mt-5">
+              {project?.attestationBody?.links.map((link_, i) => {
+                const link = typeof link_ === 'string' ? {
+                  url: link_,
+                  name: null,
+                  description: null,
+                } : link_
+
+                return (
+                  <div className={`${link.name || link.description ? 'mb-4' : ''}`}>
+                    <a href={link.url} target="_blank" key={i}>
+                      <div className={`flex gap-2 items-center text-[#858796] ${link.name || link.description ? 'mb-1' : ''}`}>
+                        <div className="p-1 bg-[#F5F5F5] rounded-full">
+                          {link.url.startsWith("https://github.com/") ? (
+                            <img
+                              className="w-5 h-5"
+                              src={"/img/social/github.png"}
+                            ></img>
+                          ) : (
+                            <Icon icon="lucide:file-text" color="#757575" />
+                          )}
+                        </div>
+                        <div className={`text-sm truncate ${link.name ? 'font-bold' : ''}`}>
+                          {link.name || link.url}
+                        </div>
+                        <Icon icon="lucide:external-link" />
+                      </div>
+                    </a>
+
+                    <div className="text-sm text-[#858796]">{link.description}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {project?.packages.length > 0 && (
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
             <div className="text-2xl">Packages</div>
 
@@ -158,15 +226,13 @@ export function ProjectView({ project }: { project: Project }) {
                           className="w-5 h-5"
                           src={"/img/social/npm.png"}
                         ></img>
+                      ) : p.startsWith("https://github.com") ? (
+                        <img
+                          className="w-5 h-5"
+                          src={"/img/social/github.png"}
+                        ></img>
                       ) : (
-                        p.startsWith("https://github.com") ? (
-                          <img
-                            className="w-5 h-5"
-                            src={"/img/social/github.png"}
-                          ></img>
-                        ) : (
-                          <Icon icon="lucide:file-text" color="#757575" />
-                        )
+                        <Icon icon="lucide:file-text" color="#757575" />
                       )}
                     </div>
                     <div className="text-sm truncate">
@@ -178,10 +244,10 @@ export function ProjectView({ project }: { project: Project }) {
               ))}
             </div>
           </div>
-        }
+        )}
       </div>
 
-      {project?.contributionLinks.length > 0 &&
+      {project?.contributionLinks.length > 0 && (
         <div className="my-5">
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
             <div className="text-2xl">Contract Addresses</div>
@@ -210,9 +276,9 @@ export function ProjectView({ project }: { project: Project }) {
             </div>
           </div>
         </div>
-      }
+      )}
 
-      {project?.agoraBody?.links?.length > 0 &&
+      {project?.agoraBody?.links?.length > 0 && (
         <div className="my-5">
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
             <div className="text-2xl">Links</div>
@@ -222,23 +288,23 @@ export function ProjectView({ project }: { project: Project }) {
             <div className="mt-5">
               {/* <div className="mb-2">Contribution Links</div> */}
 
-              {project?.agoraBody?.links?.map((contribution: UrlNameDescription, i: number) => (
-                <a href={contribution.url} target="_blank" key={i}>
-                  <div className="flex gap-2 items-center text-[#858796]">
-                    <div className="p-1 bg-[#F5F5F5] rounded-full">
-                      <Icon icon="lucide:globe" />
+              {project?.agoraBody?.links?.map(
+                (contribution: UrlNameDescription, i: number) => (
+                  <a href={contribution.url} target="_blank" key={i}>
+                    <div className="flex gap-2 items-center text-[#858796]">
+                      <div className="p-1 bg-[#F5F5F5] rounded-full">
+                        <Icon icon="lucide:globe" />
+                      </div>
+                      <div className="text-sm truncate">{contribution.url}</div>
+                      <Icon icon="lucide:external-link" />
                     </div>
-                    <div className="text-sm truncate">
-                      {contribution.url}
-                    </div>
-                    <Icon icon="lucide:external-link" />
-                  </div>
-                </a>
-              ))}
+                  </a>
+                )
+              )}
             </div>
           </div>
         </div>
-      }
+      )}
 
       <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
         <div className="text-2xl">Funding sources</div>
@@ -262,16 +328,20 @@ export function ProjectView({ project }: { project: Project }) {
 }
 
 interface MetricItemProps {
-  title: string
-  value: string
-  op: number
+  title: string;
+  value: string;
+  op: number;
 }
 
 function metricOp(project: Project, key: keyof ProjectMetrics) {
-  if (!project.totalOP) return 0
-  if (!project.metricsPercent) return 0
-  if (!project.metricsPercentOss) return 0
-  return ((project.metricsPercent[key] as number || 0) - (project.metricsPercentOss[key] as number || 0)) * project.totalOP
+  if (!project.totalOP) return 0;
+  if (!project.metricsPercent) return 0;
+  if (!project.metricsPercentOss) return 0;
+  return (
+    (((project.metricsPercent[key] as number) || 0) -
+      ((project.metricsPercentOss[key] as number) || 0)) *
+    project.totalOP
+  );
 }
 
 function MetricItem({ title, value, op }: MetricItemProps) {
@@ -280,18 +350,23 @@ function MetricItem({ title, value, op }: MetricItemProps) {
       <div className="text-lg text-[#344054] flex justify-between">
         <div>{value}</div>
 
-        {Boolean(op) &&
+        {Boolean(op) && (
           <div className="flex items-center">
-            <div className="font-bold mx-2">{op.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</div>
+            <div className="font-bold mx-2">
+              {op.toLocaleString("en-US", {
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 1,
+              })}
+            </div>
             <div>
               <img className="w-6 h-6" src="/img/platform/op.png"></img>
             </div>
           </div>
-        }
+        )}
       </div>
       <div className="text-sm text-[#667085]">{title}</div>
     </div>
-  )
+  );
 }
 
 export default function ProjectPage() {
@@ -301,9 +376,7 @@ export default function ProjectPage() {
   const fetchProject = useCallback(async () => {
     // const response = await axios.get("/dataset/rpgf3/projects/" + projectId + ".json");
     try {
-      const response = await axios.get(
-        `${apiHost()}/projects/${projectId}`
-      );
+      const response = await axios.get(`${apiHost()}/projects/${projectId}`);
       setProject(response.data);
 
       console.log(response.data);
@@ -355,100 +428,149 @@ export default function ProjectPage() {
   //   "log_trusted_transaction_count",
   // ]
 
-  const oss_reward = project.metricsPercentOss && project.totalOP ? (
-    project.metricsPercentOss.gas_fees +
-    project.metricsPercentOss.daily_active_addresses +
-    project.metricsPercentOss.log_gas_fees +
-    project.metricsPercentOss.log_transaction_count +
-    project.metricsPercentOss.log_trusted_transaction_count +
-    project.metricsPercentOss.monthly_active_addresses +
-    project.metricsPercentOss.openrank_trusted_users_count +
-    project.metricsPercentOss.power_user_addresses +
-    project.metricsPercentOss.recurring_addresses +
-    project.metricsPercentOss.transaction_count +
-    project.metricsPercentOss.trusted_daily_active_users +
-    project.metricsPercentOss.trusted_monthly_active_users +
-    project.metricsPercentOss.trusted_recurring_users +
-    project.metricsPercentOss.trusted_transaction_count +
-    project.metricsPercentOss.trusted_transaction_share +
-    project.metricsPercentOss.trusted_users_onboarded
-  ) * project.totalOP : 0
+  const oss_reward =
+    project.metricsPercentOss && project.totalOP
+      ? (project.metricsPercentOss.gas_fees +
+          project.metricsPercentOss.daily_active_addresses +
+          project.metricsPercentOss.log_gas_fees +
+          project.metricsPercentOss.log_transaction_count +
+          project.metricsPercentOss.log_trusted_transaction_count +
+          project.metricsPercentOss.monthly_active_addresses +
+          project.metricsPercentOss.openrank_trusted_users_count +
+          project.metricsPercentOss.power_user_addresses +
+          project.metricsPercentOss.recurring_addresses +
+          project.metricsPercentOss.transaction_count +
+          project.metricsPercentOss.trusted_daily_active_users +
+          project.metricsPercentOss.trusted_monthly_active_users +
+          project.metricsPercentOss.trusted_recurring_users +
+          project.metricsPercentOss.trusted_transaction_count +
+          project.metricsPercentOss.trusted_transaction_share +
+          project.metricsPercentOss.trusted_users_onboarded) *
+        project.totalOP
+      : 0;
 
-  let metrics: MetricItemProps[] = project.metrics ? [
-    {
-      title: "Gas Fees",
-      value: project.metrics.gas_fees.toLocaleString('en-US', { maximumFractionDigits: 2 }) + ' ETH',
-      op: metricOp(project, 'gas_fees') + metricOp(project, 'log_gas_fees'),
-    },
-    {
-      title: "Transactions",
-      value: project.metrics.transaction_count.toLocaleString('en-US', { maximumFractionDigits: 0 }),
-      op: metricOp(project, 'transaction_count') + metricOp(project, 'log_transaction_count'),
-    },
-    {
-      title: "Transactions from Trusted Users",
-      value: project.metrics.trusted_transaction_count.toLocaleString('en-US', { maximumFractionDigits: 0 }),
-      op: metricOp(project, 'trusted_transaction_count') + metricOp(project, 'log_trusted_transaction_count'),
-    },
-    {
-      title: "Trusted Users Share of Transactions",
-      value: (project.metrics.trusted_transaction_share * 100).toLocaleString('en-US', { maximumFractionDigits: 2 }) + '%',
-      op: metricOp(project, 'trusted_transaction_share'),
-    },
-    {
-      title: "Trusted Users",
-      value: project.metrics.openrank_trusted_users_count.toLocaleString('en-US', { maximumFractionDigits: 0 }),
-      op: metricOp(project, 'openrank_trusted_users_count'),
-    },
-    {
-      title: "Trusted Users Onboarded",
-      value: project.metrics.trusted_users_onboarded.toLocaleString('en-US', { maximumFractionDigits: 0 }),
-      op: metricOp(project, 'trusted_users_onboarded'),
-    },
-    {
-      title: "Average Daily Active Addresses",
-      value: project.metrics.daily_active_addresses.toLocaleString('en-US', { maximumFractionDigits: 2 }),
-      op: metricOp(project, 'daily_active_addresses'),
-    },
-    {
-      title: "Average Trusted Daily Active Users",
-      value: project.metrics.trusted_daily_active_users.toLocaleString('en-US', { maximumFractionDigits: 2 }),
-      op: metricOp(project, 'trusted_daily_active_users'),
-    },
-    {
-      title: "Average Monthly Active Addresses",
-      value: project.metrics.monthly_active_addresses.toLocaleString('en-US', { maximumFractionDigits: 2 }),
-      op: metricOp(project, 'monthly_active_addresses'),
-    },
-    {
-      title: "Average Trusted Monthly Active Users",
-      value: project.metrics.trusted_monthly_active_users.toLocaleString('en-US', { maximumFractionDigits: 2 }),
-      op: metricOp(project, 'trusted_monthly_active_users'),
-    },
-    {
-      title: "Recurring Addresses",
-      value: project.metrics.recurring_addresses.toLocaleString('en-US', { maximumFractionDigits: 0 }),
-      op: metricOp(project, 'recurring_addresses'),
-    },
-    {
-      title: "Trusted Recurring Users",
-      value: project.metrics.trusted_recurring_users.toLocaleString('en-US', { maximumFractionDigits: 0 }),
-      op: metricOp(project, 'trusted_recurring_users'),
-    },
-    {
-      title: "Power User Addresses",
-      value: project.metrics.power_user_addresses.toLocaleString('en-US', { maximumFractionDigits: 0 }),
-      op: metricOp(project, 'power_user_addresses'),
-    },
-    {
-      title: "Open Source",
-      value: oss_reward && project.totalOP ? (project.totalOP / (project.totalOP - oss_reward)).toFixed(2) + 'X' : "No",
-      op: oss_reward,
-    },
-  ] : []
+  let metrics: MetricItemProps[] = project.metrics
+    ? [
+        {
+          title: "Gas Fees",
+          value:
+            project.metrics.gas_fees.toLocaleString("en-US", {
+              maximumFractionDigits: 2,
+            }) + " ETH",
+          op: metricOp(project, "gas_fees") + metricOp(project, "log_gas_fees"),
+        },
+        {
+          title: "Transactions",
+          value: project.metrics.transaction_count.toLocaleString("en-US", {
+            maximumFractionDigits: 0,
+          }),
+          op:
+            metricOp(project, "transaction_count") +
+            metricOp(project, "log_transaction_count"),
+        },
+        {
+          title: "Transactions from Trusted Users",
+          value: project.metrics.trusted_transaction_count.toLocaleString(
+            "en-US",
+            { maximumFractionDigits: 0 }
+          ),
+          op:
+            metricOp(project, "trusted_transaction_count") +
+            metricOp(project, "log_trusted_transaction_count"),
+        },
+        {
+          title: "Trusted Users Share of Transactions",
+          value:
+            (project.metrics.trusted_transaction_share * 100).toLocaleString(
+              "en-US",
+              { maximumFractionDigits: 2 }
+            ) + "%",
+          op: metricOp(project, "trusted_transaction_share"),
+        },
+        {
+          title: "Trusted Users",
+          value: project.metrics.openrank_trusted_users_count.toLocaleString(
+            "en-US",
+            { maximumFractionDigits: 0 }
+          ),
+          op: metricOp(project, "openrank_trusted_users_count"),
+        },
+        {
+          title: "Trusted Users Onboarded",
+          value: project.metrics.trusted_users_onboarded.toLocaleString(
+            "en-US",
+            { maximumFractionDigits: 0 }
+          ),
+          op: metricOp(project, "trusted_users_onboarded"),
+        },
+        {
+          title: "Average Daily Active Addresses",
+          value: project.metrics.daily_active_addresses.toLocaleString(
+            "en-US",
+            { maximumFractionDigits: 2 }
+          ),
+          op: metricOp(project, "daily_active_addresses"),
+        },
+        {
+          title: "Average Trusted Daily Active Users",
+          value: project.metrics.trusted_daily_active_users.toLocaleString(
+            "en-US",
+            { maximumFractionDigits: 2 }
+          ),
+          op: metricOp(project, "trusted_daily_active_users"),
+        },
+        {
+          title: "Average Monthly Active Addresses",
+          value: project.metrics.monthly_active_addresses.toLocaleString(
+            "en-US",
+            { maximumFractionDigits: 2 }
+          ),
+          op: metricOp(project, "monthly_active_addresses"),
+        },
+        {
+          title: "Average Trusted Monthly Active Users",
+          value: project.metrics.trusted_monthly_active_users.toLocaleString(
+            "en-US",
+            { maximumFractionDigits: 2 }
+          ),
+          op: metricOp(project, "trusted_monthly_active_users"),
+        },
+        {
+          title: "Recurring Addresses",
+          value: project.metrics.recurring_addresses.toLocaleString("en-US", {
+            maximumFractionDigits: 0,
+          }),
+          op: metricOp(project, "recurring_addresses"),
+        },
+        {
+          title: "Trusted Recurring Users",
+          value: project.metrics.trusted_recurring_users.toLocaleString(
+            "en-US",
+            { maximumFractionDigits: 0 }
+          ),
+          op: metricOp(project, "trusted_recurring_users"),
+        },
+        {
+          title: "Power User Addresses",
+          value: project.metrics.power_user_addresses.toLocaleString("en-US", {
+            maximumFractionDigits: 0,
+          }),
+          op: metricOp(project, "power_user_addresses"),
+        },
+        {
+          title: "Open Source",
+          value:
+            oss_reward && project.totalOP
+              ? (project.totalOP / (project.totalOP - oss_reward)).toFixed(2) +
+                "X"
+              : "No",
+          op: oss_reward,
+        },
+      ]
+    : [];
 
   if (project.totalOP) {
-    metrics = metrics.sort((a, b) => b.op - a.op)
+    metrics = metrics.sort((a, b) => b.op - a.op);
   }
 
   return (
@@ -480,10 +602,16 @@ export default function ProjectPage() {
                 ) : (
                   <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
                     <div className="text-2xl mt-2">Total OP Received</div>
-                    <div className="text-[#667085] mb-4">Retro Funding 5: Onchain Builders</div>
+                    <div className="text-[#667085] mb-4">
+                      Retro Funding 5: Onchain Builders
+                    </div>
 
                     <div className="flex items-center mb-6">
-                      <div className="text-4xl text-[#272930DE] font-bold mr-2">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
+                      <div className="text-4xl text-[#272930DE] font-bold mr-2">
+                        {project.totalOP
+                          ? Math.round(project.totalOP!).toLocaleString("en-US")
+                          : "Ineligible"}
+                      </div>
                       <img className="w-8 h-8" src="/img/platform/op.png"></img>
                     </div>
 
@@ -491,7 +619,7 @@ export default function ProjectPage() {
 
                     <div className="text-2xl my-4">Impact Metrics</div>
 
-                    {metrics.map(m => (
+                    {metrics.map((m) => (
                       <MetricItem {...m}></MetricItem>
                     ))}
                   </div>

@@ -1,3 +1,5 @@
+import { AttestationBody } from "./attestationBody"
+
 export interface ProjectQueryOptions {
   search: string
   categories: string[]
@@ -68,6 +70,7 @@ export interface Project {
   totalOP?: number
   rank?: number
 
+  attestationBody: AttestationBody | null
   agoraBody?: any
 }
 
