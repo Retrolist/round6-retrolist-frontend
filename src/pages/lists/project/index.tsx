@@ -164,7 +164,7 @@ export function ProjectView({ project }: { project: Project }) {
                     </a>
 
                     <div className="font-bold text-sm text-[#858796] mb-0.5">{github.name}</div>
-                    <div className="text-xs text-[#858796]">{github.description}</div>
+                    <div className="text-sm text-[#858796]">{github.description}</div>
                   </div>
                 );
               })}
@@ -205,7 +205,7 @@ export function ProjectView({ project }: { project: Project }) {
                       </div>
                     </a>
 
-                    <div className="text-xs text-[#858796]">{link.description}</div>
+                    <div className="text-sm text-[#858796]">{link.description}</div>
                   </div>
                 );
               })}

@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import { Project } from "../../types/Project";
-import { addrParse } from "../../utils/common";
+import { addrParse, appendHttps } from "../../utils/common";
 import { UserImageAddress } from "../common/UserImageAddress";
 import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
 import { Modal, message } from "antd";
@@ -178,7 +178,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
             <div>
               <div>
                 {project?.websiteUrl && (
-                  <a href={project?.websiteUrl} target="_blank">
+                  <a href={appendHttps(project?.websiteUrl)} target="_blank">
                     <div className="flex gap-2 items-center text-[#4C4E64AD]">
                       <div className="text-xs">{project?.websiteUrl}</div>
                       <Icon icon="lucide:external-link" width={14} height={14} />
@@ -188,7 +188,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
               </div>
 
               {project?.agoraBody?.socialLinks?.website?.length > 1 && project?.agoraBody?.socialLinks?.website?.map((website: string, i: number) => (
-                <a href={website} target="_blank" key={i}>
+                <a href={appendHttps(website)} target="_blank" key={i}>
                   <div className="flex gap-2 items-center text-[#4C4E64AD]">
                     <div className="text-xs">{website}</div>
                     <Icon icon="lucide:external-link" width={14} height={14} />
@@ -197,7 +197,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
               ))}
 
               {project?.agoraBody?.socialLinks?.farcaster?.length > 1 && project?.agoraBody?.socialLinks?.farcaster?.map((website: string, i: number) => (
-                <a href={website} target="_blank" key={i}>
+                <a href={appendHttps(website)} target="_blank" key={i}>
                   <div className="flex gap-2 items-center text-[#4C4E64AD]">
                     <div className="text-xs">{website}</div>
                     <Icon icon="lucide:external-link" width={14} height={14} />
@@ -207,7 +207,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
 
               <div>
                 {project?.agoraBody?.socialLinks?.twitter && (
-                  <a href={project?.agoraBody?.socialLinks?.twitter} target="_blank">
+                  <a href={appendHttps(project?.agoraBody?.socialLinks?.twitter)} target="_blank">
                     <div className="flex gap-2 items-center text-[#4C4E64AD]">
                       <div className="text-xs">{project?.agoraBody?.socialLinks?.twitter}</div>
                       <Icon icon="lucide:external-link" width={14} height={14} />
@@ -218,7 +218,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
 
               <div>
                 {project?.agoraBody?.socialLinks?.mirror && (
-                  <a href={project?.agoraBody?.socialLinks?.mirror} target="_blank">
+                  <a href={appendHttps(project?.agoraBody?.socialLinks?.mirror)} target="_blank">
                     <div className="flex gap-2 items-center text-[#4C4E64AD]">
                       <div className="text-xs">{project?.agoraBody?.socialLinks?.mirror}</div>
                       <Icon icon="lucide:external-link" width={14} height={14} />

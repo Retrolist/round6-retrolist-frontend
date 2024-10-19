@@ -53,3 +53,8 @@ export function shadeColor(color: string, percent: number) {
 
   return "#"+RR+GG+BB;
 }
+
+export function appendHttps(url: string) {
+  if (url.startsWith('http://') || url.startsWith('https://')) return url
+  return 'https://' + url
+}
