@@ -18,6 +18,7 @@ import {
 } from "../../../types/Project";
 import { categoryLabel } from "../../../utils/project";
 import { apiHost } from "../../../utils/api";
+import { Github } from "../../../types/attestationBody";
 
 export function ProjectView({ project }: { project: Project }) {
   return (
@@ -134,7 +135,7 @@ export function ProjectView({ project }: { project: Project }) {
             <div className="text-2xl">GitHub</div>
 
             <div className="mt-5">
-              {project?.attestationBody?.github.map((github_, i) => {
+              {project?.attestationBody?.github.map((github_: string | Github, i: number) => {
                 const github = typeof github_ === 'string' ? {
                   url: github_,
                   name: null,
@@ -176,7 +177,7 @@ export function ProjectView({ project }: { project: Project }) {
             <div className="text-2xl">Links</div>
 
             <div className="mt-5">
-              {project?.attestationBody?.links.map((link_, i) => {
+              {project?.attestationBody?.links.map((link_: string | Github, i: number) => {
                 const link = typeof link_ === 'string' ? {
                   url: link_,
                   name: null,
