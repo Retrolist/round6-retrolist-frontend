@@ -18,7 +18,7 @@ import {
 } from "../../../types/Project";
 import { categoryLabel } from "../../../utils/project";
 import { apiHost } from "../../../utils/api";
-import { Github } from "../../../types/attestationBody";
+import { Github } from "../../../types/AttestationBody";
 
 export function ProjectView({ project }: { project: Project }) {
   return (

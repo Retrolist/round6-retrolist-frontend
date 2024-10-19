@@ -1,4 +1,4 @@
-import { AttestationBody } from "./attestationBody"
+import { AttestationBody } from "./AttestationBody"
 
 export interface ProjectQueryOptions {
   search: string
