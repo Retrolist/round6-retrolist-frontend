@@ -130,7 +130,7 @@ export function ProjectView({ project }: { project: Project }) {
           </div>
         )}
 
-        {project?.attestationBody?.github?.length && (
+        {project?.attestationBody?.github && Boolean(project?.attestationBody?.github?.length) && (
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
             <div className="text-2xl">GitHub</div>
 
@@ -172,7 +172,7 @@ export function ProjectView({ project }: { project: Project }) {
           </div>
         )}
 
-        {project?.attestationBody?.links?.length && (
+        {project?.attestationBody?.links && Boolean(project?.attestationBody?.links?.length) && (
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
             <div className="text-2xl">Links</div>
 
