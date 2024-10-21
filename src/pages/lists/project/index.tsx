@@ -19,6 +19,7 @@ import {
 import { categoryLabel } from "../../../utils/project";
 import { apiHost } from "../../../utils/api";
 import { Github } from "../../../types/AttestationBody";
+import ProjectMetricsGarden from "../../../components/Project/ProjectMetricsGarden";
 
 export function ProjectView({ project }: { project: Project }) {
   return (
@@ -27,6 +28,7 @@ export function ProjectView({ project }: { project: Project }) {
       <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5 whitespace-pre-line">
         {project.bio}
       </div>
+
       <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5 hidden">
         <div className="flex gap-3">
           <img src="/img/impact-logo.png" alt="" className="w-10 h-10" />
@@ -324,6 +326,8 @@ export function ProjectView({ project }: { project: Project }) {
       </div>
 
       <ProjectComments projectId={project.id}></ProjectComments>
+
+      <ProjectMetricsGarden projectId={project.id}></ProjectMetricsGarden>
     </div>
   );
 }

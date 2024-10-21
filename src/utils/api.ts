@@ -20,5 +20,5 @@ export function apiHost() {
 
 export const api = axios.create({
   baseURL: apiHost(),
-  withCredentials: true,
+  withCredentials: false,
 })
