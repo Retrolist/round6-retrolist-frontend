@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { MetricsGarden } from "../../types/metricsGarden";
+import { MetricsGarden } from "../../types/MetricsGarden";
 import { api } from "../../utils/api";
 
 export default function ProjectMetricsGarden({
