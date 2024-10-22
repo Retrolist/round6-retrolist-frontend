@@ -21,7 +21,7 @@ function votingPeriod(round: string) {
 
 function reward(round: string) {
   switch (round) {
-    case '5': return '2M - 8M OP'
+    case '5': return '8M OP'
     case '6': return '1.1M - 3.5M OP'
     default: return ''
   }
