@@ -13,6 +13,7 @@ import { useProjectCount } from "../../hooks/useProjectCount";
 import { useProjects } from "../../hooks/useProjects";
 import { categoryLabel } from "../../utils/project";
 import { FINALIZED_ROUND } from "../../utils/api";
+import { AnalyticsR5 } from "../analytics/AnalyticsR5";
 
 const { Search } = Input;
 
@@ -72,6 +73,7 @@ export default function ProjectsPage() {
           </div> */}
 
           {/* <Analytics /> */}
+          {import.meta.env.VITE_CURRENT_ROUND == 5 && <AnalyticsR5 />}
 
           <div className="mb-5">
             <div className="text-2xl font-bold mb-1">All Projects</div>

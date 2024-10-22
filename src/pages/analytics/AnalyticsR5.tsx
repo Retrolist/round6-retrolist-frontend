@@ -7,66 +7,12 @@ import recategorization from "../../dataset/recategorization.json";
 import BallotSquares from "../../components/analytics/BallotSquares";
 import TotalOPProgress from "../../components/analytics/TotalOPProgress";
 import { useOPDistribution } from "../../hooks/useOPDistribution";
-import { useOPDistributionR4 } from "../../hooks/useOPDistributionR4";
+import { useOPDistributionR5 } from "../../hooks/useOPDistributionR5";
 import { sum } from "lodash";
+import TotalOPProgressR5 from "../../components/analytics/TotalOPProgressR5";
 
-export function AnalyticsR4() {
-  const [categories, categoriesOSS, ballots, loading] = useOPDistributionR4();
-
-  const metricsSummary = [
-    {
-      title: "Gas Fees",
-      percent: 31.45,
-    },
-    {
-      title: "Trusted Users Onboarded",
-      percent: 12.49,
-    },
-    {
-      title: "Transactions",
-      percent: 9.51,
-    },
-    {
-      title: "Trusted Recurring Users",
-      percent: 8.67,
-    },
-    {
-      title: "Average Trusted Monthly Active Users",
-      percent: 6.52,
-    },
-    {
-      title: "Transactions from Trusted Users",
-      percent: 6.05,
-    },
-    {
-      title: "Recurring Addresses",
-      percent: 5.16,
-    },
-    {
-      title: "Average Monthly Active Addresses",
-      percent: 5.11,
-    },
-    {
-      title: "Trusted Users",
-      percent: 4.05,
-    },
-    {
-      title: "Trusted Users Share of Transactions",
-      percent: 3.18,
-    },
-    {
-      title: "Power User Addresses",
-      percent: 3,
-    },
-    {
-      title: "Average Trusted Daily Active Users",
-      percent: 2.74,
-    },
-    {
-      title: "Average Daily Active Addresses",
-      percent: 2.06,
-    },
-  ];
+export function AnalyticsR5() {
+  const [categories, categoriesOSS, ballots, loading] = useOPDistributionR5();
 
   // console.log(categories);
 
@@ -83,7 +29,7 @@ export function AnalyticsR4() {
       <div className="mb-6">
         <div className="text-2xl font-bold">Overview</div>
         <div className="mt-3">
-          <TotalOPProgress ballots={ballots} showLegend={true} />
+          <TotalOPProgressR5 ballots={ballots} showLegend={true} />
         </div>
       </div>
 
@@ -94,14 +40,7 @@ export function AnalyticsR4() {
               <div className="font-bold mb-2">By Categories</div>
               <div className="">
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-                  {[
-                    "DeFi",
-                    "Cross Chain",
-                    "Utility",
-                    "Social",
-                    "NFT",
-                    "Governance",
-                  ].map((category) => (
+                  {Object.keys(categories).map((category) => (
                     <div className="border border-gray-200 bg-white rounded-xl p-3 px-4 w-100">
                       <div className="flex flex-col justify-between h-full">
                         <div className="text-xs text-[#4C4E64]">{category}</div>
@@ -118,7 +57,7 @@ export function AnalyticsR4() {
                             ></img>
                           </div>
                           <div>
-                            <TotalOPProgress
+                            <TotalOPProgressR5
                               ballots={categories[category]}
                               showLegend={false}
                             />
@@ -133,7 +72,7 @@ export function AnalyticsR4() {
           </div>
 
           <div>
-            <div className="mb-4">
+            <div className="mb-4 hidden">
               <div className="font-bold mb-2">Open Source</div>
               <div className="">
                 <div className="grid grid-cols-2 gap-4">
@@ -155,7 +94,7 @@ export function AnalyticsR4() {
                             ></img>
                           </div>
                           <div>
-                            <TotalOPProgress
+                            <TotalOPProgressR5
                               ballots={categoriesOSS[category]}
                               showLegend={false}
                             />
@@ -168,29 +107,6 @@ export function AnalyticsR4() {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="mb-6" style={{ minWidth: 320 }}>
-          <div className="font-bold mb-2">Metrics Distribution</div>
-
-          {metricsSummary.map(metric => (
-            <div>
-              <div className="flex justify-between text-sm text-[#4C4E64]">
-                <div>
-                  {metric.title}
-                </div>
-
-                <div className="flex items-center font-bold">
-                  {(metric.percent / 10).toFixed(2)}M
-                  <img
-                    src="/img/platform/op.png"
-                    className="w-4 h-4 ml-1 shrink-0"
-                    alt="OP"
-                  ></img>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
@@ -225,16 +141,3 @@ export function AnalyticsR4() {
     </div>
   );
 }
-
-export default function AnalyticsPage() {
-  return (
-    <Layout>
-      <AnalyticsR4 />
-    </Layout>
-  );
-}
-
-export const AnalyticsPageRoute = {
-  path: "/analytics",
-  element: <AnalyticsPage />,
-};
