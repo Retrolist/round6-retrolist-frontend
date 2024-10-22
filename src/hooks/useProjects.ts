@@ -27,7 +27,11 @@ export function useProjects(options: ProjectQueryOptions) {
         PROJECTS = response.data
 
         // Force order by rank
-        // PROJECTS = PROJECTS.sort((a, b) => a.rank! - a.rank!)
+        console.log(options.orderBy)
+        if (options.orderBy == 'rank') {
+          PROJECTS = PROJECTS.sort((a, b) => (a.rank || 100000) - (b.rank || 100000))
+          console.log(PROJECTS)
+        }
 
         PROJECT_FUSE = new Fuse(PROJECTS, {
           keys: [

@@ -22,3 +22,5 @@ export const api = axios.create({
   baseURL: apiHost(),
   withCredentials: false,
 })
+
+export const FINALIZED_ROUND = 5

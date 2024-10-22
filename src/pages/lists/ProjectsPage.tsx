@@ -12,17 +12,20 @@ import { ProjectNotFound } from "../../components/ProjectNotFound";
 import { useProjectCount } from "../../hooks/useProjectCount";
 import { useProjects } from "../../hooks/useProjects";
 import { categoryLabel } from "../../utils/project";
+import { FINALIZED_ROUND } from "../../utils/api";
 
 const { Search } = Input;
 
 export default function ProjectsPage() {
+  const finalizedRound = parseInt(import.meta.env.VITE_CURRENT_ROUND) <= FINALIZED_ROUND
+
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState<string[]>([]);
-  const [eligibleFilter, setEligibleFilter] = useState("");
+  const [eligibleFilter, setEligibleFilter] = useState(finalizedRound ? "keep" : "");
   const [seed, setSeed] = useState(
     Math.floor(Math.random() * 1000000000).toString()
   );
-  const [listView, setListView] = useState(false);
+  const [listView, setListView] = useState(finalizedRound);
   // const listView = useMemo(() => eligibleFilter == 'keep', [eligibleFilter])
 
   const setCategory = useCallback(
@@ -41,7 +44,7 @@ export default function ProjectsPage() {
       search,
       categories,
       seed,
-      orderBy: search ? "alphabeticalAZ" : "shuffle",
+      orderBy: finalizedRound ? 'rank' : search ? "alphabeticalAZ" : "shuffle",
       approved: true,
     });
 

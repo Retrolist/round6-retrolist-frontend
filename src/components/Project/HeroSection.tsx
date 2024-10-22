@@ -73,16 +73,85 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
 
           <div className="flex w-10/12 flex-col gap-2 md:mt-12">
             <div className="flex justify-between">
-              <div className="flex gap-5">
-                <div className="text-[28px] flex items-end">
-                  {project?.displayName}
+              <div className="flex flex-col gap-3">
+                <div className="flex">
+                  <div className="flex gap-5">
+                    <div className="text-[28px] flex items-end">
+                      {project?.displayName}
+                    </div>
+                    {/* <div className="flex gap-2 items-center">
+                      <div>1,211</div>
+                      <Icon icon="mdi:heart" width={24} height={24} color="red" />
+                    </div> */}
+                  </div>
                 </div>
-                {/* <div className="flex gap-2 items-center">
-                  <div>1,211</div>
-                  <Icon icon="mdi:heart" width={24} height={24} color="red" />
-                </div> */}
+                <div className="flex gap-2 items-center">
+                  {project.impactCategory.map(category => (
+                    <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
+                      {categoryLabel(category)}
+                    </div>
+                  ))}
+                  <OpenSourceBadge isOss={project.metrics?.is_oss}></OpenSourceBadge>
+                  {/* <div className="border-l-[0.5px] border border-[#CBD5E0] h-6" />
+                  <UserImageAddress
+                    img="/img/test-avatar.png"
+                    address={
+                      project?.applicant.address.resolvedName?.name ||
+                      addrParse(project?.applicant.address.address)
+                    }
+                  /> */}
+                </div>
+                <div>
+                  <div>
+                    {project?.websiteUrl && (
+                      <a href={appendHttps(project?.websiteUrl)} target="_blank">
+                        <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                          <div className="text-xs">{project?.websiteUrl}</div>
+                          <Icon icon="lucide:external-link" width={14} height={14} />
+                        </div>
+                      </a>
+                    )}
+                  </div>
+                  {project?.agoraBody?.socialLinks?.website?.length > 1 && project?.agoraBody?.socialLinks?.website?.map((website: string, i: number) => (
+                    <a href={appendHttps(website)} target="_blank" key={i}>
+                      <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                        <div className="text-xs">{website}</div>
+                        <Icon icon="lucide:external-link" width={14} height={14} />
+                      </div>
+                    </a>
+                  ))}
+                  {project?.agoraBody?.socialLinks?.farcaster?.length > 1 && project?.agoraBody?.socialLinks?.farcaster?.map((website: string, i: number) => (
+                    <a href={appendHttps(website)} target="_blank" key={i}>
+                      <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                        <div className="text-xs">{website}</div>
+                        <Icon icon="lucide:external-link" width={14} height={14} />
+                      </div>
+                    </a>
+                  ))}
+                  <div>
+                    {project?.agoraBody?.socialLinks?.twitter && (
+                      <a href={appendHttps(project?.agoraBody?.socialLinks?.twitter)} target="_blank">
+                        <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                          <div className="text-xs">{project?.agoraBody?.socialLinks?.twitter}</div>
+                          <Icon icon="lucide:external-link" width={14} height={14} />
+                        </div>
+                      </a>
+                    )}
+                  </div>
+                  <div>
+                    {project?.agoraBody?.socialLinks?.mirror && (
+                      <a href={appendHttps(project?.agoraBody?.socialLinks?.mirror)} target="_blank">
+                        <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                          <div className="text-xs">{project?.agoraBody?.socialLinks?.mirror}</div>
+                          <Icon icon="lucide:external-link" width={14} height={14} />
+                        </div>
+                      </a>
+                    )}
+                  </div>
+                </div>
               </div>
-              <div className="flex gap-3 hidden md:block">
+
+              <div className="md:flex flex-col gap-3 hidden">
                 {/* <button className="w-10 h-10 border-[#D0D5DD] border shadow rounded-lg p-2.5 hidden">
                   <Icon icon="mdi:dots-horizontal" />
                 </button> */}
@@ -107,14 +176,12 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                       : "Appeal"}
                   </div>
                 </button> */}
-
                 {/* <button
                   className="flex gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
                   onClick={() => setShowReportModal(true)}
                 >
                   Report
                 </button> */}
-
                 <div>
                   {project.rank &&
                     <div className="flex gap-4 mt-3">
@@ -142,11 +209,10 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                     </div>
                   }
                 </div>
-
                 {project.charmverseLink &&
-                  <div>
+                  <div className="flex justify-end">
                     <a
-                      className="flex gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg p-2.5 bg-[#FF0420]"
+                      className="inline-block gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg px-3 py-2 bg-[#FF0420] text-center"
                       href={project.charmverseLink}
                       target="_blank"
                     >
@@ -154,77 +220,6 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                     </a>
                   </div>
                 }
-              </div>
-            </div>
-            <div className="flex gap-2 items-center">
-              {project.impactCategory.map(category => (
-                <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
-                  {categoryLabel(category)}
-                </div>
-              ))}
-
-              <OpenSourceBadge isOss={project.metrics?.is_oss}></OpenSourceBadge>
-
-              {/* <div className="border-l-[0.5px] border border-[#CBD5E0] h-6" />
-              <UserImageAddress
-                img="/img/test-avatar.png"
-                address={
-                  project?.applicant.address.resolvedName?.name ||
-                  addrParse(project?.applicant.address.address)
-                }
-              /> */}
-            </div>
-
-            <div>
-              <div>
-                {project?.websiteUrl && (
-                  <a href={appendHttps(project?.websiteUrl)} target="_blank">
-                    <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                      <div className="text-xs">{project?.websiteUrl}</div>
-                      <Icon icon="lucide:external-link" width={14} height={14} />
-                    </div>
-                  </a>
-                )}
-              </div>
-
-              {project?.agoraBody?.socialLinks?.website?.length > 1 && project?.agoraBody?.socialLinks?.website?.map((website: string, i: number) => (
-                <a href={appendHttps(website)} target="_blank" key={i}>
-                  <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                    <div className="text-xs">{website}</div>
-                    <Icon icon="lucide:external-link" width={14} height={14} />
-                  </div>
-                </a>
-              ))}
-
-              {project?.agoraBody?.socialLinks?.farcaster?.length > 1 && project?.agoraBody?.socialLinks?.farcaster?.map((website: string, i: number) => (
-                <a href={appendHttps(website)} target="_blank" key={i}>
-                  <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                    <div className="text-xs">{website}</div>
-                    <Icon icon="lucide:external-link" width={14} height={14} />
-                  </div>
-                </a>
-              ))}
-
-              <div>
-                {project?.agoraBody?.socialLinks?.twitter && (
-                  <a href={appendHttps(project?.agoraBody?.socialLinks?.twitter)} target="_blank">
-                    <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                      <div className="text-xs">{project?.agoraBody?.socialLinks?.twitter}</div>
-                      <Icon icon="lucide:external-link" width={14} height={14} />
-                    </div>
-                  </a>
-                )}
-              </div>
-
-              <div>
-                {project?.agoraBody?.socialLinks?.mirror && (
-                  <a href={appendHttps(project?.agoraBody?.socialLinks?.mirror)} target="_blank">
-                    <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                      <div className="text-xs">{project?.agoraBody?.socialLinks?.mirror}</div>
-                      <Icon icon="lucide:external-link" width={14} height={14} />
-                    </div>
-                  </a>
-                )}
               </div>
             </div>
 
