@@ -4,27 +4,28 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "@rainbow-me/rainbowkit/styles.css";
 import "react-farcaster-embed/dist/styles.css";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import "./index.css";
-
+import { ListPageRoute } from "./pages/lists/ListPage";
+import { ListsPageRoute } from "./pages/lists/ListsPage";
+import { ProjectsPageRoute } from "./pages/lists/ProjectsPage";
+import { CreateListUserDetailFormRoute } from "./pages/lists/create/Form/ListDetailForm";
 import { RubricBaseScoreFormRoute } from "./pages/lists/create/Form/RubicBaseScoreForm";
 import { SelectProjectFormRoute } from "./pages/lists/create/Form/SelectProjectForm";
 import { SubmitListFormRoute } from "./pages/lists/create/Form/SubmitListForm";
-import { CreateListUserDetailFormRoute } from "./pages/lists/create/Form/ListDetailForm";
-import { ProjectsPageRoute } from "./pages/lists/ProjectsPage";
+import { SubmitListSuccessRoute } from "./pages/lists/create/Form/SubmitListSuccess";
 import ProjectPage from "./pages/lists/project";
+import SocialOracleCallback from "./pages/optidomains/SocialOracleCallback";
 import { AntdAlertProvider } from "./providers/AntdAlertProvider";
 import { RainbowKitConfigProvider } from "./providers/RainbowKitConfigProvider";
 import { CreateListReducerRouteWrapper } from "./stores/CreateListReducer";
-import SocialOracleCallback from "./pages/optidomains/SocialOracleCallback";
-import { ListsPageRoute } from "./pages/lists/ListsPage";
-import { ListPageRoute } from "./pages/lists/ListPage";
-import { SubmitListSuccessRoute } from "./pages/lists/create/Form/SubmitListSuccess";
 
-import "./polyfills.ts"
-import { AnalyticsPageRoute } from "./pages/analytics/AnalyticsPage.tsx";
 import { IncludedInBallotsProvider } from "./hooks/useIncludedInBallots.tsx";
 import { OPDistributionProvider } from "./hooks/useOPDistribution.tsx";
 import { ProjectCountProvider } from "./hooks/useProjectCount.tsx";
+import { AnalyticsPageRoute } from "./pages/analytics/AnalyticsPage.tsx";
+import "./polyfills.ts";
 
 const router = createBrowserRouter([
   ProjectsPageRoute,

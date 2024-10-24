@@ -1,45 +1,46 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
-import { Project } from "../../types/Project";
-import { addrParse, appendHttps } from "../../utils/common";
-import { UserImageAddress } from "../common/UserImageAddress";
-import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
 import { Modal, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
-import { useCallback, useState } from "react";
 import axios from "axios";
-import { OpCoin } from "../../assets/OpCoin";
+import { useCallback, useState } from "react";
 import { Crown } from "../../assets/Crown";
-import { OpenSourceBadge } from "./OpenSourceBadge";
-import { categoryLabel } from "../../utils/project";
+import { OpCoin } from "../../assets/OpCoin";
+import { Project } from "../../types/Project";
 import { apiHost } from "../../utils/api";
+import { categoryLabel } from "../../utils/project";
+import { OpenSourceBadge } from "./OpenSourceBadge";
+import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
 
-export const ProjectHeroSection = ({ project, noMargin = false }: { project: Project, noMargin?: boolean }) => {
-  const [ showReportModal, setShowReportModal ] = useState(false)
-  const [ reportReason, setReportReason ] = useState("")
+export const ProjectHeroSection = ({
+  project,
+  noMargin = false,
+}: {
+  project: Project;
+  noMargin?: boolean;
+}) => {
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [reportReason, setReportReason] = useState("");
 
   const submitReport = useCallback(async () => {
     try {
       await axios.post(apiHost() + "/report", {
         projectId: project.id,
         reason: reportReason,
-      })
-  
-      message.success("Reported Successfully")
+      });
+
+      message.success("Reported Successfully");
     } catch (err) {
-      console.error(err)
-      message.error('Report failed, Please try again!')
+      console.error(err);
+      message.error("Report failed, Please try again!");
     }
-  }, [reportReason])
-  
+  }, [reportReason]);
+
   return (
-    <div className="mt-8">
+    <div className="mt-5">
       <div
         style={{
-          marginTop: noMargin ? 0 : -16,
-          marginLeft: noMargin ? 0 : -16,
-          marginRight: noMargin ? 0 : -16,
-          marginBottom: 16,
-          background: project?.profile.bannerImageUrl ? `url(${project?.profile.bannerImageUrl})` : `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
+          background: project?.profile.bannerImageUrl
+            ? `url(${project?.profile.bannerImageUrl})`
+            : `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           paddingTop: "26%",
@@ -47,10 +48,13 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
         className="rounded-2xl relative"
       >
         <div className="absolute top-3 left-3">
-          <ProjectEligibilityBadge status={project.prelimResult} ballots={project.includedInBallots} size={"sm"} />
+          <ProjectEligibilityBadge
+            status={project.prelimResult}
+            ballots={project.includedInBallots}
+            size={"sm"}
+          />
         </div>
       </div>
-
       <div className="flex md:px-8 relative -top-12">
         <div className="flex flex-wrap md:flex-nowrap w-full items-end gap-8">
           <div className="flex justify-between w-full md:w-auto self-start">
@@ -73,7 +77,7 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
 
           <div className="flex w-10/12 flex-col gap-2 md:mt-12">
             <div className="flex justify-between">
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-2">
                 <div className="flex">
                   <div className="flex gap-5">
                     <div className="text-[28px] flex items-end">
@@ -85,13 +89,22 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                     </div> */}
                   </div>
                 </div>
+                {/* <div className="flex items-center gap-2">
+                  <AvatarGroup />
+                  <div className="border-l border-[#4C4E641F] h-6" />
+                  <div className="rounded-full py-0.5 px-2 text-xs border border-[#D5D9EB] bg-[#F8F9FC] text-[#414651]">
+                    Team
+                  </div>
+                  <AvatarList />
+                </div> */}
                 <div className="flex gap-2 items-center">
-                  {project.impactCategory.map(category => (
-                    <div className="bg-[#E2E8F0] rounded py-0.5 px-2">
+                  <div className="text-xs">Category: </div>
+                  {project.impactCategory.map((category) => (
+                    <div className="rounded-full py-0.5 px-2 text-xs border border-[#D5D9EB] bg-[#F8F9FC] text-[#414651]">
                       {categoryLabel(category)}
                     </div>
                   ))}
-                  <OpenSourceBadge isOss={project.metrics?.is_oss}></OpenSourceBadge>
+                  <OpenSourceBadge isOss={project.metrics?.is_oss} />
                   {/* <div className="border-l-[0.5px] border border-[#CBD5E0] h-6" />
                   <UserImageAddress
                     img="/img/test-avatar.png"
@@ -101,54 +114,97 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                     }
                   /> */}
                 </div>
-                <div>
+                {/* <div>
                   <div>
                     {project?.websiteUrl && (
-                      <a href={appendHttps(project?.websiteUrl)} target="_blank">
+                      <a
+                        href={appendHttps(project?.websiteUrl)}
+                        target="_blank"
+                      >
                         <div className="flex gap-2 items-center text-[#4C4E64AD]">
                           <div className="text-xs">{project?.websiteUrl}</div>
-                          <Icon icon="lucide:external-link" width={14} height={14} />
+                          <Icon
+                            icon="lucide:external-link"
+                            width={14}
+                            height={14}
+                          />
                         </div>
                       </a>
                     )}
                   </div>
-                  {project?.agoraBody?.socialLinks?.website?.length > 1 && project?.agoraBody?.socialLinks?.website?.map((website: string, i: number) => (
-                    <a href={appendHttps(website)} target="_blank" key={i}>
-                      <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                        <div className="text-xs">{website}</div>
-                        <Icon icon="lucide:external-link" width={14} height={14} />
-                      </div>
-                    </a>
-                  ))}
-                  {project?.agoraBody?.socialLinks?.farcaster?.length > 1 && project?.agoraBody?.socialLinks?.farcaster?.map((website: string, i: number) => (
-                    <a href={appendHttps(website)} target="_blank" key={i}>
-                      <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                        <div className="text-xs">{website}</div>
-                        <Icon icon="lucide:external-link" width={14} height={14} />
-                      </div>
-                    </a>
-                  ))}
+                  {project?.agoraBody?.socialLinks?.website?.length > 1 &&
+                    project?.agoraBody?.socialLinks?.website?.map(
+                      (website: string, i: number) => (
+                        <a href={appendHttps(website)} target="_blank" key={i}>
+                          <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                            <div className="text-xs">{website}</div>
+                            <Icon
+                              icon="lucide:external-link"
+                              width={14}
+                              height={14}
+                            />
+                          </div>
+                        </a>
+                      )
+                    )}
+                  {project?.agoraBody?.socialLinks?.farcaster?.length > 1 &&
+                    project?.agoraBody?.socialLinks?.farcaster?.map(
+                      (website: string, i: number) => (
+                        <a href={appendHttps(website)} target="_blank" key={i}>
+                          <div className="flex gap-2 items-center text-[#4C4E64AD]">
+                            <div className="text-xs">{website}</div>
+                            <Icon
+                              icon="lucide:external-link"
+                              width={14}
+                              height={14}
+                            />
+                          </div>
+                        </a>
+                      )
+                    )}
                   <div>
                     {project?.agoraBody?.socialLinks?.twitter && (
-                      <a href={appendHttps(project?.agoraBody?.socialLinks?.twitter)} target="_blank">
+                      <a
+                        href={appendHttps(
+                          project?.agoraBody?.socialLinks?.twitter
+                        )}
+                        target="_blank"
+                      >
                         <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                          <div className="text-xs">{project?.agoraBody?.socialLinks?.twitter}</div>
-                          <Icon icon="lucide:external-link" width={14} height={14} />
+                          <div className="text-xs">
+                            {project?.agoraBody?.socialLinks?.twitter}
+                          </div>
+                          <Icon
+                            icon="lucide:external-link"
+                            width={14}
+                            height={14}
+                          />
                         </div>
                       </a>
                     )}
                   </div>
                   <div>
                     {project?.agoraBody?.socialLinks?.mirror && (
-                      <a href={appendHttps(project?.agoraBody?.socialLinks?.mirror)} target="_blank">
+                      <a
+                        href={appendHttps(
+                          project?.agoraBody?.socialLinks?.mirror
+                        )}
+                        target="_blank"
+                      >
                         <div className="flex gap-2 items-center text-[#4C4E64AD]">
-                          <div className="text-xs">{project?.agoraBody?.socialLinks?.mirror}</div>
-                          <Icon icon="lucide:external-link" width={14} height={14} />
+                          <div className="text-xs">
+                            {project?.agoraBody?.socialLinks?.mirror}
+                          </div>
+                          <Icon
+                            icon="lucide:external-link"
+                            width={14}
+                            height={14}
+                          />
                         </div>
                       </a>
                     )}
                   </div>
-                </div>
+                </div> */}
               </div>
 
               <div className="md:flex flex-col gap-3 hidden">
@@ -183,33 +239,47 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                   Report
                 </button> */}
                 <div>
-                  {project.rank &&
+                  {project.rank && (
                     <div className="flex gap-4 mt-3">
                       {project.rank && project.rank < 10 && (
                         <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
                           <Crown />
-                          <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+                          <div className="text-2xl font-medium linear-wipe">
+                            Top {project.rank}
+                          </div>
                         </div>
                       )}
-                      {project.rank && project.rank >= 10 && project.rank <= 99 && (
-                        <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                          <Crown />
-                          <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
-                        </div>
-                      )}
+                      {project.rank &&
+                        project.rank >= 10 &&
+                        project.rank <= 99 && (
+                          <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
+                            <Crown />
+                            <div className="text-2xl font-medium linear-wipe">
+                              #{project.rank}
+                            </div>
+                          </div>
+                        )}
                       {project.rank && project.rank >= 100 && (
                         <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                          <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+                          <div className="text-xl font-medium linear-wipe">
+                            #{project.rank}
+                          </div>
                         </div>
                       )}
                       <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
                         <OpCoin />
-                        <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
+                        <div className="text-xl font-medium">
+                          {project.totalOP
+                            ? Math.round(project.totalOP!).toLocaleString(
+                                "en-US"
+                              )
+                            : "Ineligible"}
+                        </div>
                       </div>
                     </div>
-                  }
+                  )}
                 </div>
-                {project.charmverseLink &&
+                {project.charmverseLink && (
                   <div className="flex justify-end">
                     <a
                       className="inline-block gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg px-3 py-2 bg-[#FF0420] text-center"
@@ -219,43 +289,52 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
                       Badgeholder Review
                     </a>
                   </div>
-                }
+                )}
               </div>
             </div>
 
-
-            {project.rank &&
+            {project.rank && (
               <div className="flex gap-4 mt-3 md:hidden">
                 {project.rank && project.rank < 10 && (
                   <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
                     <Crown />
-                    <div className="text-2xl font-medium linear-wipe">Top {project.rank}</div>
+                    <div className="text-2xl font-medium linear-wipe">
+                      Top {project.rank}
+                    </div>
                   </div>
                 )}
 
                 {project.rank && project.rank >= 10 && project.rank <= 99 && (
                   <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
                     <Crown />
-                    <div className="text-2xl font-medium linear-wipe">#{project.rank}</div>
+                    <div className="text-2xl font-medium linear-wipe">
+                      #{project.rank}
+                    </div>
                   </div>
                 )}
 
                 {project.rank && project.rank >= 100 && (
                   <div className="flex items-center rounded-xl bg-white shadow p-3 gap-[10px]">
-                    <div className="text-xl font-medium linear-wipe">#{project.rank}</div>
+                    <div className="text-xl font-medium linear-wipe">
+                      #{project.rank}
+                    </div>
                   </div>
                 )}
 
                 <div className="flex items-center rounded-xl bg-white shadow p-3 py-2 gap-[10px]">
                   <OpCoin />
-                  <div className="text-xl font-medium">{project.totalOP ? Math.round(project.totalOP!).toLocaleString("en-US") : 'Ineligible'}</div>
+                  <div className="text-xl font-medium">
+                    {project.totalOP
+                      ? Math.round(project.totalOP!).toLocaleString("en-US")
+                      : "Ineligible"}
+                  </div>
                 </div>
               </div>
-            }
+            )}
           </div>
         </div>
       </div>
-
+      <hr className="border-dashed" />
       <Modal
         title="Report"
         open={showReportModal}
@@ -272,10 +351,12 @@ export const ProjectHeroSection = ({ project, noMargin = false }: { project: Pro
             rows={4}
             placeholder="Report Reason"
             value={reportReason}
-            onChange={e => setReportReason(e.target.value)}
+            onChange={(e) => setReportReason(e.target.value)}
           ></TextArea>
 
-          <div className="text-sm text-gray-400 mt-1">Note: Your report will be submitted anonymously</div>
+          <div className="text-sm text-gray-400 mt-1">
+            Note: Your report will be submitted anonymously
+          </div>
         </div>
       </Modal>
     </div>

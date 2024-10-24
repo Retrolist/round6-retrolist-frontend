@@ -3,8 +3,8 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { FarcasterEmbed } from "react-farcaster-embed/dist/client";
 import { FarcasterComment } from "../../types/Farcaster";
-import { LoadingAnimation } from "../LoadingAnimation";
 import { apiHost } from "../../utils/api";
+import { LoadingAnimation } from "../LoadingAnimation";
 
 export default function ProjectComments({ projectId }: { projectId: string }) {
   const [comments, setComments] = useState<FarcasterComment[]>([]);
@@ -18,7 +18,6 @@ export default function ProjectComments({ projectId }: { projectId: string }) {
       setComments(response.data.comments);
       setHash(response.data.hash);
     } catch (err) {
-      console.error(err);
       // window.alert("Load failed");
     }
   }, [projectId]);

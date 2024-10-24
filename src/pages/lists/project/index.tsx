@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
-import { Alert } from "antd";
 import axios, { AxiosError } from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -9,25 +8,97 @@ import { ProjectFundingCard } from "../../../components/Project/FundingCard";
 import { ProjectHeroSection } from "../../../components/Project/HeroSection";
 import { ProjectListCard } from "../../../components/Project/ListsCard";
 import ProjectComments from "../../../components/Project/ProjectComments";
+import ProjectMetricsGarden from "../../../components/Project/ProjectMetricsGarden";
+import TabNavigation from "../../../components/Project/TabNavigate";
 import ChainIcon from "../../../components/common/ChainIcon";
+import { Github } from "../../../types/AttestationBody";
 import {
   Project,
-  ProjectMetadata,
   ProjectMetrics,
   UrlNameDescription,
 } from "../../../types/Project";
-import { categoryLabel } from "../../../utils/project";
 import { apiHost } from "../../../utils/api";
-import { Github } from "../../../types/AttestationBody";
-import ProjectMetricsGarden from "../../../components/Project/ProjectMetricsGarden";
+import { appendHttps } from "../../../utils/common";
+import { categoryLabel } from "../../../utils/project";
+
+interface ChipExternalLinkProps {
+  website: string;
+  index?: string;
+}
+const ChipExternalLink = ({ website, index }: ChipExternalLinkProps) => {
+  return (
+    <a
+      href={appendHttps(website)}
+      target="_blank"
+      key={index}
+      className="py-1 px-2 bg-[#EAECF0] rounded-full text-[#272930DE]"
+    >
+      <div className="flex gap-2 items-center">
+        <div
+          className={`p-1 rounded-full ${
+            index === "twitter" ? "bg-black" : "bg-[#F9FAFB]"
+          }`}
+        >
+          <Icon
+            icon={index === "twitter" ? "line-md:twitter-x" : "lucide:globe"}
+            className={`${index === "twitter" ? "text-white" : ""} text-sm`}
+          />
+        </div>
+        <div className="text-xs">{website}</div>
+        <Icon
+          icon={"lucide:external-link"}
+          width={14}
+          height={14}
+          className="text-[#858796]"
+        />
+      </div>
+    </a>
+  );
+};
 
 export function ProjectView({ project }: { project: Project }) {
   return (
     <div>
-      <div className="text-[#272930DE] text-2xl">About</div>
+      <div className="text-[#272930DE] text-2xl" id="about">
+        About
+      </div>
+      <div className="flex gap-3 flex-wrap mt-3">
+        {project?.websiteUrl && (
+          <ChipExternalLink
+            website={project?.websiteUrl}
+            index="projectwebsiteUrl"
+          />
+        )}
+        {project?.agoraBody?.socialLinks?.website?.length > 1 &&
+          project?.agoraBody?.socialLinks?.website?.map(
+            (website: string, i: number) => (
+              <ChipExternalLink website={website} index={"website" + i} />
+            )
+          )}
+        {project?.agoraBody?.socialLinks?.farcaster?.length > 1 &&
+          project?.agoraBody?.socialLinks?.farcaster?.map(
+            (website: string, i: number) => (
+              <ChipExternalLink website={website} index={"website" + i} />
+            )
+          )}
+        {project?.agoraBody?.socialLinks?.twitter && (
+          <ChipExternalLink
+            website={project?.agoraBody?.socialLinks?.twitter}
+            index={"twitter"}
+          />
+        )}
+        {project?.agoraBody?.socialLinks?.mirror && (
+          <ChipExternalLink
+            website={project?.agoraBody?.socialLinks?.mirror}
+            index={"twitter"}
+          />
+        )}
+      </div>
       <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5 whitespace-pre-line">
         {project.bio}
       </div>
+      <hr />
+      <ProjectMetricsGarden projectId={project.id} />
 
       <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5 hidden">
         <div className="flex gap-3">
@@ -71,7 +142,7 @@ export function ProjectView({ project }: { project: Project }) {
       </div>
 
       {project?.application && (
-        <div className="my-5">
+        <div className="my-5" id="impact-statement">
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
             <div className="flex gap-3">
               <img src="/img/impact-logo.png" alt="" className="w-10 h-10" />
@@ -132,88 +203,129 @@ export function ProjectView({ project }: { project: Project }) {
           </div>
         )}
 
-        {project?.attestationBody?.github && Boolean(project?.attestationBody?.github?.length) && (
-          <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
-            <div className="text-2xl">GitHub</div>
+        {project?.attestationBody?.github &&
+          Boolean(project?.attestationBody?.github?.length) && (
+            <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+              <div className="text-2xl">GitHub</div>
 
-            <div className="mt-5">
-              {project?.attestationBody?.github.map((github_: string | Github, i: number) => {
-                const github = typeof github_ === 'string' ? {
-                  url: github_,
-                  name: null,
-                  description: null,
-                } : github_
+              <div className="mt-5">
+                {project?.attestationBody?.github.map(
+                  (github_: string | Github, i: number) => {
+                    const github =
+                      typeof github_ === "string"
+                        ? {
+                            url: github_,
+                            name: null,
+                            description: null,
+                          }
+                        : github_;
 
-                return (
-                  <div className={`${github.name || github.description ? 'mb-4' : ''}`}>
-                    <a href={github.url} target="_blank" key={i}>
-                      <div className={`flex gap-2 items-center text-[#858796] ${github.name || github.description ? 'mb-1' : ''}`}>
-                        <div className="p-1 bg-[#F5F5F5] rounded-full">
-                          {github.url.startsWith("https://github.com/") ? (
-                            <img
-                              className="w-5 h-5"
-                              src={"/img/social/github.png"}
-                            ></img>
-                          ) : (
-                            <Icon icon="lucide:file-text" color="#757575" />
-                          )}
+                    return (
+                      <div
+                        className={`${
+                          github.name || github.description ? "mb-4" : ""
+                        }`}
+                      >
+                        <a href={github.url} target="_blank" key={i}>
+                          <div
+                            className={`flex gap-2 items-center text-[#858796] ${
+                              github.name || github.description ? "mb-1" : ""
+                            }`}
+                          >
+                            <div className="p-1 bg-[#F5F5F5] rounded-full">
+                              {github.url.startsWith("https://github.com/") ? (
+                                <img
+                                  className="w-5 h-5"
+                                  src={"/img/social/github.png"}
+                                ></img>
+                              ) : (
+                                <Icon icon="lucide:file-text" color="#757575" />
+                              )}
+                            </div>
+                            <div className="text-sm truncate">
+                              {github.url.replace("https://github.com/", "")}
+                            </div>
+                            <Icon icon="lucide:external-link" />
+                          </div>
+                        </a>
+
+                        <div className="font-bold text-sm text-[#858796] mb-0.5">
+                          {github.name}
                         </div>
-                        <div className="text-sm truncate">
-                          {github.url.replace("https://github.com/", "")}
+                        <div className="text-sm text-[#858796]">
+                          {github.description}
                         </div>
-                        <Icon icon="lucide:external-link" />
                       </div>
-                    </a>
-
-                    <div className="font-bold text-sm text-[#858796] mb-0.5">{github.name}</div>
-                    <div className="text-sm text-[#858796]">{github.description}</div>
-                  </div>
-                );
-              })}
+                    );
+                  }
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {project?.attestationBody?.links && Boolean(project?.attestationBody?.links?.length) && (
-          <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
-            <div className="text-2xl">Links</div>
+        {project?.attestationBody?.links &&
+          Boolean(project?.attestationBody?.links?.length) && (
+            <div
+              className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5"
+              id="links"
+            >
+              <div className="text-2xl">Links</div>
 
-            <div className="mt-5">
-              {project?.attestationBody?.links.map((link_: string | Github, i: number) => {
-                const link = typeof link_ === 'string' ? {
-                  url: link_,
-                  name: null,
-                  description: null,
-                } : link_
+              <div className="mt-5">
+                {project?.attestationBody?.links.map(
+                  (link_: string | Github, i: number) => {
+                    const link =
+                      typeof link_ === "string"
+                        ? {
+                            url: link_,
+                            name: null,
+                            description: null,
+                          }
+                        : link_;
 
-                return (
-                  <div className={`${link.name || link.description ? 'mb-4' : ''}`}>
-                    <a href={link.url} target="_blank" key={i}>
-                      <div className={`flex gap-2 items-center text-[#858796] ${link.name || link.description ? 'mb-1' : ''}`}>
-                        <div className="p-1 bg-[#F5F5F5] rounded-full">
-                          {link.url.startsWith("https://github.com/") ? (
-                            <img
-                              className="w-5 h-5"
-                              src={"/img/social/github.png"}
-                            ></img>
-                          ) : (
-                            <Icon icon="lucide:file-text" color="#757575" />
-                          )}
+                    return (
+                      <div
+                        className={`${
+                          link.name || link.description ? "mb-4" : ""
+                        }`}
+                      >
+                        <a href={link.url} target="_blank" key={i}>
+                          <div
+                            className={`flex gap-2 items-center text-[#858796] ${
+                              link.name || link.description ? "mb-1" : ""
+                            }`}
+                          >
+                            <div className="p-1 bg-[#F5F5F5] rounded-full">
+                              {link.url.startsWith("https://github.com/") ? (
+                                <img
+                                  className="w-5 h-5"
+                                  src={"/img/social/github.png"}
+                                ></img>
+                              ) : (
+                                <Icon icon="lucide:file-text" color="#757575" />
+                              )}
+                            </div>
+                            <div
+                              className={`text-sm truncate ${
+                                link.name ? "font-bold" : ""
+                              }`}
+                            >
+                              {link.name || link.url}
+                            </div>
+                            <Icon icon="lucide:external-link" />
+                          </div>
+                        </a>
+
+                        <div className="text-sm text-[#858796]">
+                          {link.description}
                         </div>
-                        <div className={`text-sm truncate ${link.name ? 'font-bold' : ''}`}>
-                          {link.name || link.url}
-                        </div>
-                        <Icon icon="lucide:external-link" />
                       </div>
-                    </a>
-
-                    <div className="text-sm text-[#858796]">{link.description}</div>
-                  </div>
-                );
-              })}
+                    );
+                  }
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
         {project?.packages.length > 0 && (
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
@@ -251,7 +363,7 @@ export function ProjectView({ project }: { project: Project }) {
       </div>
 
       {project?.contributionLinks.length > 0 && (
-        <div className="my-5">
+        <div className="my-5" id="contract-address">
           <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
             <div className="text-2xl">Contract Addresses</div>
             {/* <div className="mt-3 text-[#4C4E64AD] text-sm flex flex-col gap-6 whitespace-pre-line">
@@ -309,7 +421,10 @@ export function ProjectView({ project }: { project: Project }) {
         </div>
       )}
 
-      <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+      <div
+        className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5"
+        id="funding-sources"
+      >
         <div className="text-2xl">Funding sources</div>
 
         {project?.fundingSources.length > 0 ? (
@@ -326,8 +441,6 @@ export function ProjectView({ project }: { project: Project }) {
       </div>
 
       <ProjectComments projectId={project.id}></ProjectComments>
-
-      <ProjectMetricsGarden projectId={project.id}></ProjectMetricsGarden>
     </div>
   );
 }
@@ -582,55 +695,129 @@ export default function ProjectPage() {
     <div>
       <Layout>
         <div className="mt-11">
-          <Link to="/" className="text-[#858796] flex gap-1 items-center">
-            <Icon icon="lucide:arrow-left" />
-            <div>Go back</div>
-          </Link>
+          <div className="flex gap-6 items-center">
+            <Link
+              to="/"
+              className="text-[#FA280A] flex gap-1 items-center border border-[#FA280A] py-2.5 px-3.5 text-sm rounded-full font-semibold"
+            >
+              <Icon icon="lucide:chevron-left" />
+              <div>Go back</div>
+            </Link>
+            <div className="border-l border-[#4C4E641F] h-6" />
+            <div className="text-[#475467] flex gap-3 items-center font-semibold text-sm">
+              <Link to="https://retrolist.app/">Home</Link>
+              <img src="/svg/slash.svg" alt="" />
+              <Link to="/">Round 5</Link>
+              <img src="/svg/slash.svg" alt="" />
+              <div className="text-[#FA280A]">{project.displayName}</div>
+            </div>
+          </div>
 
           <ProjectHeroSection project={project} />
-
-          <div className="mt-6 flex flex-col md:flex-row gap-6">
-            <div className="flex-grow mb-6">
-              <ProjectView project={project} />
-            </div>
-
-            {project.metrics && (
-              <div className="w-full md:w-auto" style={{ minWidth: 320 }}>
-                {/* <div className="text-base text-[#858796]">Metrics</div> */}
-
-                {project.lists.length > 0 ? (
-                  <div className="mt-4">
-                    {project.lists.map((list) => (
-                      <ProjectListCard list={list} key={list._id} />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
-                    <div className="text-2xl mt-2">Total OP Received</div>
-                    <div className="text-[#667085] mb-4">
-                      Retro Funding 5: Onchain Builders
-                    </div>
-
-                    <div className="flex items-center mb-6">
-                      <div className="text-4xl text-[#272930DE] font-bold mr-2">
-                        {project.totalOP
-                          ? Math.round(project.totalOP!).toLocaleString("en-US")
-                          : "Ineligible"}
-                      </div>
-                      <img className="w-8 h-8" src="/img/platform/op.png"></img>
-                    </div>
-
-                    <hr className="border my-2" />
-
-                    <div className="text-2xl my-4">Impact Metrics</div>
-
-                    {metrics.map((m) => (
-                      <MetricItem {...m}></MetricItem>
-                    ))}
-                  </div>
-                )}
+          <div className="flex gap-6">
+            <div className="mt-5 flex flex-col gap-6 w-3/4">
+              <TabNavigation project={project} />
+              <div className="flex-grow mb-6">
+                <ProjectView project={project} />
               </div>
-            )}
+
+              {project.metrics && (
+                <div className="w-full md:w-auto" style={{ minWidth: 320 }}>
+                  {/* <div className="text-base text-[#858796]">Metrics</div> */}
+
+                  {project.lists.length > 0 ? (
+                    <div className="mt-4">
+                      {project.lists.map((list) => (
+                        <ProjectListCard list={list} key={list._id} />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+                      <div className="text-2xl mt-2">Total OP Received</div>
+                      <div className="text-[#667085] mb-4">
+                        Retro Funding 6: Onchain Builders
+                      </div>
+
+                      <div className="flex items-center mb-6">
+                        <div className="text-4xl text-[#272930DE] font-bold mr-2">
+                          {project.totalOP
+                            ? Math.round(project.totalOP!).toLocaleString(
+                                "en-US"
+                              )
+                            : "Ineligible"}
+                        </div>
+                        <img
+                          className="w-8 h-8"
+                          src="/img/platform/op.png"
+                        ></img>
+                      </div>
+
+                      <hr className="border my-2" />
+
+                      <div className="text-2xl my-4">Impact Metrics</div>
+
+                      {metrics.map((m) => (
+                        <MetricItem {...m}></MetricItem>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            <div className="w-1/4 mt-5">
+              {project.charmverseLink && (
+                <div>
+                  <div className="flex gap-2">
+                    <div>
+                      <div className="p-2.5 rounded-full bg-[#FEE4E2]">
+                        <img src="/svg/message-smile.svg" className="w-5 h-5" />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-lg font-semibold text-[#101828]">
+                        Badgeholder Review
+                      </div>
+                      <div className="mt-1 text-sm text-[#667085] font-semibold">
+                        Feedback you project from badgeholder.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-3">
+                    <Link
+                      to={project.charmverseLink}
+                      className="flex justify-end mt-2 font-semibold text-sm text-[#FF0420] items-center"
+                    >
+                      <div>View on Charmverse</div>
+                      <Icon icon="uim:arrow-up-right" className="w-5 h-5" />
+                    </Link>
+                  </div>
+                  <hr className="border-dashed my-4" />
+                </div>
+              )}
+              <div className="text-[#858796] font-semibold">Impact Metrics</div>
+              <div className="mt-3 border border-[#EAECF0] rounded-xl p-4 bg-white">
+                <div className="text-lg font-semibold text-[#101828]">
+                  Total OP Received
+                </div>
+                <div className="mt-1 text-[#667085] text-sm">
+                  Retro Funding 6: Onchain Builders
+                </div>
+                <div className="mt-4 border border-[#EAECF0] rounded-lg p-4 bg-[#F9FAFB]">
+                  <div className="flex justify-center">
+                    <div className="p-3.5 rounded-full bg-[#F5F5F5]">
+                      <Icon
+                        icon="lucide:clock"
+                        className="w-7 h-7 text-[#717680]"
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-2 text-center text-[#475467] font-semibold">
+                    Voting completion pending. OP and impact metrics update
+                    post-voting.
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Layout>

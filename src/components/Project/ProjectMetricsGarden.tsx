@@ -1,6 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { MetricsGarden } from "../../types/MetricsGarden";
 import { api } from "../../utils/api";
+import { Comment } from "./Comment";
+import { EssentialProject } from "./EssentialProject";
+import RatingDistribution from "./RatingDistribution";
+import Reviewer from "./Reviewers";
 
 export default function ProjectMetricsGarden({
   projectId,
@@ -13,7 +17,6 @@ export default function ProjectMetricsGarden({
   const refreshData = useCallback(async () => {
     setLoading(true);
     const response = await api.get(`/projects/${projectId}/metricsgarden`);
-
     let comments: MetricsGarden[] = response.data;
     comments = comments.sort((a, b) => {
       const aStar =
@@ -49,63 +52,39 @@ export default function ProjectMetricsGarden({
     }
   }, [projectId]);
 
+  const star = comments
+    .map((item) =>
+      item.impactAttestations
+        .filter((att) => att.name === "Likely to Recommend")
+        .map((att) => att.value / 2)
+    )
+    .flat(); // Use flat() to flatten the nested arrays
+
   if (loading) return <div></div>;
 
   return (
     <div className="mt-5">
-      <div className="text-[#272930DE] text-2xl mb-5">Metrics Garden</div>
-
-      <div className="grid md:grid-cols-2 gap-5">
-        {comments.map((comment) => {
-          const star = comment.impactAttestations.find(
-            (x) => x.name == "Likely to Recommend"
-          )?.value;
-
-          const importance = comment.impactAttestations.find(
-            (x) => x.name == "Feeling if didnt exist"
-          )?.value;
-
-          let importanceText = ""
-
-          console.log(importance)
-
-          switch (importance) {
-            case 1: importanceText = 'Neutral'; break;
-            case 2: importanceText = 'Important'; break;
-            case 3: importanceText = 'Essential'; break;
-          }
-
-          return (
-            <div className="flex flex-col">
-              <div className="flex">
-                <div className="mr-3">
-                  <img
-                    src={comment.profile.pfpUrl}
-                    className="h-12 w-12 rounded-full"
-                  ></img>
-                </div>
-                <div>
-                  <div className="font-bold">{comment.profile.displayName}</div>
-                  <div className="flex">
-                    {star && <div>{star / 2} ★ |&nbsp;</div>}
-                    <div>{importanceText} Project</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="border bg-white border-[#EAECF0] rounded-lg p-4 mt-3 text-[#858796] text-sm h-full flex flex-col justify-between">
-                <div>{comment.comment || "-- No comment --"}</div>
-
-                <a href={`https://optimism.easscan.org/attestation/view/${comment.id}`} target="_blank">
-                  <div className="flex justify-end mt-2 font-bold text-red-600">
-                    <div>View on EAS</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          );
-        })}
+      <div className="flex justify-between items-center">
+        <div>
+          <div className="text-[#272930DE] text-2xl" id="impact-garden">
+            Impact Garden
+          </div>
+          <div className="mt-1 font-normal text-md text-[#535862] mb-4">
+            Understand the impact of your project
+          </div>
+        </div>
+        <img src="/svg/metric-garden.svg" alt="" />
       </div>
+      <div className="flex gap-4 mb-4">
+        <div className="w-1/2 flex flex-col justify-between">
+          <RatingDistribution star={star} />
+          <Reviewer comments={comments} />
+        </div>
+        <div className="w-1/2">
+          <EssentialProject comments={comments} />
+        </div>
+      </div>
+      <Comment comments={comments} />
     </div>
   );
 }
