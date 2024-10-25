@@ -44,7 +44,7 @@ const ChipExternalLink = ({ website, index }: ChipExternalLinkProps) => {
             className={`${index === "twitter" ? "text-white" : ""} text-sm`}
           />
         </div>
-        <div className="text-xs">{website}</div>
+        <div className="text-xs truncate w-32">{website}</div>
         <Icon
           icon={"lucide:external-link"}
           width={14}
@@ -88,10 +88,7 @@ export function ProjectView({ project }: { project: Project }) {
           />
         )}
         {project?.agoraBody?.socialLinks?.mirror && (
-          <ChipExternalLink
-            website={project?.agoraBody?.socialLinks?.mirror}
-            index={"twitter"}
-          />
+          <ChipExternalLink website={project?.agoraBody?.socialLinks?.mirror} />
         )}
       </div>
       <div className="text-[#4C4E64AD] text-sm mt-3 font-normal pb-5 whitespace-pre-line">
@@ -714,8 +711,8 @@ export default function ProjectPage() {
           </div>
 
           <ProjectHeroSection project={project} />
-          <div className="flex gap-6">
-            <div className="mt-5 flex flex-col gap-6 w-3/4">
+          <div className="flex gap-6 flex-wrap lg:flex-nowrap">
+            <div className="mt-5 flex flex-col gap-6 lg:w-3/4 w-full">
               <TabNavigation project={project} />
               <div className="flex-grow mb-6">
                 <ProjectView project={project} />
@@ -764,7 +761,7 @@ export default function ProjectPage() {
                 </div>
               )}
             </div>
-            <div className="w-1/4 mt-5">
+            <div className="lg:w-1/4 mt-5 w-full">
               {project.charmverseLink && (
                 <div>
                   <div className="flex gap-2">

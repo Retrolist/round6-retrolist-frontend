@@ -15,7 +15,7 @@ const RatingDistribution = ({ star }: RatingDistributionProps) => {
       (rating) => Math.floor(rating) === ratingValue
     ).length;
 
-    return (count / totalReviews) * 100;
+    return ((count / totalReviews) * 100).toFixed(2);
   };
 
   const segments = [
@@ -23,26 +23,31 @@ const RatingDistribution = ({ star }: RatingDistributionProps) => {
       color: "bg-[#1D4ED8]",
       percentage: calculatePercentage(5),
       label: "5 star - " + calculatePercentage(5) + "%",
+      id: 5,
     },
     {
       color: "bg-[#82954B]",
       percentage: calculatePercentage(4),
       label: ">4 stars - " + calculatePercentage(4) + "%",
+      id: 4,
     },
     {
       color: "bg-[#EE9902]",
       percentage: calculatePercentage(3),
       label: ">3 stars - " + calculatePercentage(3) + "%",
+      id: 3,
     },
     {
       color: "bg-[#CC4C10]",
       percentage: calculatePercentage(2),
       label: ">2 stars - " + calculatePercentage(2) + "%",
+      id: 2,
     },
     {
       color: "bg-[#990000]",
       percentage: calculatePercentage(1),
       label: ">1 stars - " + calculatePercentage(1) + "%",
+      id: 1,
     },
   ];
 

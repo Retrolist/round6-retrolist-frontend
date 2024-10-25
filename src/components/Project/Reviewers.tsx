@@ -10,7 +10,7 @@ const Reviewer = ({ comments }: ReviewerProps) => {
     return { img: comment.profile.pfpUrl, alt: comment.profile.displayName };
   });
   return (
-    <div className="relative z-0 p-4 border-2 border-[#EAECF0] rounded-xl bg-white overflow-visible">
+    <div className="relative z-0 p-4 border-2 border-[#EAECF0] rounded-xl bg-white overflow-visible lg:mt-0 mt-3">
       <h2 className="text-md font-semibold text-[#181D27]">Reviewers</h2>
       <div className="flex items-center space-x-2 mt-2">
         <div className="text-4xl font-semibold text-[#181D27]">

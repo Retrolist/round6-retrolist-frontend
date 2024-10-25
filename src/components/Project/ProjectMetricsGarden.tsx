@@ -75,12 +75,12 @@ export default function ProjectMetricsGarden({
         </div>
         <img src="/svg/metric-garden.svg" alt="" />
       </div>
-      <div className="flex gap-4 mb-4">
-        <div className="w-1/2 flex flex-col justify-between">
+      <div className="flex gap-4 mb-4 lg:flex-nowrap flex-wrap">
+        <div className="lg:w-1/2 w-full flex flex-col justify-between">
           <RatingDistribution star={star} />
           <Reviewer comments={comments} />
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2 w-full">
           <EssentialProject comments={comments} />
         </div>
       </div>
