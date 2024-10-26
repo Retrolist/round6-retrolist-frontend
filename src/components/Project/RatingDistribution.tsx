@@ -10,6 +10,7 @@ const RatingDistribution = ({ star }: RatingDistributionProps) => {
   const average =
     Math.ceil((star.reduce((pre, cur) => pre + cur, 0) / star.length) * 10) /
     10;
+
   const calculatePercentage = (ratingValue: number) => {
     const count = star.filter(
       (rating) => Math.floor(rating) === ratingValue
@@ -19,37 +20,20 @@ const RatingDistribution = ({ star }: RatingDistributionProps) => {
   };
 
   const segments = [
-    {
-      color: "bg-[#1D4ED8]",
-      percentage: calculatePercentage(5),
-      label: "5 star - " + calculatePercentage(5) + "%",
-      id: 5,
-    },
-    {
-      color: "bg-[#82954B]",
-      percentage: calculatePercentage(4),
-      label: ">4 stars - " + calculatePercentage(4) + "%",
-      id: 4,
-    },
-    {
-      color: "bg-[#EE9902]",
-      percentage: calculatePercentage(3),
-      label: ">3 stars - " + calculatePercentage(3) + "%",
-      id: 3,
-    },
-    {
-      color: "bg-[#CC4C10]",
-      percentage: calculatePercentage(2),
-      label: ">2 stars - " + calculatePercentage(2) + "%",
-      id: 2,
-    },
-    {
-      color: "bg-[#990000]",
-      percentage: calculatePercentage(1),
-      label: ">1 stars - " + calculatePercentage(1) + "%",
-      id: 1,
-    },
-  ];
+    { color: "bg-[#1D4ED8]", ratingValue: 5 },
+    { color: "bg-[#82954B]", ratingValue: 4 },
+    { color: "bg-[#EE9902]", ratingValue: 3 },
+    { color: "bg-[#CC4C10]", ratingValue: 2 },
+    { color: "bg-[#990000]", ratingValue: 1 },
+  ]
+    .map((segment) => ({
+      ...segment,
+      percentage: calculatePercentage(segment.ratingValue),
+      label: `${segment.ratingValue} star${
+        segment.ratingValue > 1 ? "s" : ""
+      } - ${calculatePercentage(segment.ratingValue)}%`,
+    }))
+    .filter((segment) => parseFloat(segment.percentage) > 0); // Filter out segments with 0% percentage
 
   return (
     <div className="relative z-0 p-4 border-2 border-[#EAECF0] rounded-xl bg-white overflow-visible">
@@ -58,7 +42,9 @@ const RatingDistribution = ({ star }: RatingDistributionProps) => {
       </h2>
       <div className="flex items-center space-x-2 mt-2">
         <span className="text-4xl">⭐</span>
-        <div className="text-4xl font-semibold text-[#181D27]">{average}</div>
+        <div className="text-4xl font-semibold text-[#181D27]">
+          {isNaN(average) || average === null ? 0 : average}
+        </div>
         <div className="text-[#535862] text-md font-normal self-end">
           {totalReviews} reviews
         </div>
