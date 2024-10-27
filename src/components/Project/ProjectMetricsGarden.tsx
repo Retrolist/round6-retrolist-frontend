@@ -62,29 +62,32 @@ export default function ProjectMetricsGarden({
 
   if (loading) return <div></div>;
 
-  return (
-    <div className="mt-5">
-      <div className="flex justify-between items-center">
-        <div>
-          <div className="text-[#272930DE] text-2xl" id="impact-garden">
-            Impact Garden
+  if (comments.length > 0) {
+    return (
+      <div className="mt-5">
+        <div className="flex justify-between items-center">
+          <div>
+            <div className="text-[#272930DE] text-2xl" id="impact-garden">
+              Impact Garden
+            </div>
+            <div className="mt-1 font-normal text-md text-[#535862] mb-4">
+              Understand the impact of your project
+            </div>
           </div>
-          <div className="mt-1 font-normal text-md text-[#535862] mb-4">
-            Understand the impact of your project
+          <img src="/svg/metric-garden.svg" alt="" />
+        </div>
+        <div className="flex gap-4 mb-4 lg:flex-nowrap flex-wrap">
+          <div className="lg:w-1/2 w-full flex flex-col justify-between">
+            <RatingDistribution star={star} />
+            <Reviewer comments={comments} />
+          </div>
+          <div className="lg:w-1/2 w-full">
+            <EssentialProject comments={comments} />
           </div>
         </div>
-        <img src="/svg/metric-garden.svg" alt="" />
+        <Comment comments={comments} />
       </div>
-      <div className="flex gap-4 mb-4 lg:flex-nowrap flex-wrap">
-        <div className="lg:w-1/2 w-full flex flex-col justify-between">
-          <RatingDistribution star={star} />
-          <Reviewer comments={comments} />
-        </div>
-        <div className="lg:w-1/2 w-full">
-          <EssentialProject comments={comments} />
-        </div>
-      </div>
-      <Comment comments={comments} />
-    </div>
-  );
+    );
+  }
+  return <></>;
 }
