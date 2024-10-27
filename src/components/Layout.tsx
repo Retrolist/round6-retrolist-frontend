@@ -29,7 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               onMouseLeave={() => setIsOpen(false)}
             >
               <div>Rounds</div>
-              <img src="/chevron-down.svg" alt="" />
+              <Icon icon="lucide:chevron-down" />
               {isOpen && (
                 <div
                   onMouseEnter={() => setIsOpen(true)}
