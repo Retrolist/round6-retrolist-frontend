@@ -692,7 +692,7 @@ export default function ProjectPage() {
     <div>
       <Layout>
         <div className="mt-11">
-          <div className="flex gap-6 items-center">
+          <div className="flex gap-6 items-center md:flex-nowrap flex-wrap">
             <Link
               to="/"
               className="text-[#FA280A] flex gap-1 items-center border border-[#FA280A] py-2.5 px-3.5 text-sm rounded-full font-semibold"
@@ -700,13 +700,15 @@ export default function ProjectPage() {
               <Icon icon="lucide:chevron-left" />
               <div>Go back</div>
             </Link>
-            <div className="border-l border-[#4C4E641F] h-6" />
+            <div className="border-l border-[#4C4E641F] h-6 md:block hidden" />
             <div className="text-[#475467] flex gap-3 items-center font-semibold text-sm">
               <Link to="https://retrolist.app/">Home</Link>
               <img src="/svg/slash.svg" alt="" />
-              <Link to="/">Round 5</Link>
+              <Link to="/">Round 6</Link>
               <img src="/svg/slash.svg" alt="" />
-              <div className="text-[#FA280A]">{project.displayName}</div>
+              <div className="text-[#FA280A] w-28 truncate">
+                {project.displayName}
+              </div>
             </div>
           </div>
 
