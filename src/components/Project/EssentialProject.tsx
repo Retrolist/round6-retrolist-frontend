@@ -68,16 +68,56 @@ export const EssentialProject: React.FC<EssentialProjectProps> = ({
 }) => {
   const importanceSummary = calculateImportanceSummary(comments);
 
+  // Sort by count in descending order
+  const sortedSummary = importanceSummary.sort((a, b) => b.count - a.count);
+
+  // Determine the most-voted type
+  const highestVoteType = sortedSummary[0]?.type;
+  let headingContent;
+
+  // Conditionally render heading based on the most-voted type
+  if (highestVoteType === "Neutral") {
+    headingContent = (
+      <>
+        <img
+          src="/svg/non-essential-project.svg"
+          alt="Essential Project Icon"
+        />
+        <div className="text-[30px] font-semibold">
+          <div>Common</div>
+          <div className="text-start">Project</div>
+        </div>
+      </>
+    );
+  } else if (highestVoteType === "Somewhat Upset") {
+    headingContent = (
+      <>
+        <img
+          src="/svg/non-essential-project.svg"
+          alt="Essential Project Icon"
+        />
+        <div className="text-[30px] font-semibold">
+          <div>Important</div>
+          <div className="text-start">Project</div>
+        </div>
+      </>
+    );
+  } else {
+    headingContent = (
+      <>
+        <img src="/svg/essential-project.svg" alt="Essential Project Icon" />
+        <div className="text-[30px] font-semibold linear-wipe">
+          <div>Essential</div>
+          <div className="text-start">Project</div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <div className="group rounded-3xl p-[2px] project-card-gradient transition-all duration-300 hover:shadow-xl">
       <div className="bg-white p-4 rounded-[calc(1.5rem-2px)] relative overflow-hidden">
-        <div className="flex gap-3 items-start">
-          <img src="/svg/essential-project.svg" alt="Essential Project Icon" />
-          <div className="text-[30px] font-semibold linear-wipe">
-            <div>Essential</div>
-            <div className="text-start">Project</div>
-          </div>
-        </div>
+        <div className="flex gap-3 items-start">{headingContent}</div>
         <img
           src="/img/blue-star.png"
           className="absolute left-0 top-20"
@@ -98,7 +138,7 @@ export const EssentialProject: React.FC<EssentialProjectProps> = ({
           </div>
         </div>
         <div className="grid grid-cols-3 gap-4 text-base font-semibold text-[#475467]">
-          {importanceSummary.map((item, index) => (
+          {sortedSummary.map((item, index) => (
             <SummaryRow
               key={index}
               type={item.type}
