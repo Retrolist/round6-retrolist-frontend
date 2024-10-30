@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { ProjectMetadata } from "../../types/Project";
-import { addrParse } from "../../utils/common";
 import { categoryLabel } from "../../utils/project";
-import { UserImageAddress } from "../common/UserImageAddress";
 import ProjectEligibilityBadge from "./ProjectEligibilityBadge";
 
 export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
@@ -15,7 +13,9 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
             marginLeft: -16,
             marginRight: -16,
             marginBottom: 16,
-            backgroundImage: project.bannerImageUrl ? `url(${project.bannerImageUrl})` : `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
+            backgroundImage: project.bannerImageUrl
+              ? `url(${project.bannerImageUrl})`
+              : `linear-gradient(198deg, rgba(250,155,110,1) 6%, rgba(248,156,115,1) 10%, rgba(216,211,249,1) 70%, rgba(166,203,246,1) 94%)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             paddingTop: "28%",
@@ -23,7 +23,25 @@ export const ProjectCard = ({ project }: { project: ProjectMetadata }) => {
           className="rounded-t-2xl relative"
         >
           <div className="absolute top-2 left-2">
-            <ProjectEligibilityBadge status={project.prelimResult} ballots={project.includedInBallots} />
+            <ProjectEligibilityBadge
+              status={project.prelimResult}
+              ballots={project.includedInBallots}
+            />
+          </div>
+          <div className="absolute top-2 right-2">
+            {project.metricsGarden.star > 0 && (
+              <div className="group project-card-gradient-animation">
+                <div className="bg-white rounded-full flex gap-1 items-center py-1 px-2">
+                  <span className="text-xl">⭐</span>
+                  <div className="font-semibold text-sm text-[#181D27]">
+                    {(project.metricsGarden.star / 2).toFixed(1)}
+                  </div>
+                  <div className="text-xs text-[#535862]">
+                    {project.metricsGarden.reviewerCount} reviews
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
