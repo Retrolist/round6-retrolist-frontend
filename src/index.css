@@ -143,3 +143,8 @@ html, body {
   opacity: .75;
   color: #FF0420;
 }
+.ant-select-selector{
+  padding-left: 30px !important;
+  padding: 4px 0 4px 30px !important;
+  height: auto !important;
+}

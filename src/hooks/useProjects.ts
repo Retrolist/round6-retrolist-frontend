@@ -1,138 +1,118 @@
 import axios from "axios";
+import Fuse from "fuse.js";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { api, apiHost, apiRound } from "../utils/api";
 import { useDebounce } from "usehooks-ts";
-import { ProjectQueryOptions, ProjectMetadata } from "../types/Project";
-import Fuse from 'fuse.js'
+import { ProjectMetadata, ProjectQueryOptions } from "../types/Project";
+import { apiHost, apiRound } from "../utils/api";
 
-let PROJECTS: ProjectMetadata[] = []
+let PROJECTS: ProjectMetadata[] = [];
 let PROJECT_FUSE: Fuse<ProjectMetadata>;
 
 export function useProjects(options: ProjectQueryOptions) {
-  const [ projects, setProjects ] = useState<ProjectMetadata[]>([])
-  const [ loading, setLoading ] = useState(true)
-  const [ isError, setIsError ] = useState(false)
-  const [ hasNext, setHasNext ] = useState(false)
-  const cursor = useRef<string | null>(null)
-  const debouncedSearch = useDebounce<string>(options.search, 500)
+  const [projects, setProjects] = useState<ProjectMetadata[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [hasNext, setHasNext] = useState(false);
+  const cursor = useRef<string | null>(null);
+  const debouncedSearch = useDebounce<string>(options.search, 500);
+
+  const sortProjects = (projects: ProjectMetadata[]): ProjectMetadata[] => {
+    if (options.orderBy) {
+      return [...projects].sort((a, b) => {
+        if (options.orderBy === "rank") {
+          return (a.rank || 100000) - (b.rank || 100000);
+        } else if (options.orderBy === "displayName") {
+          return a.displayName.localeCompare(b.displayName);
+        } else if (
+          options.orderBy === "reviewerCount" &&
+          a.metricsGarden &&
+          b.metricsGarden
+        ) {
+          return (
+            (b.metricsGarden.reviewerCount || 0) -
+            (a.metricsGarden.reviewerCount || 0)
+          );
+        }
+        return 0;
+      });
+    }
+    return projects;
+  };
 
   const refreshProjectsInternal = useCallback(async () => {
     try {
-      setLoading(true)
-      setIsError(false)
+      setLoading(true);
+      setIsError(false);
 
-      if (PROJECTS.length == 0) {
-        // const response = await axios.get("/dataset/rpgf3/projects.json")
-        const response = await axios.get(`${apiHost()}/${apiRound()}/projects`)
-        PROJECTS = response.data
+      if (PROJECTS.length === 0) {
+        const response = await axios.get(`${apiHost()}/${apiRound()}/projects`);
+        PROJECTS = response.data;
 
-        // Force order by rank
-        console.log(options.orderBy)
-        if (options.orderBy == 'rank') {
-          PROJECTS = PROJECTS.sort((a, b) => (a.rank || 100000) - (b.rank || 100000))
-          console.log(PROJECTS)
-        }
-
-        PROJECT_FUSE = new Fuse(PROJECTS, {
+        PROJECT_FUSE = new Fuse<ProjectMetadata>(PROJECTS, {
           keys: [
-            {
-              name: 'displayName',
-              weight: 8,
-            },
-            {
-              name: 'bio',
-              weight: 2,
-            },
-            // 'impactDescription',
-            // 'contributionDescription',
+            { name: "displayName", weight: 8 },
+            { name: "bio", weight: 2 },
           ],
-          // distance: 400,
           minMatchCharLength: 3,
-        })
+        });
       }
 
-      let filteredProjects: ProjectMetadata[] = PROJECTS
+      let filteredProjects: ProjectMetadata[] = PROJECTS;
 
-      if (!options.search) {}
-      else if (options.search.length < 3) {
-        filteredProjects = PROJECTS.filter(x => x.displayName.startsWith(options.search))
-      } else {
-        filteredProjects = PROJECT_FUSE.search(options.search).map(x => x.item)
+      if (options.search) {
+        filteredProjects =
+          options.search.length < 3
+            ? PROJECTS.filter((x) => x.displayName.startsWith(options.search))
+            : PROJECT_FUSE.search(options.search).map((x) => x.item);
       }
 
       if (options.categories && options.categories.length > 0) {
-        filteredProjects = filteredProjects.filter(project => (
-          options.categories.indexOf(project.recategorization || '') != -1 ||
-          options.categories.indexOf(project.primaryCategory || '') != -1 ||
-          project.impactCategory.some(projectCategory => options.categories.includes(projectCategory))
-        ))
+        filteredProjects = filteredProjects.filter((project) =>
+          options.categories.includes(project.primaryCategory || "")
+        );
       }
 
-      let filteredLength = filteredProjects.length
-      let startIndex = 0;
-      let endIndex = filteredLength
+      filteredProjects = sortProjects(filteredProjects);
 
-      if (cursor.current && cursor.current.startsWith("Index|")) {
-        startIndex = parseInt(cursor.current.split('|')[1])
-      }
+      const startIndex = cursor.current
+        ? parseInt(cursor.current.split("|")[1])
+        : 0;
+      const endIndex = options.limit
+        ? startIndex + options.limit
+        : startIndex + 30;
+      const paginatedProjects = filteredProjects.slice(startIndex, endIndex);
 
-      if (options.limit) {
-        endIndex = startIndex + options.limit
-      } else {
-        endIndex = startIndex + 30
-      }
+      cursor.current = "Index|" + endIndex;
+      setHasNext(endIndex < filteredProjects.length);
 
-      filteredProjects = filteredProjects.slice(startIndex, endIndex)
-
-      // console.log(cursor.current)
-
-      // const response = await api.get('/projects', {
-      //   params: {
-      //     search: options.search,
-      //     categories: options.categories.join(','),
-      //     limit: options.limit || 30,
-      //     seed: options.seed,
-      //     orderBy: options.orderBy,
-      //     cursor: cursor.current,
-      //     approved: options.approved ? 1 : 0,
-      //   }
-      // });
-
-      if (!cursor.current) {
-        setProjects(filteredProjects)
-      } else {
-        setProjects([...projects, ...filteredProjects])
-      }
-      
-      // cursor.current = response.data.pageInfo.endCursor
-      // setHasNext(response.data.pageInfo.hasNextPage)
-
-      cursor.current = 'Index|' + endIndex
-      setHasNext(endIndex < filteredLength)
-    } catch (err) {
-      console.error(err)
-      setIsError(true)
+      setProjects((prev) =>
+        cursor.current === null
+          ? paginatedProjects
+          : [...prev, ...paginatedProjects]
+      );
+    } catch (error) {
+      console.error(error);
+      setIsError(true);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }, [options.search, options.categories, options.seed, cursor, projects, setProjects, setLoading])
+  }, [options, sortProjects]);
 
   const refreshProjects = useCallback(async () => {
-    cursor.current = null
-    setProjects([])
-    refreshProjectsInternal()
-  }, [refreshProjectsInternal, cursor])
+    cursor.current = null;
+    setProjects([]);
+    refreshProjectsInternal();
+  }, [refreshProjectsInternal]);
 
   const paginate = useCallback(async () => {
-    // console.log(paginate, cursor.current, hasNext)
     if (cursor.current && hasNext) {
-      refreshProjectsInternal()
+      refreshProjectsInternal();
     }
-  }, [refreshProjectsInternal, cursor.current, hasNext])
+  }, [refreshProjectsInternal, hasNext]);
 
   useEffect(() => {
-    refreshProjects()
-  }, [debouncedSearch, options.categories, options.seed])
+    refreshProjects();
+  }, [debouncedSearch, options.categories, options.orderBy]);
 
   return {
     projects,
@@ -141,5 +121,5 @@ export function useProjects(options: ProjectQueryOptions) {
     hasNext,
     refreshProjects,
     paginate,
-  }
+  };
 }

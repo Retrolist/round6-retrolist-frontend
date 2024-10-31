@@ -1,5 +1,6 @@
 import { SearchOutlined } from "@ant-design/icons";
-import { Input } from "antd";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import { Input, Select } from "antd";
 import { useCallback, useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 import Layout from "../../components/Layout";
@@ -11,18 +12,22 @@ import { ProjectList } from "../../components/Project/ProjectList";
 import { ProjectNotFound } from "../../components/ProjectNotFound";
 import { useProjectCount } from "../../hooks/useProjectCount";
 import { useProjects } from "../../hooks/useProjects";
-import { categoryLabel } from "../../utils/project";
 import { FINALIZED_ROUND } from "../../utils/api";
+import { categoryLabel } from "../../utils/project";
 import { AnalyticsR5 } from "../analytics/AnalyticsR5";
 
 const { Search } = Input;
-
+const { Option } = Select;
 export default function ProjectsPage() {
-  const finalizedRound = parseInt(import.meta.env.VITE_CURRENT_ROUND) <= FINALIZED_ROUND
+  const finalizedRound =
+    parseInt(import.meta.env.VITE_CURRENT_ROUND) <= FINALIZED_ROUND;
 
   const [search, setSearch] = useState("");
+  const [select, setSelectValue] = useState<string>("reviewerCount");
   const [categories, setCategories] = useState<string[]>([]);
-  const [eligibleFilter, setEligibleFilter] = useState(finalizedRound ? "keep" : "");
+  const [eligibleFilter, setEligibleFilter] = useState(
+    finalizedRound ? "keep" : ""
+  );
   const [seed, setSeed] = useState(
     Math.floor(Math.random() * 1000000000).toString()
   );
@@ -45,11 +50,17 @@ export default function ProjectsPage() {
       search,
       categories,
       seed,
-      orderBy: finalizedRound ? 'rank' : search ? "alphabeticalAZ" : "shuffle",
+      // orderBy: finalizedRound ? "rank" : search ? "alphabeticalAZ" : "shuffle",
+      orderBy: select,
       approved: true,
     });
 
   const projectCount = useProjectCount();
+
+  const onChange = (value: string) => {
+    console.log(`Selected: ${value}`);
+    setSelectValue(value);
+  };
 
   // console.log(projects)
 
@@ -151,14 +162,30 @@ export default function ProjectsPage() {
             /> */}
           </div>
 
-          <div className="mb-8">
+          <div className="mb-8 flex justify-between">
             <Input
               addonBefore={<SearchOutlined />}
               placeholder="Search projects"
               size="large"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              className="w-80"
             />
+            <div className="relative">
+              <Select
+                defaultValue="reviewerCount"
+                className="w-56 text-md"
+                onChange={onChange}
+              >
+                <Option value="reviewerCount">Sort by: Most reviewer</Option>
+                <Option value="displayName">Sort by: Project name A-Z</Option>
+                <Option value="rank">Sort by: Last updated</Option>
+              </Select>
+              <Icon
+                icon="lucide:list-filter"
+                className="absolute top-1/2 -translate-y-[10px] translate-x-2 text-[#667085]"
+              />
+            </div>
           </div>
 
           {loading ? (
