@@ -59,6 +59,7 @@ export function useProjects(options: ProjectQueryOptions) {
 
       let filteredProjects: ProjectMetadata[] = PROJECTS;
 
+      // Filter based on search
       if (options.search) {
         filteredProjects =
           options.search.length < 3
@@ -66,14 +67,27 @@ export function useProjects(options: ProjectQueryOptions) {
             : PROJECT_FUSE.search(options.search).map((x) => x.item);
       }
 
+      // Filter based on categories
       if (options.categories && options.categories.length > 0) {
         filteredProjects = filteredProjects.filter((project) =>
           options.categories.includes(project.primaryCategory || "")
         );
       }
 
+      // Filter based on prelimResult and options.approved
+      if (options.approved) {
+        filteredProjects = filteredProjects.filter(
+          (project) => project.prelimResult.toLowerCase() === "keep"
+        );
+      } else {
+        filteredProjects = filteredProjects.filter(
+          (project) => project.prelimResult.toLowerCase() !== "keep"
+        );
+      }
+
       filteredProjects = sortProjects(filteredProjects);
 
+      // Handle pagination
       const startIndex = cursor.current
         ? parseInt(cursor.current.split("|")[1])
         : 0;
@@ -112,7 +126,7 @@ export function useProjects(options: ProjectQueryOptions) {
 
   useEffect(() => {
     refreshProjects();
-  }, [debouncedSearch, options.categories, options.orderBy]);
+  }, [debouncedSearch, options.categories, options.orderBy, options.approved]);
 
   return {
     projects,
