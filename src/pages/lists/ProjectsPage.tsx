@@ -112,7 +112,7 @@ export default function ProjectsPage() {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-2 items-center mb-8">
+          <div className="flex flex-wrap gap-2 items-center">
             {/* <ProjectCategoryButton
               text="All Status"
               categories={eligibleFilter ? [eligibleFilter] : []}
@@ -157,7 +157,30 @@ export default function ProjectsPage() {
               setCategory={setEligibleFilter}
             /> */}
           </div>
-
+          <div className="flex gap-3 mb-6">
+            <button
+              className={
+                "p-2 flex px-4 rounded-xl transition " +
+                (isApprovedProject
+                  ? "bg-[#323A43] text-white"
+                  : "bg-[#F5F5F5] text-[#202327] hover:bg-gray-300")
+              }
+              onClick={() => setIsApprovedProject(true)}
+            >
+              <div>Approved</div>
+            </button>
+            <button
+              className={
+                "p-2 flex px-4 rounded-xl transition " +
+                (!isApprovedProject
+                  ? "bg-[#323A43] text-white"
+                  : "bg-[#F5F5F5] text-[#202327] hover:bg-gray-300")
+              }
+              onClick={() => setIsApprovedProject(false)}
+            >
+              <div>Rejected</div>
+            </button>
+          </div>
           <div className="mb-4 flex md:justify-between flex-wrap md:flex-nowrap gap-3 justify-end">
             <Input
               addonBefore={<SearchOutlined />}
@@ -182,30 +205,6 @@ export default function ProjectsPage() {
                 className="absolute top-1/2 -translate-y-[10px] translate-x-2 text-[#667085]"
               />
             </div>
-          </div>
-          <div className="flex gap-3 mb-4">
-            <button
-              className={
-                "p-2 flex px-4 rounded-xl transition " +
-                (isApprovedProject
-                  ? "bg-[#323A43] text-white"
-                  : "bg-[#F5F5F5] text-[#202327] hover:bg-gray-300")
-              }
-              onClick={() => setIsApprovedProject(true)}
-            >
-              <div>Approved</div>
-            </button>
-            <button
-              className={
-                "p-2 flex px-4 rounded-xl transition " +
-                (!isApprovedProject
-                  ? "bg-[#323A43] text-white"
-                  : "bg-[#F5F5F5] text-[#202327] hover:bg-gray-300")
-              }
-              onClick={() => setIsApprovedProject(false)}
-            >
-              <div>Rejected</div>
-            </button>
           </div>
 
           {loading ? (

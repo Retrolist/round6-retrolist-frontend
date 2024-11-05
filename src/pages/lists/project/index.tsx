@@ -799,7 +799,7 @@ export default function ProjectPage() {
                   Total OP Received
                 </div>
                 <div className="mt-1 text-[#667085] text-sm">
-                  Retro Funding 6: Onchain Builders
+                  Retro Funding 6: Governance
                 </div>
                 <div className="mt-4 border border-[#EAECF0] rounded-lg p-4 bg-[#F9FAFB]">
                   <div className="flex justify-center">

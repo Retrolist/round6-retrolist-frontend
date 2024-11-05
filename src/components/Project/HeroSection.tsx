@@ -279,7 +279,7 @@ export const ProjectHeroSection = ({
                     </div>
                   )}
                 </div>
-                {project.charmverseLink && (
+                {/* {project.charmverseLink && (
                   <div className="flex justify-end">
                     <a
                       className="inline-block gap-1 h-10 items-center text-white border-[#D0D5DD] border shadow rounded-lg px-3 py-2 bg-[#FF0420] text-center"
@@ -289,7 +289,7 @@ export const ProjectHeroSection = ({
                       Badgeholder Review
                     </a>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
 
