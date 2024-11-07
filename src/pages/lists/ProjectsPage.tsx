@@ -92,7 +92,7 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap flex-row gap-2 items-center mb-8">
             <ProjectCategoryButton
               text="All"
-              amount={projectCount.total}
+              amount={projectCount.eligible || projectCount.total}
               categories={categories}
               category=""
               setCategory={setCategory}
