@@ -20,6 +20,7 @@ import {
 import { apiHost } from "../../../utils/api";
 import { appendHttps } from "../../../utils/common";
 import { categoryLabel } from "../../../utils/project";
+import { capitalize } from "lodash";
 
 interface ChipExternalLinkProps {
   website: string;
@@ -418,6 +419,24 @@ export function ProjectView({ project }: { project: Project }) {
         </div>
       )}
 
+      {project?.attestationBody?.pricingModel && (
+        <div className="my-5">
+          <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
+            <div className="text-2xl">Pricing Model</div>
+
+            <div className="mt-5">
+              <div className="text-[#858796] font-bold">
+                {capitalize(project?.attestationBody?.pricingModel.replace(/_/g, ' '))}
+              </div>
+
+              <div className="text-[#858796] mt-1 text-sm">
+                {project?.attestationBody?.pricingModelDetails}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div
         className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5"
         id="funding-sources"
@@ -732,12 +751,12 @@ export default function ProjectPage() {
                     </div>
                   ) : (
                     <div className="border bg-white border-[#EAECF0] rounded-lg p-5 mt-5">
-                      <div className="text-2xl mt-2">Total OP Received</div>
+                      <div className="text-2xl mt-2">Retro Funding 4</div>
                       <div className="text-[#667085] mb-4">
-                        Retro Funding 6: Onchain Builders
+                        Onchain Builders
                       </div>
 
-                      <div className="flex items-center mb-6">
+                      {/* <div className="flex items-center mb-6">
                         <div className="text-4xl text-[#272930DE] font-bold mr-2">
                           {project.totalOP
                             ? Math.round(project.totalOP!).toLocaleString(
@@ -749,7 +768,7 @@ export default function ProjectPage() {
                           className="w-8 h-8"
                           src="/img/platform/op.png"
                         ></img>
-                      </div>
+                      </div> */}
 
                       <hr className="border my-2" />
 

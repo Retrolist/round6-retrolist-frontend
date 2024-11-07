@@ -73,4 +73,7 @@ export interface AttestationBody {
   packages: string[] | Package[];
   contracts: Contract[];
   grantsAndFunding: GrantsAndFunding;
+
+  pricingModel: string;
+  pricingModelDetails: string
 }
