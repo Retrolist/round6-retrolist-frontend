@@ -1,5 +1,4 @@
 import { SearchOutlined } from "@ant-design/icons";
-import { Icon } from "@iconify/react/dist/iconify.js";
 import { Input, Select } from "antd";
 import { useCallback, useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
@@ -51,8 +50,8 @@ export default function ProjectsPage() {
       search,
       categories,
       seed,
-      // orderBy: finalizedRound ? "rank" : search ? "alphabeticalAZ" : "shuffle",
-      orderBy: select,
+      orderBy: finalizedRound ? "rank" : search ? "alphabeticalAZ" : "shuffle",
+      // orderBy: select,
       approved: isApprovedProject,
     });
 
@@ -92,7 +91,7 @@ export default function ProjectsPage() {
           <div className="flex flex-wrap flex-row gap-2 items-center mb-8">
             <ProjectCategoryButton
               text="All"
-              amount={projectCount.total}
+              amount={projectCount.eligible || projectCount.total}
               categories={categories}
               category=""
               setCategory={setCategory}
@@ -157,30 +156,6 @@ export default function ProjectsPage() {
               setCategory={setEligibleFilter}
             /> */}
           </div>
-          <div className="flex gap-3 mb-6">
-            <button
-              className={
-                "p-2 flex px-4 rounded-xl transition " +
-                (isApprovedProject
-                  ? "bg-[#323A43] text-white"
-                  : "bg-[#F5F5F5] text-[#202327] hover:bg-gray-300")
-              }
-              onClick={() => setIsApprovedProject(true)}
-            >
-              <div>Approved</div>
-            </button>
-            <button
-              className={
-                "p-2 flex px-4 rounded-xl transition " +
-                (!isApprovedProject
-                  ? "bg-[#323A43] text-white"
-                  : "bg-[#F5F5F5] text-[#202327] hover:bg-gray-300")
-              }
-              onClick={() => setIsApprovedProject(false)}
-            >
-              <div>Rejected</div>
-            </button>
-          </div>
           <div className="mb-4 flex md:justify-between flex-wrap md:flex-nowrap gap-3 justify-end">
             <Input
               addonBefore={<SearchOutlined />}
@@ -190,21 +165,6 @@ export default function ProjectsPage() {
               onChange={(e) => setSearch(e.target.value)}
               className="md:w-80 w-full"
             />
-            <div className="relative">
-              <Select
-                defaultValue="reviewerCount"
-                className="w-56 text-md"
-                onChange={onChange}
-              >
-                <Option value="reviewerCount">Sort by: Most reviewer</Option>
-                <Option value="displayName">Sort by: Project name A-Z</Option>
-                <Option value="rank">Sort by: Last updated</Option>
-              </Select>
-              <Icon
-                icon="lucide:list-filter"
-                className="absolute top-1/2 -translate-y-[10px] translate-x-2 text-[#667085]"
-              />
-            </div>
           </div>
 
           {loading ? (
