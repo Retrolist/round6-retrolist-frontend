@@ -18,7 +18,7 @@ import {
   UrlNameDescription,
 } from "../../../types/Project";
 import { apiHost } from "../../../utils/api";
-import { appendHttps } from "../../../utils/common";
+import { appendHttps, topic } from "../../../utils/common";
 import { categoryLabel } from "../../../utils/project";
 import { capitalize } from "lodash";
 
@@ -723,7 +723,7 @@ export default function ProjectPage() {
             <div className="text-[#475467] flex gap-3 items-center font-semibold text-sm">
               <Link to="https://retrolist.app/">Home</Link>
               <img src="/svg/slash.svg" alt="" />
-              <Link to="/">Round 6</Link>
+              <Link to="/">Round {import.meta.env.VITE_CURRENT_ROUND}</Link>
               <img src="/svg/slash.svg" alt="" />
               <div className="text-[#FA280A] w-28 truncate">
                 {project.displayName}
@@ -818,7 +818,7 @@ export default function ProjectPage() {
                   Total OP Received
                 </div>
                 <div className="mt-1 text-[#667085] text-sm">
-                  Retro Funding 6: Governance
+                  Retro Funding {import.meta.env.VITE_CURRENT_ROUND}: {topic()}
                 </div>
                 <div className="mt-4 border border-[#EAECF0] rounded-lg p-4 bg-[#F9FAFB]">
                   <div className="flex justify-center">
@@ -830,8 +830,7 @@ export default function ProjectPage() {
                     </div>
                   </div>
                   <div className="mt-2 text-center text-[#475467] font-semibold">
-                    Voting completion pending. OP and impact metrics update
-                    post-voting.
+                    Voting completion pending. OP and impact metrics update post-voting.
                   </div>
                 </div>
               </div>

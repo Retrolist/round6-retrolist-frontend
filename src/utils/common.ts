@@ -8,6 +8,16 @@ export function sigmoid(x: number, xmul: number) {
   return 1/(1+Math.exp(-xmul * x))
 }
 
+export function topic(round?: string) {
+  if (!round) round = import.meta.env.VITE_CURRENT_ROUND
+
+  switch (round) {
+    case '5': return 'OP Stack'
+    case '6': return 'Governance'
+    default: return ''
+  }
+}
+
 export function buildSignatureHex(signature: {
   r: string;
   s: string;

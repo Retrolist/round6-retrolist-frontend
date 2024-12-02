@@ -2,14 +2,7 @@ import React from "react";
 import { StatCard } from "./StatCard";
 import { useProjectCount } from "../hooks/useProjectCount";
 import { apiRound } from "../utils/api";
-
-function topic(round: string) {
-  switch (round) {
-    case '5': return 'OP Stack'
-    case '6': return 'Governance'
-    default: return ''
-  }
-}
+import { topic } from "../utils/common";
 
 function votingPeriod(round: string) {
   switch (round) {
