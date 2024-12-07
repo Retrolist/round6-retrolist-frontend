@@ -812,25 +812,28 @@ export default function ProjectPage() {
                   <hr className="border-dashed my-4" />
                 </div>
               )}
-              <div className="text-[#858796] font-semibold">Impact Metrics</div>
-              <div className="mt-3 border border-[#EAECF0] rounded-xl p-4 bg-white">
-                <div className="text-lg font-semibold text-[#101828]">
-                  Total OP Received
-                </div>
-                <div className="mt-1 text-[#667085] text-sm">
-                  Retro Funding {import.meta.env.VITE_CURRENT_ROUND}: {topic()}
-                </div>
-                <div className="mt-4 border border-[#EAECF0] rounded-lg p-4 bg-[#F9FAFB]">
-                  <div className="flex justify-center">
-                    <div className="p-3.5 rounded-full bg-[#F5F5F5]">
-                      <Icon
-                        icon="lucide:clock"
-                        className="w-7 h-7 text-[#717680]"
-                      />
-                    </div>
+
+              <div className="hidden">
+                <div className="text-[#858796] font-semibold">Impact Metrics</div>
+                <div className="mt-3 border border-[#EAECF0] rounded-xl p-4 bg-white">
+                  <div className="text-lg font-semibold text-[#101828]">
+                    Total OP Received
                   </div>
-                  <div className="mt-2 text-center text-[#475467] font-semibold">
-                    Voting completion pending. OP and impact metrics update post-voting.
+                  <div className="mt-1 text-[#667085] text-sm">
+                    Retro Funding {import.meta.env.VITE_CURRENT_ROUND}: {topic()}
+                  </div>
+                  <div className="mt-4 border border-[#EAECF0] rounded-lg p-4 bg-[#F9FAFB]">
+                    <div className="flex justify-center">
+                      <div className="p-3.5 rounded-full bg-[#F5F5F5]">
+                        <Icon
+                          icon="lucide:clock"
+                          className="w-7 h-7 text-[#717680]"
+                        />
+                      </div>
+                    </div>
+                    <div className="mt-2 text-center text-[#475467] font-semibold">
+                      Voting completion pending. OP and impact metrics update post-voting.
+                    </div>
                   </div>
                 </div>
               </div>

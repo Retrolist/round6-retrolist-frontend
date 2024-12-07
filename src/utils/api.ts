@@ -23,4 +23,4 @@ export const api = axios.create({
   withCredentials: false,
 })
 
-export const FINALIZED_ROUND = 5
+export const FINALIZED_ROUND = 6
