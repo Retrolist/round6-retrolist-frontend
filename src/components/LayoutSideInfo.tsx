@@ -20,7 +20,7 @@ function reward(round: string) {
     case "5":
       return "8M OP";
     case "6":
-      return "1.1M - 3.5M OP";
+      return "2.4M OP";
     default:
       return "";
   }

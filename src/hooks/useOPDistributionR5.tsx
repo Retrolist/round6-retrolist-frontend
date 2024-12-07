@@ -1,7 +1,7 @@
 import { flatMap, map, reduce } from "lodash";
 import { useState, useEffect } from "react";
 
-export function useOPDistributionR5(): [
+export function useOPDistributionR5(rpgf = 'rpgf5'): [
   {
     [category: string]: { [projectId: string]: number };
   },
@@ -24,7 +24,7 @@ export function useOPDistributionR5(): [
       setLoading(true);
       try {
         {
-          const response = await fetch("/dataset/rpgf5/categoryOP.json");
+          const response = await fetch("/dataset/" + rpgf + "/categoryOP.json");
           if (!response.ok) {
             throw new Error(`Error: ${response.statusText}`);
           }

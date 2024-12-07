@@ -14,6 +14,7 @@ import { useProjects } from "../../hooks/useProjects";
 import { FINALIZED_ROUND } from "../../utils/api";
 import { categoryLabel } from "../../utils/project";
 import { AnalyticsR5 } from "../analytics/AnalyticsR5";
+import { AnalyticsR6 } from "../analytics/AnalyticsR6";
 
 const { Search } = Input;
 const { Option } = Select;
@@ -80,6 +81,7 @@ export default function ProjectsPage() {
 
           {/* <Analytics /> */}
           {import.meta.env.VITE_CURRENT_ROUND == 5 && <AnalyticsR5 />}
+          {import.meta.env.VITE_CURRENT_ROUND == 6 && <AnalyticsR6 />}
 
           <div className="mb-5">
             <div className="text-2xl font-bold mb-1">All Projects</div>

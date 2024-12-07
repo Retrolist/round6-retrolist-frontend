@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Layout from "../../components/Layout";
 import { useIncludedInBallots } from "../../hooks/useIncludedInBallots";
 import { Spin } from "antd";
@@ -10,9 +10,18 @@ import { useOPDistribution } from "../../hooks/useOPDistribution";
 import { useOPDistributionR5 } from "../../hooks/useOPDistributionR5";
 import { sum } from "lodash";
 import TotalOPProgressR5 from "../../components/analytics/TotalOPProgressR5";
+import { median } from "../../utils/common";
 
 export function AnalyticsR5() {
   const [categories, categoriesOSS, ballots, loading] = useOPDistributionR5();
+
+  let total = useMemo(() => {
+    let total = 0;
+    for (const category in categories) {
+      total += sum(Object.values(categories[category]))
+    }
+    return total
+  }, [categories])
 
   // console.log(categories);
 
@@ -55,12 +64,24 @@ export function AnalyticsR5() {
                               className="w-5 h-5 ml-1"
                               alt="OP"
                             ></img>
+
+                            <span className="ml-2 text-sm text-[#4C4E64] font-normal">({(sum(Object.values(categories[category])) / total * 100).toFixed(0)}%)</span>
                           </div>
                           <div>
                             <TotalOPProgressR5
                               ballots={categories[category]}
                               showLegend={false}
                             />
+                          </div>
+
+                          <div className="text-[#4C4E64] mt-1.5 flex items-center font-bold">
+                            Median: {median(Object.values(categories[category])).toLocaleString('en-US', { maximumFractionDigits: 0 })}
+
+                            <img
+                              src="/img/platform/op.png"
+                              className="w-5 h-5 ml-1"
+                              alt="OP"
+                            ></img>
                           </div>
                         </div>
                       </div>

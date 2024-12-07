@@ -46,11 +46,13 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
             </div>
 
             <div className="flex">
-              <div className="rounded bg-gray-200 text-gray-600 px-2 py-1 text-xs mr-2">
-                {project.recategorization}
-              </div>
+              {project.impactCategory.map((category) => (
+                <div className="rounded bg-gray-200 text-gray-600 px-2 py-1 text-xs mr-2">
+                  {category}
+                </div>
+              ))}
 
-              <OpenSourceBadge isOss={project.isOss}></OpenSourceBadge>
+              {/* <OpenSourceBadge isOss={project.isOss}></OpenSourceBadge> */}
             </div>
           </div>
           <div className="hidden gap-10 md:flex">

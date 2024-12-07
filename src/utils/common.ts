@@ -68,3 +68,13 @@ export function appendHttps(url: string) {
   if (url.startsWith('http://') || url.startsWith('https://')) return url
   return 'https://' + url
 }
+
+export const median = (array: number[]) => {
+  array.sort((a, b) => b - a);
+  const length = array.length;
+  if (length % 2 == 0) {
+    return (array[length / 2] + array[length / 2 - 1]) / 2;
+  } else {
+    return array[Math.floor(length / 2)];
+  }
+};
