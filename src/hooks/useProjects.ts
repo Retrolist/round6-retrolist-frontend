@@ -85,7 +85,7 @@ export function useProjects(options: ProjectQueryOptions) {
         );
       }
 
-      filteredProjects = sortProjects(filteredProjects);
+      filteredProjects = options.search ? filteredProjects : sortProjects(filteredProjects);
 
       // Handle pagination
       const startIndex = cursor.current
