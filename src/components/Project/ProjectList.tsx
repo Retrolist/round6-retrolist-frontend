@@ -4,6 +4,7 @@ import { OpCoin } from "../../assets/OpCoin";
 import { VoteSvg } from "../../assets/VoteSvg";
 import { ProjectMetadata } from "../../types/Project";
 import { OpenSourceBadge } from "./OpenSourceBadge";
+import { categoryLabel } from "../../utils/project";
 
 export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
   return (
@@ -48,7 +49,7 @@ export const ProjectList = ({ project }: { project: ProjectMetadata }) => {
             <div className="flex">
               {project.impactCategory.map((category) => (
                 <div className="rounded bg-gray-200 text-gray-600 px-2 py-1 text-xs mr-2">
-                  {category}
+                  {categoryLabel(category)}
                 </div>
               ))}
 
